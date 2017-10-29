@@ -1,6 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" />
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <TableView layoutY="85.0" prefHeight="562.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="93.0">
+            <columns>
+                <TableColumn prefWidth="167.0" text="สถานะห้อง" />
+                <TableColumn minWidth="0.0" prefWidth="215.0" text="รหัสห้องพัก" />
+                <TableColumn minWidth="0.0" prefWidth="215.0" text="ชื่อ - สกุล" />
+                <TableColumn minWidth="0.0" prefWidth="187.0" text="วันที่เข้าพัก" />
+                <TableColumn minWidth="0.0" prefWidth="149.0" text="วันที่หมดสัญญา" />
+                <TableColumn minWidth="0.0" prefWidth="149.0" text="หมายเหตุ" />
+            </columns>
+        </TableView>
+        <HBox alignment="CENTER_LEFT" layoutX="65.0" layoutY="-1.0" prefHeight="95.0" prefWidth="996.0" spacing="32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <TextField prefHeight="44.0" prefWidth="343.0" promptText="Search....">
+                    <HBox.margin>
+                        <Insets left="40.0" />
+                    </HBox.margin>
+                </TextField>
+                <JFXButton prefHeight="58.0" prefWidth="111.0" style="-fx-background-color: #8e8984;" text="เพิ่ม">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="45.0" />
+                    </HBox.margin>
+                </JFXButton>
+                <JFXButton prefHeight="58.0" prefWidth="109.0" style="-fx-background-color: #8e8984;" text="แก้ไข">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #8e8984;" text="ลบ">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton prefHeight="58.0" prefWidth="111.0" style="-fx-background-color: #8e8984;" text="รายละเอียด">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="20.0" />
+                    </HBox.margin>
+                </JFXButton>
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
