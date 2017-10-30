@@ -35,7 +35,7 @@ public class RoomsModel {
         return result.get(0);
     }
 
-    public void createRoom(long id, int type) {
+    public boolean createRoom(long id, int type) {
         if (getRoomById(id) == null) {
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
@@ -43,9 +43,9 @@ public class RoomsModel {
             em.persist(r);
             em.getTransaction().commit();
             em.close();
-            return;
+            return true;
         }
-        System.out.println("ALREADY");
+        return false;
     }
 
     public List<Room> getAllRooms() {
@@ -56,7 +56,7 @@ public class RoomsModel {
         return result;
     }
 
-    public void removeRoomById(long id) {
+    public boolean removeRoomById(long id) {
         if (getRoomById(id) != null) {
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
@@ -65,12 +65,12 @@ public class RoomsModel {
             query.setParameter("id", id).executeUpdate();
             em.getTransaction().commit();
             em.close();
-            return;
+            return true;
         }
-        System.out.println("NOPE");
+        return false;
     }
 
-    public void updateRoomVacantById(long id, boolean status) {
+    public boolean updateRoomVacantById(long id, boolean status) {
         if (getRoomById(id) != null) {
             EntityManager em = emf.createEntityManager();
             em.getEntityManagerFactory().getCache().evictAll();
@@ -83,9 +83,9 @@ public class RoomsModel {
             query.executeUpdate();
             em.getTransaction().commit();
             em.close();
-            return;
+            return true;
         }
-        System.out.println("NOPE--UPDATE");
+        return false;
     }
 
 }
