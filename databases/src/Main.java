@@ -1,37 +1,46 @@
 import Entity.Room;
+import Entity.Type;
 import Model.RoomsModel;
+import Model.TypesModel;
 
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        RoomsModel roomManager = new RoomsModel();
+        TypesModel typesManager = new TypesModel();
+        RoomsModel roomsManager = new RoomsModel();
+
+        TypesModel.connect();
         RoomsModel.connect();
 
-        roomManager.createRoom(123, 2);
-        roomManager.createRoom(237, 1);
-        roomManager.createRoom(435, 1);
+        typesManager.createType(1, "1 Bed", 3000);
+        typesManager.createType(2, "2 Bed", 5000);
+        typesManager.createType(3, "Suite", 8000);
 
-        List<Room> res = roomManager.getAllRooms();
+        List<Type> res = typesManager.getAllTypes();
 
-        boolean temp = true;
-        for (Room r : res) {
+        for (Type t : res) {
+            System.out.println(t);
+        }
+
+        List<Room> rmres = roomsManager.getAllRooms();
+        for (Room r : rmres) {
             System.out.println(r);
-            if (r.getId() == 435)
-                temp = !(r.isVacant());
         }
 
-        System.out.println(temp);
+        typesManager.updateTypeCostById(2, 5500);
 
-        roomManager.updateRoomVacantById(435, temp);
+        res = typesManager.getAllTypes();
 
-        List<Room> resz = roomManager.getAllRooms();
-
-        for (Room r : resz) {
-            if (r.getId() == 435)
-                System.out.println(r);
+        for (Type t : res) {
+            System.out.println(t);
         }
 
+        double tpe = typesManager.getTypeById(roomsManager.getRoomById(435).getType()).getCost();
+        System.out.println(tpe);
+
+        TypesModel.close();
         RoomsModel.close();
+
     }
 }
