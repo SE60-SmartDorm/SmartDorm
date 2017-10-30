@@ -43,4 +43,16 @@ public class Room implements Serializable {
 
         return res;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Room) {
+            boolean id = this.id == ((Room) obj).id;
+            boolean tp = this.type == ((Room) obj).type;
+            boolean vc = this.vacant == ((Room) obj).vacant;
+
+            return (id && tp && vc);
+        }
+        return false;
+    }
 }
