@@ -4,12 +4,15 @@ import Entity.Tenant;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 
 public class TenantsModel {
     private static EntityManagerFactory emf;
 
     public static void connect() {
-        emf = Persistence.createEntityManagerFactory("$objectdb/db/Tenants.odb");
+        Map<String, String> properties = Config.properties;
+        emf = Persistence.createEntityManagerFactory(
+                Config.serverURI + "Tenants.odb", properties);
     }
 
     public static void close() {

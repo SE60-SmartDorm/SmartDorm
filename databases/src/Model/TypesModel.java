@@ -4,12 +4,15 @@ import Entity.Type;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 
 public class TypesModel {
     private static EntityManagerFactory emf;
 
     public static void connect() {
-        emf = Persistence.createEntityManagerFactory("$objectdb/db/Types.odb");
+        Map<String, String> properties = Config.properties;
+        emf = Persistence.createEntityManagerFactory(
+                Config.serverURI + "Types.odb", properties);
     }
 
     public static void close() {

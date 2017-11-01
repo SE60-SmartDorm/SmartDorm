@@ -4,19 +4,22 @@ import Entity.Room;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 
 public class RoomsModel {
     private static EntityManagerFactory emf;
 
     public static void connect() {
-        emf = Persistence.createEntityManagerFactory("$objectdb/db/Rooms.odb");
+        Map<String, String> properties = Config.properties;
+        emf = Persistence.createEntityManagerFactory(
+                Config.serverURI + "Rooms.odb", properties);
     }
 
     public static void close() {
         emf.close();
     }
 
-    public long countRoooms() {
+    public long countRooms() {
         EntityManager em = emf.createEntityManager();
         Query q1 = em.createQuery("SELECT COUNT(p) FROM Entity.Room p");
         long count = Long.parseLong(q1.getSingleResult().toString());
