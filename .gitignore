@@ -26,3 +26,4 @@ databases/src/Model/Config.java
 .idea/
 *.iml
 objectdb-2.7.2_02/
+out/
