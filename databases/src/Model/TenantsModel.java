@@ -39,16 +39,12 @@ public class TenantsModel {
     }
 
     public void createTenant(long roomId, String fname, String lname, long cid, String phn, String addrs) {
-        if (getTenantByRoomId(roomId) == null) {
-            EntityManager em = emf.createEntityManager();
-            em.getTransaction().begin();
-            Tenant p = new Tenant(roomId, fname, lname, cid, phn, addrs);
-            em.persist(p);
-            em.getTransaction().commit();
-            em.close();
-            return;
-        }
-        System.out.println("ALREADY");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Tenant p = new Tenant(roomId, fname, lname, cid, phn, addrs);
+        em.persist(p);
+        em.getTransaction().commit();
+        em.close();
     }
 
     public List<Tenant> getAllTenants() {
@@ -60,42 +56,34 @@ public class TenantsModel {
     }
 
     public void removeTenantByRoomId(long id) {
-        if (getTenantByRoomId(id) != null) {
-            EntityManager em = emf.createEntityManager();
-            em.getTransaction().begin();
-            Query query = em.createQuery(
-                    "DELETE FROM Tenant p WHERE p.roomId = :id");
-            query.setParameter("id", id).executeUpdate();
-            em.getTransaction().commit();
-            em.close();
-            return;
-        }
-        System.out.println("NOPE");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery(
+                "DELETE FROM Tenant p WHERE p.roomId = :id");
+        query.setParameter("id", id).executeUpdate();
+        em.getTransaction().commit();
+        em.close();
     }
 
     public void updateTenantInfoByRoomId(long roomId, String fname, String lname, long cid, String phn, String addrs) {
-        if (getTenantByRoomId(roomId) != null) {
-            EntityManager em = emf.createEntityManager();
-            em.getTransaction().begin();
-            Query query = em.createQuery(
-                    "UPDATE Tenant p SET firstname = :fname, " +
-                            "lastname = :lname, " +
-                            "citizenId = :cid, " +
-                            "phone = :phn, " +
-                            "address = :addrs " +
-                            "WHERE p.roomId = :roomId");
-            query.setParameter("roomId", roomId);
-            query.setParameter("fname", fname);
-            query.setParameter("lname", lname);
-            query.setParameter("cid", cid);
-            query.setParameter("phn", phn);
-            query.setParameter("addrs", addrs);
-            query.executeUpdate();
-            em.getTransaction().commit();
-            em.close();
-            return;
-        }
-        System.out.println("NOPE--UPDATE");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery(
+                "UPDATE Tenant p SET firstname = :fname, " +
+                        "lastname = :lname, " +
+                        "citizenId = :cid, " +
+                        "phone = :phn, " +
+                        "address = :addrs " +
+                        "WHERE p.roomId = :roomId");
+        query.setParameter("roomId", roomId);
+        query.setParameter("fname", fname);
+        query.setParameter("lname", lname);
+        query.setParameter("cid", cid);
+        query.setParameter("phn", phn);
+        query.setParameter("addrs", addrs);
+        query.executeUpdate();
+        em.getTransaction().commit();
+        em.close();
     }
 
 }
