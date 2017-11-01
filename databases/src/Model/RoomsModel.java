@@ -19,7 +19,7 @@ public class RoomsModel {
         emf.close();
     }
 
-    public long countRooms() {
+    public static long countRooms() {
         EntityManager em = emf.createEntityManager();
         Query q1 = em.createQuery("SELECT COUNT(p) FROM Entity.Room p");
         long count = Long.parseLong(q1.getSingleResult().toString());
@@ -27,7 +27,7 @@ public class RoomsModel {
         return count;
     }
 
-    public Room getRoomById(long id) {
+    public static Room getRoomById(long id) {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Room> query = em.createQuery("SELECT r FROM Room r WHERE r.id = :id", Room.class);
         query.setParameter("id", id);
@@ -38,7 +38,7 @@ public class RoomsModel {
         return result.get(0);
     }
 
-    public boolean createRoom(long id, int type) {
+    public static boolean createRoom(long id, int type) {
         if (getRoomById(id) == null) {
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
@@ -51,7 +51,7 @@ public class RoomsModel {
         return false;
     }
 
-    public List<Room> getAllRooms() {
+    public static List<Room> getAllRooms() {
         EntityManager em = emf.createEntityManager();
         Query q1 = em.createQuery("SELECT r FROM Room r");
         List<Room> result = q1.getResultList();
@@ -59,7 +59,7 @@ public class RoomsModel {
         return result;
     }
 
-    public boolean removeRoomById(long id) {
+    public static boolean removeRoomById(long id) {
         if (getRoomById(id) != null) {
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
@@ -73,7 +73,7 @@ public class RoomsModel {
         return false;
     }
 
-    public boolean updateRoomVacantById(long id, boolean status) {
+    public static boolean updateRoomVacantById(long id, boolean status) {
         if (getRoomById(id) != null) {
             EntityManager em = emf.createEntityManager();
             em.getEntityManagerFactory().getCache().evictAll();
