@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.octicons.OctIconView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Success">
+   <children>
+      <AnchorPane layoutX="33.0" layoutY="-51.0" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #191970;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Text fill="WHITE" layoutX="29.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alert">
+               <font>
+                  <Font name="TH Sarabun New" size="60.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <OctIconView fill="FORESTGREEN" glyphName="CHECK" layoutX="402.0" layoutY="388.0" size="300" />
+      <Text layoutX="181.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ทำรายการ" wrappingWidth="247.4700927734375">
+         <font>
+            <Font name="TH Sarabun New Bold" size="65.0" />
+         </font>
+      </Text>
+      <Text fx:id="topicAlert" layoutX="373.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="........................." wrappingWidth="287.4700927734375">
+         <font>
+            <Font name="TH Sarabun New Bold" size="65.0" />
+         </font>
+      </Text>
+      <Text layoutX="656.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="สำเร็จแล้ว!" wrappingWidth="247.4700927734375">
+         <font>
+            <Font name="TH Sarabun New Bold" size="65.0" />
+         </font>
+      </Text>
+      <JFXButton layoutX="392.0" layoutY="610.0" prefHeight="80.0" prefWidth="240.0" style="-fx-background-color: #191970;" text="กลับสู่หน้าหลัก" textFill="WHITE">
+         <font>
+            <Font name="TH Sarabun New Bold" size="42.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
