@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 
 
-public class TenantManageController {
+public class TenantFormController {
     @FXML
     private VBox showPeopleRole;
 
@@ -29,7 +29,7 @@ public class TenantManageController {
     /**
      * The constructor (is called before the initialize()-method).
      */
-    public TenantManageController() {
+    public TenantFormController() {
         // initial data
         PeopleRoleData.addAll("นักศึกษา", "อาจารย์", "บุคคลภายนอก");
     }
@@ -49,7 +49,7 @@ public class TenantManageController {
         PeopleRole1.getSelectionModel().selectFirst();
 
         //  Init student form
-        loadFxml("StudentInfo.fxml");
+        loadFxml("TenantStudentInfo.fxml");
         showPeopleRole.getChildren().add(infopane);
 
         // ComboBox selection event change pane form
@@ -60,11 +60,11 @@ public class TenantManageController {
                     public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                         if ((Integer) newValue == 0) {
                             showPeopleRole.getChildren().removeAll(infopane);
-                            loadFxml("StudentInfo.fxml");
+                            loadFxml("TenantStudentInfo.fxml");
                             showPeopleRole.getChildren().add(infopane);
                         } else if ((Integer) newValue == 1) {
                             showPeopleRole.getChildren().removeAll(infopane);
-                            loadFxml("TeacherInfo.fxml");
+                            loadFxml("TenantTeacherInfo.fxml");
                             showPeopleRole.getChildren().add(infopane);
                         } else {
                             //TODO other people
