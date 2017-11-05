@@ -6,6 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Main class to start the application.
+ *
+ * @author EIEI ZA
+ */
 public class MainSmartDorm extends Application {
 
     Stage stage;
@@ -14,7 +19,7 @@ public class MainSmartDorm extends Application {
     public void start(Stage primaryStage) throws Exception{
         this.stage = primaryStage;
 
-        Parent root = FXMLLoader.load(getClass().getResource("UI/Manage/TenantManage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UI/Manage/CreateTenantForm.fxml"));
 
         Scene scene = new Scene(root);
 
