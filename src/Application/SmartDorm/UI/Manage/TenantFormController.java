@@ -42,8 +42,6 @@ public class TenantFormController {
     public void initialize() {
 
 
-
-
         // Init ComboBox items.
         PeopleRole1.setItems(PeopleRoleData);
         PeopleRole1.getSelectionModel().selectFirst();

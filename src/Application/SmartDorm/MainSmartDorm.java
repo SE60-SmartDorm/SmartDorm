@@ -19,7 +19,7 @@ public class MainSmartDorm extends Application {
     public void start(Stage primaryStage) throws Exception{
         this.stage = primaryStage;
 
-        Parent root = FXMLLoader.load(getClass().getResource("UI/Manage/CreateTenantForm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UI/Manage/TenantForm.fxml"));
 
         Scene scene = new Scene(root);
 
