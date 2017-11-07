@@ -8,12 +8,22 @@ import javafx.stage.Stage;
 
 public class MainSmartDorm extends Application {
 
-    Stage stage;
+    private static Stage stage;
+
+    private void setStage(Stage stage)
+    {
+        MainSmartDorm.stage = stage;
+    }
+
+    static public Stage getStage()
+    {
+        return MainSmartDorm.stage;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.stage = primaryStage;
-
+        setStage(stage);
         Parent root = FXMLLoader.load(getClass().getResource("UI/TenantPayment/TenantPayment.fxml"));
 
         Scene scene = new Scene(root);
@@ -21,6 +31,7 @@ public class MainSmartDorm extends Application {
         stage.setTitle("Smart Dorm");
         stage.setScene(scene);
         stage.show();
+
     }
 
 
