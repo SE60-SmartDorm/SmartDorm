@@ -10,4 +10,6 @@ public class  TenantRequestController {
     @FXML
     private JFXButton buttonHistory;
 
+
+
 }
