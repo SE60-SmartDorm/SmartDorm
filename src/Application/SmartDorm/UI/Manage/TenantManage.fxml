@@ -1,58 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="1060.0" stylesheets="@TenantManageCSS.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="1060.0" stylesheets="@TenantManageCSS.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.Manage.TenantManageController">
     <children>
-        <TableView layoutY="85.0" prefHeight="562.0" prefWidth="1060.0" styleClass="add" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="93.0">
+
+
+        <JFXTreeTableView fx:id="peopleTableView" layoutX="2.0" layoutY="136.0" prefHeight="499.0" prefWidth="1020.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="136.0">
             <columns>
-                <TableColumn prefWidth="167.0" text="สถานะห้อง" />
-                <TableColumn minWidth="0.0" prefWidth="215.0" text="รหัสห้องพัก" />
-                <TableColumn minWidth="0.0" prefWidth="215.0" text="ชื่อ - สกุล" />
-                <TableColumn minWidth="0.0" prefWidth="187.0" text="วันที่เข้าพัก" />
-                <TableColumn minWidth="0.0" prefWidth="149.0" text="วันที่หมดสัญญา" />
-                <TableColumn minWidth="0.0" prefWidth="149.0" text="หมายเหตุ" />
+                <TreeTableColumn fx:id="roomCol" minWidth="120.0" prefWidth="120.0" text="ห้อง" />
+                <TreeTableColumn fx:id="statusCol" minWidth="120.0" prefWidth="120.0" text="สถานะ" />
+                <TreeTableColumn fx:id="nameCol" minWidth="250.0" prefWidth="250.0" text="ชื่อ - สกุล" />
+                <TreeTableColumn fx:id="contractSCol" minWidth="140.0" prefWidth="140.0" text="วันที่ทำสัญญา" />
+                <TreeTableColumn fx:id="contractECol" minWidth="140.0" prefWidth="140.0" text="วันที่สิ้นสุดสัญญา" />
+                <TreeTableColumn minWidth="170.0" prefWidth="170.0" text="หมายเหตุ" />
             </columns>
-        </TableView>
-        <HBox alignment="CENTER_LEFT" layoutX="65.0" layoutY="-1.0" prefHeight="95.0" prefWidth="996.0" spacing="32.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <columnResizePolicy>
+                <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+        </JFXTreeTableView>
+        <HBox alignment="CENTER_LEFT" layoutX="563.0" layoutY="45.0" prefHeight="44.0" prefWidth="461.0" spacing="13.0" style="-fx-background-color: #2677d6; -fx-background-radius: 4;">
             <children>
-                <TextField prefHeight="44.0" prefWidth="343.0" promptText="Search....">
-                    <HBox.margin>
-                        <Insets left="40.0" />
-                    </HBox.margin>
-                </TextField>
-                <JFXButton id="add" fx:id="add" prefHeight="58.0" prefWidth="111.0" style="-fx-background-color: #8e8984;" text="เพิ่ม">
-                    <font>
-                        <Font name="System Bold" size="14.0" />
-                    </font>
-                    <HBox.margin>
-                        <Insets left="45.0" />
-                    </HBox.margin>
-                </JFXButton>
-                <JFXButton id="edit" fx:id="edit" prefHeight="58.0" prefWidth="109.0" style="-fx-background-color: #8e8984;" text="แก้ไข">
+                <TextField fx:id="searchData" prefHeight="44.0" prefWidth="414.0" promptText="ค้นหาผู้พักอาศัย..." />
+                <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="18" />
+            </children>
+        </HBox>
+        <HBox alignment="CENTER" layoutX="40.0" layoutY="18.0" prefHeight="98.0" prefWidth="510.0" spacing="10.0">
+            <children>
+                <JFXButton id="add" fx:id="addData" prefHeight="58.0" prefWidth="111.0" ripplerFill="#3d9a31" style="-fx-background-color: #26B99A;" text="เพิ่ม" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton id="delete" fx:id="delete" prefHeight="58.0" prefWidth="112.0" style="-fx-background-color: #8e8984;" text="ลบ">
+                <JFXButton id="edit" fx:id="editData" prefHeight="58.0" prefWidth="109.0" ripplerFill="#f52020" style="-fx-background-color: #ffa31e;" text="แก้ไข" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton id="detail" fx:id="detail" prefHeight="58.0" prefWidth="111.0" style="-fx-background-color: #8e8984;" text="รายละเอียด">
+                <JFXButton id="delete" onAction="#deleteData" prefHeight="58.0" prefWidth="112.0" ripplerFill="#e80f21" style="-fx-background-color: #f65b63;" text="ลบ" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
-                    <HBox.margin>
-                        <Insets left="20.0" />
-                    </HBox.margin>
+                </JFXButton>
+                <JFXButton id="detail" fx:id="detailData" prefHeight="58.0" prefWidth="111.0" ripplerFill="#3f25d7" style="-fx-background-color: #00aacf;" text="รายละเอียด" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
                 </JFXButton>
             </children>
         </HBox>
