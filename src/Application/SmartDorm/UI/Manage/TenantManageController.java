@@ -61,7 +61,7 @@ public class TenantManageController implements Initializable {
      */
     public TenantManageController() {
         //TODO DATABASE
-        // Data call DATABASE
+        // Data call form DATABASE
         list.add(new PeopleExData("101", "BOOK", "ABCD", "10/10/2559", "15/10/2560"));
         list.add(new PeopleExData("102", "-", "adcd", "01/10/2559", "15/01/2560"));
         list.add(new PeopleExData("103", "-", "aBCde", "14/10/2559", "15/12/2560"));
@@ -146,9 +146,14 @@ public class TenantManageController implements Initializable {
 
     @FXML
     void deleteData(ActionEvent event) {
-
-        //TODO FIX bug when delete null TreeTable
-        int indexTable = peopleTableView.getSelectionModel().getSelectedIndex();
-        list.remove(indexTable);
+        int selectionIndex = peopleTableView.getSelectionModel().getSelectedIndex();
+        System.out.println(selectionIndex);
+        if (selectionIndex >= 0) {
+            list.remove(selectionIndex);
+            peopleTableView.getSelectionModel().clearSelection();
+        } else {
+            //TODO Show ERROR
+            System.out.println("Error");
+        }
     }
 }
