@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.OwnerDashboard">
+   <children>
+      <HBox prefHeight="768.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane prefHeight="768.0" prefWidth="280.0" />
+            <AnchorPane prefHeight="768.0" prefWidth="1000.0" style="-fx-background-color: #151e29;">
+               <children>
+                  <Text fill="WHITE" layoutX="119.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ยินดีต้อนรับผู้ดูแลกลับเข้าสู่ระบบจัดการหอพัก">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="264.0" layoutY="464.0" strokeType="OUTSIDE" strokeWidth="0.0" text="กรุณาเลือกทำเมนูที่ต้องการ">
+                     <font>
+                        <Font size="45.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
