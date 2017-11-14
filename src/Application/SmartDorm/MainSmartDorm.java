@@ -6,6 +6,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Main class to start the application.
+ *
+ * @author EIEI ZA
+ */
 public class MainSmartDorm extends Application {
 
     private static Stage stage;
@@ -23,6 +28,7 @@ public class MainSmartDorm extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.stage = primaryStage;
+
         setStage(stage);
         Parent root = FXMLLoader.load(getClass().getResource("UI/TenantPayment/TenantPayment.fxml"));
 
