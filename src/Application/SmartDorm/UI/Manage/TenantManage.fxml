@@ -29,7 +29,7 @@
         </JFXTreeTableView>
         <HBox alignment="CENTER_LEFT" layoutX="563.0" layoutY="45.0" prefHeight="44.0" prefWidth="406.0" spacing="13.0" style="-fx-background-color: #2677d6; -fx-background-radius: 4;">
             <children>
-                <TextField fx:id="searchData" prefHeight="44.0" prefWidth="414.0" promptText="ค้นหาผู้พักอาศัย..." />
+                <TextField fx:id="searchData" prefHeight="44.0" prefWidth="363.0" promptText="ค้นหาผู้พักอาศัย..." />
                 <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="18" />
             </children>
         </HBox>
