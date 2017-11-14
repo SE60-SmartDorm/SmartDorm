@@ -26,7 +26,7 @@
       </Text>
       <AnchorPane layoutX="446.0" layoutY="223.0" opacity="0.4" prefHeight="368.0" prefWidth="390.0" style="-fx-background-color: #ffffff;">
          <children>
-            <JFXTextField fx:id="textID" focusColor="#151e29" labelFloat="true" layoutX="20.0" layoutY="120.0" onAction="#authorize" prefHeight="60.0" prefWidth="517.0" promptText="Username" unFocusColor="#151e29" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <JFXTextField fx:id="textID" focusColor="#151e29" labelFloat="true" layoutX="20.0" layoutY="120.0" prefHeight="60.0" prefWidth="517.0" promptText="Username" unFocusColor="#151e29" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                <font>
                   <Font name="Arial" size="25.0" />
                </font>
@@ -44,7 +44,7 @@
             <JFXComboBox layoutX="20.0" layoutY="38.0" prefHeight="45.0" prefWidth="366.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
          </children>
       </AnchorPane>
-      <JFXButton fx:id="buttonLogin" buttonType="RAISED" layoutX="567.0" layoutY="627.0" style="-fx-border-color: #ffffff; -fx-border-width: 2;" text="Log in" textFill="WHITE">
+      <JFXButton fx:id="buttonLogin" buttonType="RAISED" layoutX="567.0" layoutY="627.0" onAction="#loginPress" style="-fx-border-color: #ffffff; -fx-border-width: 2;" text="Log in" textFill="WHITE">
          <font>
             <Font name="Arial" size="35.0" />
          </font>

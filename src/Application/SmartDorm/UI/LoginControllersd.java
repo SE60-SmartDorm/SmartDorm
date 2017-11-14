@@ -1,50 +1,40 @@
 package Application.SmartDorm.UI;
 
-import com.jfoenix.controls.JFXButton;
+
+import Application.SmartDorm.MainSmartDorm;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.JavaFXBuilderFactory;
-import javafx.scene.control.ComboBox;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 
 
 public class LoginControllersd {
+    @FXML
+    JFXTextField textID;
+    @FXML
+    JFXPasswordField textPassword;
+
+    String user = "anucha";
+    String pass = "123456789";
 
     @FXML
-    private JFXTextField textID;
+    private void loginPress(ActionEvent event) throws IOException {
+        if((user.equals(textID.getText())) && (pass.equals(textPassword.getText())))
+        {
+            Stage tenant_stage = MainSmartDorm.getStage();
 
-    @FXML
-    private JFXPasswordField textPassword;
+            Parent home_tenant_payment = FXMLLoader.load(getClass().getResource("OwnerDashboard.fxml"));
+            Scene tenant3rd_page = new Scene(home_tenant_payment);
 
-    @FXML
-    private JFXButton buttonLogin;
-
-
-
-    private String authorize() {
-        if("room1000".equals(textID.getText()) && "password".equals(textPassword.getText()))
-            System.out.print("Log in complete.");
-        else
-            System.out.print("Log in fail.");
+            tenant_stage.setScene(tenant3rd_page);
+            tenant_stage.show();
+            }
     }
-
-    //private static int sessionID = 0;
-
-    //private String generateSessionID() {
-    //    sessionID++;
-    //    return "xyzzy - session " + sessionID;
-    //}
 
 }
