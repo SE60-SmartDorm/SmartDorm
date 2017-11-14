@@ -22,3 +22,10 @@
     -fx-font-family: 'Sukhumvit Set';
     -fx-font-size: 20;
 }
+
+#errorHint{
+    -fx-font-family: 'Sukhumvit Set';
+    -fx-font-size: 13;
+}
+
+

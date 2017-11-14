@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@TenantPaymentCSS.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@TenantPaymentCSS.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.TenantPayment.TenantPayment3rdLoginController">
    <children>
       <HBox alignment="CENTER" layoutY="149.0" prefHeight="491.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -25,7 +24,7 @@
                               <VBox prefHeight="100.0" prefWidth="361.0">
                                  <children>
                                     <Label text="Account Number" />
-                                    <TextField prefWidth="426.0">
+                                    <TextField fx:id="accountNum" prefWidth="426.0">
                                        <VBox.margin>
                                           <Insets top="20.0" />
                                        </VBox.margin>
@@ -45,7 +44,7 @@
                               <VBox prefHeight="100.0" prefWidth="370.0">
                                  <children>
                                     <Label text="Password" />
-                                    <PasswordField>
+                                    <PasswordField fx:id="pass">
                                        <VBox.margin>
                                           <Insets top="20.0" />
                                        </VBox.margin>
@@ -57,15 +56,25 @@
                               <Insets top="40.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="75.0">
                            <children>
-                              <JFXButton fx:id="pay" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #8e8984;" text="LOGIN" textFill="WHITE">
+                              <JFXButton fx:id="back" onAction="#back" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #8e8984;" text="BACK" textFill="WHITE">
+                                 <font>
+                                    <Font name="SukhumvitSet-Bold" size="20.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="login" onAction="#loginAction" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #8e8984;" text="LOGIN" textFill="WHITE">
                                  <font>
                                     <Font name="SukhumvitSet-Bold" size="20.0" />
                                  </font>
                               </JFXButton>
                            </children>
                         </HBox>
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="37.0" prefWidth="543.0">
+                           <children>
+                              <Label id="errorHint" fx:id="errorHint" text="Sorry, someting went wrong please check your account number or password!" textFill="RED" visible="false" />
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </children>
