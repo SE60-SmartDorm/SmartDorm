@@ -12,14 +12,24 @@ import javafx.stage.Stage;
  * @author EIEI ZA
  */
 public class MainSmartDorm extends Application {
+    private static Stage stage;
 
-    Stage stage;
+    private void setStage(Stage stage)
+    {
+        MainSmartDorm.stage = stage;
+    }
+
+    static public Stage getStage()
+    {
+        return MainSmartDorm.stage;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.stage = primaryStage;
 
-        Parent root = FXMLLoader.load(getClass().getResource("UI/Manage/TenantForm.fxml"));
+        setStage(stage);
+        Parent root = FXMLLoader.load(getClass().getResource("UI/login.fxml"));
 
         Scene scene = new Scene(root);
 
