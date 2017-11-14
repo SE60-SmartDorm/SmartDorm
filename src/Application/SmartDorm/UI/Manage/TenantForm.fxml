@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.ComboBox?>
@@ -19,14 +20,14 @@
    <children>
       <AnchorPane prefHeight="565.0" prefWidth="942.0">
          <children>
-            <VBox fx:id="showPeopleRole" layoutY="475.0" prefHeight="176.0" prefWidth="942.0" spacing="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <VBox fx:id="showPeopleRole1" layoutY="475.0" prefHeight="176.0" prefWidth="942.0" spacing="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ประเภทบุคลากร" wrappingWidth="111.22200012207031">
                      <font>
                         <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                      </font>
                   </Text>
-                  <ComboBox fx:id="PeopleRole1" prefHeight="30.0" prefWidth="118.0">
+                  <ComboBox fx:id="PeopleRoleCB1" prefHeight="30.0" prefWidth="118.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -56,7 +57,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <ComboBox prefHeight="30.0" prefWidth="150.0" />
+                              <ComboBox fx:id="prefixNameCB1" prefHeight="30.0" prefWidth="150.0" />
                            </children>
                         </VBox>
                         <VBox prefHeight="108.0" prefWidth="266.0" spacing="3.0">
@@ -66,7 +67,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="firstName" prefHeight="30.0" prefWidth="272.0" />
+                              <TextField fx:id="firstNameTF1" prefHeight="30.0" prefWidth="272.0" />
                            </children>
                         </VBox>
                      </children>
@@ -83,7 +84,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" />
+                              <TextField fx:id="lastNameTF1" prefHeight="30.0" />
                            </children>
                         </VBox>
                         <VBox prefHeight="70.0" prefWidth="111.0" spacing="3.0">
@@ -93,7 +94,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" prefWidth="105.0" />
+                              <TextField fx:id="nickNameTF1" prefHeight="30.0" prefWidth="105.0" />
                            </children>
                         </VBox>
                      </children>
@@ -110,7 +111,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" />
+                              <TextField fx:id="idCardTF1" prefHeight="30.0" />
                            </children>
                         </VBox>
                      </children>
@@ -127,7 +128,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <JFXDatePicker prefHeight="25.0" prefWidth="434.0" />
+                              <JFXDatePicker fx:id="birthDayDP1" prefHeight="25.0" prefWidth="434.0" />
                            </children>
                         </VBox>
                      </children>
@@ -146,7 +147,7 @@
                                           <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                        </font>
                                     </Text>
-                                    <TextField prefHeight="30.0" />
+                                    <TextField fx:id="phoneNumberTF1" prefHeight="30.0" />
                                  </children>
                               </VBox>
                            </children>
@@ -165,7 +166,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" />
+                              <TextField fx:id="emailTF1" prefHeight="30.0" />
                            </children>
                         </VBox>
                      </children>
@@ -193,7 +194,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" />
+                              <TextField fx:id="contractPersonTF1" prefHeight="30.0" />
                            </children>
                         </VBox>
                      </children>
@@ -210,7 +211,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" />
+                              <TextField fx:id="relationPersonTF1" prefHeight="30.0" />
                            </children>
                         </VBox>
                      </children>
@@ -235,7 +236,7 @@
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
                         </Text>
-                        <TextArea prefHeight="200.0" prefWidth="411.0" wrapText="true" />
+                        <TextArea fx:id="addressTF1" prefHeight="200.0" prefWidth="411.0" wrapText="true" />
                      </children>
                   </VBox>
                </children>
@@ -243,19 +244,20 @@
                   <Insets left="30.0" />
                </padding>
             </HBox>
+            <JFXButton layoutX="831.0" layoutY="9.0" prefHeight="48.0" prefWidth="81.0" text="ล้างข้อมูล" />
          </children>
       </AnchorPane>
       <Separator prefWidth="200.0" />
       <AnchorPane prefHeight="565.0" prefWidth="942.0">
          <children>
-            <VBox fx:id="showPeopleRole1" layoutY="475.0" prefHeight="176.0" prefWidth="942.0" spacing="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <VBox fx:id="showPeopleRole2" layoutY="475.0" prefHeight="176.0" prefWidth="942.0" spacing="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ประเภทบุคลากร" wrappingWidth="111.22200012207031">
                      <font>
                         <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                      </font>
                   </Text>
-                  <ComboBox prefHeight="30.0" prefWidth="118.0">
+                  <ComboBox fx:id="PeopleRoleCB2" prefHeight="30.0" prefWidth="118.0">
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
@@ -285,7 +287,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <ComboBox prefHeight="30.0" prefWidth="150.0" />
+                              <ComboBox fx:id="prefixNameCB2" prefHeight="30.0" prefWidth="150.0" />
                            </children>
                         </VBox>
                         <VBox prefHeight="108.0" prefWidth="266.0" spacing="3.0">
@@ -295,7 +297,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" prefWidth="272.0" />
+                              <TextField fx:id="firstNameTF2" prefHeight="30.0" prefWidth="272.0" />
                            </children>
                         </VBox>
                      </children>
@@ -312,7 +314,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" />
+                              <TextField fx:id="lastNameTF2" prefHeight="30.0" />
                            </children>
                         </VBox>
                         <VBox prefHeight="70.0" prefWidth="111.0" spacing="3.0">
@@ -322,7 +324,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" prefWidth="105.0" />
+                              <TextField fx:id="nickNameTF2" prefHeight="30.0" prefWidth="105.0" />
                            </children>
                         </VBox>
                      </children>
@@ -339,7 +341,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" />
+                              <TextField fx:id="idCardTF2" prefHeight="30.0" />
                            </children>
                         </VBox>
                      </children>
@@ -356,7 +358,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <JFXDatePicker prefHeight="25.0" prefWidth="550.0" />
+                              <JFXDatePicker fx:id="birthDayDP2" prefHeight="25.0" prefWidth="550.0" />
                            </children>
                         </VBox>
                      </children>
@@ -375,7 +377,7 @@
                                           <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                        </font>
                                     </Text>
-                                    <TextField prefHeight="30.0" />
+                                    <TextField fx:id="phoneNumberTF2" prefHeight="30.0" />
                                  </children>
                               </VBox>
                            </children>
@@ -394,7 +396,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" />
+                              <TextField fx:id="emailTF2" prefHeight="30.0" />
                            </children>
                         </VBox>
                      </children>
@@ -422,7 +424,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" />
+                              <TextField fx:id="contractPersonTF2" prefHeight="30.0" />
                            </children>
                         </VBox>
                      </children>
@@ -439,7 +441,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField prefHeight="30.0" />
+                              <TextField fx:id="relationPersonTF2" prefHeight="30.0" />
                            </children>
                         </VBox>
                      </children>
@@ -464,7 +466,7 @@
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
                         </Text>
-                        <TextArea prefHeight="200.0" prefWidth="411.0" wrapText="true" />
+                        <TextArea fx:id="addressTF2" prefHeight="200.0" prefWidth="411.0" wrapText="true" />
                      </children>
                   </VBox>
                </children>
@@ -472,6 +474,7 @@
                   <Insets left="30.0" />
                </padding>
             </HBox>
+            <JFXButton layoutX="831.0" layoutY="9.0" prefHeight="48.0" prefWidth="81.0" text="ล้างข้อมูล" />
          </children>
       </AnchorPane>
    </children>
