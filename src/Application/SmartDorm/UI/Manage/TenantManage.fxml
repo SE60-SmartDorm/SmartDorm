@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="655.0" prefWidth="1060.0" stylesheets="@TenantManageCSS.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.Manage.TenantManageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" stylesheets="@TenantManageCSS.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.Manage.TenantManageController">
     <children>
 
 
@@ -27,13 +27,13 @@
                 <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </JFXTreeTableView>
-        <HBox alignment="CENTER_LEFT" layoutX="563.0" layoutY="45.0" prefHeight="44.0" prefWidth="461.0" spacing="13.0" style="-fx-background-color: #2677d6; -fx-background-radius: 4;">
+        <HBox alignment="CENTER_LEFT" layoutX="563.0" layoutY="45.0" prefHeight="44.0" prefWidth="406.0" spacing="13.0" style="-fx-background-color: #2677d6; -fx-background-radius: 4;">
             <children>
                 <TextField fx:id="searchData" prefHeight="44.0" prefWidth="414.0" promptText="ค้นหาผู้พักอาศัย..." />
                 <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="18" />
             </children>
         </HBox>
-        <HBox alignment="CENTER" layoutX="40.0" layoutY="18.0" prefHeight="98.0" prefWidth="510.0" spacing="10.0">
+        <HBox alignment="CENTER" layoutX="30.0" layoutY="18.0" prefHeight="98.0" prefWidth="510.0" spacing="10.0">
             <children>
                 <JFXButton id="add" fx:id="addData" prefHeight="58.0" prefWidth="111.0" ripplerFill="#3d9a31" style="-fx-background-color: #26B99A;" text="เพิ่ม" textFill="WHITE">
                     <font>
