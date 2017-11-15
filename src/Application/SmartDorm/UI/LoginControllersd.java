@@ -9,8 +9,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 
@@ -19,6 +21,8 @@ public class LoginControllersd {
     JFXTextField textID;
     @FXML
     JFXPasswordField textPassword;
+    @FXML
+    Label warning;
 
     String user = "anucha";
     String pass = "123456789";
@@ -34,7 +38,9 @@ public class LoginControllersd {
 
             tenant_stage.setScene(tenant3rd_page);
             tenant_stage.show();
-            }
+        }
+        else
+            warning.setVisible(true);
     }
 
 }

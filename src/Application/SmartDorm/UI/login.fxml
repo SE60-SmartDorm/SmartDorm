@@ -18,7 +18,15 @@
             <Image url="@background.jpg" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 2;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 2;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <JFXButton fx:id="buttonLogin" buttonType="RAISED" layoutX="527.0" layoutY="569.0" onAction="#loginPress" style="-fx-border-color: #ffffff; -fx-border-width: 2;" text="Log in" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="35.0" />
+               </font>
+            </JFXButton>
+            <Label fx:id="warning" layoutX="346.0" layoutY="653.0" text="Sorry, someting went wrong please check your account number or password!" textFill="#ff360e" visible="false" />
+         </children></AnchorPane>
       <Text fill="WHITE" layoutX="381.0" layoutY="165.0" stroke="#151e29" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="SmartDorm" wrappingWidth="510.13671875">
          <font>
             <Font name="TH Sarabun New" size="150.0" />
@@ -44,10 +52,5 @@
             <JFXComboBox layoutX="20.0" layoutY="38.0" prefHeight="45.0" prefWidth="366.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
          </children>
       </AnchorPane>
-      <JFXButton fx:id="buttonLogin" buttonType="RAISED" layoutX="567.0" layoutY="627.0" onAction="#loginPress" style="-fx-border-color: #ffffff; -fx-border-width: 2;" text="Log in" textFill="WHITE">
-         <font>
-            <Font name="Arial" size="35.0" />
-         </font>
-      </JFXButton>
    </children>
 </AnchorPane>
