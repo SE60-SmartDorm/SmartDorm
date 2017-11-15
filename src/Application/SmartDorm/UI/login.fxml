@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -25,7 +25,6 @@
                   <Font name="Arial" size="35.0" />
                </font>
             </JFXButton>
-            <Label fx:id="warning" layoutX="346.0" layoutY="653.0" text="Sorry, someting went wrong please check your account number or password!" textFill="#ff360e" visible="false" />
          </children></AnchorPane>
       <Text fill="WHITE" layoutX="381.0" layoutY="165.0" stroke="#151e29" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="SmartDorm" wrappingWidth="510.13671875">
          <font>
@@ -34,7 +33,7 @@
       </Text>
       <AnchorPane layoutX="446.0" layoutY="223.0" opacity="0.4" prefHeight="368.0" prefWidth="390.0" style="-fx-background-color: #ffffff;">
          <children>
-            <JFXTextField fx:id="textID" focusColor="#151e29" labelFloat="true" layoutX="20.0" layoutY="120.0" prefHeight="60.0" prefWidth="517.0" promptText="Username" unFocusColor="#151e29" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <JFXTextField fx:id="textID" focusColor="#151e29" labelFloat="true" layoutX="20.0" layoutY="117.0" prefHeight="60.0" prefWidth="517.0" promptText="Username" unFocusColor="#151e29" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                <font>
                   <Font name="Arial" size="25.0" />
                </font>
@@ -44,13 +43,18 @@
                   <Font name="Arial" size="25.0" />
                </font>
             </JFXPasswordField>
-            <Label disable="true" layoutX="47.0" layoutY="300.0" text="Username or Password incorrect !" textFill="RED" visible="false">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <JFXComboBox layoutX="20.0" layoutY="38.0" prefHeight="45.0" prefWidth="366.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+            <ComboBox fx:id="status" layoutX="17.0" layoutY="53.0" prefHeight="31.0" prefWidth="356.0" promptText="Please Select Your Type Of User" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
          </children>
       </AnchorPane>
+      <Label fx:id="warning2" layoutX="460.0" layoutY="535.0" onDragDetected="#loginPress" text="You have not selected your type of user !" textFill="RED" visible="false">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="warning" layoutX="493.0" layoutY="535.0" onDragDetected="#loginPress" text="Username or Password incorrect !" textFill="RED" visible="false">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
