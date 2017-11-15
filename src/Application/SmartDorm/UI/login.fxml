@@ -18,27 +18,22 @@
             <Image url="@background.jpg" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 2;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
+      <AnchorPane layoutX="373.0" prefHeight="688.0" prefWidth="540.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 2;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="373.0" AnchorPane.rightAnchor="367.0" AnchorPane.topAnchor="40.0">
          <children>
-            <JFXButton fx:id="buttonLogin" buttonType="RAISED" layoutX="527.0" layoutY="569.0" onAction="#loginPress" style="-fx-border-color: #ffffff; -fx-border-width: 2;" text="Log in" textFill="WHITE">
+            <JFXButton fx:id="buttonLogin" buttonType="RAISED" layoutX="195.0" layoutY="584.0" onAction="#loginPress" style="-fx-border-color: #ffffff; -fx-border-width: 2;" text="Log in" textFill="WHITE">
                <font>
                   <Font name="Arial" size="35.0" />
                </font>
             </JFXButton>
          </children></AnchorPane>
-      <Text fill="WHITE" layoutX="381.0" layoutY="165.0" stroke="#151e29" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="SmartDorm" wrappingWidth="510.13671875">
-         <font>
-            <Font name="TH Sarabun New" size="150.0" />
-         </font>
-      </Text>
       <AnchorPane layoutX="446.0" layoutY="223.0" opacity="0.4" prefHeight="368.0" prefWidth="390.0" style="-fx-background-color: #ffffff;">
          <children>
-            <JFXTextField fx:id="textID" focusColor="#151e29" labelFloat="true" layoutX="20.0" layoutY="117.0" prefHeight="60.0" prefWidth="517.0" promptText="Username" unFocusColor="#151e29" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <JFXTextField fx:id="textID" focusColor="#f59e47" labelFloat="true" layoutX="20.0" layoutY="117.0" prefHeight="60.0" prefWidth="517.0" promptText="Username" unFocusColor="#151e29" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                <font>
                   <Font name="Arial" size="25.0" />
                </font>
             </JFXTextField>
-            <JFXPasswordField fx:id="textPassword" focusColor="#151e29" labelFloat="true" layoutX="20.0" layoutY="212.0" promptText="Password" unFocusColor="#151e29" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+            <JFXPasswordField fx:id="textPassword" focusColor="#f59e47" labelFloat="true" layoutX="20.0" layoutY="212.0" promptText="Password" unFocusColor="#151e29" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
                <font>
                   <Font name="Arial" size="25.0" />
                </font>
@@ -56,5 +51,15 @@
             <Font size="20.0" />
          </font>
       </Label>
+      <Text fill="WHITE" layoutX="439.0" layoutY="147.0" stroke="#322e2a" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="Smart Dorm" wrappingWidth="506.47003173828125">
+         <font>
+            <Font name="TH Sarabun New" size="111.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="441.0" layoutY="209.0" stroke="#f59e47" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="KMITL" wrappingWidth="181.13671875">
+         <font>
+            <Font name="Arial" size="61.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
