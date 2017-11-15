@@ -24,13 +24,15 @@ public class TenantPayment3rdLoginController {
     @FXML
     private Label errorHint;
 
-    String accountDB = "58011398";
-    String passwordDB = "123456789";
+    private String accountDB = "58011398";
+    private String passwordDB = "123456789";
+
+    Stage tenant_stage = MainSmartDorm.getStage();
 
     @FXML
     private void loginAction(ActionEvent event) throws IOException {
+        errorHint.setVisible(false);
         if((accountDB.equals(accountNum.getText()))&&(passwordDB.equals(pass.getText()))) {
-                Stage tenant_stage = MainSmartDorm.getStage();
 
                 Parent home_tenant_payment = FXMLLoader.load(getClass().getResource("TenantPaymentPayConfirm.fxml"));
                 Scene tenant3rdConfirm_page = new Scene(home_tenant_payment);
@@ -41,10 +43,9 @@ public class TenantPayment3rdLoginController {
         else
             errorHint.setVisible(true);
     }
+
     @FXML
     private void back(ActionEvent event) throws IOException {
-        Stage tenant_stage = MainSmartDorm.getStage();
-
         Parent home_tenant_payment = FXMLLoader.load(getClass().getResource("TenantPayment.fxml"));
         Scene home_tenant_page = new Scene(home_tenant_payment);
 
