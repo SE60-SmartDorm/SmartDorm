@@ -2,6 +2,7 @@ package Application.SmartDorm;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -14,12 +15,14 @@ import javafx.stage.Stage;
 public class MainSmartDorm extends Application {
 
     Stage stage;
+    public static Node tenantManage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.stage = primaryStage;
 
-        Parent root = FXMLLoader.load(getClass().getResource("UI/Manage/TenantForm.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UI/OwnerMain.fxml"));
+        tenantManage = FXMLLoader.load(getClass().getResource("UI/Manage/TenantManage.fxml"));
 
         Scene scene = new Scene(root);
 
