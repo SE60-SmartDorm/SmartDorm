@@ -31,14 +31,14 @@ public class LoginControllersd {
     Label warning2;
 
     @FXML
-    public ComboBox<String> status;
+    private ComboBox<String> status;
     ObservableList<String> list = FXCollections.observableArrayList("Owner","Tenant");
 
-    String ownerUser = "anucha";
-    String ownerPass = "123456789";
-    String tenantUser = "pongdanai";
-    String tenantPass = "987654321";
-    String type;
+    private String ownerUser = "anucha";
+    private String ownerPass = "123456789";
+    private String tenantUser = "pongdanai";
+    private String tenantPass = "987654321";
+    private String type;
 
     Stage tenant_stage = MainSmartDorm.getStage();
 
