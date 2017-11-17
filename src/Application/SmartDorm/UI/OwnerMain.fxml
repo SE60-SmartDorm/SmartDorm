@@ -35,6 +35,6 @@
             </VBox>
          </children>
       </VBox>
-      <StackPane fx:id="ownerChangePane" layoutX="277.0" prefHeight="768.0" prefWidth="1005.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <StackPane fx:id="ownerChangePane" layoutX="277.0" prefHeight="768.0" prefWidth="1005.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
