@@ -14,13 +14,13 @@
     <children>
 
 
-        <JFXTreeTableView fx:id="peopleTableView" layoutX="2.0" layoutY="136.0" prefHeight="499.0" prefWidth="1020.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="136.0">
+        <JFXTreeTableView fx:id="tenantTableView" layoutX="2.0" layoutY="136.0" prefHeight="499.0" prefWidth="1020.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="136.0">
             <columns>
-                <TreeTableColumn fx:id="roomCol" minWidth="120.0" prefWidth="120.0" text="ห้อง" />
-                <TreeTableColumn fx:id="statusCol" minWidth="120.0" prefWidth="120.0" text="สถานะ" />
-                <TreeTableColumn fx:id="nameCol" minWidth="250.0" prefWidth="250.0" text="ชื่อ - สกุล" />
-                <TreeTableColumn fx:id="contractSCol" minWidth="140.0" prefWidth="140.0" text="วันที่ทำสัญญา" />
-                <TreeTableColumn fx:id="contractECol" minWidth="140.0" prefWidth="140.0" text="วันที่สิ้นสุดสัญญา" />
+                <TreeTableColumn fx:id="tenantRoomCol" minWidth="120.0" prefWidth="120.0" text="ห้อง" />
+                <TreeTableColumn fx:id="tenantStatusCol" minWidth="120.0" prefWidth="120.0" text="สถานะ" />
+                <TreeTableColumn fx:id="tenantNameCol" minWidth="250.0" prefWidth="250.0" text="ชื่อ - สกุล" />
+                <TreeTableColumn fx:id="tenantLeasesSCol" minWidth="140.0" prefWidth="140.0" text="วันที่ทำสัญญา" />
+                <TreeTableColumn fx:id="tenantLeasesECol" minWidth="140.0" prefWidth="140.0" text="วันที่สิ้นสุดสัญญา" />
                 <TreeTableColumn minWidth="170.0" prefWidth="170.0" text="หมายเหตุ" />
             </columns>
             <columnResizePolicy>
@@ -35,22 +35,22 @@
         </HBox>
         <HBox alignment="CENTER" layoutX="30.0" layoutY="18.0" prefHeight="98.0" prefWidth="510.0" spacing="10.0">
             <children>
-                <JFXButton id="add" onAction="#addData" prefHeight="58.0" prefWidth="111.0" ripplerFill="#3d9a31" style="-fx-background-color: #26B99A;" text="เพิ่ม" textFill="WHITE">
+                <JFXButton id="add" fx:id="addTenantDataBT" prefHeight="58.0" prefWidth="111.0" ripplerFill="#3d9a31" style="-fx-background-color: #26B99A;" text="เพิ่ม" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton id="edit" fx:id="editData" prefHeight="58.0" prefWidth="109.0" ripplerFill="#f52020" style="-fx-background-color: #ffa31e;" text="แก้ไข" textFill="WHITE">
+                <JFXButton id="edit" fx:id="editTenantDataBT" prefHeight="58.0" prefWidth="109.0" ripplerFill="#f52020" style="-fx-background-color: #ffa31e;" text="แก้ไข" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton id="delete" onAction="#deleteData" prefHeight="58.0" prefWidth="112.0" ripplerFill="#e80f21" style="-fx-background-color: #f65b63;" text="ลบ" textFill="WHITE">
+                <JFXButton id="delete" fx:id="deleteTenantDataBT" onAction="#deleteTenantData" prefHeight="58.0" prefWidth="112.0" ripplerFill="#e80f21" style="-fx-background-color: #f65b63;" text="ลบ" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </JFXButton>
-                <JFXButton id="detail" fx:id="detailData" prefHeight="58.0" prefWidth="111.0" ripplerFill="#3f25d7" style="-fx-background-color: #00aacf;" text="รายละเอียด" textFill="WHITE">
+                <JFXButton id="detail" fx:id="detailTenantDataBT" prefHeight="58.0" prefWidth="111.0" ripplerFill="#3f25d7" style="-fx-background-color: #00aacf;" text="รายละเอียด" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
