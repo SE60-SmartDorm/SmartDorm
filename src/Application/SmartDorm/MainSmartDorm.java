@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 /**
  * Main class to start the application.
  *
@@ -14,25 +16,38 @@ import javafx.stage.Stage;
  */
 public class MainSmartDorm extends Application {
 
-    Stage stage;
     public static Node tenantManage;
+    private static Stage stage;
+
+    static public Stage getStage() {
+        return stage;
+    }
+
+    private void setStage(Stage stage) {
+        MainSmartDorm.stage = stage;
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        this.stage = primaryStage;
+    public void start(Stage primaryStage) throws Exception {
+        setStage(primaryStage);
 
-        Parent root = FXMLLoader.load(getClass().getResource("UI/OwnerMain.fxml"));
-        tenantManage = FXMLLoader.load(getClass().getResource("UI/Manage/TenantManage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UI/Manage/TenantManage.fxml"));
 
         Scene scene = new Scene(root);
-
         stage.setTitle("Smart Dorm");
         stage.setScene(scene);
         stage.show();
     }
 
-
-    public static void main(String[] args) {
-        launch(args);
+    public void loadAnotherScene(){
+        try {
+            tenantManage = FXMLLoader.load(getClass().getResource("UI/Manage/TenantManage.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
