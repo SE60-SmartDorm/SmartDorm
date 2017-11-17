@@ -273,9 +273,8 @@
                   <ComboBox fx:id="PeopleRoleCB2" prefHeight="30.0" prefWidth="118.0">
                      <items>
                         <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="นาย" />
-                           <String fx:value="นาง" />
-                           <String fx:value="นางสาว" />
+                           <String fx:value="นักศึกษา" />
+                           <String fx:value="อาจารย์" />
                         </FXCollections>
                      </items>
                   </ComboBox>
