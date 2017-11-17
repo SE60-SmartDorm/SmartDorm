@@ -1,16 +1,21 @@
 package Application.SmartDorm.UI;
 
 import Application.SmartDorm.MainSmartDorm;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class OwnerMainController {
     @FXML
-    private static AnchorPane ownerRoot;
-    AnchorPane home, tenantManage;
+    private AnchorPane ownerRoot;
+
     @FXML
     private StackPane ownerChangePane;
 
@@ -27,12 +32,16 @@ public class OwnerMainController {
      */
     @FXML
     public void initialize() {
-        // Switch pane
+
     }
 
     @FXML
     private void tenantManageView(ActionEvent event) {
-        setNode(MainSmartDorm.tenantManage);
+        PauseTransition pause = new PauseTransition(Duration.seconds(0.05));
+        pause.setOnFinished(actionEvent -> {
+            setNode(MainSmartDorm.tenantManage);
+        });
+        pause.play();
     }
 
     //Set selected node to a content holder
@@ -41,4 +50,6 @@ public class OwnerMainController {
         ownerChangePane.getChildren().add(node);
 
     }
+
+
 }
