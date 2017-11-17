@@ -16,6 +16,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <VBox prefHeight="1310.0" prefWidth="942.0" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.Manage.TenantFormController">
    <children>
       <AnchorPane prefHeight="565.0" prefWidth="942.0">
@@ -28,9 +30,12 @@
                      </font>
                   </Text>
                   <ComboBox fx:id="PeopleRoleCB1" prefHeight="30.0" prefWidth="118.0">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
+                        <items>
+                           <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="นักศึกษา" />
+                              <String fx:value="อาจารย์" />
+                           </FXCollections>
+                        </items>
                   </ComboBox>
                </children>
                <padding>
@@ -57,7 +62,15 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <ComboBox fx:id="prefixNameCB1" prefHeight="30.0" prefWidth="150.0" />
+                              <ComboBox fx:id="prefixNameCB1" prefHeight="30.0" prefWidth="150.0">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                       <String fx:value="นาย" />
+                                       <String fx:value="นาง" />
+                                       <String fx:value="นางสาว" />
+                                    </FXCollections>
+                                 </items>
+                              </ComboBox>
                            </children>
                         </VBox>
                         <VBox prefHeight="108.0" prefWidth="266.0" spacing="3.0">
@@ -244,7 +257,7 @@
                   <Insets left="30.0" />
                </padding>
             </HBox>
-            <JFXButton layoutX="831.0" layoutY="9.0" prefHeight="48.0" prefWidth="81.0" text="ล้างข้อมูล" />
+            <JFXButton layoutX="831.0" layoutY="9.0" onAction="#clearFieldPerson1" prefHeight="48.0" prefWidth="81.0" text="ล้างข้อมูล" />
          </children>
       </AnchorPane>
       <Separator prefWidth="200.0" />
@@ -258,9 +271,13 @@
                      </font>
                   </Text>
                   <ComboBox fx:id="PeopleRoleCB2" prefHeight="30.0" prefWidth="118.0">
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
+                     <items>
+                        <FXCollections fx:factory="observableArrayList">
+                           <String fx:value="นาย" />
+                           <String fx:value="นาง" />
+                           <String fx:value="นางสาว" />
+                        </FXCollections>
+                     </items>
                   </ComboBox>
                </children>
                <padding>
@@ -287,7 +304,15 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <ComboBox fx:id="prefixNameCB2" prefHeight="30.0" prefWidth="150.0" />
+                              <ComboBox fx:id="prefixNameCB2" prefHeight="30.0" prefWidth="150.0" >
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                       <String fx:value="นาย" />
+                                       <String fx:value="นาง" />
+                                       <String fx:value="นางสาว" />
+                                    </FXCollections>
+                                 </items>
+                              </ComboBox>
                            </children>
                         </VBox>
                         <VBox prefHeight="108.0" prefWidth="266.0" spacing="3.0">
@@ -474,7 +499,7 @@
                   <Insets left="30.0" />
                </padding>
             </HBox>
-            <JFXButton layoutX="831.0" layoutY="9.0" prefHeight="48.0" prefWidth="81.0" text="ล้างข้อมูล" />
+            <JFXButton layoutX="831.0" layoutY="9.0" onAction="#clearFieldPerson2" prefHeight="48.0" prefWidth="81.0" text="ล้างข้อมูล" />
          </children>
       </AnchorPane>
    </children>
