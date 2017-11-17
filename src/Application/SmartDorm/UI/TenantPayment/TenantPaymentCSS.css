@@ -1,0 +1,31 @@
+@font-face {
+    src: url("resource/font/SukhumvitSet-Medium.ttf");
+}
+
+#pay{
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+#login{
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+#cancel{
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+#ok{
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.4) , 5, 0.0 , 0 , 1 );
+}
+
+.root{
+    -fx-font-family: 'Sukhumvit Set';
+    -fx-font-size: 20;
+}
+
+#errorHint{
+    -fx-font-family: 'Sukhumvit Set';
+    -fx-font-size: 13;
+}
+
+

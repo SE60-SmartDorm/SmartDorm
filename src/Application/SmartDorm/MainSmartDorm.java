@@ -7,6 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Main class to start the application.
+ *
+ * @author EIEI ZA
+ */
 import java.io.IOException;
 
 /**
@@ -42,6 +47,7 @@ public class MainSmartDorm extends Application {
         stage.setTitle("Smart Dorm");
         stage.setScene(scene);
         stage.show();
+
     }
 
     public void loadAnotherScene(){
