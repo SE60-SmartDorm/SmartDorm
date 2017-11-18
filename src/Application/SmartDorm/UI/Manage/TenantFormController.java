@@ -12,8 +12,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class TenantFormController {
@@ -79,6 +82,13 @@ public class TenantFormController {
     @FXML
     private TextArea addressTF2;
     private AnchorPane personRolePane1, personRolePane2;
+
+    /**
+     * The constructor (is called before the initialize()-method).
+     */
+    public TenantFormController() {
+
+    }
 
     //set Getter and Setter1 ------------------------------------------------------------------------------------------
     public TextField getFirstNameTF1() {
@@ -173,17 +183,10 @@ public class TenantFormController {
         return addressTF1;
     }
 
-    public void setAddressTF1(TextArea addressTF1) {
-        this.addressTF1 = addressTF1;
-    }
-
     //-----------------------------------------------------------------------------------------------------------------
 
-    /**
-     * The constructor (is called before the initialize()-method).
-     */
-    public TenantFormController() {
-
+    public void setAddressTF1(TextArea addressTF1) {
+        this.addressTF1 = addressTF1;
     }
 
     /**
@@ -193,10 +196,8 @@ public class TenantFormController {
     @FXML
     public void initialize() {
 
-//        firstNameTF1.textProperty().addListener((observable, oldValue, newValue) ->{
-//            System.out.println(newValue);
-//        });
-
+        //set format DatePicker
+        setDatePickerFormat();
         //---------------------------------------------------------------------------------------------------------------------
 
         // ComboBox selection event
@@ -312,17 +313,17 @@ public class TenantFormController {
 
     @FXML
     void clearFieldPerson1(ActionEvent event) {
-        firstNameTF1.setText("");
-        lastNameTF1.setText("");
-        nickNameTF1.setText("");
-        idCardTF1.setText("");
+        firstNameTF1.setText(null);
+        lastNameTF1.setText(null);
+        nickNameTF1.setText(null);
+        idCardTF1.setText(null);
         birthDayDP1.setValue(null);
-        phoneNumberTF1.setText("");
-        emailTF1.setText("");
-        contractPersonTF1.setText("");
-        relationPersonTF1.setText("");
-        addressTF1.setText("");
-        prefixNameCB1.getSelectionModel().select("");
+        phoneNumberTF1.setText(null);
+        emailTF1.setText(null);
+        contractPersonTF1.setText(null);
+        relationPersonTF1.setText(null);
+        addressTF1.setText(null);
+        prefixNameCB1.getSelectionModel().select(null);
 
         for (Node node : showPeopleRole1.getChildren()) {
             if (node instanceof AnchorPane) {
@@ -342,16 +343,16 @@ public class TenantFormController {
     @FXML
     void clearFieldPerson2(ActionEvent event) {
         System.out.println("clear");
-        firstNameTF2.setText("");
-        lastNameTF2.setText("");
-        nickNameTF2.setText("");
-        idCardTF2.setText("");
+        firstNameTF2.setText(null);
+        lastNameTF2.setText(null);
+        nickNameTF2.setText(null);
+        idCardTF2.setText(null);
         birthDayDP2.setValue(null);
-        phoneNumberTF2.setText("");
-        emailTF2.setText("");
-        contractPersonTF2.setText("");
-        relationPersonTF2.setText("");
-        addressTF2.setText("");
+        phoneNumberTF2.setText(null);
+        emailTF2.setText(null);
+        contractPersonTF2.setText(null);
+        relationPersonTF2.setText(null);
+        addressTF2.setText(null);
         prefixNameCB2.getSelectionModel().select("");
         for (Node node : showPeopleRole2.getChildren()) {
             if (node instanceof AnchorPane) {
@@ -368,4 +369,59 @@ public class TenantFormController {
         }
     }
 
+    private void setDatePickerFormat(){
+        String pattern = "วันที่ dd เดือน MM ค.ศ. yyyy";
+        birthDayDP1.setPromptText(pattern);
+        DateTimeFormatter dateFormatter1 = DateTimeFormatter.ofPattern(pattern);
+        birthDayDP1.setConverter(new StringConverter<LocalDate>() {
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter1.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter1);
+                } else {
+                    return null;
+                }
+            }
+        });
+
+        birthDayDP2.setPromptText(pattern);
+        DateTimeFormatter dateFormatter2 = DateTimeFormatter.ofPattern(pattern);
+        birthDayDP2.setConverter(new StringConverter<LocalDate>() {
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter2.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter2);
+                } else {
+                    return null;
+                }
+            }
+        });
+
+        //-- set DatePicker
+        birthDayDP1.setOnAction(event -> {
+            System.out.println("Selected date: " + birthDayDP1.getValue().format(dateFormatter1));
+        });
+
+        birthDayDP2.setOnAction(event -> {
+            System.out.println("Selected date: " + birthDayDP2.getValue().format(dateFormatter2));
+        });
+    }
 }
