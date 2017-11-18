@@ -18,17 +18,17 @@
          </children>
       </AnchorPane>
       <OctIconView fill="RED" glyphName="X" layoutX="389.0" layoutY="401.0" size="300" />
-      <Text layoutX="160.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ทำรายการ" wrappingWidth="247.4700927734375">
+      <Text layoutX="160.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ทำรายการ" wrappingWidth="194.13674926757812">
          <font>
             <Font name="TH Sarabun New Bold" size="65.0" />
          </font>
       </Text>
-      <Text fx:id="topicAlert" layoutX="352.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="287.4700927734375">
+      <Text fx:id="topicAlert" layoutX="352.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TextTextText" wrappingWidth="287.4700927734375">
          <font>
             <Font name="TH Sarabun New Bold" size="65.0" />
          </font>
       </Text>
-      <Text layoutX="635.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ไม่สำเร็จ!" wrappingWidth="247.4700927734375">
+      <Text layoutX="635.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="สำเร็จแล้ว!" wrappingWidth="247.4700927734375">
          <font>
             <Font name="TH Sarabun New Bold" size="65.0" />
          </font>
