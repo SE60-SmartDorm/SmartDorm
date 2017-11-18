@@ -70,12 +70,13 @@ public class TenantManageController {
     @FXML
     private JFXButton detailTenantDataBT;
 
-    private ObservableList<TenantTable> tenantTableData = FXCollections.observableArrayList();
+    private static ObservableList<TenantTable> tenantTableData = FXCollections.observableArrayList();
 
     /**
      * The constructor (is called before the initialize()-method).
      */
     public TenantManageController() {
+
     }
 
     /**
@@ -85,9 +86,9 @@ public class TenantManageController {
     @FXML
     public void initialize() {
         // Data call form DATABASE
-        tenantTableData.add(new TenantTable("101", "BOOK", "ABCD", "10/10/2559", "15/10/2560"));
-        tenantTableData.add(new TenantTable("102", "-", "adcd", "01/10/2559", "15/01/2560"));
-        tenantTableData.add(new TenantTable("103", "-", "aBCde", "14/10/2559", "15/12/2560"));
+//        tenantTableData.add(new TenantTable("101", "BOOK", "ABCD", "10/10/2559", "15/10/2560"));
+//        tenantTableData.add(new TenantTable("102", "-", "adcd", "01/10/2559", "15/01/2560"));
+//        tenantTableData.add(new TenantTable("103", "-", "aBCde", "14/10/2559", "15/12/2560"));
 
         //Load person detail to treeTable
         LoadDataFormTenantTable();
@@ -96,7 +97,7 @@ public class TenantManageController {
         SearchTenantDataInTable();
 
         addTenantDataBT.setOnMouseClicked(event -> {
-            PauseTransition pause = new PauseTransition(Duration.seconds(0.05));
+            PauseTransition pause = new PauseTransition(Duration.seconds(0.06));
             pause.setOnFinished(actionEvent -> {
                 setStage("CreateTenant.fxml");
             });
@@ -181,7 +182,7 @@ public class TenantManageController {
     }
 
     @FXML
-    void deleteTenantData(ActionEvent event) {
+    private void deleteTenantData(ActionEvent event) {
         int selectionIndex = tenantTableView.getSelectionModel().getSelectedIndex();
         if (selectionIndex >= 0) {
             tenantTableData.remove(selectionIndex);
