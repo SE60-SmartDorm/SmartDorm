@@ -1,15 +1,14 @@
 package Application.SmartDorm.UI.Manage;
 
 import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXToggleButton;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
@@ -28,9 +27,9 @@ public class TenantFormController {
 
     //--- people 1 ---
     @FXML
-    private VBox showPeopleRole1;
+    private VBox showPersonRole1;
     @FXML
-    private ComboBox<String> PeopleRoleCB1;
+    private ComboBox<String> personRoleCB1;
     @FXML
     private ComboBox<String> prefixNameCB1;
     @FXML
@@ -56,9 +55,9 @@ public class TenantFormController {
 
     //--- people 2 ---
     @FXML
-    private VBox showPeopleRole2;
+    private VBox showPersonRole2;
     @FXML
-    private ComboBox<String> PeopleRoleCB2;
+    private ComboBox<String> personRoleCB2;
     @FXML
     private ComboBox<String> prefixNameCB2;
     @FXML
@@ -81,7 +80,15 @@ public class TenantFormController {
     private TextField relationPersonTF2;
     @FXML
     private TextArea addressTF2;
+    @FXML
+    private JFXToggleButton toggleBT;
+
+    @FXML
+    private Label toggleLB;
+
     private AnchorPane personRolePane1, personRolePane2;
+
+    boolean isSelected;
 
     /**
      * The constructor (is called before the initialize()-method).
@@ -99,12 +106,12 @@ public class TenantFormController {
         this.firstNameTF1 = firstNameTF1;
     }
 
-    public ComboBox<String> getPeopleRoleCB1() {
-        return PeopleRoleCB1;
+    public ComboBox<String> getPersonRoleCB1() {
+        return personRoleCB1;
     }
 
-    public void setPeopleRoleCB1(ComboBox<String> peopleRoleCB1) {
-        PeopleRoleCB1 = peopleRoleCB1;
+    public void setPersonRoleCB1(ComboBox<String> personRoleCB1) {
+        this.personRoleCB1 = personRoleCB1;
     }
 
     public ComboBox<String> getPrefixNameCB1() {
@@ -196,6 +203,9 @@ public class TenantFormController {
     @FXML
     public void initialize() {
 
+        //set Disable field person1
+        setFieldDisable();
+
         //set format DatePicker
         setDatePickerFormat();
         //---------------------------------------------------------------------------------------------------------------------
@@ -218,31 +228,31 @@ public class TenantFormController {
 
         //---------------------------------------------------------------------------------------------------------------------
         // Init ComboBox items.
-        PeopleRoleCB1.getSelectionModel().selectFirst();
+        personRoleCB1.getSelectionModel().selectFirst();
 
         // Init ComboBox items.
-        PeopleRoleCB2.getSelectionModel().selectFirst();
+        personRoleCB2.getSelectionModel().selectFirst();
 
         //  Init student form
         loadPersonPane2("TenantStudentInfo.fxml");
-        showPeopleRole2.getChildren().add(personRolePane2);
+        showPersonRole2.getChildren().add(personRolePane2);
 
         //  Init student form
         loadPersonPane1("TenantStudentInfo.fxml");
-        showPeopleRole1.getChildren().add(personRolePane1);
+        showPersonRole1.getChildren().add(personRolePane1);
 
         // ComboBox selection event change pane form
-        PeopleRoleCB1.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+        personRoleCB1.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if ((Integer) newValue == 0) {
-                    showPeopleRole1.getChildren().removeAll(personRolePane1);
+                    showPersonRole1.getChildren().removeAll(personRolePane1);
                     loadPersonPane1("TenantStudentInfo.fxml");
-                    showPeopleRole1.getChildren().add(personRolePane1);
+                    showPersonRole1.getChildren().add(personRolePane1);
                 } else if ((Integer) newValue == 1) {
-                    showPeopleRole1.getChildren().removeAll(personRolePane1);
+                    showPersonRole1.getChildren().removeAll(personRolePane1);
                     loadPersonPane1("TenantTeacherInfo.fxml");
-                    showPeopleRole1.getChildren().add(personRolePane1);
+                    showPersonRole1.getChildren().add(personRolePane1);
                 } else {
                     //TODO other people
                 }
@@ -250,17 +260,17 @@ public class TenantFormController {
         });
 
         // ComboBox selection event change pane form
-        PeopleRoleCB2.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
+        personRoleCB2.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                 if ((Integer) newValue == 0) {
-                    showPeopleRole2.getChildren().removeAll(personRolePane2);
+                    showPersonRole2.getChildren().removeAll(personRolePane2);
                     loadPersonPane2("TenantStudentInfo.fxml");
-                    showPeopleRole2.getChildren().add(personRolePane2);
+                    showPersonRole2.getChildren().add(personRolePane2);
                 } else if ((Integer) newValue == 1) {
-                    showPeopleRole2.getChildren().removeAll(personRolePane2);
+                    showPersonRole2.getChildren().removeAll(personRolePane2);
                     loadPersonPane2("TenantTeacherInfo.fxml");
-                    showPeopleRole2.getChildren().add(personRolePane2);
+                    showPersonRole2.getChildren().add(personRolePane2);
                 } else {
                     //TODO other people
                 }
@@ -325,7 +335,7 @@ public class TenantFormController {
         addressTF1.setText(null);
         prefixNameCB1.getSelectionModel().select(null);
 
-        for (Node node : showPeopleRole1.getChildren()) {
+        for (Node node : showPersonRole1.getChildren()) {
             if (node instanceof AnchorPane) {
                 if (node.getId().equals("studentInfo")) {
                     studentInfoController1.getStudentFacultyTF().setText(null);
@@ -354,7 +364,7 @@ public class TenantFormController {
         relationPersonTF2.setText(null);
         addressTF2.setText(null);
         prefixNameCB2.getSelectionModel().select("");
-        for (Node node : showPeopleRole2.getChildren()) {
+        for (Node node : showPersonRole2.getChildren()) {
             if (node instanceof AnchorPane) {
                 if (node.getId().equals("studentInfo")) {
                     studentInfoController2.getStudentFacultyTF().setText(null);
@@ -369,7 +379,7 @@ public class TenantFormController {
         }
     }
 
-    private void setDatePickerFormat(){
+    private void setDatePickerFormat() {
         String pattern = "วันที่ dd เดือน MM ค.ศ. yyyy";
         birthDayDP1.setPromptText(pattern);
         DateTimeFormatter dateFormatter1 = DateTimeFormatter.ofPattern(pattern);
@@ -415,13 +425,43 @@ public class TenantFormController {
             }
         });
 
-        //-- set DatePicker
-        birthDayDP1.setOnAction(event -> {
-            System.out.println("Selected date: " + birthDayDP1.getValue().format(dateFormatter1));
-        });
+//        //-- get Date
+//        birthDayDP1.setOnAction(event -> {
+//            System.out.println("Selected date: " + birthDayDP1.getValue().format(dateFormatter1));
+//        });
+//
+//        birthDayDP2.setOnAction(event -> {
+//            System.out.println("Selected date: " + birthDayDP2.getValue().format(dateFormatter2));
+//        });
+    }
 
-        birthDayDP2.setOnAction(event -> {
-            System.out.println("Selected date: " + birthDayDP2.getValue().format(dateFormatter2));
-        });
+    void setFieldDisable(){
+        prefixNameCB2.setDisable(true);
+        firstNameTF2.setDisable(true);
+        lastNameTF2.setDisable(true);
+        nickNameTF2.setDisable(true);
+        birthDayDP2.setDisable(true);
+        emailTF2.setDisable(true);
+        contractPersonTF2.setDisable(true);
+        relationPersonTF2.setDisable(true);
+        addressTF2.setDisable(true);
+        personRoleCB2.setDisable(true);
+        phoneNumberTF2.setDisable(true);
+        idCardTF2.setDisable(true);
+    }
+
+    void setFieldEnable(){
+        prefixNameCB2.setDisable(false);
+        firstNameTF2.setDisable(false);
+        lastNameTF2.setDisable(false);
+        nickNameTF2.setDisable(false);
+        birthDayDP2.setDisable(false);
+        emailTF2.setDisable(false);
+        contractPersonTF2.setDisable(false);
+        relationPersonTF2.setDisable(false);
+        addressTF2.setDisable(false);
+        personRoleCB2.setDisable(false);
+        phoneNumberTF2.setDisable(false);
+        idCardTF2.setDisable(false);
     }
 }
