@@ -1,5 +1,6 @@
 package Application.SmartDorm.UI.Manage;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.beans.value.ChangeListener;
@@ -8,7 +9,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.util.StringConverter;
@@ -20,11 +24,12 @@ import java.time.format.DateTimeFormatter;
 
 public class TenantFormController {
     //set Controller
-    TenantStudentInfoController studentInfoController1 = new TenantStudentInfoController();
-    TenantTeacherInfoController teacherInfoController1 = new TenantTeacherInfoController();
-    TenantStudentInfoController studentInfoController2 = new TenantStudentInfoController();
-    TenantTeacherInfoController teacherInfoController2 = new TenantTeacherInfoController();
+    TenantStudentInfoController studentInfoController1;
+    TenantTeacherInfoController teacherInfoController1;
+    TenantStudentInfoController studentInfoController2;
+    TenantTeacherInfoController teacherInfoController2;
 
+    private boolean isSelected;
     //--- people 1 ---
     @FXML
     private VBox showPersonRole1;
@@ -52,7 +57,6 @@ public class TenantFormController {
     private TextField relationPersonTF1;
     @FXML
     private TextArea addressTF1;
-
     //--- people 2 ---
     @FXML
     private VBox showPersonRole2;
@@ -82,13 +86,12 @@ public class TenantFormController {
     private TextArea addressTF2;
     @FXML
     private JFXToggleButton toggleBT;
-
     @FXML
     private Label toggleLB;
+    @FXML
+    private JFXButton clearFieldPerson2BT;
 
     private AnchorPane personRolePane1, personRolePane2;
-
-    boolean isSelected;
 
     /**
      * The constructor (is called before the initialize()-method).
@@ -190,11 +193,15 @@ public class TenantFormController {
         return addressTF1;
     }
 
-    //-----------------------------------------------------------------------------------------------------------------
-
     public void setAddressTF1(TextArea addressTF1) {
         this.addressTF1 = addressTF1;
     }
+
+    public JFXToggleButton getToggleBT() {
+        return toggleBT;
+    }
+
+    //-----------------------------------------------------------------------------------------------------------------
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -202,10 +209,6 @@ public class TenantFormController {
      */
     @FXML
     public void initialize() {
-
-        //set Disable field person1
-        setFieldDisable();
-
         //set format DatePicker
         setDatePickerFormat();
         //---------------------------------------------------------------------------------------------------------------------
@@ -277,6 +280,9 @@ public class TenantFormController {
             }
         });
         //---------------------------------------------------------------------------------------------------------------------
+
+        //set Disable field person1
+        setFieldDisable();
     }
 
     /**
@@ -323,6 +329,7 @@ public class TenantFormController {
 
     @FXML
     void clearFieldPerson1(ActionEvent event) {
+        System.out.println("Clear person1");
         firstNameTF1.setText(null);
         lastNameTF1.setText(null);
         nickNameTF1.setText(null);
@@ -352,30 +359,21 @@ public class TenantFormController {
 
     @FXML
     void clearFieldPerson2(ActionEvent event) {
-        System.out.println("clear");
-        firstNameTF2.setText(null);
-        lastNameTF2.setText(null);
-        nickNameTF2.setText(null);
-        idCardTF2.setText(null);
-        birthDayDP2.setValue(null);
-        phoneNumberTF2.setText(null);
-        emailTF2.setText(null);
-        contractPersonTF2.setText(null);
-        relationPersonTF2.setText(null);
-        addressTF2.setText(null);
-        prefixNameCB2.getSelectionModel().select("");
-        for (Node node : showPersonRole2.getChildren()) {
-            if (node instanceof AnchorPane) {
-                if (node.getId().equals("studentInfo")) {
-                    studentInfoController2.getStudentFacultyTF().setText(null);
-                    studentInfoController2.getStudentGradeTF().setText(null);
-                    studentInfoController2.getStudentEduTF().setText(null);
-                } else {
-                    teacherInfoController2.getTeacherFacultyTF().setText(null);
-                    teacherInfoController2.getTeacherPositionTF().setText(null);
-                    teacherInfoController2.getTeacherEduTF().setText(null);
-                }
-            }
+        clearDataPerson2();
+    }
+
+    @FXML
+    void toggleTenant(ActionEvent event) {
+        isSelected = toggleBT.isSelected();
+        if (isSelected) {
+            toggleLB.setText("ON");
+            System.out.println("ON");
+            setFieldEnable();
+        } else {
+            toggleLB.setText("OFF");
+            System.out.println("OFF");
+            setFieldDisable();
+            clearDataPerson2();
         }
     }
 
@@ -435,7 +433,7 @@ public class TenantFormController {
 //        });
     }
 
-    void setFieldDisable(){
+    void setFieldDisable() {
         prefixNameCB2.setDisable(true);
         firstNameTF2.setDisable(true);
         lastNameTF2.setDisable(true);
@@ -448,9 +446,20 @@ public class TenantFormController {
         personRoleCB2.setDisable(true);
         phoneNumberTF2.setDisable(true);
         idCardTF2.setDisable(true);
+        clearFieldPerson2BT.setDisable(true);
+
+        if (personRoleCB2.getSelectionModel().getSelectedItem().equals("นักศึกษา")) {
+            studentInfoController2.getStudentEduTF().setDisable(true);
+            studentInfoController2.getStudentFacultyTF().setDisable(true);
+            studentInfoController2.getStudentGradeTF().setDisable(true);
+        } else {
+            teacherInfoController2.getTeacherEduTF().setDisable(true);
+            teacherInfoController2.getTeacherPositionTF().setDisable(true);
+            teacherInfoController2.getTeacherFacultyTF().setDisable(true);
+        }
     }
 
-    void setFieldEnable(){
+    void setFieldEnable() {
         prefixNameCB2.setDisable(false);
         firstNameTF2.setDisable(false);
         lastNameTF2.setDisable(false);
@@ -463,5 +472,44 @@ public class TenantFormController {
         personRoleCB2.setDisable(false);
         phoneNumberTF2.setDisable(false);
         idCardTF2.setDisable(false);
+        clearFieldPerson2BT.setDisable(false);
+
+        if (personRoleCB2.getSelectionModel().getSelectedItem().equals("นักศึกษา")) {
+            studentInfoController2.getStudentEduTF().setDisable(false);
+            studentInfoController2.getStudentFacultyTF().setDisable(false);
+            studentInfoController2.getStudentGradeTF().setDisable(false);
+        } else {
+            teacherInfoController2.getTeacherEduTF().setDisable(false);
+            teacherInfoController2.getTeacherPositionTF().setDisable(false);
+            teacherInfoController2.getTeacherFacultyTF().setDisable(false);
+        }
+    }
+
+    void clearDataPerson2(){
+        System.out.println("clear person2");
+        firstNameTF2.setText(null);
+        lastNameTF2.setText(null);
+        nickNameTF2.setText(null);
+        idCardTF2.setText(null);
+        birthDayDP2.setValue(null);
+        phoneNumberTF2.setText(null);
+        emailTF2.setText(null);
+        contractPersonTF2.setText(null);
+        relationPersonTF2.setText(null);
+        addressTF2.setText(null);
+        prefixNameCB2.getSelectionModel().select("");
+        for (Node node : showPersonRole2.getChildren()) {
+            if (node instanceof AnchorPane) {
+                if (node.getId().equals("studentInfo")) {
+                    studentInfoController2.getStudentFacultyTF().setText(null);
+                    studentInfoController2.getStudentGradeTF().setText(null);
+                    studentInfoController2.getStudentEduTF().setText(null);
+                } else {
+                    teacherInfoController2.getTeacherFacultyTF().setText(null);
+                    teacherInfoController2.getTeacherPositionTF().setText(null);
+                    teacherInfoController2.getTeacherEduTF().setText(null);
+                }
+            }
+        }
     }
 }
