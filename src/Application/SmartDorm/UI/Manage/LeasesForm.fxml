@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
@@ -33,7 +34,7 @@
                <children>
                   <VBox prefHeight="72.0" prefWidth="884.0" spacing="3.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ชื่อผู้เข้าพัก">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ชื่อผู้เข้าพัก">
                            <font>
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
@@ -52,7 +53,7 @@
                      <children>
                         <VBox prefHeight="82.0" prefWidth="884.0" spacing="3.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="เบอร์โทรผู้เข้าพัก" wrappingWidth="108.22200012207031">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="เบอร์โทรผู้เข้าพัก" wrappingWidth="144.2220001220703">
                                  <font>
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
@@ -74,7 +75,7 @@
                <children>
                   <VBox prefHeight="72.0" prefWidth="884.0" spacing="3.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ที่อยู่ผู้เข้าพัก" wrappingWidth="91.06999969482422">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ที่อยู่ผู้เข้าพัก" wrappingWidth="117.06999969482422">
                            <font>
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
@@ -91,7 +92,7 @@
                <children>
                   <VBox prefHeight="72.0" prefWidth="884.0" spacing="3.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="หมายเลขบัตรประชาชนผู้เข้าพัก">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="หมายเลขบัตรประชาชนผู้เข้าพัก">
                            <font>
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
@@ -113,17 +114,17 @@
          </children>
       </GridPane>
       <Separator layoutY="64.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <HBox alignment="CENTER_LEFT" layoutX="6.0" layoutY="-7.0" prefHeight="65.0" prefWidth="289.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="653.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER_LEFT" layoutX="6.0" layoutY="-7.0" prefHeight="65.0" prefWidth="331.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="611.0" AnchorPane.topAnchor="0.0">
          <children>
-            <FontAwesomeIconView fill="#3c3c3c" glyphName="FILE_TEXT_ALT" size="50" />
-            <Text fill="#2e2f2f" strokeType="OUTSIDE" strokeWidth="0.0" text="รายละเอียดสัญญาเช่า">
+            <FontAwesomeIconView fill="#3c3c3c" glyphName="HANDSHAKE_ALT" size="40" />
+            <Text fill="#2e2f2f" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-title" text="รายละเอียดสัญญาเช่า" wrappingWidth="244.4091796875">
                <font>
                   <Font name="ThaiSansNeue-Regular" size="30.0" />
                </font>
             </Text>
          </children>
          <padding>
-            <Insets left="30.0" />
+            <Insets left="33.0" />
          </padding>
       </HBox>
       <GridPane layoutY="464.0" prefHeight="157.0" prefWidth="942.0">
@@ -140,7 +141,7 @@
                <children>
                   <VBox prefHeight="72.0" prefWidth="884.0" spacing="3.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="วันที่ทำสัญญา">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="วันที่ทำสัญญา">
                            <font>
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
@@ -159,7 +160,7 @@
                      <children>
                         <VBox prefHeight="82.0" prefWidth="884.0" spacing="3.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="วันที่สิ้นสุดสัญญา" wrappingWidth="120.22200012207031">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="วันที่สิ้นสุดสัญญา" wrappingWidth="151.2220001220703">
                                  <font>
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
@@ -178,7 +179,7 @@
                <children>
                   <VBox prefHeight="79.0" prefWidth="413.0" spacing="3.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="เงินประกันห้อง (บาท)">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="เงินประกันห้อง (บาท)">
                            <font>
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
@@ -203,7 +204,7 @@
       </JFXButton>
       <VBox layoutX="27.0" layoutY="631.0" prefHeight="92.0" prefWidth="884.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="31.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="หมายเหตุ" wrappingWidth="67.06999969482422">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="หมายเหตุ" wrappingWidth="91.06999969482422">
                <font>
                   <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                </font>
@@ -212,4 +213,8 @@
          </children>
       </VBox>
    </children>
+   <stylesheets>
+      <URL value="@baseManage.css" />
+      <URL value="@fontstyle.css" />
+   </stylesheets>
 </AnchorPane>

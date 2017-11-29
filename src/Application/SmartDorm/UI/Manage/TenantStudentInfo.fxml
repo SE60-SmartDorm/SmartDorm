@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,9 +25,9 @@
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <VBox prefHeight="77.0" prefWidth="411.0" spacing="3.0">
+                  <VBox prefHeight="77.0" prefWidth="411.0" spacing="1.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="สถาบันการศึกษา">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="สถาบันการศึกษา">
                            <font>
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
@@ -44,9 +45,9 @@
             </HBox>
             <HBox spacing="35.0" GridPane.columnIndex="1">
                <children>
-                  <VBox prefHeight="70.0" prefWidth="266.0" spacing="3.0">
+                  <VBox prefHeight="70.0" prefWidth="266.0" spacing="1.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="คณะ" wrappingWidth="67.4160041809082">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="คณะ" wrappingWidth="67.4160041809082">
                            <font>
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
@@ -54,9 +55,9 @@
                         <TextField fx:id="studentFacultyTF" prefHeight="30.0" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="70.0" prefWidth="111.0" spacing="3.0">
+                  <VBox prefHeight="70.0" prefWidth="111.0" spacing="1.0">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ชั้นปี">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ชั้นปี">
                            <font>
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
@@ -72,4 +73,8 @@
          </children>
       </GridPane>
    </children>
+   <stylesheets>
+      <URL value="@baseManage.css" />
+      <URL value="@fontstyle.css" />
+   </stylesheets>
 </AnchorPane>
