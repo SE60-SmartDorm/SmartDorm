@@ -4,7 +4,7 @@
  *                                                                             *
  ******************************************************************************/
 .root {
-    -fx-background-color: white;
+    -fx-background-color: #f6f6f6;
 }
 
 /*******************************************************************************
@@ -33,8 +33,8 @@
 
 .text-field, .text-area {
     -fx-padding: 3.3 9.3 3.3 9.3;
-    -fx-border-color: #eaeaea;
-    -fx-background-color: #f4f4f4;
+    -fx-border-color: #afafaf;
+    -fx-background-color: #f9f9f9;
     -fx-text-fill: #5f6e78;
     -fx-prompt-text-fill: #b8b8b8;
     -fx-text-box-border: transparent;
@@ -51,8 +51,35 @@
     -fx-border-width: 1.5;
 }
 
+.search-field {
+    -fx-border-color: #b3b3b3;
+    -fx-border-width: 2;
+    -fx-background-color: #fbfbfb;
+    -fx-font-family: 'Sukhumvit Set';
+    -fx-font-size: 17;
+}
+
+.search-field:focused {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #3464b5;
+    -fx-border-width: 1.8;
+    -fx-border-radius: 3;
+}
+
+.invalidate-field {
+    -fx-background-color: rgb(255, 242, 237);
+    -fx-border-color: #e74c40;
+    -fx-border-width: 1.5;
+}
+
+.invalidate-field:focused {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e74c40;
+    -fx-border-width: 1.5;
+}
+
 .text-area .content {
-    -fx-background-color: transparent;
+    -fx-background-color: #f9f9f9;
 }
 
 .text-area:focused .content {
@@ -64,9 +91,9 @@
  * ComboBox, ChoiceBox COMMON                                                  *
  *                                                                             *
  ******************************************************************************/
-.combo-box-base, .choice-box {
-    -fx-border-color: #eaeaea;
-    -fx-background-color: #f4f4f4;
+.combo-box, .choice-box {
+    -fx-border-color: #b3b3b3;
+    -fx-background-color: #f9f9f9;
     -fx-text-fill: #5f6e78;
     -fx-prompt-text-fill: #b8b8b8;
     -fx-text-fill: #5f6e78;
@@ -77,21 +104,34 @@
     -fx-font-size: 16;
 }
 
-.combo-box:focused, .choice-box:focused {
+.combo-box:focused{
     -fx-background-color: #ffffff;
     -fx-border-color: #3bb5a0;
     -fx-border-width: 1.5;
 }
 
-.combo-box-base .arrow {
+.invalidate-comboBox{
+    -fx-border-color: #e74c40;
+    -fx-border-width: 1.5;
+    -fx-background-color: rgb(255, 242, 237);
+    -fx-text-fill: #5f6e78;
+}
+
+.invalidate-comboBox:focused {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e74c40;
+    -fx-border-width: 1.5;
+}
+
+.combo-box .arrow {
     -fx-shape: "M8.124,13.625l4.125-3.375v2.889l-4.125,3.86L4,13.139V10.25L8.124,13.625z";
 }
 
-.combo-box-base > .arrow-button > .arrow, .choice-box > .open-button > .arrow {
+.combo-box > .arrow-button > .arrow, .choice-box > .open-button > .arrow {
     -fx-background-color: gray;
 }
 
-.combo-box-base .arrow-button:hover .arrow, .spinner .increment-arrow-button:hover .increment-arrow, .spinner .decrement-arrow-button:hover .decrement-arrow {
+.combo-box .arrow-button:hover .arrow, .spinner .increment-arrow-button:hover .increment-arrow, .spinner .decrement-arrow-button:hover .decrement-arrow {
     -fx-background-color: darkgray;
 }
 
@@ -159,4 +199,143 @@
     -fx-font-family: 'Sukhumvit Set';
     -fx-font-weight: bold;
     -fx-font-size: 14;
+}
+
+#add {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+}
+
+#edit {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+}
+
+#delete {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+}
+
+#detail {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Tooltip           	                                                       *
+ *                                                                             *
+ ******************************************************************************/
+.tooltip {
+    -fx-text-fill: white;
+    -fx-background-color: rgba(65, 185, 160, 0.39);
+    -fx-background-insets: 0;
+    -fx-padding: 0.667em 0.75em 0.667em 0.75em; /* 10px */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 3);
+    -fx-font-size: 0.85em;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * Material Design - Cards 				                       				   *
+ *                                                                             *
+ ******************************************************************************/
+.card {
+    -fx-background-color: rgb(255.0, 255.0, 255.0);
+    -fx-background-radius: 3;
+    -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0, 1.5);
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * TreeTableView            			                       				   *
+ *                                                                             *
+ ******************************************************************************/
+.tree-table-view .column-header .label {
+    -fx-font-family: 'Sukhumvit Set';
+    -fx-font-size: 16px;
+    -fx-text-fill: #919191;
+    -fx-padding: 16 0 16 0;
+}
+
+.tree-table-view {
+    -fx-font-family: 'Sukhumvit Set';
+    -fx-font-size: 16;
+    -fx-tree-table-color: rgba(52, 100, 181, 0.71);
+    -fx-tree-table-rippler-color: rgba(255, 0, 0, 0.9);
+}
+
+.tree-table-view:focused .tree-table-row-cell:selected {
+    -fx-background-color: -fx-tree-table-color;
+    -fx-table-cell-border-color: -fx-tree-table-color;
+}
+
+.tree-table-view:focused .tree-table-row-cell:selected .tree-table-cell {
+    -fx-text-fill: white;
+}
+
+.tree-table-view .jfx-rippler {
+    -fx-rippler-fill: -fx-tree-table-rippler-color;
+}
+
+.tree-table-view .column-header,
+.tree-table-view .column-header-background,
+.tree-table-view .column-header-background .filler {
+    -fx-background-color: TRANSPARENT;
+}
+
+.tree-table-view .column-header .arrow, .tree-table-view .column-header .sort-order-dot {
+    -fx-background-color: #949494;
+}
+
+.tree-table-view .column-header-background {
+    -fx-border-width: 0 0.0 1 0;
+    -fx-border-color: #F3F3F3;
+}
+
+.tree-table-view .column-overlay {
+    -fx-background-color: rgba(52, 100, 181, 0.8);
+}
+
+.tree-table-view .column-resize-line, .tree-table-view .column-drag-header {
+    -fx-background-color: rgba(52, 100, 181, 0.8);
+
+}
+
+.tree-table-view:focused {
+    -fx-background-color: -fx-tree-table-color, -fx-box-border, -fx-control-inner-background;
+    -fx-background-insets: -1.4, 0, 1;
+    -fx-background-radius: 1.4, 0, 0;
+    /*....*/
+    -fx-padding: 1; /* 0.083333em; */
+}
+
+.tree-table-row-cell > .tree-disclosure-node > .arrow {
+    -fx-background-color: -fx-text-fill;
+    -fx-padding: 0.333333em 0.229em 0.333333em 0.229em; /* 4 */
+    -fx-shape: "M 0 -3.5 L 4 0 L 0 3.5 z";
+}
+
+.tree-table-row-cell .jfx-text-field {
+
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * TabPane           			                       				           *
+ *                                                                             *
+ ******************************************************************************/
+.jfx-tab-pane .tab-header-area .jfx-rippler {
+    -jfx-rippler-fill: #d8d8d8;
+}
+
+.jfx-tab-pane .tab .tab-label {
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sukhumvit Set';
+    -fx-text-fill: #dcdcdc;
+    -fx-font-size: 17;
+}
+
+.jfx-tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #fdfdfd;
+}
+
+.tab-header-background {
+    -fx-background-color: #3AAC97;
 }
