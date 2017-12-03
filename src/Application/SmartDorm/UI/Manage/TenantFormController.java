@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXToggleButton;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,15 +21,18 @@ import javafx.util.StringConverter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class TenantFormController {
+    private static boolean inValidForm1, inValidForm2;
     //set Controller
     TenantStudentInfoController studentInfoController1;
     TenantTeacherInfoController teacherInfoController1;
     TenantStudentInfoController studentInfoController2;
     TenantTeacherInfoController teacherInfoController2;
-
     private boolean isSelected;
     //--- people 1 ---
     @FXML
@@ -282,7 +286,11 @@ public class TenantFormController {
         //---------------------------------------------------------------------------------------------------------------------
 
         //set Disable field person1
-        setFieldDisable();
+        setDisableField();
+
+        //check validate field
+        checkValidation();
+
     }
 
     /**
@@ -327,31 +335,136 @@ public class TenantFormController {
         }
     }
 
+    private void checkValidation() {
+        //------------------------ Validation person1 ------------------------------------------
+        //check prefixName seleted
+        prefixNameCB1.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            ObservableList<String> styleClass = prefixNameCB1.getStyleClass();
+            if (!newValue) {
+                if (prefixNameCB1.getSelectionModel().isEmpty()) {
+                    if (!styleClass.contains("invalidate-comboBox")) {
+                        styleClass.add("invalidate-comboBox");
+                    }
+                } else {
+                    styleClass.removeAll(Collections.singleton("invalidate-comboBox"));
+                }
+            }
+        }));
+        //check firstName input
+        firstNameTF1.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            ObservableList<String> styleClass = firstNameTF1.getStyleClass();
+            if (!newValue) {
+                if (firstNameTF1.getText() == null || firstNameTF1.getText().trim().isEmpty()) {
+                    if (!styleClass.contains("invalidate-field")) {
+                        styleClass.add("invalidate-field");
+                    }
+                } else {
+                    styleClass.removeAll(Collections.singleton("invalidate-field"));
+                }
+            }
+        }));
+        //check lastName input
+        lastNameTF1.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            ObservableList<String> styleClass = lastNameTF1.getStyleClass();
+            if (!newValue) {
+                if (lastNameTF1.getText() == null || lastNameTF1.getText().trim().isEmpty()) {
+                    if (!styleClass.contains("invalidate-field")) {
+                        styleClass.add("invalidate-field");
+                    }
+                } else {
+                    styleClass.removeAll(Collections.singleton("invalidate-field"));
+                }
+            }
+        }));
+        //check nickName input
+        nickNameTF1.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            ObservableList<String> styleClass = nickNameTF1.getStyleClass();
+            if (!newValue) {
+                if (nickNameTF1.getText() == null || nickNameTF1.getText().trim().isEmpty()) {
+                    if (!styleClass.contains("invalidate-field")) {
+                        styleClass.add("invalidate-field");
+                    }
+                } else {
+                    styleClass.removeAll(Collections.singleton("invalidate-field"));
+                }
+            }
+        }));
+        //check IDCard input
+        idCardTF1.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            ObservableList<String> styleClass = idCardTF1.getStyleClass();
+            if (!newValue) {
+                if (idCardTF1.getText() == null || idCardTF1.getText().trim().isEmpty() || !checkProfessionalID(idCardTF1.getText())) {
+                    if (!styleClass.contains("invalidate-field")) {
+                        styleClass.add("invalidate-field");
+                        String t = idCardTF1.getText();
+                    }
+                } else {
+                    styleClass.removeAll(Collections.singleton("invalidate-field"));
+                }
+            }
+        }));
+        //check phoneNumber input
+        phoneNumberTF1.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            ObservableList<String> styleClass = phoneNumberTF1.getStyleClass();
+            if (!newValue) {
+                if (phoneNumberTF1.getText() == null || phoneNumberTF1.getText().trim().isEmpty() || !validatePhoneNumber(phoneNumberTF1.getText())){
+                    System.out.println();
+                    if (!styleClass.contains("invalidate-field")) {
+                        styleClass.add("invalidate-field");
+                    }
+                } else{
+                    styleClass.removeAll(Collections.singleton("invalidate-field"));
+                }
+            }
+        }));
+
+    }
+
+    private boolean validatePhoneNumber(String phoneNumber) {
+        final Pattern phoneNumberPattern = Pattern.compile("^\\s*(?:\\+?(\\d{1,3}))?([-. (]*(\\d{3})[-. )]*)?((\\d{3})[-. ]*(\\d{2,4})(?:[-.x ]*(\\d+))?)\\s*$");
+        final Matcher match = phoneNumberPattern.matcher(phoneNumber);
+        if(match.find() && match.group().equals(phoneNumber)) return true;
+        return false;
+    }
+
+    private boolean checkProfessionalID(String id) {
+        int sum, i;
+        if (id.length() != 13) return false;
+
+        for (i = 0, sum = 0; i < 12; i++) sum += Integer.parseInt(String.valueOf(id.charAt(i))) * (13 - i);
+
+        System.out.println(sum);
+        System.out.println((11 - sum % 11) % 10);
+        if ((11 - sum % 11) % 10 != Integer.parseInt(String.valueOf(id.charAt(12)))) return false;
+
+        return true;
+    }
+
     @FXML
     void clearFieldPerson1(ActionEvent event) {
         System.out.println("Clear person1");
-        firstNameTF1.setText(null);
-        lastNameTF1.setText(null);
-        nickNameTF1.setText(null);
-        idCardTF1.setText(null);
+        firstNameTF1.setText("");
+        lastNameTF1.setText("");
+        nickNameTF1.setText("");
+        idCardTF1.setText("");
         birthDayDP1.setValue(null);
-        phoneNumberTF1.setText(null);
-        emailTF1.setText(null);
-        contractPersonTF1.setText(null);
-        relationPersonTF1.setText(null);
-        addressTF1.setText(null);
-        prefixNameCB1.getSelectionModel().select(null);
+        phoneNumberTF1.setText("");
+        emailTF1.setText("");
+        contractPersonTF1.setText("");
+        relationPersonTF1.setText("");
+        addressTF1.setText("");
+        prefixNameCB1.getSelectionModel().select("");
 
         for (Node node : showPersonRole1.getChildren()) {
             if (node instanceof AnchorPane) {
                 if (node.getId().equals("studentInfo")) {
-                    studentInfoController1.getStudentFacultyTF().setText(null);
-                    studentInfoController1.getStudentGradeTF().setText(null);
-                    studentInfoController1.getStudentEduTF().setText(null);
+                    studentInfoController1.getStudentFacultyTF().setText("");
+                    studentInfoController1.getStudentGradeTF().setText("");
+                    studentInfoController1.getStudentEduTF().setText("");
                 } else {
-                    teacherInfoController1.getTeacherFacultyTF().setText(null);
-                    teacherInfoController1.getTeacherPositionTF().setText(null);
-                    teacherInfoController1.getTeacherEduTF().setText(null);
+                    teacherInfoController1.getTeacherFacultyTF().setText("");
+                    teacherInfoController1.getTeacherPositionTF().setText("");
+                    teacherInfoController1.getTeacherEduTF().setText("");
                 }
             }
         }
@@ -368,11 +481,11 @@ public class TenantFormController {
         if (isSelected) {
             toggleLB.setText("ON");
             System.out.println("ON");
-            setFieldEnable();
+            setEnableField();
         } else {
             toggleLB.setText("OFF");
             System.out.println("OFF");
-            setFieldDisable();
+            setDisableField();
             clearDataPerson2();
         }
     }
@@ -433,7 +546,7 @@ public class TenantFormController {
 //        });
     }
 
-    void setFieldDisable() {
+    void setDisableField() {
         prefixNameCB2.setDisable(true);
         firstNameTF2.setDisable(true);
         lastNameTF2.setDisable(true);
@@ -459,7 +572,7 @@ public class TenantFormController {
         }
     }
 
-    void setFieldEnable() {
+    void setEnableField() {
         prefixNameCB2.setDisable(false);
         firstNameTF2.setDisable(false);
         lastNameTF2.setDisable(false);
@@ -485,25 +598,25 @@ public class TenantFormController {
         }
     }
 
-    void clearDataPerson2(){
+    void clearDataPerson2() {
         System.out.println("clear person2");
-        firstNameTF2.setText(null);
-        lastNameTF2.setText(null);
-        nickNameTF2.setText(null);
-        idCardTF2.setText(null);
+        firstNameTF2.setText("");
+        lastNameTF2.setText("");
+        nickNameTF2.setText("");
+        idCardTF2.setText("");
         birthDayDP2.setValue(null);
-        phoneNumberTF2.setText(null);
-        emailTF2.setText(null);
-        contractPersonTF2.setText(null);
-        relationPersonTF2.setText(null);
-        addressTF2.setText(null);
+        phoneNumberTF2.setText("");
+        emailTF2.setText("");
+        contractPersonTF2.setText("");
+        relationPersonTF2.setText("");
+        addressTF2.setText("");
         prefixNameCB2.getSelectionModel().select("");
         for (Node node : showPersonRole2.getChildren()) {
             if (node instanceof AnchorPane) {
                 if (node.getId().equals("studentInfo")) {
-                    studentInfoController2.getStudentFacultyTF().setText(null);
-                    studentInfoController2.getStudentGradeTF().setText(null);
-                    studentInfoController2.getStudentEduTF().setText(null);
+                    studentInfoController2.getStudentFacultyTF().setText("");
+                    studentInfoController2.getStudentGradeTF().setText("");
+                    studentInfoController2.getStudentEduTF().setText("");
                 } else {
                     teacherInfoController2.getTeacherFacultyTF().setText(null);
                     teacherInfoController2.getTeacherPositionTF().setText(null);
