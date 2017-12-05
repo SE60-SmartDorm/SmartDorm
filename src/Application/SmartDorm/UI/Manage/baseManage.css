@@ -4,7 +4,7 @@
  *                                                                             *
  ******************************************************************************/
 .root {
-    -fx-background-color: #f6f6f6;
+    -fx-background-color: #fcfcfc;
 }
 
 /*******************************************************************************
@@ -104,13 +104,13 @@
     -fx-font-size: 16;
 }
 
-.combo-box:focused{
+.combo-box:focused {
     -fx-background-color: #ffffff;
     -fx-border-color: #3bb5a0;
     -fx-border-width: 1.5;
 }
 
-.invalidate-comboBox{
+.invalidate-comboBox {
     -fx-border-color: #e74c40;
     -fx-border-width: 1.5;
     -fx-background-color: rgb(255, 242, 237);
@@ -168,16 +168,31 @@
     -fx-padding: 3.3 9.3 3.3 9.3;
 }
 
+.invalidate-datePicker .date-picker-display-node {
+    -fx-background-color: rgb(255, 242, 237);
+    -fx-border-color: #e74c40;
+    -fx-border-width: 1.5;
+}
+
+.invalidate-datePicker:focused .date-picker-display-node {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e74c40;
+    -fx-border-width: 1.5;
+}
+
 /*******************************************************************************
  *                                                                             *
  * Button           	                                                       *
  *                                                                             *
  ******************************************************************************/
+.jfx-button {
+    -fx-font-family: 'Sukhumvit Set';
+    -fx-font-weight: bold;
+}
+
 .save-button {
     -fx-background-color: #5bc0de;
     -fx-fill: #ffffff;
-    -fx-font-family: 'Sukhumvit Set';
-    -fx-font-weight: bold;
     -fx-font-size: 15;
 }
 
@@ -196,27 +211,49 @@
 
 .clear-button .text {
     -fx-fill: #ffffff;
-    -fx-font-family: 'Sukhumvit Set';
-    -fx-font-weight: bold;
     -fx-font-size: 14;
 }
 
+.autoFill-button {
+    -fx-background-color: #3cb7a0;
+    -fx-font-size: 15;
+}
+
+.autoFill-button:hover {
+    -fx-background-color: #00c9b7;
+}
+
+.manage-button {
+    -fx-font-size: 17;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+}
+
 #add {
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+    -fx-background-color: #26B99A;
+}
+#add:hover {
+    -fx-background-color: rgba(39, 206, 174, 0.99);
 }
 
-#edit {
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+#edit{
+    -fx-background-color: #e98d1f;
+}
+#edit:hover{
+    -fx-background-color: rgba(255, 159, 32, 0.91);
 }
 
-#delete {
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+#delete{
+    -fx-background-color: #e34249;
 }
-
-#detail {
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 5, 0.0, 0, 1);
+#delete:hover{
+    -fx-background-color: rgba(255, 93, 101, 0.94);
 }
-
+#detail{
+    -fx-background-color: #00a3c8;
+}
+#detail:hover{
+    -fx-background-color: rgba(0, 181, 222, 0.95);
+}
 /*******************************************************************************
  *                                                                             *
  * Tooltip           	                                                       *
