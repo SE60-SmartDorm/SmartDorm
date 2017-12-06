@@ -16,10 +16,13 @@ public class Tenant implements Serializable {
     private long id;
 
     private long roomId;
-    private String firstname, lastname;
+    private String firstname, lastname, nickname;
+    private String dob;
     private long citizenId;
     private String phone;
+    private String email;
     private String address;
+    private String emergency_ppl, emergency_relation;
 
     public Tenant(long roomId, String firstname, String lastname, long citizenId, String phone, String address) {
         this.roomId = roomId;

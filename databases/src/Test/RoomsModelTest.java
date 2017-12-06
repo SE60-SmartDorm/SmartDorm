@@ -2,11 +2,16 @@ package Test;
 
 import Entity.Room;
 import Model.RoomsModel;
+import ProgramException.DatabaseException;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
 public class RoomsModelTest {
+    @Rule
+    public final ExpectedException exception = ExpectedException.none();
 
     @Test
     public void countRooms() throws Exception {
@@ -19,8 +24,11 @@ public class RoomsModelTest {
     public void getRoomById() throws Exception {
         RoomsModel.connect();
         Room r = new Room(435, 1, false);
+
         assertEquals(r, RoomsModel.getRoomById(435));
-        assertEquals(null, RoomsModel.getRoomById(898));
+
+        exception.expect(DatabaseException.class);
+        RoomsModel.getRoomById(898);
         RoomsModel.close();
     }
 

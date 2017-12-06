@@ -1,6 +1,7 @@
 package Model;
 
 import Entity.Room;
+import ProgramException.DatabaseException;
 
 import javax.persistence.*;
 import java.util.List;
@@ -27,18 +28,18 @@ public class RoomsModel {
         return count;
     }
 
-    public static Room getRoomById(long id) {
+    public static Room getRoomById(long id) throws DatabaseException{
         EntityManager em = emf.createEntityManager();
         TypedQuery<Room> query = em.createQuery("SELECT r FROM Room r WHERE r.id = :id", Room.class);
         query.setParameter("id", id);
         List<Room> result = query.getResultList();
         em.close();
         if (result.isEmpty())
-            return null;
+            throw new DatabaseException("No room :id in database");
         return result.get(0);
     }
 
-    public static boolean createRoom(long id, int type) {
+    public static boolean createRoom(long id, int type) throws DatabaseException{
         if (getRoomById(id) == null) {
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
@@ -48,7 +49,7 @@ public class RoomsModel {
             em.close();
             return true;
         }
-        return false;
+        throw new DatabaseException("Room :id already exist");
     }
 
     public static List<Room> getAllRooms() {
@@ -59,7 +60,7 @@ public class RoomsModel {
         return result;
     }
 
-    public static boolean removeRoomById(long id) {
+    public static boolean removeRoomById(long id) throws DatabaseException{
         if (getRoomById(id) != null) {
             EntityManager em = emf.createEntityManager();
             em.getTransaction().begin();
@@ -70,10 +71,10 @@ public class RoomsModel {
             em.close();
             return true;
         }
-        return false;
+        throw new DatabaseException("No room :id in database");
     }
 
-    public static boolean updateRoomVacantById(long id, boolean status) {
+    public static boolean updateRoomVacantById(long id, boolean status) throws DatabaseException {
         if (getRoomById(id) != null) {
             EntityManager em = emf.createEntityManager();
             em.getEntityManagerFactory().getCache().evictAll();
@@ -88,7 +89,7 @@ public class RoomsModel {
             em.close();
             return true;
         }
-        return false;
+        throw new DatabaseException("No room :id in database");
     }
 
 }

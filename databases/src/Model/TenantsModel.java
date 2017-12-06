@@ -85,5 +85,5 @@ public class TenantsModel {
         em.getTransaction().commit();
         em.close();
     }
-
+    //TODO : get return types back bitchhhhhhhhhhhhhhhhhh
 }
