@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="objectdb">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/objectdb-2.7.2_02/bin/objectdb.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/objectdb.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
