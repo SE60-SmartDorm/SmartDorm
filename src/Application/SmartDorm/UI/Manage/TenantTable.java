@@ -11,14 +11,15 @@ import javafx.beans.property.StringProperty;
  */
 
 public class TenantTable extends RecursiveTreeObject<TenantTable> {
-    private StringProperty room, status, name, startDate, endDate;
+    private StringProperty room, status, name, startDate, endDate, tenantNote;
 
-    public TenantTable(String room, String status, String name, String sartDate, String endDate) {
+    public TenantTable(String room, String status, String name, String sartDate, String endDate, String tenantNote) {
         this.room = new SimpleStringProperty(room);
         this.status = new SimpleStringProperty(status);
         this.name = new SimpleStringProperty(name);
         this.startDate = new SimpleStringProperty(sartDate);
         this.endDate = new SimpleStringProperty(endDate);
+        this.tenantNote = new SimpleStringProperty(tenantNote);
     }
 
     public String getRoom() {
@@ -79,5 +80,17 @@ public class TenantTable extends RecursiveTreeObject<TenantTable> {
 
     public StringProperty endDateProperty() {
         return endDate;
+    }
+
+    public String getTenantNote() {
+        return tenantNote.get();
+    }
+
+    public StringProperty tenantNoteProperty() {
+        return tenantNote;
+    }
+
+    public void setTenantNote(String tenantNote) {
+        this.tenantNote.set(tenantNote);
     }
 }

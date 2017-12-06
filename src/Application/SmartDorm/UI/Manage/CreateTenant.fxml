@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTabPane?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.net.URL?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,10 +13,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="958.0" style="-fx-background-color: #DDDDDD;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.Manage.CreateTenantController">
     <children>
-        <JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="432.0" layoutY="694.0" onAction="#saveData" prefHeight="44.0" prefWidth="92.0" style="-fx-background-color: #5bc0de;" text="บันทึกข้อมูล" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="432.0" AnchorPane.rightAnchor="432.0" />
-        <JFXTabPane layoutY="82.0" prefHeight="600.0" prefWidth="956.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+        <JFXButton fx:id="saveDataBT" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" layoutX="432.0" layoutY="694.0" onAction="#saveData" prefHeight="50.0" prefWidth="109.0" ripplerFill="#0075ff" styleClass="save-button" text="บันทึกข้อมูล" textFill="WHITE" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="432.0" AnchorPane.rightAnchor="432.0" />
+        <JFXTabPane layoutY="67.0" prefHeight="613.0" prefWidth="958.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="65.0">
             <tabs>
-                <Tab text="ผู้เช่า">
+                <Tab text="     ผู้เช่า     ">
                     <content>
                         <ScrollPane>
                             <fx:include fx:id="embedTenantForm" source="TenantForm.fxml" />
@@ -31,15 +32,23 @@
                 </Tab>
             </tabs>
         </JFXTabPane>
-        <Pane prefHeight="113.0" prefWidth="956.0" style="-fx-background-color: #57c059;" AnchorPane.bottomAnchor="670.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane prefHeight="66.0" prefWidth="958.0" style="-fx-background-color: #3AAC97;" AnchorPane.bottomAnchor="684.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Text fill="#eeeeee" layoutX="414.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="เพิ่มข้อมูลผู้เช่า">
+                <Text fill="#eeeeee" layoutX="406.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-head" text="เพิ่มข้อมูลผู้เช่า">
                     <font>
                         <Font name="ThaiSansNeue-SemiBold" size="30.0" />
                     </font>
                 </Text>
-            <MaterialDesignIconView fx:id="iconClose" fill="WHITE" glyphName="CLOSE" layoutX="920.0" layoutY="28.0" onMouseClicked="#closeState" size="25" />
+            <JFXButton contentDisplay="CENTER" layoutX="907.0" layoutY="6.0" onMouseClicked="#closeState" prefHeight="25.0" prefWidth="33.0" style="-fx-background-radius: 50;" text=" ">
+               <graphic>
+                  <MaterialDesignIconView fx:id="iconClose" fill="WHITE" glyphName="CLOSE" size="25" />
+               </graphic>
+            </JFXButton>
             </children>
         </Pane>
     </children>
+   <stylesheets>
+      <URL value="@baseManage.css" />
+      <URL value="@fontstyle.css" />
+   </stylesheets>
 </AnchorPane>

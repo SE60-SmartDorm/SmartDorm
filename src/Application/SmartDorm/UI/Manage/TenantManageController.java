@@ -6,11 +6,15 @@ import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.animation.PauseTransition;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
@@ -29,48 +34,48 @@ import javafx.util.Callback;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TenantManageController {
+    private static ObservableList<TenantTable> tenantTableData = FXCollections.observableArrayList();
+    private final Comparator<TenantTable> ROOM_COMPARATOR = (TenantTable o1, TenantTable o2) -> o1.roomProperty().get().compareTo(o2.roomProperty().get());
+    private final ObjectProperty<Comparator<? super TenantTable>> ROOM_COMPARATOR_WRAPPER = new SimpleObjectProperty<>(ROOM_COMPARATOR);
+    //component
+    String roomID;
+    private SortedList<TenantTable> sortedData;
     @FXML
     private AnchorPane rootPane;
-
     @FXML
     private JFXTreeTableView<TenantTable> tenantTableView;
-
     @FXML
     private TreeTableColumn<TenantTable, String> tenantRoomCol;
-
     @FXML
     private TreeTableColumn<TenantTable, String> tenantStatusCol;
-
     @FXML
     private TreeTableColumn<TenantTable, String> tenantNameCol;
-
     @FXML
     private TreeTableColumn<TenantTable, String> tenantLeasesSCol;
-
     @FXML
     private TreeTableColumn<TenantTable, String> tenantLeasesECol;
-
+    @FXML
+    private TreeTableColumn<TenantTable, String> noteTenantCol;
     @FXML
     private TextField searchData;
-
     @FXML
     private JFXButton addTenantDataBT;
-
     @FXML
     private JFXButton editTenantDataBT;
-
     @FXML
     private JFXButton deleteTenantDataBT;
-
     @FXML
     private JFXButton detailTenantDataBT;
-
-    private static ObservableList<TenantTable> tenantTableData = FXCollections.observableArrayList();
+    //init xy offsets
+    private double xOffset = 0;
+    private double yOffset = 0;
+    private boolean loadData = false;
 
     /**
      * The constructor (is called before the initialize()-method).
@@ -79,16 +84,30 @@ public class TenantManageController {
 
     }
 
+    //setter and setter
+    public ObservableList<TenantTable> getTenantTableData() {
+        return tenantTableData;
+    }
+
+    public JFXTreeTableView<TenantTable> getTenantTableView() {
+        return tenantTableView;
+    }
+
     /**
      * Initializes the controller class. This method is automatically called
      * after the fxml file has been loaded.
      */
     @FXML
     public void initialize() {
-        // Data call form DATABASE
-//        tenantTableData.add(new TenantTable("101", "BOOK", "ABCD", "10/10/2559", "15/10/2560"));
-//        tenantTableData.add(new TenantTable("102", "-", "adcd", "01/10/2559", "15/01/2560"));
-//        tenantTableData.add(new TenantTable("103", "-", "aBCde", "14/10/2559", "15/12/2560"));
+        if (!loadData) {
+            tenantTableData.add(new TenantTable("101","ว่าง","","","",""));
+            tenantTableData.add(new TenantTable("102","ว่าง","","","",""));
+            tenantTableData.add(new TenantTable("103","ว่าง","","","",""));
+            tenantTableData.add(new TenantTable("201","ว่าง","","","",""));
+            tenantTableData.add(new TenantTable("202","ว่าง","","","",""));
+            tenantTableData.add(new TenantTable("203","ว่าง","","","",""));
+            loadData = true;
+        }
 
         //Load person detail to treeTable
         LoadDataFormTenantTable();
@@ -96,16 +115,16 @@ public class TenantManageController {
         //Search data in treeTable
         SearchTenantDataInTable();
 
-        addTenantDataBT.setOnMouseClicked(event -> {
-            PauseTransition pause = new PauseTransition(Duration.seconds(0.06));
-            pause.setOnFinished(actionEvent -> {
-                setStage("CreateTenant.fxml");
-            });
-            pause.play();
+//        for (TenantTable tmp : sortedData) {
+//            System.out.println(tmp.getRoom());
+//        }
 
+        //Selection room
+        tenantSetButtonDisable();
+        tenantTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            tenantSetButtonEnable();
         });
     }
-
     private void LoadDataFormTenantTable() {
         tenantRoomCol.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TenantTable, String>, ObservableValue<String>>() {
             @Override
@@ -142,6 +161,16 @@ public class TenantManageController {
             }
         });
 
+        noteTenantCol.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TenantTable, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TenantTable, String> param) {
+                return param.getValue().getValue().tenantNoteProperty();
+            }
+        });
+//        sort data (not important now)
+//        sortedData = new SortedList<>(tenantTableData);
+//        sortedData.comparatorProperty().bind(ROOM_COMPARATOR_WRAPPER);
+
         // build tree
         TreeItem<TenantTable> root = new RecursiveTreeItem<TenantTable>(tenantTableData, RecursiveTreeObject::getChildren);
         tenantTableView.setRoot(root);
@@ -167,14 +196,14 @@ public class TenantManageController {
         });
     }
 
-    private void tenantSetButtonEnable() {
+    public void tenantSetButtonEnable() {
         addTenantDataBT.setDisable(false);
         editTenantDataBT.setDisable(false);
         deleteTenantDataBT.setDisable(false);
         detailTenantDataBT.setDisable(false);
     }
 
-    private void tenantSetButtonDisable() {
+    public void tenantSetButtonDisable() {
         addTenantDataBT.setDisable(true);
         editTenantDataBT.setDisable(true);
         deleteTenantDataBT.setDisable(true);
@@ -183,14 +212,39 @@ public class TenantManageController {
 
     @FXML
     private void deleteTenantData(ActionEvent event) {
+        System.out.println("delete tenant");
         int selectionIndex = tenantTableView.getSelectionModel().getSelectedIndex();
+
         if (selectionIndex >= 0) {
-            tenantTableData.remove(selectionIndex);
+            TreeItem<TenantTable> treeItemTenant = tenantTableView.getSelectionModel().getSelectedItem();
+            TenantTable n = new TenantTable(treeItemTenant.getValue().getRoom(),"ว่าง","","","","");
+            //treeItemTenant.setValue(n);
             tenantTableView.getSelectionModel().clearSelection();
         } else {
             //TODO Show ERROR
             System.out.println("Error");
         }
+        tenantSetButtonDisable();
+    }
+
+    @FXML
+    void editTenantData(ActionEvent event) {
+        System.out.println("edit tenant");
+        PauseTransition pause = new PauseTransition(Duration.seconds(0.06));
+        pause.setOnFinished(actionEvent -> {
+
+        });
+        pause.play();
+    }
+
+    @FXML
+    void addTenantData(ActionEvent event) {
+        System.out.println("add tenant");
+        PauseTransition pause = new PauseTransition(Duration.seconds(0.06));
+        pause.setOnFinished(actionEvent -> {
+            setStage("CreateTenant.fxml");
+        });
+        pause.play();
     }
 
     private void setStage(String fxml) {
@@ -201,6 +255,25 @@ public class TenantManageController {
             veil.setStyle("-fx-background-color:rgba(0,0,0,0.3)");
             Stage newStage = new Stage();
             Parent parent = FXMLLoader.load(getClass().getResource(fxml));
+
+            //--------------------- Set mouse event ----------------------------
+            parent.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    xOffset = event.getSceneX();
+                    yOffset = event.getSceneY();
+                }
+            });
+
+            //set mouse drag
+            parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    newStage.setX(event.getScreenX() - xOffset);
+                    newStage.setY(event.getScreenY() - yOffset);
+                }
+            });
+            //------------------------------------------------------------------
 
             Scene scene = new Scene(parent);
             scene.setFill(Color.TRANSPARENT);
@@ -217,11 +290,12 @@ public class TenantManageController {
 
             });
             newStage.show();
+
             //set to center on parent state
-            double centerXPosition = MainSmartDorm.getStage().getX() + MainSmartDorm.getStage().getWidth()/2d;
-            double centerYPosition = MainSmartDorm.getStage().getY() + MainSmartDorm.getStage().getHeight()/2d;
-            newStage.setX(centerXPosition - newStage.getWidth()/2d);
-            newStage.setY(centerYPosition - newStage.getHeight()/2d);
+            double centerXPosition = MainSmartDorm.getStage().getX() + MainSmartDorm.getStage().getWidth() / 2d;
+            double centerYPosition = MainSmartDorm.getStage().getY() + MainSmartDorm.getStage().getHeight() / 2d;
+            newStage.setX(centerXPosition - newStage.getWidth() / 2d);
+            newStage.setY(centerYPosition - newStage.getHeight() / 2d);
         } catch (IOException ex) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         }

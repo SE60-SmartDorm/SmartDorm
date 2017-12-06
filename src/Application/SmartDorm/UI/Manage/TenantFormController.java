@@ -33,7 +33,7 @@ public class TenantFormController {
     TenantTeacherInfoController teacherInfoController1;
     TenantStudentInfoController studentInfoController2;
     TenantTeacherInfoController teacherInfoController2;
-    private boolean isSelected;
+    private static boolean isSelected;
     //--- people 1 ---
     @FXML
     private VBox showPersonRole1;
@@ -104,7 +104,7 @@ public class TenantFormController {
 
     }
 
-    //set Getter and Setter1 ------------------------------------------------------------------------------------------
+    //set Getter and Setter person 1 ------------------------------------------------------------------------------------------
     public TextField getFirstNameTF1() {
         return firstNameTF1;
     }
@@ -204,8 +204,13 @@ public class TenantFormController {
     public JFXToggleButton getToggleBT() {
         return toggleBT;
     }
-
     //-----------------------------------------------------------------------------------------------------------------
+
+    //set Getter and Setter person 2 ----------------------------------------------------------------------------------
+
+    public JFXDatePicker getBirthDayDP2() {
+        return birthDayDP2;
+    }
 
     /**
      * Initializes the controller class. This method is automatically called
@@ -221,14 +226,12 @@ public class TenantFormController {
         prefixNameCB1.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                System.out.println(prefixNameCB1.getSelectionModel().getSelectedItem());
             }
         });
 
         prefixNameCB2.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                System.out.println(prefixNameCB2.getSelectionModel().getSelectedItem());
             }
         });
         //---------------------------------------------------------------------------------------------------------------------
@@ -285,11 +288,11 @@ public class TenantFormController {
         });
         //---------------------------------------------------------------------------------------------------------------------
 
-        //set Disable field person1
-        setDisableField();
-
         //check validate field
         checkValidation();
+
+        //set Disable field person1
+        setDisableField();
 
     }
 
@@ -339,67 +342,62 @@ public class TenantFormController {
         //------------------------ Validation person1 ------------------------------------------
         //check prefixName seleted
         prefixNameCB1.focusedProperty().addListener(((observable, oldValue, newValue) -> {
-            ObservableList<String> styleClass = prefixNameCB1.getStyleClass();
             if (!newValue) {
-                if (prefixNameCB1.getSelectionModel().isEmpty()) {
-                    if (!styleClass.contains("invalidate-comboBox")) {
-                        styleClass.add("invalidate-comboBox");
+                if (prefixNameCB1.getSelectionModel().isEmpty() || prefixNameCB1.getSelectionModel().getSelectedItem() == null) {
+                    if (!prefixNameCB1.getStyleClass().contains("invalidate-comboBox")) {
+                        prefixNameCB1.getStyleClass().add("invalidate-comboBox");
                     }
                 } else {
-                    styleClass.removeAll(Collections.singleton("invalidate-comboBox"));
+                    prefixNameCB1.getStyleClass().removeAll(Collections.singleton("invalidate-comboBox"));
                 }
             }
         }));
         //check firstName input
         firstNameTF1.focusedProperty().addListener(((observable, oldValue, newValue) -> {
-            ObservableList<String> styleClass = firstNameTF1.getStyleClass();
             if (!newValue) {
                 if (firstNameTF1.getText() == null || firstNameTF1.getText().trim().isEmpty()) {
-                    if (!styleClass.contains("invalidate-field")) {
-                        styleClass.add("invalidate-field");
+                    if (!firstNameTF1.getStyleClass().contains("invalidate-field")) {
+                        firstNameTF1.getStyleClass().add("invalidate-field");
                     }
                 } else {
-                    styleClass.removeAll(Collections.singleton("invalidate-field"));
+                    firstNameTF1.getStyleClass().removeAll(Collections.singleton("invalidate-field"));
                 }
             }
         }));
         //check lastName input
         lastNameTF1.focusedProperty().addListener(((observable, oldValue, newValue) -> {
-            ObservableList<String> styleClass = lastNameTF1.getStyleClass();
             if (!newValue) {
                 if (lastNameTF1.getText() == null || lastNameTF1.getText().trim().isEmpty()) {
-                    if (!styleClass.contains("invalidate-field")) {
-                        styleClass.add("invalidate-field");
+                    if (!lastNameTF1.getStyleClass().contains("invalidate-field")) {
+                        lastNameTF1.getStyleClass().add("invalidate-field");
                     }
                 } else {
-                    styleClass.removeAll(Collections.singleton("invalidate-field"));
+                    lastNameTF1.getStyleClass().removeAll(Collections.singleton("invalidate-field"));
                 }
             }
         }));
         //check nickName input
         nickNameTF1.focusedProperty().addListener(((observable, oldValue, newValue) -> {
-            ObservableList<String> styleClass = nickNameTF1.getStyleClass();
             if (!newValue) {
                 if (nickNameTF1.getText() == null || nickNameTF1.getText().trim().isEmpty()) {
-                    if (!styleClass.contains("invalidate-field")) {
-                        styleClass.add("invalidate-field");
+                    if (!nickNameTF1.getStyleClass().contains("invalidate-field")) {
+                        nickNameTF1.getStyleClass().add("invalidate-field");
                     }
                 } else {
-                    styleClass.removeAll(Collections.singleton("invalidate-field"));
+                    nickNameTF1.getStyleClass().removeAll(Collections.singleton("invalidate-field"));
                 }
             }
         }));
         //check IDCard input
         idCardTF1.focusedProperty().addListener(((observable, oldValue, newValue) -> {
-            ObservableList<String> styleClass = idCardTF1.getStyleClass();
             if (!newValue) {
                 if (idCardTF1.getText() == null || idCardTF1.getText().trim().isEmpty() || !checkProfessionalID(idCardTF1.getText())) {
-                    if (!styleClass.contains("invalidate-field")) {
-                        styleClass.add("invalidate-field");
+                    if (!idCardTF1.getStyleClass().contains("invalidate-field")) {
+                        idCardTF1.getStyleClass().add("invalidate-field");
                         String t = idCardTF1.getText();
                     }
                 } else {
-                    styleClass.removeAll(Collections.singleton("invalidate-field"));
+                    idCardTF1.getStyleClass().removeAll(Collections.singleton("invalidate-field"));
                 }
             }
         }));
@@ -407,23 +405,95 @@ public class TenantFormController {
         phoneNumberTF1.focusedProperty().addListener(((observable, oldValue, newValue) -> {
             ObservableList<String> styleClass = phoneNumberTF1.getStyleClass();
             if (!newValue) {
-                if (phoneNumberTF1.getText() == null || phoneNumberTF1.getText().trim().isEmpty() || !validatePhoneNumber(phoneNumberTF1.getText())){
-                    System.out.println();
-                    if (!styleClass.contains("invalidate-field")) {
-                        styleClass.add("invalidate-field");
+                if (phoneNumberTF1.getText() == null || phoneNumberTF1.getText().trim().isEmpty() || !validatePhoneNumber(phoneNumberTF1.getText())) {
+                    if (!phoneNumberTF1.getStyleClass().contains("invalidate-field")) {
+                        phoneNumberTF1.getStyleClass().add("invalidate-field");
                     }
-                } else{
-                    styleClass.removeAll(Collections.singleton("invalidate-field"));
+                } else {
+                    phoneNumberTF1.getStyleClass().removeAll(Collections.singleton("invalidate-field"));
                 }
             }
         }));
 
+        //------------------------ Validation person2 ------------------------------------------
+        //check prefixName seleted
+        prefixNameCB2.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue && isSelected) {
+                if (prefixNameCB2.getSelectionModel().isEmpty()) {
+                    if (!prefixNameCB2.getStyleClass().contains("invalidate-comboBox")) {
+                        prefixNameCB2.getStyleClass().add("invalidate-comboBox");
+                    }
+                } else {
+                    prefixNameCB2.getStyleClass().removeAll(Collections.singleton("invalidate-comboBox"));
+                }
+            }
+        }));
+        //check firstName input
+        firstNameTF2.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue && isSelected) {
+                if (firstNameTF2.getText() == null || firstNameTF2.getText().trim().isEmpty()) {
+                    if (!firstNameTF2.getStyleClass().contains("invalidate-field")) {
+                        firstNameTF2.getStyleClass().add("invalidate-field");
+                    }
+                } else {
+                    firstNameTF2.getStyleClass().removeAll(Collections.singleton("invalidate-field"));
+                }
+            }
+        }));
+        //check lastName input
+        lastNameTF2.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue && isSelected) {
+                if (lastNameTF2.getText() == null || lastNameTF2.getText().trim().isEmpty()) {
+                    if (!lastNameTF2.getStyleClass().contains("invalidate-field")) {
+                        lastNameTF2.getStyleClass().add("invalidate-field");
+                    }
+                } else {
+                    lastNameTF2.getStyleClass().removeAll(Collections.singleton("invalidate-field"));
+                }
+            }
+        }));
+        //check nickName input
+        nickNameTF2.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue && isSelected) {
+                if (nickNameTF2.getText() == null || nickNameTF2.getText().trim().isEmpty()) {
+                    if (!nickNameTF2.getStyleClass().contains("invalidate-field")) {
+                        nickNameTF2.getStyleClass().add("invalidate-field");
+                    }
+                } else {
+                    nickNameTF2.getStyleClass().removeAll(Collections.singleton("invalidate-field"));
+                }
+            }
+        }));
+        //check IDCard input
+        idCardTF2.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue && isSelected) {
+                if (idCardTF2.getText() == null || idCardTF2.getText().trim().isEmpty() || !checkProfessionalID(idCardTF2.getText())) {
+                    if (!idCardTF2.getStyleClass().contains("invalidate-field")) {
+                        idCardTF2.getStyleClass().add("invalidate-field");
+                    }
+                } else {
+                    idCardTF2.getStyleClass().removeAll(Collections.singleton("invalidate-field"));
+                }
+            }
+        }));
+        //check phoneNumber input
+        phoneNumberTF2.focusedProperty().addListener(((observable, oldValue, newValue) -> {
+            if (!newValue && isSelected) {
+                if (phoneNumberTF2.getText() == null || phoneNumberTF2.getText().trim().isEmpty() || !validatePhoneNumber(phoneNumberTF2.getText())) {
+                    if (!phoneNumberTF2.getStyleClass().contains("invalidate-field")) {
+                        phoneNumberTF2.getStyleClass().add("invalidate-field");
+                    }
+                } else {
+                    phoneNumberTF2.getStyleClass().removeAll(Collections.singleton("invalidate-field"));
+                }
+            }
+        }));
     }
 
     private boolean validatePhoneNumber(String phoneNumber) {
         final Pattern phoneNumberPattern = Pattern.compile("^\\s*(?:\\+?(\\d{1,3}))?([-. (]*(\\d{3})[-. )]*)?((\\d{3})[-. ]*(\\d{2,4})(?:[-.x ]*(\\d+))?)\\s*$");
         final Matcher match = phoneNumberPattern.matcher(phoneNumber);
-        if(match.find() && match.group().equals(phoneNumber)) return true;
+        if (match.find() && match.group().equals(phoneNumber)) return true;
         return false;
     }
 
@@ -453,7 +523,7 @@ public class TenantFormController {
         contractPersonTF1.setText("");
         relationPersonTF1.setText("");
         addressTF1.setText("");
-        prefixNameCB1.getSelectionModel().select("");
+        prefixNameCB1.getSelectionModel().clearSelection();
 
         for (Node node : showPersonRole1.getChildren()) {
             if (node instanceof AnchorPane) {
@@ -491,52 +561,52 @@ public class TenantFormController {
     }
 
     private void setDatePickerFormat() {
-        String pattern = "วันที่ dd เดือน MM ค.ศ. yyyy";
-        birthDayDP1.setPromptText(pattern);
-        DateTimeFormatter dateFormatter1 = DateTimeFormatter.ofPattern(pattern);
-        birthDayDP1.setConverter(new StringConverter<LocalDate>() {
-            @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter1.format(date);
-                } else {
-                    return "";
-                }
-            }
+//        String pattern = "dd/MM/yyyy";
+        birthDayDP1.setPromptText("วัน เดือน ปี(ค.ศ.)");
+//        DateTimeFormatter dateFormatter1 = DateTimeFormatter.ofPattern(pattern);
+//        birthDayDP1.setConverter(new StringConverter<LocalDate>() {
+//            @Override
+//            public String toString(LocalDate date) {
+//                if (date != null) {
+//                    return dateFormatter1.format(date);
+//                } else {
+//                    return "";
+//                }
+//            }
+//
+//            @Override
+//            public LocalDate fromString(String string) {
+//                if (string != null && !string.isEmpty()) {
+//                    return LocalDate.parse(string, dateFormatter1);
+//                } else {
+//                    return null;
+//                }
+//            }
+//        });
 
-            @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter1);
-                } else {
-                    return null;
-                }
-            }
-        });
+        birthDayDP2.setPromptText("วัน เดือน ปี(ค.ศ.)");
+//        DateTimeFormatter dateFormatter2 = DateTimeFormatter.ofPattern(pattern);
+//        birthDayDP2.setConverter(new StringConverter<LocalDate>() {
+//            @Override
+//            public String toString(LocalDate date) {
+//                if (date != null) {
+//                    return dateFormatter2.format(date);
+//                } else {
+//                    return "";
+//                }
+//            }
+//
+//            @Override
+//            public LocalDate fromString(String string) {
+//                if (string != null && !string.isEmpty()) {
+//                    return LocalDate.parse(string, dateFormatter2);
+//                } else {
+//                    return null;
+//                }
+//            }
+//        });
 
-        birthDayDP2.setPromptText(pattern);
-        DateTimeFormatter dateFormatter2 = DateTimeFormatter.ofPattern(pattern);
-        birthDayDP2.setConverter(new StringConverter<LocalDate>() {
-            @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
-                    return dateFormatter2.format(date);
-                } else {
-                    return "";
-                }
-            }
-
-            @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
-                    return LocalDate.parse(string, dateFormatter2);
-                } else {
-                    return null;
-                }
-            }
-        });
-
-//        //-- get Date
+        //-- get Date
 //        birthDayDP1.setOnAction(event -> {
 //            System.out.println("Selected date: " + birthDayDP1.getValue().format(dateFormatter1));
 //        });
@@ -610,7 +680,8 @@ public class TenantFormController {
         contractPersonTF2.setText("");
         relationPersonTF2.setText("");
         addressTF2.setText("");
-        prefixNameCB2.getSelectionModel().select("");
+        prefixNameCB2.getSelectionModel().clearSelection();
+
         for (Node node : showPersonRole2.getChildren()) {
             if (node instanceof AnchorPane) {
                 if (node.getId().equals("studentInfo")) {

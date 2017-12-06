@@ -1,6 +1,7 @@
 package Application.SmartDorm;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -16,7 +17,6 @@ import java.io.IOException;
  */
 public class MainSmartDorm extends Application {
 
-    public static Node tenantManage;
     private static Stage stage;
 
     static public Stage getStage() {
@@ -35,7 +35,7 @@ public class MainSmartDorm extends Application {
     public void start(Stage primaryStage) throws Exception {
         setStage(primaryStage);
 
-        Parent root = FXMLLoader.load(getClass().getResource("UI/Manage/TenantManage.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UI/OwnerMain.fxml"));
 
         Scene scene = new Scene(root);
         stage.setTitle("Smart Dorm");
@@ -43,11 +43,4 @@ public class MainSmartDorm extends Application {
         stage.show();
     }
 
-    public void loadAnotherScene(){
-        try {
-            tenantManage = FXMLLoader.load(getClass().getResource("UI/Manage/TenantManage.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

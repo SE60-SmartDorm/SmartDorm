@@ -46,7 +46,7 @@
                                 <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                             </font>
                         </Text>
-                        <ComboBox fx:id="personRoleCB1" prefHeight="32.0" prefWidth="120.0">
+                        <ComboBox fx:id="personRoleCB1" prefHeight="32.0" prefWidth="120.0" promptText="เลือกประเภทบุคลากร">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
                                     <String fx:value="นักศึกษา" />
@@ -189,7 +189,7 @@
                                                         <Font name="ThaiSans Neue Black" size="22.0" />
                                                     </font>
                                                 </Text>
-                                                <TextField fx:id="phoneNumberTF1" prefHeight="32.0" promptText="ตัวอย่าง. 081-234-5678" />
+                                                <TextField fx:id="phoneNumberTF1" prefHeight="32.0" promptText="ตัวอย่าง. 0812345678" />
                                             </children>
                                  <HBox.margin>
                                     <Insets top="5.0" />
@@ -341,7 +341,7 @@
                                 <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                             </font>
                         </Text>
-                        <ComboBox fx:id="personRoleCB2" prefHeight="32.0" prefWidth="120.0">
+                        <ComboBox fx:id="personRoleCB2" prefHeight="32.0" prefWidth="120.0" promptText="เลือกประเภทบุคลากร">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
                                     <String fx:value="นักศึกษา" />
@@ -374,7 +374,7 @@
                                                 <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                             </font>
                                         </Text>
-                                        <ComboBox fx:id="prefixNameCB2" prefHeight="32.0" prefWidth="150.0">
+                                        <ComboBox fx:id="prefixNameCB2" prefHeight="32.0" prefWidth="150.0" promptText="เลือกคำนำหน้า">
                                             <items>
                                                 <FXCollections fx:factory="observableArrayList">
                                                     <String fx:value="นาย" />
@@ -439,7 +439,7 @@
                                                 <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                             </font>
                                         </Text>
-                                        <TextField fx:id="idCardTF2" prefHeight="32.0" />
+                                        <TextField fx:id="idCardTF2" prefHeight="32.0" promptText="เลขบัตรประชาชน 13 หลัก x-xxxx-xxxxx-xx-x" />
                                     </children>
                            <HBox.margin>
                               <Insets bottom="3.0" top="3.0" />
@@ -481,7 +481,7 @@
                                                         <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                                     </font>
                                                 </Text>
-                                                <TextField fx:id="phoneNumberTF2" prefHeight="32.0" />
+                                                <TextField fx:id="phoneNumberTF2" prefHeight="32.0" promptText="ตัวอย่าง. 0812345678" />
                                             </children>
                                  <HBox.margin>
                                     <Insets bottom="3.0" top="3.0" />
@@ -537,7 +537,7 @@
                                                 <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                             </font>
                                         </Text>
-                                        <TextField fx:id="contractPersonTF2" prefHeight="32.0" />
+                                        <TextField fx:id="contractPersonTF2" prefHeight="32.0" promptText="ชื่อ สกุล" />
                                     </children>
                            <HBox.margin>
                               <Insets bottom="3.0" top="2.0" />
@@ -557,7 +557,7 @@
                                                 <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                             </font>
                                         </Text>
-                                        <TextField fx:id="relationPersonTF2" prefHeight="32.0" />
+                                        <TextField fx:id="relationPersonTF2" prefHeight="32.0" promptText="เช่น บิดา มารดา" />
                                     </children>
                            <HBox.margin>
                               <Insets top="5.0" />
