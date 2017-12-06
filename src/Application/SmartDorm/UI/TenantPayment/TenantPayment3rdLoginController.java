@@ -1,9 +1,11 @@
 package Application.SmartDorm.UI.TenantPayment;
 
 import Application.SmartDorm.MainSmartDorm;
+import Application.SmartDorm.UI.TenantMainController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -24,8 +26,22 @@ public class TenantPayment3rdLoginController {
     @FXML
     private Label errorHint;
 
-    private String accountDB = "58011398";
-    private String passwordDB = "123456789";
+    private String accountDB = "";
+    private String passwordDB = "";
+    private String accountName = "Anucha Raseebut";
+    private static double accountCurrent = 1000000;
+
+    public static double getAccountCurrent() {
+        return accountCurrent;
+    }
+
+    public static void setAccountCurrent(double accountCurrent) {
+        TenantPayment3rdLoginController.accountCurrent = accountCurrent;
+    }
+
+    public String getAccountName() {
+        return accountName;
+    }
 
     Stage tenant_stage = MainSmartDorm.getStage();
 
@@ -34,11 +50,9 @@ public class TenantPayment3rdLoginController {
         errorHint.setVisible(false);
         if((accountDB.equals(accountNum.getText()))&&(passwordDB.equals(pass.getText()))) {
 
-                Parent home_tenant_payment = FXMLLoader.load(getClass().getResource("TenantPaymentPayConfirm.fxml"));
-                Scene tenant3rdConfirm_page = new Scene(home_tenant_payment);
+                Node home_tenant_payment = FXMLLoader.load(getClass().getResource("TenantPaymentPayConfirm.fxml"));
+                setNode(home_tenant_payment);
 
-                tenant_stage.setScene(tenant3rdConfirm_page);
-                tenant_stage.show();
         }
         else
             errorHint.setVisible(true);
@@ -46,11 +60,15 @@ public class TenantPayment3rdLoginController {
 
     @FXML
     private void back(ActionEvent event) throws IOException {
-        Parent home_tenant_payment = FXMLLoader.load(getClass().getResource("TenantPayment.fxml"));
-        Scene home_tenant_page = new Scene(home_tenant_payment);
+        Node home_tenant_payment = FXMLLoader.load(getClass().getResource("TenantPayment.fxml"));
+        setNode(home_tenant_payment);
 
-        tenant_stage.setScene(home_tenant_page);
-        tenant_stage.show();
+    }
+
+    private void setNode(Node node) {
+        TenantMainController.mainTenantChangePane.getChildren().clear();
+        TenantMainController.mainTenantChangePane.getChildren().add(node);
+
     }
 }
 

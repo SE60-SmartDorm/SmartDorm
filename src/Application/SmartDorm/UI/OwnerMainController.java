@@ -64,16 +64,17 @@ public class OwnerMainController {
         setNode(ownerNotificationView);
     }
 
+    Stage tenant_stage = MainSmartDorm.getStage();
+
     @FXML
     void loginView(ActionEvent event) {
-        Stage stage = new Stage();
-        logoutButton.getScene().getWindow().hide();
+        //logoutButton.getScene().getWindow().hide();
 
         try {
             Parent home_login = FXMLLoader.load(getClass().getResource("login.fxml"));
             Scene scene = new Scene(home_login);
-            stage.setScene(scene);
-            stage.show();
+            tenant_stage.setScene(scene);
+            tenant_stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();

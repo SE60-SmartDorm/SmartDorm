@@ -14,18 +14,23 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" stylesheets="@TenantPaymentCSS.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.TenantPayment.TenantPaymentController">
    <children>
+      <HBox alignment="BOTTOM_CENTER" layoutX="540.0" layoutY="698.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label id="errorChoose" fx:id="errorChoose" text="Please select the month you would like to pay !" textFill="RED" visible="false" />
+         </children>
+      </HBox>
       <AnchorPane layoutX="37.0" prefHeight="111.0" prefWidth="1243.0" stylesheets="@TenantPaymentCSS.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane layoutX="494.0" layoutY="86.0" prefHeight="70.0" prefWidth="331.0" AnchorPane.leftAnchor="494.0" AnchorPane.rightAnchor="455.0">
                <children>
-                  <HBox alignment="CENTER" layoutX="-78.0" prefHeight="53.0" prefWidth="488.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-120.0" AnchorPane.rightAnchor="-120.0" AnchorPane.topAnchor="0.0">
+                  <HBox alignment="CENTER" layoutX="-176.0" prefHeight="70.0" prefWidth="375.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-170.0" AnchorPane.rightAnchor="-170.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label fx:id="label1" alignment="CENTER" prefHeight="30.0" prefWidth="273.0" text="ค่าใช้จ่ายเดือน ">
+                        <Label fx:id="label1" alignment="CENTER" prefHeight="34.0" prefWidth="240.0" text="ค่าใช้จ่ายเดือน ">
                            <font>
                               <Font name="SukhumvitSet-Medium" size="20.0" />
                            </font>
                         </Label>
-                        <ComboBox prefHeight="53.0" prefWidth="274.0" />
+                        <ComboBox fx:id="listMonth" onAction="#chooseMonth" prefHeight="53.0" prefWidth="267.0" />
                      </children>
                   </HBox>
                </children>
@@ -35,7 +40,7 @@
                   <Font name="SukhumvitSet-Light" size="30.0" />
                </font>
             </Label>
-            <Separator layoutY="68.0" prefHeight="0.0" prefWidth="93.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Separator layoutY="68.0" prefHeight="0.0" prefWidth="93.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
       <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="220.0" layoutY="169.0" prefHeight="383.0" prefWidth="840.0" AnchorPane.bottomAnchor="168.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="169.0">
@@ -77,34 +82,10 @@
                   <Insets left="25.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <GridPane.margin>
-                  <Insets left="25.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets left="25.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <GridPane.margin>
-                  <Insets left="25.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <GridPane.margin>
-                  <Insets left="25.0" />
-               </GridPane.margin>
-            </Label>
-            <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <GridPane.margin>
-                  <Insets left="25.0" />
-               </GridPane.margin>
-            </Label>
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="100.0" GridPane.rowIndex="2">
                <children>
                   <Label text="ค่าน้ำ" />
+                  <Label fx:id="waterUnit" text="Label" />
                   <Label text="หน่วย" />
                </children>
                <GridPane.margin>
@@ -114,17 +95,43 @@
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="100.0" GridPane.rowIndex="3">
                <children>
                   <Label text="ค่าไฟ" />
+                  <Label fx:id="elecUnit" text="Label" />
                   <Label text="หน่วย" />
                </children>
                <GridPane.margin>
                   <Insets left="25.0" />
                </GridPane.margin>
             </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Label fx:id="roomRental" text="Label" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Label fx:id="waterPay" text="Label" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <Label fx:id="elecPay" text="Label" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <children>
+                  <Label fx:id="otherPay" text="Label" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <children>
+                  <Label fx:id="totalPay" text="Label" />
+               </children>
+            </HBox>
          </children>
       </GridPane>
-      <HBox alignment="CENTER" layoutX="540.0" layoutY="606.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0">
+      <HBox alignment="CENTER" layoutX="540.0" layoutY="606.0" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
-            <JFXButton fx:id="pay" onAction="#handleButtonAction" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #8e8984;" text="กดชำระ" textFill="WHITE">
+            <JFXButton fx:id="pay" onAction="#handleButtonAction" prefHeight="48.0" prefWidth="195.0" style="-fx-background-color: #8e8984;" text="กดชำระ" textFill="WHITE">
                <font>
                   <Font name="SukhumvitSet-Bold" size="20.0" />
                </font>

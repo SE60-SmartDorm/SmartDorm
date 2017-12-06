@@ -1,5 +1,6 @@
 package Application.SmartDorm.UI;
 
+import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.Manage.TenantManageController;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -19,7 +20,11 @@ public class TenantMainController {
     private AnchorPane ownerRoot;
 
     @FXML
-    private StackPane ownerChangePane;
+    private StackPane tenantChangePane;
+
+    public static StackPane mainTenantChangePane;
+
+    Stage tenant_stage = MainSmartDorm.getStage();
 
     @FXML
     JFXButton logoutButton;
@@ -41,6 +46,7 @@ public class TenantMainController {
      */
     @FXML
     public void initialize() {
+        mainTenantChangePane = tenantChangePane;
         loadOwnerMain();
         setNode(tenantDashboardView);
     }
@@ -63,14 +69,12 @@ public class TenantMainController {
 
     @FXML
     void loginView(ActionEvent event) {
-        Stage stage = new Stage();
-        logoutButton.getScene().getWindow().hide();
-
+        //logoutButton.getScene().getWindow().hide();
         try {
             Parent home_login = FXMLLoader.load(getClass().getResource("login.fxml"));
             Scene scene = new Scene(home_login);
-            stage.setScene(scene);
-            stage.show();
+            tenant_stage.setScene(scene);
+            tenant_stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -80,8 +84,8 @@ public class TenantMainController {
 
     //Set selected node to a content holder
     private void setNode(Node node) {
-        ownerChangePane.getChildren().clear();
-        ownerChangePane.getChildren().add(node);
+        tenantChangePane.getChildren().clear();
+        tenantChangePane.getChildren().add(node);
 
     }
 

@@ -15,7 +15,7 @@
                   <Font name="TH Sarabun New" size="60.0" />
                </font>
             </Text>
-            <Separator layoutY="90.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Separator layoutY="90.0" prefWidth="200.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
       <JFXButton fx:id="buttonRequest" layoutX="320.0" layoutY="222.0" onAction="#sendRequest" prefHeight="127.0" prefWidth="355.0" scaleShape="false" style="-fx-background-color: #FF8C00;" text="แจ้งคำร้อง" textFill="WHITE">
