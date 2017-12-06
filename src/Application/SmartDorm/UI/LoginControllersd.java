@@ -33,10 +33,10 @@ public class LoginControllersd {
     private ComboBox<String> status;
     ObservableList<String> list = FXCollections.observableArrayList("Owner","Tenant");
 
-    private String ownerUser = "anucha";
-    private String ownerPass = "123456789";
-    private String tenantUser = "pongdanai";
-    private String tenantPass = "987654321";
+    private String ownerUser = "";
+    private String ownerPass = "";
+    private String tenantUser = "";
+    private String tenantPass = "";
     private String type;
 
     Stage tenant_stage = MainSmartDorm.getStage();
@@ -53,7 +53,7 @@ public class LoginControllersd {
 
         if("Owner".equals(type)) {
             if ((ownerUser.equals(textID.getText())) && (ownerPass.equals(textPassword.getText()))) {
-                Parent home_tenant_payment = FXMLLoader.load(getClass().getResource("OwnerDashboard.fxml"));
+                Parent home_tenant_payment = FXMLLoader.load(getClass().getResource("OwnerMain.fxml"));
                 Scene tenant3rd_page = new Scene(home_tenant_payment);
 
                 tenant_stage.setScene(tenant3rd_page);
@@ -65,7 +65,7 @@ public class LoginControllersd {
         else if("Tenant".equals(type))
         {
             if ((tenantUser.equals(textID.getText())) && (tenantPass.equals(textPassword.getText()))) {
-                Parent home_tenant_payment = FXMLLoader.load(getClass().getResource("TenantDashboard.fxml"));
+                Parent home_tenant_payment = FXMLLoader.load(getClass().getResource("TenantMain.fxml"));
                 Scene tenant3rd_page = new Scene(home_tenant_payment);
 
                 tenant_stage.setScene(tenant3rd_page);

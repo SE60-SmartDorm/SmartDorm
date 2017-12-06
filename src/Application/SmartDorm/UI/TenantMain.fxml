@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="ownerRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.OwnerMainController">
+<AnchorPane fx:id="ownerRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.TenantMainController">
    <children>
       <VBox layoutX="14.0" layoutY="36.0" prefHeight="666.0" prefWidth="280.0" spacing="15.0" style="-fx-background-color: #2c323e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -22,8 +22,8 @@
             <VBox prefHeight="234.0" prefWidth="195.0">
                <children>
                   <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" onAction="#dashboardView" prefHeight="49.0" prefWidth="267.0" ripplerFill="#0400ff" text="DASHBOARD" textFill="WHITE" />
-                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" onAction="#tenantManageView" prefHeight="49.0" prefWidth="260.0" text="MANAGE" textFill="WHITE" />
-                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" onAction="#ownerNotificationView" prefHeight="49.0" prefWidth="260.0" text="OWNER NOTIFICATION" textFill="WHITE" />
+                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" onAction="#tenantManageView" prefHeight="49.0" prefWidth="260.0" text="PAYMENT" textFill="WHITE" />
+                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" onAction="#ownerNotificationView" prefHeight="49.0" prefWidth="260.0" text="SEND REQUEST" textFill="WHITE" />
                </children>
                <VBox.margin>
                   <Insets left="20.0" />

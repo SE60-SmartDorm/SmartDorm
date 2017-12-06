@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="768.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.OwnerNotification.OwnerNotification">
+<AnchorPane prefHeight="768.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="136.0" layoutY="-28.0" prefHeight="90.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -19,7 +18,7 @@
                   <Font name="TH Sarabun New" size="60.0" />
                </font>
             </Text>
-            <Separator layoutY="90.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <Separator layoutX="13.0" layoutY="91.0" prefHeight="3.0" prefWidth="987.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
       <JFXTreeTableView fx:id="peopleTableView" layoutX="36.0" layoutY="123.0" prefHeight="512.0" prefWidth="928.0" tableMenuButtonVisible="true">

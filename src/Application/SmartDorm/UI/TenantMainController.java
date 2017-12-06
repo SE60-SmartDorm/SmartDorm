@@ -1,9 +1,7 @@
 package Application.SmartDorm.UI;
 
-import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.Manage.TenantManageController;
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,11 +11,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 
-public class OwnerMainController {
+public class TenantMainController {
     @FXML
     private AnchorPane ownerRoot;
 
@@ -26,16 +23,15 @@ public class OwnerMainController {
 
     @FXML
     JFXButton logoutButton;
-
     // set pane
-    private Node tenantManageView,dashboardView,ownerNotificationView,loginView;
+    private Node tenantPaymentView,tenantDashboardView,tenantNotificationView,loginView;
 
     //define controller
     public static TenantManageController manageController;
     /**
      * The constructor (is called before the initialize()-method).
      */
-    public OwnerMainController() {
+    public TenantMainController() {
 
     }
 
@@ -46,23 +42,24 @@ public class OwnerMainController {
     @FXML
     public void initialize() {
         loadOwnerMain();
-        setNode(dashboardView);
+        setNode(tenantDashboardView);
     }
 
     @FXML
     private void tenantManageView(ActionEvent event) {
-            setNode(tenantManageView);
+            setNode(tenantPaymentView);
     }
 
     @FXML
     void dashboardView(ActionEvent event) {
-        setNode(dashboardView);
+        setNode(tenantDashboardView);
     }
 
     @FXML
     void ownerNotificationView(ActionEvent event) {
-        setNode(ownerNotificationView);
+        setNode(tenantNotificationView);
     }
+
 
     @FXML
     void loginView(ActionEvent event) {
@@ -89,15 +86,13 @@ public class OwnerMainController {
     }
 
     public void loadOwnerMain(){
-        FXMLLoader loaderTenantManage = new FXMLLoader(getClass().getResource("Manage/TenantManage.fxml"));
-        FXMLLoader loaderOwnerDashboard = new FXMLLoader(getClass().getResource("OwnerDashboard.fxml"));
-        FXMLLoader loaderOwnerNotification = new FXMLLoader(getClass().getResource("OwnerNotification/OwnerNotification.fxml"));
-
+        FXMLLoader loaderTenantPayment = new FXMLLoader(getClass().getResource("TenantPayment/TenantPayment.fxml"));
+        FXMLLoader loaderOwnerDashboard = new FXMLLoader(getClass().getResource("TenantDashboard.fxml"));
+        FXMLLoader loaderOwnerNotification = new FXMLLoader(getClass().getResource("Request/MainRequest.fxml"));
         try {
-            tenantManageView = loaderTenantManage.load();
-            dashboardView = loaderOwnerDashboard.load();
-            ownerNotificationView = loaderOwnerNotification.load();
-
+            tenantPaymentView = loaderTenantPayment.load();
+            tenantDashboardView = loaderOwnerDashboard.load();
+            tenantNotificationView = loaderOwnerNotification.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
