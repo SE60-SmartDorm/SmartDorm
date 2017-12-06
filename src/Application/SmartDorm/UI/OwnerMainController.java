@@ -102,6 +102,7 @@ public class OwnerMainController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        manageController = loaderTenantManage.getController();
     }
 
 

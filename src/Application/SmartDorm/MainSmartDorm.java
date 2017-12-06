@@ -7,11 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- * Main class to start the application.
- *
- * @author EIEI ZA
- */
 import java.io.IOException;
 
 /**
