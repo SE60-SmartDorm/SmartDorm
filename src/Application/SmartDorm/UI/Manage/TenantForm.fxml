@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane styleClass="root" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.Manage.TenantFormController">
+   <children>
+        <AnchorPane prefHeight="565.0" prefWidth="942.0">
+            <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="331.0" spacing="10.0">
+               <children>
+                  <FontAwesomeIconView fill="#3c3c3c" glyphName="DRIVERS_LICENSE_ALT" size="40" />
+                      <Text fill="#2e2f2f" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-title" text="ผู้อาศัยคนที่ 1">
+                          <font>
+                              <Font name="ThaiSansNeue-Regular" size="30.0" />
+                          </font>
+                      </Text>
+               </children>
+               <padding>
+                  <Insets left="33.0" />
+               </padding>
+            </HBox>
+                <VBox fx:id="showPersonRole1" layoutY="475.0" prefHeight="176.0" prefWidth="942.0" spacing="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ประเภทบุคลากร" wrappingWidth="131.2220001220703">
+                            <font>
+                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                            </font>
+                        </Text>
+                        <ComboBox fx:id="personRoleCB1" prefHeight="32.0" prefWidth="120.0" promptText="เลือกประเภทบุคลากร">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="นักศึกษา" />
+                                    <String fx:value="อาจารย์" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                    </children>
+                    <padding>
+                        <Insets left="30.0" />
+                    </padding>
+                </VBox>
+                <GridPane layoutX="23.0" layoutY="91.0" prefHeight="215.0" prefWidth="942.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="531.0" minWidth="10.0" prefWidth="531.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="531.0" minWidth="10.0" prefWidth="531.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <HBox spacing="35.0">
+                            <children>
+                                <VBox prefHeight="72.0" prefWidth="120.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="คำนำหน้า*">
+                                            <font>
+                                                <Font name="ThaiSans Neue Black" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <ComboBox fx:id="prefixNameCB1" prefHeight="32.0" prefWidth="150.0" promptText="เลือกคำนำหน้า">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="นาย" />
+                                                    <String fx:value="นาง" />
+                                                    <String fx:value="นางสาว" />
+                                                </FXCollections>
+                                            </items>
+                                        </ComboBox>
+                                    </children>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                                </VBox>
+                                <VBox prefHeight="108.0" prefWidth="266.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ชื่อจริง*">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="firstNameTF1" prefHeight="32.0" prefWidth="272.0" />
+                                    </children>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                        <HBox spacing="35.0" GridPane.columnIndex="1">
+                            <children>
+                                <VBox prefHeight="70.0" prefWidth="266.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="นามสกุล*" wrappingWidth="81.4160041809082">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="lastNameTF1" prefHeight="32.0" />
+                                    </children>
+                           <HBox.margin>
+                              <Insets bottom="3.0" />
+                           </HBox.margin>
+                                </VBox>
+                                <VBox prefHeight="70.0" prefWidth="111.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ชื่อเล่น*">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="nickNameTF1" prefHeight="32.0" prefWidth="105.0" />
+                                    </children>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                        <HBox spacing="35.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <children>
+                                <VBox prefHeight="69.0" prefWidth="411.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="หมายเลขบัตรประชาชน*" wrappingWidth="185.2220001220703">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="idCardTF1" prefHeight="32.0" promptText="เลขบัตรประชาชน 13 หลัก x-xxxx-xxxxx-xx-x" />
+                                    </children>
+                           <HBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </HBox.margin>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                        <HBox spacing="35.0" GridPane.rowIndex="1">
+                            <children>
+                                <VBox prefHeight="72.0" prefWidth="411.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="วันเกิด" wrappingWidth="50.22200012207031">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <JFXDatePicker fx:id="birthDayDP1" prefHeight="32.0" prefWidth="434.0" />
+                                    </children>
+                           <HBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </HBox.margin>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                        <HBox prefWidth="471.0" spacing="35.0" GridPane.rowIndex="2">
+                            <children>
+                                <HBox prefWidth="456.0" spacing="35.0">
+                                    <children>
+                                        <VBox prefHeight="69.0" prefWidth="411.0" spacing="1.0">
+                                            <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="เบอร์โทรศัพท์* " wrappingWidth="125.22200012207031">
+                                                    <font>
+                                                        <Font name="ThaiSans Neue Black" size="22.0" />
+                                                    </font>
+                                                </Text>
+                                                <TextField fx:id="phoneNumberTF1" prefHeight="32.0" promptText="ตัวอย่าง. 0812345678" />
+                                            </children>
+                                 <HBox.margin>
+                                    <Insets top="5.0" />
+                                 </HBox.margin>
+                                        </VBox>
+                                    </children>
+                                    <padding>
+                                        <Insets left="30.0" />
+                                    </padding>
+                                </HBox>
+                            </children>
+                        </HBox>
+                        <HBox spacing="35.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <children>
+                                <VBox prefHeight="69.0" prefWidth="411.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="E-Mail" wrappingWidth="152.2220001220703">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                 <VBox.margin>
+                                    <Insets top="2.0" />
+                                 </VBox.margin>
+                                        </Text>
+                                        <TextField fx:id="emailTF1" prefHeight="32.0" />
+                                    </children>
+                           <HBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </HBox.margin>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                    </children>
+                </GridPane>
+                <GridPane layoutY="313.0" prefHeight="139.0" prefWidth="471.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="471.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <HBox>
+                            <children>
+                                <VBox prefHeight="70.0" prefWidth="411.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="บุคคลที่สามารถติดต่อได้ในกรณีมีเหตุฉุกเฉิน" wrappingWidth="346.2220001220703">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="contractPersonTF1" prefHeight="32.0" promptText="ชื่อ สกุล" />
+                                    </children>
+                           <HBox.margin>
+                              <Insets bottom="3.0" top="2.0" />
+                           </HBox.margin>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                        <HBox GridPane.rowIndex="1">
+                            <children>
+                                <VBox prefHeight="69.0" prefWidth="411.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ความสัมพันธ์" wrappingWidth="126.22200012207031">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                        </Text>
+                                        <TextField fx:id="relationPersonTF1" prefHeight="32.0" promptText="เช่น บิดา มารดา" />
+                                    </children>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                    </children>
+                </GridPane>
+                <Separator layoutY="64.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                <HBox layoutX="471.0" layoutY="313.0" prefHeight="145.0" prefWidth="441.0" AnchorPane.leftAnchor="471.0" AnchorPane.rightAnchor="30.0">
+                    <children>
+                        <VBox prefHeight="130.0" prefWidth="411.0" spacing="1.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ที่อยู่ตามทะเบียนบ้าน" wrappingWidth="162.2220001220703">
+                                    <font>
+                                        <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                    </font>
+                                </Text>
+                                <TextArea fx:id="addressTF1" prefHeight="200.0" prefWidth="411.0" wrapText="true" />
+                            </children>
+                     <HBox.margin>
+                        <Insets top="2.0" />
+                     </HBox.margin>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets left="30.0" />
+                    </padding>
+                </HBox>
+                <JFXButton layoutX="831.0" layoutY="10.0" onAction="#clearFieldPerson1" prefHeight="41.0" prefWidth="81.0" styleClass="clear-button" text="ล้างข้อมูล" />
+            </children>
+        </AnchorPane>
+        <Separator layoutY="656.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <AnchorPane layoutY="664.0" prefHeight="565.0" prefWidth="942.0">
+            <children>
+            <HBox alignment="CENTER_LEFT" layoutY="-2.0" prefHeight="65.0" prefWidth="331.0" spacing="10.0">
+               <children>
+                  <FontAwesomeIconView fill="#3c3c3c" glyphName="DRIVERS_LICENSE_ALT" size="40" />
+                      <Text fill="#2e2f2f" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-title" text="ผู้อาศัยคนที่ 2">
+                          <font>
+                              <Font name="ThaiSansNeue-Regular" size="30.0" />
+                          </font>
+                     <HBox.margin>
+                        <Insets right="-10.0" />
+                     </HBox.margin>
+                      </Text>
+                      <JFXToggleButton fx:id="toggleBT" onAction="#toggleTenant" prefHeight="58.0" prefWidth="65.0" text=" ">
+                     <HBox.margin>
+                        <Insets right="-20.0" />
+                     </HBox.margin>
+                  </JFXToggleButton>
+                      <Label fx:id="toggleLB" text="OFF">
+                          <font>
+                              <Font name="System Bold" size="14.0" />
+                          </font>
+                      </Label>
+               </children>
+               <padding>
+                  <Insets left="33.0" />
+               </padding>
+            </HBox>
+                <VBox fx:id="showPersonRole2" layoutY="475.0" prefHeight="176.0" prefWidth="942.0" spacing="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ประเภทบุคลากร" wrappingWidth="132.2220001220703">
+                            <font>
+                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                            </font>
+                        </Text>
+                        <ComboBox fx:id="personRoleCB2" prefHeight="32.0" prefWidth="120.0" promptText="เลือกประเภทบุคลากร">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="นักศึกษา" />
+                                    <String fx:value="อาจารย์" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                    </children>
+                    <padding>
+                        <Insets left="30.0" />
+                    </padding>
+                </VBox>
+                <GridPane layoutX="23.0" layoutY="91.0" prefHeight="215.0" prefWidth="942.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="531.0" minWidth="10.0" prefWidth="531.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="531.0" minWidth="10.0" prefWidth="531.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <HBox spacing="35.0">
+                            <children>
+                                <VBox prefHeight="70.0" prefWidth="120.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="คำนำหน้า*">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <ComboBox fx:id="prefixNameCB2" prefHeight="32.0" prefWidth="150.0" promptText="เลือกคำนำหน้า">
+                                            <items>
+                                                <FXCollections fx:factory="observableArrayList">
+                                                    <String fx:value="นาย" />
+                                                    <String fx:value="นาง" />
+                                                    <String fx:value="นางสาว" />
+                                                </FXCollections>
+                                            </items>
+                                        </ComboBox>
+                                    </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                                </VBox>
+                                <VBox prefHeight="108.0" prefWidth="266.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ชื่อจริง*">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="firstNameTF2" prefHeight="32.0" prefWidth="272.0" />
+                                    </children>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                        <HBox spacing="35.0" GridPane.columnIndex="1">
+                            <children>
+                                <VBox prefHeight="70.0" prefWidth="266.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="นามสกุล*" wrappingWidth="79.4160041809082">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="lastNameTF2" prefHeight="32.0" />
+                                    </children>
+                                </VBox>
+                                <VBox prefHeight="70.0" prefWidth="111.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ชื่อเล่น*">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="nickNameTF2" prefHeight="32.0" prefWidth="105.0" />
+                                    </children>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                        <HBox spacing="35.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <children>
+                                <VBox prefHeight="69.0" prefWidth="411.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="หมายเลขบัตรประชาชน*" wrappingWidth="191.2220001220703">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="idCardTF2" prefHeight="32.0" promptText="เลขบัตรประชาชน 13 หลัก x-xxxx-xxxxx-xx-x" />
+                                    </children>
+                           <HBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </HBox.margin>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                        <HBox spacing="35.0" GridPane.rowIndex="1">
+                            <children>
+                                <VBox prefHeight="72.0" prefWidth="411.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="วันเกิด" wrappingWidth="50.22200012207031">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <JFXDatePicker fx:id="birthDayDP2" prefHeight="25.0" prefWidth="550.0" />
+                                    </children>
+                           <HBox.margin>
+                              <Insets bottom="3.0" top="3.0" />
+                           </HBox.margin>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                        <HBox prefWidth="471.0" spacing="35.0" GridPane.rowIndex="2">
+                            <children>
+                                <HBox prefWidth="456.0" spacing="35.0">
+                                    <children>
+                                        <VBox prefHeight="69.0" prefWidth="411.0" spacing="1.0">
+                                            <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="เบอร์โทรศัพท์*" wrappingWidth="115.22200012207031">
+                                                    <font>
+                                                        <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                                    </font>
+                                                </Text>
+                                                <TextField fx:id="phoneNumberTF2" prefHeight="32.0" promptText="ตัวอย่าง. 0812345678" />
+                                            </children>
+                                 <HBox.margin>
+                                    <Insets bottom="3.0" top="3.0" />
+                                 </HBox.margin>
+                                        </VBox>
+                                    </children>
+                                    <padding>
+                                        <Insets left="30.0" />
+                                    </padding>
+                                </HBox>
+                            </children>
+                        </HBox>
+                        <HBox spacing="35.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <children>
+                                <VBox prefHeight="69.0" prefWidth="411.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="E-Mail" wrappingWidth="152.2220001220703">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                                        </Text>
+                                        <TextField fx:id="emailTF2" prefHeight="32.0" />
+                                    </children>
+                           <HBox.margin>
+                              <Insets top="3.0" />
+                           </HBox.margin>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                    </children>
+                </GridPane>
+                <GridPane layoutY="313.0" prefHeight="139.0" prefWidth="471.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="471.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <HBox>
+                            <children>
+                                <VBox prefHeight="70.0" prefWidth="411.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="บุคคลที่สามารถติดต่อได้ในกรณีมีเหตุฉุกเฉิน" wrappingWidth="342.2220001220703">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="contractPersonTF2" prefHeight="32.0" promptText="ชื่อ สกุล" />
+                                    </children>
+                           <HBox.margin>
+                              <Insets bottom="3.0" top="2.0" />
+                           </HBox.margin>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                        <HBox GridPane.rowIndex="1">
+                            <children>
+                                <VBox prefHeight="69.0" prefWidth="411.0" spacing="1.0">
+                                    <children>
+                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ความสัมพันธ์" wrappingWidth="112.22200012207031">
+                                            <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                            </font>
+                                        </Text>
+                                        <TextField fx:id="relationPersonTF2" prefHeight="32.0" promptText="เช่น บิดา มารดา" />
+                                    </children>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                                </VBox>
+                            </children>
+                            <padding>
+                                <Insets left="30.0" />
+                            </padding>
+                        </HBox>
+                    </children>
+                </GridPane>
+                <Separator layoutY="64.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                <HBox layoutX="471.0" layoutY="313.0" prefHeight="145.0" AnchorPane.leftAnchor="471.0" AnchorPane.rightAnchor="30.0">
+                    <children>
+                        <VBox prefHeight="130.0" prefWidth="411.0" spacing="1.0">
+                            <children>
+                                <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ที่อยู่ตามทะเบียนบ้าน" wrappingWidth="158.2220001220703">
+                                    <font>
+                                        <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                    </font>
+                                </Text>
+                                <TextArea fx:id="addressTF2" prefHeight="200.0" prefWidth="411.0" wrapText="true" />
+                            </children>
+                     <HBox.margin>
+                        <Insets bottom="3.0" top="3.0" />
+                     </HBox.margin>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets left="30.0" />
+                    </padding>
+                </HBox>
+                <JFXButton fx:id="clearFieldPerson2BT" layoutX="831.0" layoutY="10.0" onAction="#clearFieldPerson2" prefHeight="41.0" prefWidth="81.0" styleClass="clear-button" text="ล้างข้อมูล" />
+            </children>
+        </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@baseManage.css" />
+      <URL value="@fontstyle.css" />
+   </stylesheets>
+</AnchorPane>

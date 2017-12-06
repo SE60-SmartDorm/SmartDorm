@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="teacherInfo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="908.0" styleClass="root" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.Manage.TenantTeacherInfoController">
+   <children>
+      <GridPane alignment="CENTER_LEFT" layoutY="14.0" prefHeight="77.0" prefWidth="942.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="531.0" minWidth="10.0" prefWidth="531.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="531.0" minWidth="10.0" prefWidth="531.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+         <children>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <VBox prefHeight="77.0" prefWidth="411.0" spacing="1.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="สถานที่ทำการสอน">
+                           <font>
+                              <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="teacherEduTF" prefHeight="30.0" prefWidth="272.0" />
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets left="1.0" />
+               </padding>
+            </HBox>
+            <HBox spacing="35.0" GridPane.columnIndex="1">
+               <children>
+                  <VBox prefHeight="70.0" prefWidth="266.0" spacing="1.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="สอนประจำคณะ" wrappingWidth="131.4160041809082">
+                           <font>
+                              <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="teacherFacultyTF" prefHeight="30.0" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="70.0" prefWidth="111.0" spacing="1.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ตำแหน่ง">
+                           <font>
+                              <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="teacherPositionTF" prefHeight="30.0" prefWidth="105.0" />
+                     </children>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets left="13.0" />
+               </padding>
+            </HBox>
+         </children>
+      </GridPane>
+   </children>
+   <stylesheets>
+      <URL value="@baseManage.css" />
+      <URL value="@fontstyle.css" />
+   </stylesheets>
+</AnchorPane>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" stylesheets="@TenantPaymentCSS.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.TenantPayment.TenantPayment3rdLoginController">
+   <children>
+      <HBox alignment="CENTER" layoutY="149.0" prefHeight="491.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <AnchorPane style="-fx-border-width: 2; -fx-border-color: #000000;">
+               <children>
+                  <VBox layoutX="4.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="-2.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="481.0">
+                           <children>
+                              <VBox prefHeight="100.0" prefWidth="361.0">
+                                 <children>
+                                    <Label text="Account Number" />
+                                    <TextField fx:id="accountNum">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="SukhumvitSet-Bold" size="20.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="106.0" prefWidth="543.0">
+                           <children>
+                              <VBox prefHeight="112.0" prefWidth="370.0">
+                                 <children>
+                                    <Label text="Password" />
+                                    <PasswordField fx:id="pass">
+                                       <VBox.margin>
+                                          <Insets top="20.0" />
+                                       </VBox.margin>
+                                    </PasswordField>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" spacing="75.0">
+                           <children>
+                              <JFXButton fx:id="back" onAction="#back" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #8e8984;" text="BACK" textFill="WHITE">
+                                 <font>
+                                    <Font name="SukhumvitSet-Bold" size="20.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="login" onAction="#loginAction" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #8e8984;" text="LOGIN" textFill="WHITE">
+                                 <font>
+                                    <Font name="SukhumvitSet-Bold" size="20.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                        <VBox alignment="BOTTOM_CENTER" prefHeight="37.0" prefWidth="543.0">
+                           <children>
+                              <Label id="errorHint" fx:id="errorHint" text="Sorry, someting went wrong please check your account number or password!" textFill="RED" visible="false" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <AnchorPane layoutX="47.0" layoutY="10.0" prefHeight="111.0" prefWidth="1243.0" stylesheets="@TenantPaymentCSS.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label fx:id="label0" layoutX="14.0" layoutY="14.0" prefHeight="21.0" prefWidth="307.0" text="Bank Login" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font name="SukhumvitSet-Light" size="30.0" />
+               </font>
+            </Label>
+            <Separator layoutY="68.0" prefHeight="0.0" prefWidth="93.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
