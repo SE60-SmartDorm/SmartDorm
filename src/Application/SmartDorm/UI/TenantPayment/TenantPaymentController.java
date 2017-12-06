@@ -25,11 +25,12 @@ import static java.time.temporal.ChronoUnit.DAYS;
 public class TenantPaymentController {
 
     @FXML
-    private ComboBox<String> listMonth;
+    public ComboBox<String> listMonth;
     ObservableList<String> list = FXCollections.observableArrayList("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
     @FXML
-    private Label waterUnit;
+    public  Label waterUnit;
+
     @FXML
     private Label elecUnit;
     @FXML
@@ -457,7 +458,7 @@ public class TenantPaymentController {
                     pay.setDisable(true);
                 }
             }
-            else {
+            else if(listMonth.getSelectionModel().getSelectedItem()==null){
                 setBillDetail(0,0,0,0,0,0,0);
                 pay.setDisable(true);
                 pay.setText(noPay);
@@ -467,11 +468,11 @@ public class TenantPaymentController {
     }
 
     public void initialize() {
+        listMonth.setItems(list);
         System.out.println(Integer.parseInt(day.format(dateobj)));
         System.out.println(month.format(dateobj));
         System.out.println(year.format(dateobj));
         total = room + wPay + ePay + oPay;
-        listMonth.setItems(list);
         waterUnit.setText(String.valueOf(wUnit));
         elecUnit.setText(String.valueOf(eUnit));
         roomRental.setText(String.valueOf(room));
@@ -480,6 +481,7 @@ public class TenantPaymentController {
         otherPay.setText(String.valueOf(oPay));
         totalPay.setText(String.valueOf(total));
     }
+
 
     public void setBillDetail(double wUnit,double eUnit,double room,double wPay,double ePay,double oPay,double total)
     {

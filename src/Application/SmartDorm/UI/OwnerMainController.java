@@ -68,8 +68,6 @@ public class OwnerMainController {
 
     @FXML
     void loginView(ActionEvent event) {
-        //logoutButton.getScene().getWindow().hide();
-
         try {
             Parent home_login = FXMLLoader.load(getClass().getResource("login.fxml"));
             Scene scene = new Scene(home_login);
