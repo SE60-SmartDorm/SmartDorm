@@ -34,7 +34,7 @@ public class MessageModel {
         em.getTransaction().begin();
         Query query = em.createQuery(
                 "UPDATE Message m SET read = :status " +
-                        "WHERE r.id = :id");
+                        "WHERE m.id = :id");
         query.setParameter("status", stat);
         query.setParameter("id", mid);
         query.executeUpdate();
@@ -44,7 +44,7 @@ public class MessageModel {
 
     public static long countMessage() {
         EntityManager em = emf.createEntityManager();
-        Query q1 = em.createQuery("SELECT COUNT(p) FROM Entity.Message p");
+        Query q1 = em.createQuery("SELECT COUNT(m) FROM Entity.Message m");
         long count = Long.parseLong(q1.getSingleResult().toString());
         em.close();
         return count;
@@ -52,7 +52,7 @@ public class MessageModel {
 
     public static List<Message> getAllMessages() {
         EntityManager em = emf.createEntityManager();
-        Query q1 = em.createQuery("SELECT r FROM Message r");
+        Query q1 = em.createQuery("SELECT m FROM Message m");
         List<Message> result = q1.getResultList();
         em.close();
         return result;
@@ -60,7 +60,7 @@ public class MessageModel {
 
     public static Message getMessageById(long mid) {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Message> query = em.createQuery("SELECT r FROM Message r WHERE r.id = :id", Message.class);
+        TypedQuery<Message> query = em.createQuery("SELECT m FROM Message m WHERE m.id = :id", Message.class);
         query.setParameter("id", mid);
         List<Message> result = query.getResultList();
         em.close();
@@ -69,7 +69,7 @@ public class MessageModel {
 
     public static List<Message> getMessageByOwnerId(long oid) {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Message> query = em.createQuery("SELECT r FROM Message r WHERE r.owner_id = :id", Message.class);
+        TypedQuery<Message> query = em.createQuery("SELECT m FROM Message m WHERE m.owner_id = :id", Message.class);
         query.setParameter("id", oid);
         List<Message> result = query.getResultList();
         em.close();

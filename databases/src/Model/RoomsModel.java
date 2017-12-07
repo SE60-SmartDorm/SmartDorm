@@ -22,7 +22,7 @@ public class RoomsModel {
 
     public static long countRooms() {
         EntityManager em = emf.createEntityManager();
-        Query q1 = em.createQuery("SELECT COUNT(p) FROM Entity.Room p");
+        Query q1 = em.createQuery("SELECT COUNT(r) FROM Entity.Room r");
         long count = Long.parseLong(q1.getSingleResult().toString());
         em.close();
         return count;
