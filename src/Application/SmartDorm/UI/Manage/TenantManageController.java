@@ -40,7 +40,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TenantManageController {
-    private static ObservableList<TenantTable> tenantTableData = FXCollections.observableArrayList();
+    private ObservableList<TenantTable> tenantTableData = FXCollections.observableArrayList();
+
     private final Comparator<TenantTable> ROOM_COMPARATOR = (TenantTable o1, TenantTable o2) -> o1.roomProperty().get().compareTo(o2.roomProperty().get());
     private final ObjectProperty<Comparator<? super TenantTable>> ROOM_COMPARATOR_WRAPPER = new SimpleObjectProperty<>(ROOM_COMPARATOR);
     //component
@@ -75,7 +76,6 @@ public class TenantManageController {
     //init xy offsets
     private double xOffset = 0;
     private double yOffset = 0;
-    private boolean loadData = false;
 
     /**
      * The constructor (is called before the initialize()-method).
@@ -99,15 +99,13 @@ public class TenantManageController {
      */
     @FXML
     public void initialize() {
-        if (!loadData) {
-            tenantTableData.add(new TenantTable("101","ว่าง","","","",""));
-            tenantTableData.add(new TenantTable("102","ว่าง","","","",""));
-            tenantTableData.add(new TenantTable("103","ว่าง","","","",""));
-            tenantTableData.add(new TenantTable("201","ว่าง","","","",""));
-            tenantTableData.add(new TenantTable("202","ว่าง","","","",""));
-            tenantTableData.add(new TenantTable("203","ว่าง","","","",""));
-            loadData = true;
-        }
+        tenantTableData.clear();
+        tenantTableData.add(new TenantTable("101", "ว่าง", "", "", "", ""));
+        tenantTableData.add(new TenantTable("102", "ว่าง", "", "", "", ""));
+        tenantTableData.add(new TenantTable("103", "ว่าง", "", "", "", ""));
+        tenantTableData.add(new TenantTable("201", "ว่าง", "", "", "", ""));
+        tenantTableData.add(new TenantTable("202", "ว่าง", "", "", "", ""));
+        tenantTableData.add(new TenantTable("203", "ว่าง", "", "", "", ""));
 
         //Load person detail to treeTable
         LoadDataFormTenantTable();
@@ -115,16 +113,13 @@ public class TenantManageController {
         //Search data in treeTable
         SearchTenantDataInTable();
 
-//        for (TenantTable tmp : sortedData) {
-//            System.out.println(tmp.getRoom());
-//        }
-
         //Selection room
         tenantSetButtonDisable();
         tenantTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             tenantSetButtonEnable();
         });
     }
+
     private void LoadDataFormTenantTable() {
         tenantRoomCol.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TenantTable, String>, ObservableValue<String>>() {
             @Override
@@ -217,8 +212,8 @@ public class TenantManageController {
 
         if (selectionIndex >= 0) {
             TreeItem<TenantTable> treeItemTenant = tenantTableView.getSelectionModel().getSelectedItem();
-            TenantTable n = new TenantTable(treeItemTenant.getValue().getRoom(),"ว่าง","","","","");
-            //treeItemTenant.setValue(n);
+            TenantTable n = new TenantTable(treeItemTenant.getValue().getRoom(), "ว่าง", "", "", "", "");
+            treeItemTenant.setValue(n);
             tenantTableView.getSelectionModel().clearSelection();
         } else {
             //TODO Show ERROR
