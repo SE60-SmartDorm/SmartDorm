@@ -159,6 +159,17 @@
     -fx-font-size: 20;
 }
 
+.login-button{
+    -fx-border-color: white;
+    -fx-text-fill: white;
+    -fx-border-width: 2;
+}
+
+.login-button:hover{
+    -fx-background-color: white;
+    -fx-text-fill: #303030;
+}
+
 /*******************************************************************************
  *                                                                             *
  * Radio button         	                                                   *
