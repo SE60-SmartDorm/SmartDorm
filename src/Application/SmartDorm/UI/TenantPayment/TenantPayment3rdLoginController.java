@@ -6,8 +6,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -29,21 +27,10 @@ public class TenantPayment3rdLoginController {
     private String accountDB = "";
     private String passwordDB = "";
     private String accountName = "Anucha Raseebut";
-    private static double accountCurrent = 1000000;
-
-    public static double getAccountCurrent() {
-        return accountCurrent;
-    }
-
-    public static void setAccountCurrent(double accountCurrent) {
-        TenantPayment3rdLoginController.accountCurrent = accountCurrent;
-    }
 
     public String getAccountName() {
         return accountName;
     }
-
-    Stage tenant_stage = MainSmartDorm.getStage();
 
     @FXML
     private void loginAction(ActionEvent event) throws IOException {

@@ -25,11 +25,12 @@ import static java.time.temporal.ChronoUnit.DAYS;
 public class TenantPaymentController {
 
     @FXML
-    private ComboBox<String> listMonth;
+    public ComboBox<String> listMonth;
     ObservableList<String> list = FXCollections.observableArrayList("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 
     @FXML
-    private Label waterUnit;
+    public  Label waterUnit;
+
     @FXML
     private Label elecUnit;
     @FXML
@@ -92,6 +93,7 @@ public class TenantPaymentController {
         currentMonth = Integer.parseInt(month.format(dateobj));
         currentYear = Integer.parseInt(year.format(dateobj));
         errorChoose.setVisible(false);
+
         if (("January".equals(listMonth.getValue().toString()))) {
             dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
             dateBefore = LocalDate.of(2560,1,05);
@@ -463,23 +465,31 @@ public class TenantPaymentController {
                 pay.setText(noPay);
                 System.out.println("ยังไม่มียอดค้างชำระ");
             }
-        }
+            }
+        /*else if(listMonth.getSelectionModel().getSelectedItem()==null){
+            setBillDetail(0,0,0,0,0,0,0);
+            pay.setDisable(true);
+            pay.setText(noPay);
+            System.out.println("ยังไม่มียอดค้างชำระ");
+        }*/
     }
 
+    @FXML
     public void initialize() {
-        System.out.println(Integer.parseInt(day.format(dateobj)));
-        System.out.println(month.format(dateobj));
-        System.out.println(year.format(dateobj));
-        total = room + wPay + ePay + oPay;
-        listMonth.setItems(list);
-        waterUnit.setText(String.valueOf(wUnit));
-        elecUnit.setText(String.valueOf(eUnit));
-        roomRental.setText(String.valueOf(room));
-        waterPay.setText(String.valueOf(wPay));
-        elecPay.setText(String.valueOf(ePay));
-        otherPay.setText(String.valueOf(oPay));
-        totalPay.setText(String.valueOf(total));
+            listMonth.setItems(list);
+            System.out.println(Integer.parseInt(day.format(dateobj)));
+            System.out.println(month.format(dateobj));
+            System.out.println(year.format(dateobj));
+            total = room + wPay + ePay + oPay;
+            waterUnit.setText(String.valueOf(wUnit));
+            elecUnit.setText(String.valueOf(eUnit));
+            roomRental.setText(String.valueOf(room));
+            waterPay.setText(String.valueOf(wPay));
+            elecPay.setText(String.valueOf(ePay));
+            otherPay.setText(String.valueOf(oPay));
+            totalPay.setText(String.valueOf(total));
     }
+
 
     public void setBillDetail(double wUnit,double eUnit,double room,double wPay,double ePay,double oPay,double total)
     {
