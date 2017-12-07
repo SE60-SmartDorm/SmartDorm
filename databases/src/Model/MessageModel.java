@@ -67,4 +67,13 @@ public class MessageModel {
         return result.get(0);
     }
 
+    public static List<Message> getMessageByOwnerId(long oid) {
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Message> query = em.createQuery("SELECT r FROM Message r WHERE r.owner_id = :id", Message.class);
+        query.setParameter("id", oid);
+        List<Message> result = query.getResultList();
+        em.close();
+        return result;
+    }
+
 }

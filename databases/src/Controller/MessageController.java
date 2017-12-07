@@ -39,4 +39,11 @@ public class MessageController {
         MessageModel.updateReadById(mid, true);
         MessageModel.close();
     }
+
+    public static List<Message> getByOwnerId(long oid) {
+        MessageModel.connect();
+        List<Message> m = MessageModel.getMessageByOwnerId(oid);
+        MessageModel.close();
+        return m;
+    }
 }
