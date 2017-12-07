@@ -12,7 +12,7 @@ public class RentalModel {
     public static void connect() {
         Map<String, String> properties = Config.properties;
         emf = Persistence.createEntityManagerFactory(
-                Config.serverURI + "Messages.odb", properties);
+                Config.serverURI + "Rental.odb", properties);
     }
 
     public static void close() {
