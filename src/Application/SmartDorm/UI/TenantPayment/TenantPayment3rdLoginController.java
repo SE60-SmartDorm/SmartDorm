@@ -27,15 +27,6 @@ public class TenantPayment3rdLoginController {
     private String accountDB = "";
     private String passwordDB = "";
     private String accountName = "Anucha Raseebut";
-    private static double accountCurrent = 1000000;
-
-    public static double getAccountCurrent() {
-        return accountCurrent;
-    }
-
-    public static void setAccountCurrent(double accountCurrent) {
-        TenantPayment3rdLoginController.accountCurrent = accountCurrent;
-    }
 
     public String getAccountName() {
         return accountName;
