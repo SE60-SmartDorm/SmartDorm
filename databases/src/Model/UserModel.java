@@ -12,7 +12,7 @@ public class UserModel {
     public static void connect() {
         Map<String, String> properties = Config.properties;
         emf = Persistence.createEntityManagerFactory(
-                Config.serverURI + "Tenant s.odb", properties);
+                Config.serverURI + "User.odb", properties);
     }
 
     public static void close() {
