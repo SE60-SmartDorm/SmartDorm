@@ -77,6 +77,9 @@ public class TenantFormController {
 
     @FXML
     private TextField roleGradeTF1;
+
+    @FXML
+    private TextField relationPhoneTF1;
     //--- people 2 ---
     @FXML
     private VBox showPersonRole2;
@@ -130,6 +133,9 @@ public class TenantFormController {
 
     @FXML
     private TextField roleGradeTF2;
+
+    @FXML
+    private TextField relationPhoneTF2;
 
     private AnchorPane personRolePane1, personRolePane2;
 
@@ -272,14 +278,6 @@ public class TenantFormController {
         // Init ComboBox items.
         personRoleCB1.getSelectionModel().selectFirst();
         personRoleCB2.getSelectionModel().selectFirst();
-//
-//        //  Init student form
-//        loadPersonPane2("TenantStudentInfo.fxml");
-//        showPersonRole2.getChildren().add(personRolePane2);
-//
-//        //  Init student form
-//        loadPersonPane1("TenantStudentInfo.fxml");
-//        showPersonRole1.getChildren().add(personRolePane1);
 
         // ComboBox selection event change pane form
         personRoleCB1.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
@@ -525,6 +523,7 @@ public class TenantFormController {
         relationPersonTF1.setText("");
         addressTF1.setText("");
         prefixNameCB1.getSelectionModel().clearSelection();
+        relationPhoneTF1.setText("");
 
         clearRole1();
 
@@ -564,6 +563,7 @@ public class TenantFormController {
         phoneNumberTF2.setDisable(true);
         idCardTF2.setDisable(true);
         clearFieldPerson2BT.setDisable(true);
+        relationPhoneTF2.setDisable(true);
 
         roleEduTF2.setDisable(true);
         roleFacultyTF2.setDisable(true);
@@ -584,6 +584,7 @@ public class TenantFormController {
         phoneNumberTF2.setDisable(false);
         idCardTF2.setDisable(false);
         clearFieldPerson2BT.setDisable(false);
+        relationPhoneTF2.setDisable(false);
 
         roleEduTF2.setDisable(false);
         roleFacultyTF2.setDisable(false);
@@ -602,6 +603,7 @@ public class TenantFormController {
         contractPersonTF2.setText("");
         relationPersonTF2.setText("");
         addressTF2.setText("");
+        relationPhoneTF2.setText("");
         prefixNameCB2.getSelectionModel().clearSelection();
 
         clearRole2();
