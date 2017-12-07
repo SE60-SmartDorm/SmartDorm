@@ -34,6 +34,11 @@
     -fx-font-size: 20;
 }
 
+#overdayHint{
+    -fx-font-family: 'Sukhumvit Set';
+    -fx-font-size: 14;
+}
+
 
 
 

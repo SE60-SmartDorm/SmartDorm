@@ -138,5 +138,6 @@
             </JFXButton>
          </children>
       </HBox>
+      <Label id="overdayHint" layoutX="99.0" layoutY="609.0" text="*หมายเหตุ ควรชำระค่าใช้จ่ายไม่เกินวันที่ 5 ของทุกๆเดือน มิฉะนั้นจะถูกปรับวันละ 20 บาท" />
    </children>
 </AnchorPane>
