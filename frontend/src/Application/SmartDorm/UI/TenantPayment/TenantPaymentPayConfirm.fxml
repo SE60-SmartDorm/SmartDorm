@@ -10,26 +10,26 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" stylesheets="@TenantPaymentCSS.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.TenantPayment.TenantPaymentPayConfirmController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" stylesheets="@../baseMain.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.TenantPayment.TenantPaymentPayConfirmController">
     <children>
         <AnchorPane layoutX="57.0" layoutY="20.0" prefHeight="111.0" prefWidth="1243.0" stylesheets="@TenantPaymentCSS.css" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label fx:id="label0" layoutX="14.0" layoutY="14.0" prefHeight="21.0" prefWidth="307.0" text="Bank Account" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+                <Label fx:id="label0" layoutX="19.0" layoutY="14.0" prefHeight="21.0" prefWidth="307.0" text="Bank Account" AnchorPane.leftAnchor="19.0" AnchorPane.topAnchor="14.0">
                     <font>
                         <Font name="SukhumvitSet-Light" size="30.0" />
                     </font>
                 </Label>
-                <Separator layoutY="68.0" prefHeight="0.0" prefWidth="93.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
+                <Separator layoutX="5.0" layoutY="71.0" prefHeight="0.0" prefWidth="93.0" AnchorPane.bottomAnchor="37.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
             </children>
         </AnchorPane>
         <HBox alignment="CENTER" layoutX="540.0" layoutY="588.0" prefHeight="100.0" prefWidth="200.0" spacing="200.0" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
             <children>
-                <JFXButton fx:id="cancel" onAction="#cancel" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #8e8984;" text="ยกเลิก" textFill="WHITE">
+                <JFXButton fx:id="cancel" onAction="#cancel" prefHeight="48.0" prefWidth="142.0" styleClass="cancel-button" text="ยกเลิก" textFill="WHITE">
                     <font>
                         <Font name="SukhumvitSet-Bold" size="20.0" />
                     </font>
                 </JFXButton>
-                <JFXButton fx:id="ok" onAction="#ok" prefHeight="48.0" prefWidth="142.0" style="-fx-background-color: #8e8984;" text="ตกลง" textFill="WHITE">
+                <JFXButton fx:id="ok" onAction="#ok" prefHeight="48.0" prefWidth="142.0" styleClass="submit-button" text="ตกลง" textFill="WHITE">
                     <font>
                         <Font name="SukhumvitSet-Bold" size="20.0" />
                     </font>
@@ -48,22 +48,22 @@
             <children>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                        <Label text="ชื่อบัญชี" />
+                        <Label styleClass="text-head" text="ชื่อบัญชี" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                        <Label fx:id="accountNameLB" text="Label" />
+                        <Label fx:id="accountNameLB" styleClass="text-head" text="Label" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                        <Label text="ยอดชำระ (บาท)" />
+                        <Label styleClass="text-head" text="ยอดชำระ (บาท)" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                        <Label fx:id="totalLB" text="Label" />
+                        <Label fx:id="totalLB" styleClass="text-head" text="Label" />
                </children>
             </HBox>
             </children>

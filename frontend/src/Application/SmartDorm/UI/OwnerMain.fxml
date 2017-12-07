@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,33 +12,61 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="ownerRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.OwnerMainController">
+<AnchorPane fx:id="ownerRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" styleClass="root" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.OwnerMainController">
    <children>
-      <VBox layoutX="14.0" layoutY="36.0" prefHeight="666.0" prefWidth="280.0" spacing="15.0" style="-fx-background-color: #2c323e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="5.0" layoutY="36.0" prefHeight="768.0" prefWidth="275.0" spacing="15.0" style="-fx-background-color: #2c323e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane prefHeight="84.0" prefWidth="280.0">
+            <VBox>
                <children>
-                  <Label layoutX="120.0" layoutY="34.0" text="ADMIN" textAlignment="CENTER" textFill="WHITE" />
+                  <Pane prefHeight="293.0" prefWidth="275.0">
+                     <children>
+                        <Label layoutX="103.0" layoutY="151.0" styleClass="text-head" text="ADMIN" textAlignment="CENTER" textFill="WHITE" />
+                        <StackPane layoutX="80.0" layoutY="32.0" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-background-radius: 55;">
+                           <children>
+                              <FontAwesomeIconView fill="#404040" glyphName="USER_CIRCLE_ALT" size="102" />
+                           </children>
+                        </StackPane>
+                     </children>
+                  </Pane>
                </children>
-            </Pane>
-            <Text fill="#8d8d8d" strokeType="OUTSIDE" strokeWidth="0.0" text="NAVIGSTION" />
-            <VBox prefHeight="234.0" prefWidth="195.0">
+            </VBox>
+            <Text fill="#8d8d8d" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-title" text="NAVIGATION">
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin></Text>
+            <VBox prefHeight="234.0" prefWidth="260.0">
                <children>
-                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" onAction="#dashboardView" prefHeight="49.0" prefWidth="267.0" ripplerFill="#0400ff" text="DASHBOARD" textFill="WHITE" />
-                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" onAction="#tenantManageView" prefHeight="49.0" prefWidth="260.0" text="MANAGE" textFill="WHITE" />
-                  <JFXButton alignment="BASELINE_LEFT" buttonType="RAISED" onAction="#ownerNotificationView" prefHeight="49.0" prefWidth="260.0" text="OWNER NOTIFICATION" textFill="WHITE" />
+                  <JFXButton fx:id="dashboardBT" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" onAction="#dashboardView" prefHeight="60.0" prefWidth="267.0" styleClass="navi-button" text="DASHBOARD" textFill="WHITE">
+                     <graphic>
+                        <MaterialDesignIconView fill="WHITE" glyphName="DEVELOPER_BOARD" size="24" />
+                     </graphic>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></JFXButton>
+                  <JFXButton fx:id="tenantManageBT" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" onAction="#tenantManageView" prefHeight="60.0" prefWidth="260.0" styleClass="navi-button" text="MANAGEMENT" textFill="WHITE">
+                     <graphic>
+                        <MaterialDesignIconView fill="WHITE" glyphName="ACCOUNT_SETTINGS_VARIANT" size="24" />
+                     </graphic></JFXButton>
+                  <JFXButton fx:id="ownerNotificationBT" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" onAction="#ownerNotificationView" prefHeight="60.0" prefWidth="260.0" styleClass="navi-button" text="NOTIFICATION" textFill="WHITE">
+                     <graphic>
+                        <MaterialDesignIconView fill="WHITE" glyphName="EMAIL_OUTLINE" size="24" />
+                     </graphic></JFXButton>
                </children>
                <VBox.margin>
-                  <Insets left="20.0" />
+                  <Insets left="30.0" />
                </VBox.margin>
             </VBox>
             <VBox alignment="BOTTOM_CENTER" prefHeight="390.0" prefWidth="280.0">
                <children>
-                  <JFXButton fx:id="logoutButton" alignment="CENTER" buttonType="RAISED" onAction="#loginView" prefHeight="55.0" prefWidth="228.0" text="LOGOUT" textFill="WHITE" />
+                  <JFXButton fx:id="logoutButton" alignment="CENTER" buttonType="RAISED" onAction="#loginView" prefHeight="55.0" prefWidth="285.0" ripplerFill="#f80606" styleClass="logout-button" text="LOGOUT" textFill="WHITE" />
                </children>
             </VBox>
          </children>
       </VBox>
       <StackPane fx:id="ownerChangePane" layoutX="277.0" prefHeight="768.0" prefWidth="1005.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
+   <stylesheets>
+      <URL value="@Manage/fontstyle.css" />
+      <URL value="@baseMain.css" />
+   </stylesheets>
 </AnchorPane>
