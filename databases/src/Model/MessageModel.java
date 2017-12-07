@@ -33,7 +33,7 @@ public class MessageModel {
         em.getEntityManagerFactory().getCache().evictAll();
         em.getTransaction().begin();
         Query query = em.createQuery(
-                "UPDATE Message m SET isRead = :status " +
+                "UPDATE Message m SET read = :status " +
                         "WHERE r.id = :id");
         query.setParameter("status", stat);
         query.setParameter("id", mid);

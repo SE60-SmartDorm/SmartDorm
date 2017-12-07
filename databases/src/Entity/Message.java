@@ -18,7 +18,7 @@ public class Message implements Serializable {
     private String topic;
     private String detail;
     private String timestamp;
-    private boolean isRead;
+    private boolean read;
 
     public Message(long owner_id, String type, String topic, String detail, String timestamp) {
         this.owner_id = owner_id;
@@ -26,7 +26,7 @@ public class Message implements Serializable {
         this.topic = topic;
         this.detail = detail;
         this.timestamp = timestamp;
-        this.isRead = false;
+        this.read = false;
     }
 
     public long getId() {
@@ -54,6 +54,6 @@ public class Message implements Serializable {
     }
 
     public boolean isRead() {
-        return isRead;
+        return read;
     }
 }
