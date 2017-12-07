@@ -4,7 +4,6 @@ import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.Manage.TenantManageController;
 import Application.SmartDorm.UI.OwnerNotification.OwnerNotificationController;
 import com.jfoenix.controls.JFXButton;
-import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,28 +13,30 @@ import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class OwnerMainController {
-    @FXML
-    private AnchorPane ownerRoot;
-
-    @FXML
-    private StackPane ownerChangePane;
-
     public static StackPane mainOwnerChangePane;
-
-    @FXML
-    JFXButton logoutButton;
-
-    // set pane
-    private Node tenantManageView,dashboardView,ownerNotificationView;
-
     //define controller
     public static TenantManageController manageController;
     public static OwnerNotificationController notiController;
+    @FXML
+    JFXButton logoutButton;
+    Stage tenant_stage = MainSmartDorm.getStage();
+    @FXML
+    private AnchorPane ownerRoot;
+    @FXML
+    private StackPane ownerChangePane;
+    @FXML
+    private JFXButton dashboardBT;
+    @FXML
+    private JFXButton tenantManageBT;
+    @FXML
+    private JFXButton ownerNotificationBT;
+    // set pane
+    private Node tenantManageView, dashboardView, ownerNotificationView;
+
     /**
      * The constructor (is called before the initialize()-method).
      */
@@ -57,7 +58,7 @@ public class OwnerMainController {
 
     @FXML
     private void tenantManageView(ActionEvent event) {
-            setNode(tenantManageView);
+        setNode(tenantManageView);
     }
 
     @FXML
@@ -70,8 +71,6 @@ public class OwnerMainController {
         notiController.hintSelect.setVisible(false);
         setNode(ownerNotificationView);
     }
-
-    Stage tenant_stage = MainSmartDorm.getStage();
 
     @FXML
     void loginView(ActionEvent event) {
@@ -94,7 +93,7 @@ public class OwnerMainController {
 
     }
 
-    public void loadOwnerMain(){
+    public void loadOwnerMain() {
         FXMLLoader loaderTenantManage = new FXMLLoader(getClass().getResource("Manage/TenantManage.fxml"));
         FXMLLoader loaderOwnerDashboard = new FXMLLoader(getClass().getResource("OwnerDashboard.fxml"));
         FXMLLoader loaderOwnerNotification = new FXMLLoader(getClass().getResource("OwnerNotification/OwnerNotification.fxml"));

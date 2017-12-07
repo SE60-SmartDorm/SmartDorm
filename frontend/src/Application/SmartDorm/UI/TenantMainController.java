@@ -57,6 +57,7 @@ public class TenantMainController {
 
     @FXML
     private void tenantManageView(ActionEvent event) {
+
         tenantPayVari.listMonth.getSelectionModel().clearSelection();
         tenantPayVari.setBillDetail(0,0,0,0,0,0,0);
         setNode(tenantPaymentView);
