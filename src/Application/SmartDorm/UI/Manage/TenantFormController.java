@@ -3,14 +3,11 @@ package Application.SmartDorm.UI.Manage;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXToggleButton;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -19,7 +16,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-import java.io.IOException;
 import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -80,7 +76,7 @@ public class TenantFormController {
     private Text roleGradeT1;
 
     @FXML
-    private TextField studentGradeTF1;
+    private TextField roleGradeTF1;
     //--- people 2 ---
     @FXML
     private VBox showPersonRole2;
@@ -293,10 +289,12 @@ public class TenantFormController {
                     roleEduT1.setText("สถาบันการศึกษา");
                     roleFacultyT1.setText("คณะ");
                     roleGradeT1.setText("ชั้นปี");
+                    clearRole1();
                 } else if ((Integer) newValue == 1) {
                     roleEduT1.setText("สถานที่ทำการสอน");
                     roleFacultyT1.setText("สอนประจำคณะ");
                     roleGradeT1.setText("ตำแหน่ง");
+                    clearRole1();
                 }
             }
         });
@@ -309,10 +307,12 @@ public class TenantFormController {
                     roleEduT2.setText("สถาบันการศึกษา");
                     roleFacultyT2.setText("คณะ");
                     roleGradeT2.setText("ชั้นปี");
+                    clearRole2();
                 } else if ((Integer) newValue == 1) {
                     roleEduT2.setText("สถานที่ทำการสอน");
                     roleFacultyT2.setText("สอนประจำคณะ");
                     roleGradeT2.setText("ตำแหน่ง");
+                    clearRole2();
                 }
             }
         });
@@ -329,43 +329,16 @@ public class TenantFormController {
     /**
      * load FXML file to parent pane
      */
-    private void loadPersonPane1(String FXMLFile) {
-
-        //ChildNode child;
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(FXMLFile));
-            personRolePane1 = loader.load();
-
-            if (FXMLFile.equals("TenantStudentInfo.fxml")) {
-                studentInfoController1 = loader.<TenantStudentInfoController>getController();
-            } else {
-                teacherInfoController1 = loader.<TenantTeacherInfoController>getController();
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void clearRole1() {
+        roleEduTF1.setText("");
+        roleFacultyTF1.setText("");
+        roleGradeTF1.setText("");
     }
 
-    private void loadPersonPane2(String FXMLFile) {
-
-        //ChildNode child;
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource(FXMLFile));
-            personRolePane2 = loader.load();
-
-            if (FXMLFile.equals("TenantStudentInfo.fxml")) {
-                studentInfoController2 = loader.<TenantStudentInfoController>getController();
-            } else {
-                teacherInfoController2 = loader.<TenantTeacherInfoController>getController();
-            }
-
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private void clearRole2() {
+        roleEduTF2.setText("");
+        roleFacultyTF2.setText("");
+        roleGradeTF2.setText("");
     }
 
     private void checkValidation() {
@@ -553,19 +526,8 @@ public class TenantFormController {
         addressTF1.setText("");
         prefixNameCB1.getSelectionModel().clearSelection();
 
-//        for (Node node : showPersonRole1.getChildren()) {
-//            if (node instanceof AnchorPane) {
-//                if (node.getId().equals("studentInfo")) {
-//                    studentInfoController1.getStudentFacultyTF().setText("");
-//                    studentInfoController1.getStudentGradeTF().setText("");
-//                    studentInfoController1.getStudentEduTF().setText("");
-//                } else {
-//                    teacherInfoController1.getTeacherFacultyTF().setText("");
-//                    teacherInfoController1.getTeacherPositionTF().setText("");
-//                    teacherInfoController1.getTeacherEduTF().setText("");
-//                }
-//            }
-//        }
+        clearRole1();
+
     }
 
     @FXML
@@ -603,15 +565,9 @@ public class TenantFormController {
         idCardTF2.setDisable(true);
         clearFieldPerson2BT.setDisable(true);
 
-//        if (personRoleCB2.getSelectionModel().getSelectedItem().equals("นักศึกษา")) {
-//            studentInfoController2.getStudentEduTF().setDisable(true);
-//            studentInfoController2.getStudentFacultyTF().setDisable(true);
-//            studentInfoController2.getStudentGradeTF().setDisable(true);
-//        } else {
-//            teacherInfoController2.getTeacherEduTF().setDisable(true);
-//            teacherInfoController2.getTeacherPositionTF().setDisable(true);
-//            teacherInfoController2.getTeacherFacultyTF().setDisable(true);
-//        }
+        roleEduTF2.setDisable(true);
+        roleFacultyTF2.setDisable(true);
+        roleGradeTF2.setDisable(true);
     }
 
     void setEnableField() {
@@ -629,15 +585,9 @@ public class TenantFormController {
         idCardTF2.setDisable(false);
         clearFieldPerson2BT.setDisable(false);
 
-//        if (personRoleCB2.getSelectionModel().getSelectedItem().equals("นักศึกษา")) {
-//            studentInfoController2.getStudentEduTF().setDisable(false);
-//            studentInfoController2.getStudentFacultyTF().setDisable(false);
-//            studentInfoController2.getStudentGradeTF().setDisable(false);
-//        } else {
-//            teacherInfoController2.getTeacherEduTF().setDisable(false);
-//            teacherInfoController2.getTeacherPositionTF().setDisable(false);
-//            teacherInfoController2.getTeacherFacultyTF().setDisable(false);
-//        }
+        roleEduTF2.setDisable(false);
+        roleFacultyTF2.setDisable(false);
+        roleGradeTF2.setDisable(false);
     }
 
     void clearDataPerson2() {
@@ -654,19 +604,7 @@ public class TenantFormController {
         addressTF2.setText("");
         prefixNameCB2.getSelectionModel().clearSelection();
 
-//        for (Node node : showPersonRole2.getChildren()) {
-//            if (node instanceof AnchorPane) {
-//                if (node.getId().equals("studentInfo")) {
-//                    studentInfoController2.getStudentFacultyTF().setText("");
-//                    studentInfoController2.getStudentGradeTF().setText("");
-//                    studentInfoController2.getStudentEduTF().setText("");
-//                } else {
-//                    teacherInfoController2.getTeacherFacultyTF().setText(null);
-//                    teacherInfoController2.getTeacherPositionTF().setText(null);
-//                    teacherInfoController2.getTeacherEduTF().setText(null);
-//                }
-//            }
-//        }
+        clearRole2();
     }
 
     public boolean checkBeforeSubmitForm() {

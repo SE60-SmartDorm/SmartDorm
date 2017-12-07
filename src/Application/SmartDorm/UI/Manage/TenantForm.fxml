@@ -104,7 +104,7 @@
                                                 <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                              </font>
                                           </Text>
-                                          <TextField fx:id="studentGradeTF1" prefHeight="30.0" prefWidth="105.0" />
+                                          <TextField fx:id="roleGradeTF1" prefHeight="30.0" prefWidth="105.0" />
                                        </children>
                                     </VBox>
                                  </children>
