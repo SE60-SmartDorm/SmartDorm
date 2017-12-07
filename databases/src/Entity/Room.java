@@ -16,14 +16,17 @@ public class Room implements Serializable {
     private int type;
     private boolean vacant;
     private long primary_tenant, secondary_tenant;
+    private String start_date, end_date;
 
 
-    public Room(long id, int type, boolean vacant, long primary_tenant, long secondary_tenant) {
+    public Room(long id, int type, boolean vacant, long primary_tenant, long secondary_tenant, String start_date, String end_date) {
         this.id = id;
         this.type = type;
         this.vacant = vacant;
         this.primary_tenant = primary_tenant;
         this.secondary_tenant = secondary_tenant;
+        this.start_date = start_date;
+        this.end_date = end_date;
     }
 
     public long getId() {
@@ -44,6 +47,14 @@ public class Room implements Serializable {
 
     public long getSecondary_tenant() {
         return secondary_tenant;
+    }
+
+    public String getStart_date() {
+        return start_date;
+    }
+
+    public String getEnd_date() {
+        return end_date;
     }
 
     @Override

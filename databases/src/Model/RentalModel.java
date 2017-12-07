@@ -19,7 +19,7 @@ public class RentalModel {
         emf.close();
     }
 
-    public static void createRentalRecord(long owner_id, int month, int year, float room_rent, float water, float electric, float other) {
+    public static void createRentalRecord(long owner_id, int month, int year, double room_rent, double water, double electric, double other) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Rental m = new Rental(owner_id, month, year, room_rent, water, electric, other);
@@ -61,7 +61,7 @@ public class RentalModel {
 
     public static List<Rental> getRentalByOwnerId(long oid) {
         EntityManager em = emf.createEntityManager();
-        TypedQuery<Rental> query = em.createQuery("SELECT r FROM Message r WHERE r.owner_id = :id", Rental.class);
+        TypedQuery<Rental> query = em.createQuery("SELECT r FROM Rental r WHERE r.owner_id = :id", Rental.class);
         query.setParameter("id", oid);
         List<Rental> result = query.getResultList();
         em.close();

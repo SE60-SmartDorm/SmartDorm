@@ -1,6 +1,9 @@
 package Application.SmartDorm.UI.Manage;
 
 import Application.SmartDorm.MainSmartDorm;
+import Controller.RoomController;
+import Controller.TenantController;
+import Entity.Room;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -35,6 +38,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -100,12 +104,16 @@ public class TenantManageController {
     @FXML
     public void initialize() {
         tenantTableData.clear();
-        tenantTableData.add(new TenantTable("101", "ว่าง", "", "", "", ""));
-        tenantTableData.add(new TenantTable("102", "ว่าง", "", "", "", ""));
-        tenantTableData.add(new TenantTable("103", "ว่าง", "", "", "", ""));
-        tenantTableData.add(new TenantTable("201", "ว่าง", "", "", "", ""));
-        tenantTableData.add(new TenantTable("202", "ว่าง", "", "", "", ""));
-        tenantTableData.add(new TenantTable("203", "ว่าง", "", "", "", ""));
+        List<Room> allRooms = RoomController.getAllRooms();
+
+        for (Room r : allRooms) {
+            String rm = "" + r.getId();
+            String sts = (r.isVacant() == true ? "ว่าง" : "ไม่ว่าง");
+            String tenant = (r.getPrimary_tenant() == 0 ? "" : TenantController.getById(r.getPrimary_tenant()).getName());
+            String std = r.getStart_date();
+            String ed = r.getEnd_date();
+            tenantTableData.add(new TenantTable(rm, sts, tenant, std, ed, ""));
+        }
 
         //Load person detail to treeTable
         LoadDataFormTenantTable();
@@ -215,6 +223,13 @@ public class TenantManageController {
             TenantTable n = new TenantTable(treeItemTenant.getValue().getRoom(), "ว่าง", "", "", "", "");
             treeItemTenant.setValue(n);
             tenantTableView.getSelectionModel().clearSelection();
+            Long room_id = Long.parseLong(tenantTableView.getSelectionModel().getModelItem(selectionIndex).getValue().getRoom());
+            Room r = RoomController.getById(room_id);
+            TenantController.removeById(r.getPrimary_tenant());
+            RoomController.updateTenant(room_id, 0, 0);
+            RoomController.setRoomToVacant(room_id);
+            RoomController.setContactDate(room_id, "", "");
+
         } else {
             //TODO Show ERROR
             System.out.println("Error");

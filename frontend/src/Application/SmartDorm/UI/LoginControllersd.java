@@ -2,6 +2,8 @@ package Application.SmartDorm.UI;
 
 
 import Application.SmartDorm.MainSmartDorm;
+import Application.SmartDorm.UI.TenantPayment.TenantPaymentController;
+import Controller.UserController;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
@@ -40,7 +42,10 @@ public class LoginControllersd {
     private String tenantPass = "";
     private String type;
 
+    public static TenantMainController tenantMainController;
+
     Stage tenant_stage = MainSmartDorm.getStage();
+
 
     public void initialize(){
         status.setItems(list);
@@ -65,11 +70,19 @@ public class LoginControllersd {
 
         else if("Tenant".equals(type))
         {
-            if ((tenantUser.equals(textID.getText())) && (tenantPass.equals(textPassword.getText()))) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("TenantMain.fxml"));
-                Parent home_tenant_payment = loader.load();
-                Scene tenant3rd_page = new Scene(home_tenant_payment);
+            String username = textID.getText();
+            String password = textPassword.getText();
 
+            System.out.println(username + " " + password);
+
+            if (UserController.checkPassword(username, password)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("TenantMain.fxml"));
+
+                Parent home_tenant_payment = loader.load();
+                TenantMainController tnt_main = loader.getController();
+                tnt_main.getUserId(username);
+                Scene tenant3rd_page = new Scene(home_tenant_payment);
+                tenantMainController = loader.getController();
                 tenant_stage.setScene(tenant3rd_page);
                 tenant_stage.show();
             } else

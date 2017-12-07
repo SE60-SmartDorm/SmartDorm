@@ -1,4 +1,7 @@
+import Controller.RentalController;
+import Controller.RoomController;
 import Controller.TenantController;
+import Controller.UserController;
 import Entity.Room;
 import Entity.Tenant;
 import Model.RoomsModel;
@@ -11,16 +14,11 @@ import ProgramException.DatabaseException;
 public class Main {
 
     public static void main(String[] args) throws DatabaseException {
-        System.out.println(TenantController.count());
-
-        Tenant p = TenantController.getById(4);
-        System.out.println(p.getName());
-        TenantController.update(4, "นายอิอิ กำ", p.getNickname(), p.getPhone(), p.getEmail(), p.getAddress(), p.getEmergency_ppl(), p.getEmergency_relation(), p.getSchool(), p.getFaculty());
-
-        p = TenantController.getById(4);
-        System.out.println(p.getName());
-        System.out.println(TenantController.count());
-
+        for (int i = 1; i <= 12; i++) {
+            double wt = (double)((int)((Math.random() * 5) + 1));
+            double elec = (double)((int)((Math.random() * 100) + 1));
+            RentalController.create(2, i, 2017, 3600, wt, elec, 100);
+        }
     }
 
 }

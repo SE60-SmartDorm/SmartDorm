@@ -20,14 +20,12 @@ public class RoomController {
         return result;
     }
 
-    public static void updateTenant(long rid, long primary_tenant, long secondary_tenant) throws  DatabaseException{
+    public static void updateTenant(long rid, long primary_tenant, long secondary_tenant) {
         RoomsModel.connect();
         if (getById(rid) != null) {
+            RoomsModel.connect();
             RoomsModel.updateTenant(rid, primary_tenant, secondary_tenant);
             RoomsModel.close();
-        } else {
-            RoomsModel.close();
-            throw new DatabaseException("Room not found");
         }
     }
 
@@ -43,13 +41,10 @@ public class RoomController {
         RoomsModel.close();
     }
 
-    public static Room getById(long rid) throws DatabaseException {
+    public static Room getById(long rid) {
         RoomsModel.connect();
         Room r = RoomsModel.getRoomById(rid);
         RoomsModel.close();
-        if (r == null)
-            throw new DatabaseException("Room not found");
-        else
             return r;
     }
 
@@ -58,6 +53,12 @@ public class RoomController {
         List<Room> r = RoomsModel.getAllRooms();
         RoomsModel.close();
         return r;
+    }
+
+    public static void setContactDate(Long rid, String start_date, String end_date) {
+        RoomsModel.connect();
+        RoomsModel.updateContactDateByRoomId(rid, start_date, end_date);
+        RoomsModel.close();
     }
 
 
