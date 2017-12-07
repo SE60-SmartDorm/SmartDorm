@@ -15,11 +15,15 @@ public class Room implements Serializable {
 
     private int type;
     private boolean vacant;
+    private long primary_tenant, secondary_tenant;
 
-    public Room(long id, int type, boolean vacant) {
+
+    public Room(long id, int type, boolean vacant, long primary_tenant, long secondary_tenant) {
         this.id = id;
         this.type = type;
         this.vacant = vacant;
+        this.primary_tenant = primary_tenant;
+        this.secondary_tenant = secondary_tenant;
     }
 
     public long getId() {
@@ -32,6 +36,14 @@ public class Room implements Serializable {
 
     public boolean isVacant() {
         return vacant;
+    }
+
+    public long getPrimary_tenant() {
+        return primary_tenant;
+    }
+
+    public long getSecondary_tenant() {
+        return secondary_tenant;
     }
 
     @Override

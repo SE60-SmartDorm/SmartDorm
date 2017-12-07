@@ -28,28 +28,22 @@ public class RoomsModel {
         return count;
     }
 
-    public static Room getRoomById(long id) throws DatabaseException{
+    public static Room getRoomById(long id){
         EntityManager em = emf.createEntityManager();
         TypedQuery<Room> query = em.createQuery("SELECT r FROM Room r WHERE r.id = :id", Room.class);
         query.setParameter("id", id);
         List<Room> result = query.getResultList();
         em.close();
-        if (result.isEmpty())
-            throw new DatabaseException("No room :id in database");
         return result.get(0);
     }
 
-    public static boolean createRoom(long id, int type) throws DatabaseException{
-        if (getRoomById(id) == null) {
-            EntityManager em = emf.createEntityManager();
-            em.getTransaction().begin();
-            Room r = new Room(id, type, false);
-            em.persist(r);
-            em.getTransaction().commit();
-            em.close();
-            return true;
-        }
-        throw new DatabaseException("Room :id already exist");
+    public static void createRoom(long id, int type) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Room r = new Room(id, type, false, 0, 0);
+        em.persist(r);
+        em.getTransaction().commit();
+        em.close();
     }
 
     public static List<Room> getAllRooms() {
@@ -60,36 +54,44 @@ public class RoomsModel {
         return result;
     }
 
-    public static boolean removeRoomById(long id) throws DatabaseException{
-        if (getRoomById(id) != null) {
-            EntityManager em = emf.createEntityManager();
-            em.getTransaction().begin();
-            Query query = em.createQuery(
-                    "DELETE FROM Room r WHERE r.id = :id");
-            query.setParameter("id", id).executeUpdate();
-            em.getTransaction().commit();
-            em.close();
-            return true;
-        }
-        throw new DatabaseException("No room :id in database");
+    public static void removeRoomById(long id) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery(
+                "DELETE FROM Room r WHERE r.id = :id");
+        query.setParameter("id", id).executeUpdate();
+        em.getTransaction().commit();
+        em.close();
     }
 
-    public static boolean updateRoomVacantById(long id, boolean status) throws DatabaseException {
-        if (getRoomById(id) != null) {
-            EntityManager em = emf.createEntityManager();
-            em.getEntityManagerFactory().getCache().evictAll();
-            em.getTransaction().begin();
-            Query query = em.createQuery(
-                    "UPDATE Room r SET vacant = :status " +
-                            "WHERE r.id = :id");
-            query.setParameter("status", status);
-            query.setParameter("id", id);
-            query.executeUpdate();
-            em.getTransaction().commit();
-            em.close();
-            return true;
-        }
-        throw new DatabaseException("No room :id in database");
+    public static void updateRoomVacantById(long id, boolean status) {
+        EntityManager em = emf.createEntityManager();
+        em.getEntityManagerFactory().getCache().evictAll();
+        em.getTransaction().begin();
+        Query query = em.createQuery(
+                "UPDATE Room r SET vacant = :status " +
+                        "WHERE r.id = :id");
+        query.setParameter("status", status);
+        query.setParameter("id", id);
+        query.executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public static void updateTenant(long rid, long primary_tenant, long secondary_tenant) {
+        EntityManager em = emf.createEntityManager();
+        em.getEntityManagerFactory().getCache().evictAll();
+        em.getTransaction().begin();
+        Query query = em.createQuery(
+                "UPDATE Room r SET primary_tenant = :ptn, " +
+                        "secondary_tenant = :stn " +
+                        "WHERE r.id = :id");
+        query.setParameter("ptn", primary_tenant);
+        query.setParameter("stn", secondary_tenant);
+        query.setParameter("id", rid);
+        query.executeUpdate();
+        em.getTransaction().commit();
+        em.close();
     }
 
 }

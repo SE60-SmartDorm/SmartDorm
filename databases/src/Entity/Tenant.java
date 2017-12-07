@@ -15,38 +15,55 @@ public class Tenant implements Serializable {
     @GeneratedValue
     private long id;
 
+    private String type;
     private long roomId;
-    private String firstname, lastname, nickname;
+    private String name, nickname;
     private String dob;
     private long citizenId;
     private String phone;
     private String email;
     private String address;
     private String emergency_ppl, emergency_relation;
+    private String school, faculty;
+    private String position;
+    private long year;
 
-    public Tenant(long roomId, String firstname, String lastname, long citizenId, String phone, String address) {
+    public Tenant(long roomId, String name, String nickname, String dob, long citizenId, String phone, String email, String address, String emergency_ppl, String emergency_relation, String type, String school, String faculty, String position, long year) {
+        this.type = type;
         this.roomId = roomId;
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.name = name;
+        this.nickname = nickname;
+        this.dob = dob;
         this.citizenId = citizenId;
         this.phone = phone;
+        this.email = email;
         this.address = address;
+        this.emergency_ppl = emergency_ppl;
+        this.emergency_relation = emergency_relation;
+        this.school = school;
+        this.faculty = faculty;
+        this.position = position;
+        this.year = year;
     }
 
-    public long getId() {
-        return id;
+    public String getType() {
+        return type;
     }
 
     public long getRoomId() {
         return roomId;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getName() {
+        return name;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getNickname() {
+        return nickname;
+    }
+
+    public String getDob() {
+        return dob;
     }
 
     public long getCitizenId() {
@@ -57,21 +74,49 @@ public class Tenant implements Serializable {
         return phone;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public String getAddress() {
         return address;
     }
 
-    @Override
-    public String toString() {
-        String res = "Entity.Tenant ";
-        res += "ID: " + this.id + " ";
-        res += "RoomID: " + this.roomId + " ";
-        res += "FName: " + this.firstname + " ";
-        res += "LName: " + this.lastname + " ";
-        res += "CID: " + this.citizenId + " ";
-        res += "Phone: " + this.phone + " ";
-        res += "ADD: " + this.address + " ";
-
-        return res;
+    public String getEmergency_ppl() {
+        return emergency_ppl;
     }
+
+    public String getEmergency_relation() {
+        return emergency_relation;
+    }
+
+    public String getSchool() {
+        return school;
+    }
+
+    public String getFaculty() {
+        return faculty;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public long getYear() {
+        return year;
+    }
+
+    //    @Override
+//    public String toString() {
+//        String res = "Entity.Tenant ";
+//        res += "ID: " + this.id + " ";
+//        res += "RoomID: " + this.roomId + " ";
+//        res += "FName: " + this.firstname + " ";
+//        res += "LName: " + this.lastname + " ";
+//        res += "CID: " + this.citizenId + " ";
+//        res += "Phone: " + this.phone + " ";
+//        res += "ADD: " + this.address + " ";
+//
+//        return res;
+//    }
 }

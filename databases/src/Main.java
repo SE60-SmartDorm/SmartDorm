@@ -1,3 +1,4 @@
+import Controller.TenantController;
 import Entity.Room;
 import Entity.Tenant;
 import Model.RoomsModel;
@@ -10,20 +11,19 @@ import ProgramException.DatabaseException;
 public class Main {
 
     public static void main(String[] args) throws DatabaseException {
-        RoomsModel.connect();
+        System.out.println(TenantController.count());
 
-        try {
-            RoomsModel.getRoomById(777);
-        } catch (DatabaseException ex) {
-            System.out.println(ex.getMessage());
-            throw new DatabaseException(ex.getMessage());
-        }
+        Tenant p = TenantController.getById(4);
+        System.out.println(p.getName());
+        TenantController.update(4, "นายอิอิ กำ", p.getNickname(), p.getPhone(), p.getEmail(), p.getAddress(), p.getEmergency_ppl(), p.getEmergency_relation(), p.getSchool(), p.getFaculty());
 
-        RoomsModel.close();
-
+        p = TenantController.getById(4);
+        System.out.println(p.getName());
+        System.out.println(TenantController.count());
 
     }
 
 }
+
 
 
