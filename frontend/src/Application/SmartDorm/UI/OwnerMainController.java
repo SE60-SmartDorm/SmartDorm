@@ -2,6 +2,7 @@ package Application.SmartDorm.UI;
 
 import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.Manage.TenantManageController;
+import Application.SmartDorm.UI.OwnerNotification.OwnerNotificationController;
 import com.jfoenix.controls.JFXButton;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
@@ -24,14 +25,17 @@ public class OwnerMainController {
     @FXML
     private StackPane ownerChangePane;
 
+    public static StackPane mainOwnerChangePane;
+
     @FXML
     JFXButton logoutButton;
 
     // set pane
-    private Node tenantManageView,dashboardView,ownerNotificationView,loginView;
+    private Node tenantManageView,dashboardView,ownerNotificationView;
 
     //define controller
     public static TenantManageController manageController;
+    public static OwnerNotificationController notiController;
     /**
      * The constructor (is called before the initialize()-method).
      */
@@ -45,8 +49,10 @@ public class OwnerMainController {
      */
     @FXML
     public void initialize() {
+        mainOwnerChangePane = ownerChangePane;
         loadOwnerMain();
         setNode(dashboardView);
+
     }
 
     @FXML
@@ -61,6 +67,7 @@ public class OwnerMainController {
 
     @FXML
     void ownerNotificationView(ActionEvent event) {
+        notiController.hintSelect.setVisible(false);
         setNode(ownerNotificationView);
     }
 
@@ -68,8 +75,6 @@ public class OwnerMainController {
 
     @FXML
     void loginView(ActionEvent event) {
-        //logoutButton.getScene().getWindow().hide();
-
         try {
             Parent home_login = FXMLLoader.load(getClass().getResource("login.fxml"));
             Scene scene = new Scene(home_login);
@@ -103,6 +108,7 @@ public class OwnerMainController {
             e.printStackTrace();
         }
         manageController = loaderTenantManage.getController();
+        notiController = loaderOwnerNotification.getController();
     }
 
 

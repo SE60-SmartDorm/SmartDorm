@@ -44,12 +44,4 @@ public class MainSmartDorm extends Application {
         stage.show();
 
     }
-
-    public void loadAnotherScene(){
-        try {
-            tenantManage = FXMLLoader.load(getClass().getResource("UI/Manage/TenantManage.fxml"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }

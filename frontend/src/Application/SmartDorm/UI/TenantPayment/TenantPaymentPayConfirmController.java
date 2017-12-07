@@ -15,8 +15,6 @@ import java.io.IOException;
 
 public class TenantPaymentPayConfirmController {
 
-    Stage tenant_stage = MainSmartDorm.getStage();
-
     TenantPaymentController paymentVariable = new TenantPaymentController();
     TenantPayment3rdLoginController thirdPartyVariable = new TenantPayment3rdLoginController();
 
@@ -25,45 +23,19 @@ public class TenantPaymentPayConfirmController {
     @FXML
     private Label accountNameLB;
     @FXML
-    private Label accountCurentLB;
-    @FXML
-    private Label accountAfterLB;
-    @FXML
-    private Label errorHintMoney;
-    @FXML
     private JFXButton ok;
 
-    double tempAccountBalance;
-
-
+    @FXML
     public void initialize() {
         totalLB.setText(String.valueOf(paymentVariable.getTotal()));
         accountNameLB.setText(thirdPartyVariable.getAccountName());
-        accountCurentLB.setText(String.valueOf(thirdPartyVariable.getAccountCurrent()));
-        calAccountAfter();
     }
 
-    public void calAccountAfter(){
-        if(thirdPartyVariable.getAccountCurrent() > paymentVariable.getTotal())
-        {
-            tempAccountBalance = thirdPartyVariable.getAccountCurrent() - paymentVariable.getTotal();
-            accountAfterLB.setText(String.valueOf(tempAccountBalance));
-        }
-        else
-        {
-            ok.setDisable(true);
-            tempAccountBalance = thirdPartyVariable.getAccountCurrent() - paymentVariable.getTotal();
-            accountAfterLB.setText(String.valueOf(tempAccountBalance));
-            errorHintMoney.setVisible(true);
-        }
-    }
 
     @FXML
     private void ok(ActionEvent event) throws IOException {
-        paymentVariable.setTotal(0);
         checkPaid();
-        thirdPartyVariable.setAccountCurrent(tempAccountBalance);
-        Node home_tenant_payment = FXMLLoader.load(getClass().getResource("TenantPayment.fxml"));
+        Node home_tenant_payment = FXMLLoader.load(getClass().getResource("../TenantDashboard.fxml"));
         setNode(home_tenant_payment);
     }
 
@@ -133,7 +105,6 @@ public class TenantPaymentPayConfirmController {
 
     @FXML
     private void cancel(ActionEvent event) throws IOException {
-        Stage tenant_stage = MainSmartDorm.getStage();
 
         Node home_tenant_payment = FXMLLoader.load(getClass().getResource("TenantPayment.fxml"));
         setNode(home_tenant_payment);

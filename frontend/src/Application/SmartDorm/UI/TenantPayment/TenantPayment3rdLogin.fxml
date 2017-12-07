@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -19,19 +19,12 @@
                <children>
                   <VBox layoutX="4.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="-2.0">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="481.0">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="480.0">
                            <children>
-                              <VBox prefHeight="100.0" prefWidth="361.0">
+                              <VBox prefHeight="100.0" prefWidth="360.0">
                                  <children>
-                                    <Label text="Account Number" />
-                                    <TextField fx:id="accountNum">
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font name="SukhumvitSet-Bold" size="20.0" />
-                                       </font>
-                                    </TextField>
+                                    <Label styleClass="root" text="Account Number" />
+                                    <JFXTextField fx:id="accountNum" prefHeight="65.0" prefWidth="360.0" />
                                  </children>
                                  <HBox.margin>
                                     <Insets />
@@ -42,16 +35,12 @@
                               <Insets top="50.0" />
                            </VBox.margin>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="106.0" prefWidth="543.0">
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="480.0">
                            <children>
-                              <VBox prefHeight="112.0" prefWidth="370.0">
+                              <VBox prefHeight="100.0" prefWidth="360.0">
                                  <children>
-                                    <Label text="Password" />
-                                    <PasswordField fx:id="pass">
-                                       <VBox.margin>
-                                          <Insets top="20.0" />
-                                       </VBox.margin>
-                                    </PasswordField>
+                                    <Label styleClass="root" text="Password" />
+                                    <JFXPasswordField fx:id="pass" prefHeight="65.0" prefWidth="360.0" />
                                  </children>
                               </VBox>
                            </children>

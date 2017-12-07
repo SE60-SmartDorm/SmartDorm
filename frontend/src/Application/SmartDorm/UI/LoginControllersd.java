@@ -29,6 +29,7 @@ public class LoginControllersd {
     @FXML
     Label warning2;
 
+
     @FXML
     private ComboBox<String> status;
     ObservableList<String> list = FXCollections.observableArrayList("Owner","Tenant");
@@ -65,7 +66,8 @@ public class LoginControllersd {
         else if("Tenant".equals(type))
         {
             if ((tenantUser.equals(textID.getText())) && (tenantPass.equals(textPassword.getText()))) {
-                Parent home_tenant_payment = FXMLLoader.load(getClass().getResource("TenantMain.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("TenantMain.fxml"));
+                Parent home_tenant_payment = loader.load();
                 Scene tenant3rd_page = new Scene(home_tenant_payment);
 
                 tenant_stage.setScene(tenant3rd_page);

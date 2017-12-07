@@ -2,6 +2,8 @@ package Application.SmartDorm.UI;
 
 import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.Manage.TenantManageController;
+import Application.SmartDorm.UI.Request.HistoryRequestController;
+import Application.SmartDorm.UI.TenantPayment.TenantPaymentController;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,10 +28,12 @@ public class TenantMainController {
 
     Stage tenant_stage = MainSmartDorm.getStage();
 
+    public static TenantPaymentController tenantPayVari;
+
     @FXML
     JFXButton logoutButton;
     // set pane
-    private Node tenantPaymentView,tenantDashboardView,tenantNotificationView,loginView;
+    private Node tenantPaymentView,tenantDashboardView,tenantNotificationView;
 
     //define controller
     public static TenantManageController manageController;
@@ -53,7 +57,9 @@ public class TenantMainController {
 
     @FXML
     private void tenantManageView(ActionEvent event) {
-            setNode(tenantPaymentView);
+        tenantPayVari.listMonth.getSelectionModel().clearSelection();
+        tenantPayVari.setBillDetail(0,0,0,0,0,0,0);
+        setNode(tenantPaymentView);
     }
 
     @FXML
@@ -100,6 +106,8 @@ public class TenantMainController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        tenantPayVari = loaderTenantPayment.getController();
+
     }
 
 

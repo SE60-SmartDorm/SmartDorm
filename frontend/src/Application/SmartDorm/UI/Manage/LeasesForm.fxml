@@ -39,7 +39,7 @@
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="nameLeasesTF" prefHeight="30.0" prefWidth="272.0" />
+                        <TextField fx:id="nameLeasesTF" prefHeight="30.0" prefWidth="272.0" promptText="ชื่อ สกุล" />
                      </children>
                   </VBox>
                </children>
@@ -58,7 +58,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <TextField fx:id="phoneLeasesTF" prefHeight="30.0" />
+                              <TextField fx:id="phoneLeasesTF" prefHeight="30.0" promptText="ตัวอย่าง 0857545467" />
                            </children>
                            <padding>
                               <Insets top="11.0" />
@@ -97,7 +97,7 @@
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="idCardLeasesTF" prefHeight="30.0" prefWidth="272.0" />
+                        <TextField fx:id="idCardLeasesTF" prefHeight="30.0" prefWidth="272.0" promptText="หมายเลขประจำตัวประชาชน 13 หลัก" />
                      </children>
                      <padding>
                         <Insets top="11.0" />
@@ -146,7 +146,7 @@
                               <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                            </font>
                         </Text>
-                        <JFXDatePicker fx:id="startLeasesDP" prefHeight="30.0" prefWidth="445.0" />
+                        <JFXDatePicker fx:id="startLeasesDP" prefHeight="30.0" prefWidth="445.0" promptText="dd//mm/yyyy" />
                      </children>
                   </VBox>
                </children>
@@ -165,7 +165,7 @@
                                     <Font name="ThaiSansNeue-SemiBold" size="22.0" />
                                  </font>
                               </Text>
-                              <JFXDatePicker fx:id="endLeasesDP" prefHeight="30.0" prefWidth="448.0" />
+                              <JFXDatePicker fx:id="endLeasesDP" prefHeight="30.0" prefWidth="448.0" promptText="dd//mm/yyyy" />
                            </children>
                         </VBox>
                      </children>
