@@ -54,7 +54,7 @@ public class CreateTenantController {
     @FXML
     void saveData(ActionEvent event) {
         //TODO Save tenant data to DATABASE
-        if (embedLeasesFormController.checkBeforeSubmitLeases() && embedLeasesFormController.checkBeforeSubmitLeases()) {
+        if (embedTenantFormController.checkBeforeSubmitForm() && embedLeasesFormController.checkBeforeSubmitLeases()) {
             alertSubmit();
             System.out.println("Save data");
         } else {
