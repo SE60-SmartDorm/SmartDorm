@@ -12,6 +12,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.TreeItem;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -32,6 +33,8 @@ public class CreateTenantController {
     //other
     String roomID, status, name, begin, end, note, phone, address, IDCard;
     TreeItem<TenantTable> treeItemTenant = OwnerMainController.manageController.getTenantTableView().getSelectionModel().getSelectedItem();
+    JFXButton cancel = new JFXButton("ยกเลิก");
+    JFXButton submit = new JFXButton("ยืนยัน");
     @FXML
     private TenantFormController embedTenantFormController;
     @FXML
@@ -43,6 +46,7 @@ public class CreateTenantController {
     @FXML
     private StackPane alertError;
 
+    @FXML
     public void initialize() {
         autoFillDataLeases();
     }
@@ -51,14 +55,7 @@ public class CreateTenantController {
     void saveData(ActionEvent event) {
         //TODO Save tenant data to DATABASE
         if (embedLeasesFormController.checkBeforeSubmitLeases() && embedLeasesFormController.checkBeforeSubmitLeases()) {
-            setTenantData();
-
-            TenantTable n = new TenantTable(roomID, status, name, begin, end, note);
-            treeItemTenant.setValue(n);
-
-            OwnerMainController.manageController.getTenantTableView().getSelectionModel().clearSelection();
-            OwnerMainController.manageController.tenantSetButtonDisable();
-            saveDataBT.getScene().getWindow().hide();
+            alertSubmit();
             System.out.println("Save data");
         } else {
             alertFail();
@@ -143,5 +140,46 @@ public class CreateTenantController {
         content.setBody(detail);
         JFXDialog dialog = new JFXDialog(alertError, content, JFXDialog.DialogTransition.CENTER);
         dialog.show();
+    }
+
+    private void alertSubmit() {
+        Text text = new Text("ยืนยันการบันทึกข้อมูล");
+        text.setStyle("-fx-font-family: 'Sukhumvit Set'; -fx-font-size: 22;");
+        submit.setStyle("-fx-text-fill:WHITE;-fx-background-color:#5264AE;-fx-font-size:18px;-fx-font-family: 'Sukhumvit Set';-fx-font-weight: bold;");
+        cancel.setStyle("-fx-text-fill:WHITE;-fx-background-color:#e34249;-fx-font-size:18px;-fx-font-family: 'Sukhumvit Set';-fx-font-weight: bold;");
+        VBox header = new VBox();
+        HBox detail = new HBox();
+        detail.setSpacing(30);
+
+        header.getChildren().add(text);
+        header.setAlignment(Pos.TOP_CENTER);
+
+        detail.getChildren().addAll(submit, cancel);
+        detail.setAlignment(Pos.BASELINE_CENTER);
+
+        JFXDialogLayout content = new JFXDialogLayout();
+        content.setHeading(header);
+        content.setBody(detail);
+        JFXDialog dialog = new JFXDialog(alertError, content, JFXDialog.DialogTransition.CENTER);
+        cancel.setOnAction(event -> {
+            dialog.close();
+        });
+        submit.setOnAction(event -> {
+            confirmSaveDa();
+            dialog.close();
+        });
+        dialog.setOverlayClose(false);
+        dialog.show();
+    }
+
+    private void confirmSaveDa(){
+        setTenantData();
+
+        TenantTable n = new TenantTable(roomID, status, name, begin, end, note);
+        treeItemTenant.setValue(n);
+
+        OwnerMainController.manageController.getTenantTableView().getSelectionModel().clearSelection();
+        OwnerMainController.manageController.tenantSetButtonDisable();
+        saveDataBT.getScene().getWindow().hide();
     }
 }
