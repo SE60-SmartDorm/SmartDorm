@@ -4,6 +4,8 @@ import Entity.Room;
 import Model.RoomsModel;
 import ProgramException.DatabaseException;
 
+import java.util.List;
+
 public class RoomController {
     public static void create(long rid, int type) {
         RoomsModel.connect();
@@ -49,6 +51,13 @@ public class RoomController {
             throw new DatabaseException("Room not found");
         else
             return r;
+    }
+
+    public static List<Room> getAllRooms() {
+        RoomsModel.connect();
+        List<Room> r = RoomsModel.getAllRooms();
+        RoomsModel.close();
+        return r;
     }
 
 
