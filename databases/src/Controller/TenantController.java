@@ -7,10 +7,10 @@ import ProgramException.DatabaseException;
 import java.util.List;
 
 public class TenantController {
-    public static void create(long roomId, String name, String nickname, String dob, long citizenId, String phone, String email, String address, String emergency_ppl, String emergency_relation, String type, String school, String faculty, String position, int year) throws DatabaseException {
+    public static void create(long roomId, String name, String nickname, String dob, String citizenId, String phone, String email, String address, String emergency_ppl, String emergency_relation, String emergency_telephone, String type, String school, String faculty, String position, String year) throws DatabaseException {
         TenantsModel.connect();
         if (TenantsModel.getTenantByCitizenId(citizenId) == null) {
-            TenantsModel.createTenant(roomId, name, nickname, dob, citizenId, phone, email, address, emergency_ppl, emergency_relation, type, school, faculty, position, year);
+            TenantsModel.createTenant(roomId, name, nickname, dob, citizenId, phone, email, address, emergency_ppl, emergency_relation, emergency_telephone, type, school, faculty, position, year);
         } else {
             TenantsModel.close();
             throw new DatabaseException("User already exist");
@@ -26,10 +26,10 @@ public class TenantController {
         return result;
     }
 
-    public static void update(long uid, String name, String nickname, String phone, String email, String address, String emergency_ppl, String emergency_relation, String school, String faculty) throws DatabaseException {
+    public static void update(long uid, String name, String nickname, String phone, String email, String address, String emergency_ppl, String emergency_relation, String emergency_telephone, String school, String faculty) throws DatabaseException {
         TenantsModel.connect();
         if (TenantsModel.getTenantByUserId(uid) != null) {
-            TenantsModel.updateTenantInfoByUID(uid, name, nickname, phone, email, address, emergency_ppl, emergency_relation, school, faculty);
+            TenantsModel.updateTenantInfoByUID(uid, name, nickname, phone, email, address, emergency_ppl, emergency_relation, emergency_telephone, school, faculty);
         } else {
             TenantsModel.close();
             throw new DatabaseException("User not found");

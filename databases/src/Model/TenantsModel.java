@@ -47,7 +47,7 @@ public class TenantsModel {
         return result.get(0);
     }
 
-    public static Tenant getTenantByCitizenId(long cid) {
+    public static Tenant getTenantByCitizenId(String cid) {
         EntityManager em = emf.createEntityManager();
         TypedQuery<Tenant> query = em.createQuery("SELECT p FROM Tenant p WHERE p.citizenId = :cid", Tenant.class);
         query.setParameter("cid", cid);
@@ -58,10 +58,10 @@ public class TenantsModel {
         return result.get(0);
     }
 
-    public static void createTenant(long roomId, String name, String nickname, String dob, long citizenId, String phone, String email, String address, String emergency_ppl, String emergency_relation, String type, String school, String faculty, String position, int year) {
+    public static void createTenant(long roomId, String name, String nickname, String dob, String citizenId, String phone, String email, String address, String emergency_ppl, String emergency_relation, String emergency_telephone, String type, String school, String faculty, String position, String year) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        Tenant p = new Tenant(roomId, name, nickname, dob, citizenId, phone, email, address, emergency_ppl, emergency_relation, type, school, faculty, position, year);
+        Tenant p = new Tenant(roomId, name, nickname, dob, citizenId, phone, email, address, emergency_ppl, emergency_relation, emergency_telephone, type, school, faculty, position, year);
         em.persist(p);
         em.getTransaction().commit();
         em.close();
@@ -85,7 +85,7 @@ public class TenantsModel {
         em.close();
     }
 
-    public static void updateTenantInfoByUID(long uid, String name, String nickname, String phone, String email, String address, String emergency_ppl, String emergency_relation, String school, String faculty) {
+    public static void updateTenantInfoByUID(long uid, String name, String nickname, String phone, String email, String address, String emergency_ppl, String emergency_relation, String emergency_telephone, String school, String faculty) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Query query = em.createQuery(
@@ -96,6 +96,7 @@ public class TenantsModel {
                         "address = :adrs, " +
                         "emergency_ppl = :emppl, " +
                         "emergency_relation = :emrl, " +
+                        "emergency_telephone = :emtel, " +
                         "school = :schl, " +
                         "faculty = :fcty " +
                         "WHERE p.id = :uid");
@@ -108,6 +109,7 @@ public class TenantsModel {
         query.setParameter("emrl", emergency_relation);
         query.setParameter("schl", school);
         query.setParameter("fcty", faculty);
+        query.setParameter("emtel", emergency_telephone);
         query.setParameter("uid", uid);
         query.executeUpdate();
         em.getTransaction().commit();

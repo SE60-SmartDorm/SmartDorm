@@ -19,16 +19,16 @@ public class Tenant implements Serializable {
     private long roomId;
     private String name, nickname;
     private String dob;
-    private long citizenId;
+    private String citizenId;
     private String phone;
     private String email;
     private String address;
-    private String emergency_ppl, emergency_relation;
+    private String emergency_ppl, emergency_relation, emergency_telephone;
     private String school, faculty;
     private String position;
-    private long year;
+    private String year;
 
-    public Tenant(long roomId, String name, String nickname, String dob, long citizenId, String phone, String email, String address, String emergency_ppl, String emergency_relation, String type, String school, String faculty, String position, long year) {
+    public Tenant(long roomId, String name, String nickname, String dob, String citizenId, String phone, String email, String address, String emergency_ppl, String emergency_relation, String emergency_telephone, String type, String school, String faculty, String position, String year) {
         this.type = type;
         this.roomId = roomId;
         this.name = name;
@@ -40,6 +40,7 @@ public class Tenant implements Serializable {
         this.address = address;
         this.emergency_ppl = emergency_ppl;
         this.emergency_relation = emergency_relation;
+        this.emergency_telephone = emergency_telephone;
         this.school = school;
         this.faculty = faculty;
         this.position = position;
@@ -66,7 +67,7 @@ public class Tenant implements Serializable {
         return dob;
     }
 
-    public long getCitizenId() {
+    public String getCitizenId() {
         return citizenId;
     }
 
@@ -102,7 +103,7 @@ public class Tenant implements Serializable {
         return position;
     }
 
-    public long getYear() {
+    public String getYear() {
         return year;
     }
 
