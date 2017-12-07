@@ -22,9 +22,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="tenanteFormPane" styleClass="root" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.Manage.TenantFormController">
+<AnchorPane fx:id="tenanteFormPane" prefHeight="1500.0" prefWidth="942.0" styleClass="root" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.Manage.TenantFormController">
    <children>
-        <AnchorPane prefHeight="565.0" prefWidth="942.0">
+        <AnchorPane prefHeight="735.0" prefWidth="942.0">
             <children>
             <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="331.0" spacing="10.0">
                <children>
@@ -39,7 +39,7 @@
                   <Insets left="33.0" />
                </padding>
             </HBox>
-                <VBox fx:id="showPersonRole1" layoutY="475.0" prefHeight="176.0" prefWidth="942.0" spacing="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                <VBox fx:id="showPersonRole1" layoutY="545.0" prefHeight="176.0" prefWidth="942.0" spacing="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ประเภทบุคลากร" wrappingWidth="131.2220001220703">
                             <font>
@@ -54,6 +54,72 @@
                                 </FXCollections>
                             </items>
                         </ComboBox>
+                  <AnchorPane fx:id="studentInfo" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="908.0" styleClass="root">
+                     <children>
+                        <GridPane alignment="CENTER_LEFT" layoutY="14.0" prefHeight="77.0" prefWidth="942.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="531.0" minWidth="10.0" prefWidth="531.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="531.0" minWidth="10.0" prefWidth="531.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <VBox prefHeight="77.0" prefWidth="411.0" spacing="1.0">
+                                       <children>
+                                          <Text fx:id="roleEduT1" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="สถาบันการศึกษา">
+                                             <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField fx:id="roleEduTF1" prefHeight="30.0" prefWidth="272.0" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="1.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox spacing="35.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <VBox prefHeight="70.0" prefWidth="266.0" spacing="1.0">
+                                       <children>
+                                          <Text fx:id="roleFacultyT1" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="คณะ" wrappingWidth="140.7493782043457">
+                                             <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField fx:id="roleFacultyTF1" prefHeight="30.0" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="70.0" prefWidth="111.0" spacing="1.0">
+                                       <children>
+                                          <Text fx:id="roleGradeT1" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ชั้นปี">
+                                             <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField fx:id="studentGradeTF1" prefHeight="30.0" prefWidth="105.0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="13.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </GridPane>
+                     </children>
+                     <stylesheets>
+                        <URL value="@baseManage.css" />
+                        <URL value="@fontstyle.css" />
+                     </stylesheets>
+                  </AnchorPane>
                     </children>
                     <padding>
                         <Insets left="30.0" />
@@ -227,13 +293,14 @@
                         </HBox>
                     </children>
                 </GridPane>
-                <GridPane layoutY="313.0" prefHeight="139.0" prefWidth="471.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="471.0">
+                <GridPane layoutY="313.0" prefHeight="215.0" prefWidth="471.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="471.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
                         <HBox>
@@ -279,6 +346,29 @@
                                 <Insets left="30.0" />
                             </padding>
                         </HBox>
+                  <HBox GridPane.rowIndex="2">
+                     <children>
+                        <VBox prefHeight="69.0" prefWidth="411.0" spacing="1.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="เบอร์โทศัพท์" wrappingWidth="126.22200012207031">
+                                 <font>
+                                    <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="relationPhoneTF1" prefHeight="32.0" promptText="ตัวอย่าง. 0812345678" />
+                           </children>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
                     </children>
                 </GridPane>
                 <Separator layoutY="64.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -305,8 +395,8 @@
                 <JFXButton layoutX="831.0" layoutY="10.0" onAction="#clearFieldPerson1" prefHeight="41.0" prefWidth="81.0" styleClass="clear-button" text="ล้างข้อมูล" />
             </children>
         </AnchorPane>
-        <Separator layoutY="656.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-        <AnchorPane layoutY="664.0" prefHeight="565.0" prefWidth="942.0">
+        <Separator layoutY="759.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <AnchorPane layoutY="767.0" prefHeight="735.0" prefWidth="942.0">
             <children>
             <HBox alignment="CENTER_LEFT" layoutY="-2.0" prefHeight="65.0" prefWidth="331.0" spacing="10.0">
                <children>
@@ -334,7 +424,7 @@
                   <Insets left="33.0" />
                </padding>
             </HBox>
-                <VBox fx:id="showPersonRole2" layoutY="475.0" prefHeight="176.0" prefWidth="942.0" spacing="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                <VBox fx:id="showPersonRole2" layoutY="553.0" prefHeight="176.0" prefWidth="942.0" spacing="3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ประเภทบุคลากร" wrappingWidth="132.2220001220703">
                             <font>
@@ -349,6 +439,72 @@
                                 </FXCollections>
                             </items>
                         </ComboBox>
+                  <AnchorPane fx:id="studentInfo1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="908.0" styleClass="root">
+                     <children>
+                        <GridPane alignment="CENTER_LEFT" layoutY="14.0" prefHeight="77.0" prefWidth="942.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="14.0">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="531.0" minWidth="10.0" prefWidth="531.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="531.0" minWidth="10.0" prefWidth="531.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <HBox alignment="CENTER_LEFT">
+                                 <children>
+                                    <VBox prefHeight="77.0" prefWidth="411.0" spacing="1.0">
+                                       <children>
+                                          <Text fx:id="roleEduT2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="สถาบันการศึกษา">
+                                             <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField fx:id="roleEduTF2" prefHeight="30.0" prefWidth="272.0" />
+                                       </children>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="1.0" />
+                                 </padding>
+                              </HBox>
+                              <HBox spacing="35.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <VBox prefHeight="70.0" prefWidth="266.0" spacing="1.0">
+                                       <children>
+                                          <Text fx:id="roleFacultyT2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="คณะ" wrappingWidth="135.4160041809082">
+                                             <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField fx:id="roleFacultyTF2" prefHeight="30.0" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="70.0" prefWidth="111.0" spacing="1.0">
+                                       <children>
+                                          <Text fx:id="roleGradeT2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="ชั้นปี">
+                                             <font>
+                                                <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField fx:id="roleGradeTF2" prefHeight="30.0" prefWidth="105.0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                                 <padding>
+                                    <Insets left="13.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </GridPane>
+                     </children>
+                     <stylesheets>
+                        <URL value="@baseManage.css" />
+                        <URL value="@fontstyle.css" />
+                     </stylesheets>
+                  </AnchorPane>
                     </children>
                     <padding>
                         <Insets left="30.0" />
@@ -519,13 +675,14 @@
                         </HBox>
                     </children>
                 </GridPane>
-                <GridPane layoutY="313.0" prefHeight="139.0" prefWidth="471.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="471.0">
+                <GridPane layoutY="313.0" prefHeight="215.0" prefWidth="471.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="471.0">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
                         <HBox>
@@ -568,6 +725,29 @@
                                 <Insets left="30.0" />
                             </padding>
                         </HBox>
+                  <HBox GridPane.rowIndex="2">
+                     <children>
+                        <VBox prefHeight="69.0" prefWidth="411.0" spacing="1.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-form" text="เบอร์โทศัพท์" wrappingWidth="126.22200012207031">
+                                 <font>
+                                    <Font name="ThaiSansNeue-SemiBold" size="22.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Text>
+                              <TextField fx:id="relationPhoneTF2" prefHeight="32.0" promptText="ตัวอย่าง. 0812345678" />
+                           </children>
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets left="30.0" />
+                     </padding>
+                  </HBox>
                     </children>
                 </GridPane>
                 <Separator layoutY="64.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
@@ -594,6 +774,11 @@
                 <JFXButton fx:id="clearFieldPerson2BT" layoutX="831.0" layoutY="10.0" onAction="#clearFieldPerson2" prefHeight="41.0" prefWidth="81.0" styleClass="clear-button" text="ล้างข้อมูล" />
             </children>
         </AnchorPane>
+      <HBox layoutX="743.0" layoutY="846.0">
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </HBox>
    </children>
    <stylesheets>
       <URL value="@baseManage.css" />
