@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -37,6 +38,8 @@ public class MainSmartDorm extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("UI/login.fxml"));
 
+        Image icon = new Image(getClass().getResourceAsStream("UI/resource/images/home-icon.png"));
+        stage.getIcons().add(icon);
         Scene scene = new Scene(root);
 
         stage.setTitle("Smart Dorm");

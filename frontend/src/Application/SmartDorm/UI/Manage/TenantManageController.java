@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-import javafx.animation.PauseTransition;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.value.ChangeListener;
@@ -31,7 +30,6 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Callback;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Comparator;
@@ -40,12 +38,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class TenantManageController {
-    private ObservableList<TenantTable> tenantTableData = FXCollections.observableArrayList();
-
     private final Comparator<TenantTable> ROOM_COMPARATOR = (TenantTable o1, TenantTable o2) -> o1.roomProperty().get().compareTo(o2.roomProperty().get());
     private final ObjectProperty<Comparator<? super TenantTable>> ROOM_COMPARATOR_WRAPPER = new SimpleObjectProperty<>(ROOM_COMPARATOR);
     //component
     String roomID;
+    private ObservableList<TenantTable> tenantTableData = FXCollections.observableArrayList();
     private SortedList<TenantTable> sortedData;
     @FXML
     private AnchorPane rootPane;
@@ -224,22 +221,12 @@ public class TenantManageController {
 
     @FXML
     void editTenantData(ActionEvent event) {
-        System.out.println("edit tenant");
-        PauseTransition pause = new PauseTransition(Duration.seconds(0.06));
-        pause.setOnFinished(actionEvent -> {
-
-        });
-        pause.play();
+        setStage("EditTenant.fxml");
     }
 
     @FXML
     void addTenantData(ActionEvent event) {
-        System.out.println("add tenant");
-        PauseTransition pause = new PauseTransition(Duration.seconds(0.06));
-        pause.setOnFinished(actionEvent -> {
-            setStage("CreateTenant.fxml");
-        });
-        pause.play();
+        setStage("CreateTenant.fxml");
     }
 
     private void setStage(String fxml) {

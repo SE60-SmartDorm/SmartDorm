@@ -376,3 +376,24 @@
 .tab-header-background {
     -fx-background-color: #3AAC97;
 }
+
+
+
+.edit-tappane .tab-header-area .jfx-rippler {
+    -jfx-rippler-fill: #d8d8d8;
+}
+
+.edit-tappane .tab .tab-label {
+    -fx-font-weight: bold;
+    -fx-font-family: 'Sukhumvit Set';
+    -fx-text-fill: #dcdcdc;
+    -fx-font-size: 17;
+}
+
+.edit-tappane .tab:selected .tab-label {
+    -fx-text-fill: #fdfdfd;
+}
+
+.edit-tappane .tab-header-background {
+    -fx-background-color:  #e98d1f;
+}
