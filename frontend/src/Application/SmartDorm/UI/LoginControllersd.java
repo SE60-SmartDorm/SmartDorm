@@ -58,7 +58,10 @@ public class LoginControllersd {
         warning2.setVisible(false);
 
         if("Owner".equals(type)) {
-            if ((ownerUser.equals(textID.getText())) && (ownerPass.equals(textPassword.getText()))) {
+            String username = textID.getText();
+            String password = textPassword.getText();
+
+            if (username.equals("ownerz") && password.equals("bitch")) {
                 Parent home_tenant_payment = FXMLLoader.load(getClass().getResource("OwnerMain.fxml"));
                 Scene tenant3rd_page = new Scene(home_tenant_payment);
 
