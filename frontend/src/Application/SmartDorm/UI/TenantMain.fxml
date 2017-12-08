@@ -45,9 +45,9 @@
                         <Insets />
                      </VBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="tenantManageBT" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" onAction="#tenantManageView" prefHeight="60.0" prefWidth="260.0" styleClass="navi-button" text="MANAGEMENT" textFill="WHITE">
+                  <JFXButton fx:id="tenantManageBT" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" onAction="#tenantManageView" prefHeight="60.0" prefWidth="260.0" styleClass="navi-button" text="PAYMENTMENT" textFill="WHITE">
                      <graphic>
-                        <MaterialDesignIconView fill="WHITE" glyphName="ACCOUNT_SETTINGS_VARIANT" size="24" />
+                        <MaterialDesignIconView fill="WHITE" glyphName="WALLET" size="24" />
                      </graphic>
                   </JFXButton>
                   <JFXButton fx:id="ownerNotificationBT" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" onAction="#ownerNotificationView" prefHeight="60.0" prefWidth="260.0" styleClass="navi-button" text="NOTIFICATION" textFill="WHITE">
