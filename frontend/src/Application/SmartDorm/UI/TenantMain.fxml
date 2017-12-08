@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="ownerRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.TenantMainController">
+<AnchorPane fx:id="ownerRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.TenantMainController">
    <children>
       <VBox layoutX="15.0" layoutY="46.0" prefHeight="768.0" prefWidth="275.0" spacing="15.0" style="-fx-background-color: #2c323e;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -20,7 +20,7 @@
                <children>
                   <Pane prefHeight="293.0" prefWidth="275.0">
                      <children>
-                        <Label contentDisplay="CENTER" layoutX="111.0" layoutY="154.0" styleClass="text-head" text="USER" textAlignment="CENTER" textFill="WHITE" />
+                        <Label fx:id="nameLabel" contentDisplay="CENTER" layoutX="111.0" layoutY="154.0" styleClass="text-head" text="USER" textAlignment="CENTER" textFill="WHITE" />
                         <StackPane layoutX="80.0" layoutY="32.0" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-background-radius: 55;">
                            <children>
                               <FontAwesomeIconView fill="#404040" glyphName="USER_CIRCLE_ALT" size="102" />
@@ -45,12 +45,12 @@
                         <Insets />
                      </VBox.margin>
                   </JFXButton>
-                  <JFXButton fx:id="tenantManageBT" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" onAction="#tenantManageView" prefHeight="60.0" prefWidth="260.0" styleClass="navi-button" text="PAYMENTMENT" textFill="WHITE">
+                  <JFXButton fx:id="tenantManageBT" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" onAction="#tenantManageView" prefHeight="60.0" prefWidth="260.0" styleClass="navi-button" text="PAYMENT" textFill="WHITE">
                      <graphic>
                         <MaterialDesignIconView fill="WHITE" glyphName="WALLET" size="24" />
                      </graphic>
                   </JFXButton>
-                  <JFXButton fx:id="ownerNotificationBT" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" onAction="#ownerNotificationView" prefHeight="60.0" prefWidth="260.0" styleClass="navi-button" text="NOTIFICATION" textFill="WHITE">
+                  <JFXButton fx:id="ownerNotificationBT" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" onAction="#ownerNotificationView" prefHeight="60.0" prefWidth="260.0" styleClass="navi-button" text="SEND MESSAGE" textFill="WHITE">
                      <graphic>
                         <MaterialDesignIconView fill="WHITE" glyphName="EMAIL_OUTLINE" size="24" />
                      </graphic>

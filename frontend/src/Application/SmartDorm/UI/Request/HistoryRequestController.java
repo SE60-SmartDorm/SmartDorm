@@ -1,6 +1,13 @@
 package Application.SmartDorm.UI.Request;
 
+import Application.SmartDorm.UI.LoginControllersd;
 import Application.SmartDorm.UI.TenantMainController;
+import Controller.MessageController;
+import Controller.RoomController;
+import Controller.TenantController;
+import Controller.UserController;
+import Entity.Message;
+import Entity.Room;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
@@ -16,6 +23,7 @@ import javafx.scene.control.TreeTableColumn;
 import javafx.util.Callback;
 
 import java.io.IOException;
+import java.util.List;
 
 public class HistoryRequestController {
     private static ObservableList<RequestTableData> requestList = FXCollections.observableArrayList();
@@ -32,6 +40,16 @@ public class HistoryRequestController {
 
     @FXML
     public void initialize() {
+        requestList.clear();
+        String uid = LoginControllersd.tenantMainController.uid;
+        Long tid = UserController.getTenantIdByUid(uid);
+        Long rid = RoomController.getByTenantId(tid).getId();
+        List<Message> mm = MessageController.getByOwnerId(rid);
+
+        for (Message m : mm) {
+            requestList.add(new RequestTableData(m.getTimestamp(), m.getType(), m.getTopic(), m.getDetail()));
+        }
+
         LoadDataFormTenantTable();
     }
 
