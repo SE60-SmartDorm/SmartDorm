@@ -22,13 +22,10 @@ public class TenantController {
         return result;
     }
 
-    public static void update(long uid, String name, String nickname, String phone, String email, String address, String emergency_ppl, String emergency_relation, String emergency_telephone, String school, String faculty) throws DatabaseException {
+    public static void update(long uid, String name, String nickname, String phone, String email, String address, String emergency_ppl, String emergency_relation, String emergency_telephone, String school, String faculty) {
         TenantsModel.connect();
         if (TenantsModel.getTenantByUserId(uid) != null) {
             TenantsModel.updateTenantInfoByUID(uid, name, nickname, phone, email, address, emergency_ppl, emergency_relation, emergency_telephone, school, faculty);
-        } else {
-            TenantsModel.close();
-            throw new DatabaseException("User not found");
         }
         TenantsModel.close();
     }

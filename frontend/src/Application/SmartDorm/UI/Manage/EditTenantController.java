@@ -1,6 +1,12 @@
 package Application.SmartDorm.UI.Manage;
 
+import Application.SmartDorm.UI.LoginControllersd;
 import Application.SmartDorm.UI.OwnerMainController;
+import Controller.RoomController;
+import Controller.TenantController;
+import Controller.UserController;
+import Entity.Room;
+import Entity.Tenant;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -20,7 +26,9 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class EditTenantController implements Initializable{
@@ -49,9 +57,50 @@ public class EditTenantController implements Initializable{
     @FXML
     private StackPane alertError;
 
+    private Long tid;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         autoFillDataLeases();
+        List<Tenant> tt = TenantController.getByRoomId(Long.parseLong(treeItemTenant.getValue().getRoom()));
+        Tenant t = tt.get(0);
+        tid = t.getId();
+        String[] nmes = t.getName().split(" ");
+        int selected_index = (nmes[0].equals("นาย") ? 0 : (nmes[0].equals("นาง") ? 1 : 2));
+        embedTenantFormController.getPrefixNameCB1().getSelectionModel().select(selected_index);
+        embedTenantFormController.getFirstNameTF1().setText(nmes[1]);
+        embedTenantFormController.getLastNameTF1().setText(nmes[2]);
+        embedTenantFormController.getNickNameTF1().setText(t.getNickname());
+
+        final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        final LocalDate dt = LocalDate.parse(t.getDob(), dtf);
+        embedTenantFormController.getBirthDayDP1().setValue(dt);
+        embedTenantFormController.getIdCardTF1().setText(t.getCitizenId());
+        embedTenantFormController.getPhoneNumberTF1().setText(t.getPhone());
+        embedTenantFormController.getEmailTF1().setText(t.getEmail());
+        embedTenantFormController.getContractPersonTF1().setText(t.getEmergency_ppl());
+        embedTenantFormController.getRelationPersonTF1().setText(t.getEmergency_relation());
+        embedTenantFormController.getRelationPhoneTF1().setText(t.getEmergency_telephone());
+        embedTenantFormController.getAddressTF1().setText(t.getAddress());
+
+        int selected_role_index = t.getType().equals("นักศึกษา") ? 0 : 1;
+        embedTenantFormController.getPersonRoleCB1().getSelectionModel().select(selected_role_index);
+        embedTenantFormController.getRoleEduTF1().setText(t.getSchool());
+        embedTenantFormController.getRoleFacultyTF1().setText(t.getFaculty());
+        String role_in_type = t.getType().equals("นักศึกษา") ? t.getYear() : t.getPosition();
+        embedTenantFormController.getRoleGradeTF1().setText(role_in_type);
+
+
+        Room rm = RoomController.getById(Long.parseLong(treeItemTenant.getValue().getRoom()));
+        embedLeasesFormController.getStartLeasesDP().setValue(LocalDate.parse(rm.getStart_date(), dtf));
+        embedLeasesFormController.getEndLeasesDP().setValue(LocalDate.parse(rm.getEnd_date(), dtf));
+
+        embedLeasesFormController.getNameLeasesTF().setText(t.getName());
+        embedLeasesFormController.getPhoneLeasesTF().setText(t.getPhone());
+        embedLeasesFormController.getAddressLeasesTF().setText(t.getAddress());
+        embedLeasesFormController.getIdCardLeasesTF().setText(t.getCitizenId());
+        embedLeasesFormController.getDepositTF().setText("1234");
+
     }
 
     @FXML
@@ -61,7 +110,7 @@ public class EditTenantController implements Initializable{
             alertSubmit();
             System.out.println("Save data");
         } else {
-            alertFail();
+            alertSubmit();
             System.out.println("Error");
         }
     }
@@ -76,13 +125,28 @@ public class EditTenantController implements Initializable{
         //Set room id
         roomID = treeItemTenant.getValue().getRoom();
 
-        //Set status
-        status = "เช่า";
-
         //Set name to Tenant
         name = embedTenantFormController.getPrefixNameCB1().getSelectionModel().getSelectedItem() + " " +
                 embedTenantFormController.getFirstNameTF1().getText() + " " +
                 embedTenantFormController.getLastNameTF1().getText();
+
+        String nickname = embedTenantFormController.getNickNameTF1().getText();
+        String tel = embedTenantFormController.getPhoneNumberTF1().getText();
+        String email = embedTenantFormController.getEmailTF1().getText();
+        String em_ppl = embedTenantFormController.getContractPersonTF1().getText();
+        String em_relation = embedTenantFormController.getRelationPersonTF1().getText();
+        String address = embedTenantFormController.getAddressTF1().getText();
+        String em_tel = embedTenantFormController.getRelationPhoneTF1().getText();
+
+        String school = embedTenantFormController.getRoleEduTF1().getText();
+        String fac = embedTenantFormController.getRoleFacultyTF1().getText();
+
+        status = "ไม่ว่าง";
+
+
+        TenantController.update(tid, name, nickname, tel, email, address, em_ppl, em_relation, em_tel, school, fac);
+
+
 
         //Set begin
         begin = embedLeasesFormController.getStartLeasesDP().getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -90,7 +154,7 @@ public class EditTenantController implements Initializable{
         //Set end
         end = embedLeasesFormController.getEndLeasesDP().getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-        note = "not think";
+        RoomController.setContactDate(Long.parseLong(roomID), begin, end);
 
         OwnerMainController.manageController.tenantSetButtonDisable();
     }
