@@ -3,6 +3,8 @@ package Application.SmartDorm.UI.Manage;
 import Application.SmartDorm.UI.OwnerMainController;
 import Controller.RoomController;
 import Controller.TenantController;
+import Controller.UserController;
+import Entity.User;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
@@ -48,6 +50,8 @@ public class CreateTenantController {
     @FXML
     private StackPane alertError;
 
+    String user_temp;
+
     //init xy offsets
     private double xOffset = 0;
     private double yOffset = 0;
@@ -55,11 +59,13 @@ public class CreateTenantController {
     @FXML
     public void initialize() {
         autoFillDataLeases();
+
     }
 
     @FXML
     void saveData(ActionEvent event) {
         //TODO Save tenant data to DATABASE
+        roomID = treeItemTenant.getValue().getRoom();
         if (embedTenantFormController.checkBeforeSubmitForm() && embedLeasesFormController.checkBeforeSubmitLeases()) {
             alertSubmit();
             System.out.println("Save data");
@@ -120,8 +126,13 @@ public class CreateTenantController {
         RoomController.setContactDate(Long.parseLong(roomID), begin, end);
         RoomController.updateTenant(Long.parseLong(roomID), TenantController.getByCitizenId(ctzn_id).getId(), 0);
 
-//        note = "not think";
+        Long rid = Long.parseLong(roomID);
+        Long tid = RoomController.getById(rid).getPrimary_tenant();
 
+        UserController.updateTidByUid(user_temp, tid);
+
+//        note = "not think";
+        System.out.println("EEE" + roomID);
 
         OwnerMainController.manageController.tenantSetButtonDisable();
     }
@@ -206,6 +217,14 @@ public class CreateTenantController {
         content.setBody(detail);
         JFXDialog dialog = new JFXDialog(alertError, content, JFXDialog.DialogTransition.CENTER);
 
+        System.out.println(roomID);
+        Long rid = Long.parseLong(roomID);
+        Long tid = RoomController.getById(rid).getPrimary_tenant();
+        User u = UserController.create(tid);
+
+        user_temp = u.getUid();
+        user.setText(u.getUid());
+        pass.setText(u.getPassword());
 
         submit.setOnAction(event -> {
             confirmSaveDa();

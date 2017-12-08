@@ -20,7 +20,7 @@
                <children>
                   <Pane prefHeight="293.0" prefWidth="275.0">
                      <children>
-                        <Label fx:id="nameLabel" contentDisplay="CENTER" layoutX="111.0" layoutY="154.0" styleClass="text-head" text="USER" textAlignment="CENTER" textFill="WHITE" />
+                        <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="23.0" layoutY="158.0" prefHeight="39.0" prefWidth="235.0" styleClass="text-head" text="USER" textFill="WHITE" />
                         <StackPane layoutX="80.0" layoutY="32.0" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-background-radius: 55;">
                            <children>
                               <FontAwesomeIconView fill="#404040" glyphName="USER_CIRCLE_ALT" size="102" />

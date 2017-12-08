@@ -3,7 +3,10 @@ package Application.SmartDorm.UI.TenantPayment;
 import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.LoginControllersd;
 import Application.SmartDorm.UI.TenantMainController;
+import Controller.MessageController;
 import Controller.RentalController;
+import Controller.TenantController;
+import Entity.Rental;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,7 +40,13 @@ public class TenantPaymentPayConfirmController {
     @FXML
     private void ok(ActionEvent event) throws IOException {
         long pay_id = TenantMainController.tenantPayVari.pay_id;
+        long oid = TenantMainController.tenantPayVari.oid;
+        double ttl = TenantMainController.tenantPayVari.ttl;
         RentalController.setRentalPaid(pay_id);
+        Rental rr = RentalController.getById(pay_id);
+        String topic = "ห้อง " + oid + " ชำระเงิน ประจำเดือน " + rr.getMonth() + "/" + rr.getYear();
+        String detail = "ห้อง " + oid + " ชำระเงิน ประจำเดือน " + rr.getMonth() + "/" + rr.getYear() + "จำนวนเงินทั้งหมด " + ttl + " บาท";
+        MessageController.create(oid, "จ่ายเงิน", topic, detail, "08/12/2017");
 
         Node home_tenant_payment = FXMLLoader.load(getClass().getResource("../TenantDashboard.fxml"));
         setNode(home_tenant_payment);

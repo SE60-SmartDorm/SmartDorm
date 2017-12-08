@@ -69,5 +69,18 @@ public class UserModel {
         return result.get(0);
     }
 
+    public static void updateTidByUid(String uid, long tid) {
+        EntityManager em = emf.createEntityManager();
+        em.getEntityManagerFactory().getCache().evictAll();
+        em.getTransaction().begin();
+        Query query = em.createQuery(
+                "UPDATE User u SET tenant_id = :tid " +
+                        "WHERE u.uid = :id");
+        query.setParameter("tid", tid);
+        query.setParameter("id", uid);
+        query.executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+    }
 
 }

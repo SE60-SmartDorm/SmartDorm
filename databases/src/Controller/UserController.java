@@ -44,5 +44,11 @@ public class UserController {
         UserModel.close();
     }
 
+    public static void updateTidByUid(String uid, long tid) {
+        UserModel.connect();
+        UserModel.updateTidByUid(uid, tid);
+        UserModel.close();
+    }
+
 
 }

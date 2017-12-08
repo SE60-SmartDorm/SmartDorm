@@ -1,9 +1,13 @@
 package Application.SmartDorm.UI.Manage;
 
 import Application.SmartDorm.MainSmartDorm;
+import Controller.MessageController;
 import Controller.RoomController;
 import Controller.TenantController;
+import Controller.UserController;
 import Entity.Room;
+import Model.MessageModel;
+import Model.UserModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -232,11 +236,15 @@ public class TenantManageController {
             treeItemTenant.setValue(n);
             tenantTableView.getSelectionModel().clearSelection();
             Long room_id = Long.parseLong(tenantTableView.getSelectionModel().getModelItem(selectionIndex).getValue().getRoom());
+            System.out.println("DSDSA" + room_id);
             Room r = RoomController.getById(room_id);
             TenantController.removeById(r.getPrimary_tenant());
+            UserController.removeUserByTenant(r.getPrimary_tenant());
             RoomController.updateTenant(room_id, 0, 0);
             RoomController.setRoomToVacant(room_id);
             RoomController.setContactDate(room_id, "", "");
+            MessageController.removeMessageByRoomId(room_id);
+
 
         } else {
             //TODO Show ERROR

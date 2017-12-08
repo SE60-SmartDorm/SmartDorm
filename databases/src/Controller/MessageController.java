@@ -46,4 +46,11 @@ public class MessageController {
         MessageModel.close();
         return m;
     }
+
+    public static void removeMessageByRoomId(long rid) {
+        MessageModel.connect();
+        MessageModel.removeMessageByRoomId(rid);
+        MessageModel.close();
+    }
+
 }

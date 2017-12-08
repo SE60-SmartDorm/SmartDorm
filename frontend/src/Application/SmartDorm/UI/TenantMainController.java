@@ -6,6 +6,7 @@ import Application.SmartDorm.UI.Request.HistoryRequestController;
 import Application.SmartDorm.UI.TenantPayment.TenantPaymentController;
 import Controller.TenantController;
 import Controller.UserController;
+import Entity.Tenant;
 import Entity.User;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
@@ -61,7 +62,6 @@ public class TenantMainController {
     public void initialize() {
         mainTenantChangePane = tenantChangePane;
         loadOwnerMain();
-
     }
 
     @FXML
@@ -75,6 +75,11 @@ public class TenantMainController {
     @FXML
     void dashboardView(ActionEvent event) {
         setNode(tenantDashboardView);
+        System.out.println("EEE: " + uid);
+        Long tid = UserController.getTenantIdByUid(uid);
+        Tenant t = TenantController.getById(tid);
+        String[] strip = t.getName().split(" ");
+        nameLabel.setText(strip[1]);
     }
 
     @FXML

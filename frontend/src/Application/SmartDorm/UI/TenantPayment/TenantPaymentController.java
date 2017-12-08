@@ -4,6 +4,7 @@ import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.LoginControllersd;
 import Application.SmartDorm.UI.TenantMainController;
 import Controller.RentalController;
+import Controller.RoomController;
 import Controller.UserController;
 import Entity.Rental;
 import com.jfoenix.controls.JFXButton;
@@ -71,7 +72,8 @@ public class TenantPaymentController {
     private long fine;
     private int currentDay,currentMonth,currentYear;
     public Long pay_id;
-
+    public Long oid;
+    public double ttl;
 
     public String uid;
     private Long owner_id;
@@ -141,6 +143,10 @@ public class TenantPaymentController {
         setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
 
         pay_id = this_rent.getId();
+        oid = RoomController.getByTenantId(owner_id).getId();
+        ttl = total;
+
+        System.out.println("XX " + oid + " " + ttl);
 
 
     }

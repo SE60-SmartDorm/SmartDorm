@@ -76,4 +76,14 @@ public class MessageModel {
         return result;
     }
 
+    public static void removeMessageByRoomId(long rid) {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery(
+                "DELETE FROM Message m WHERE m.owner_id = :id");
+        query.setParameter("id", rid).executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+    }
+
 }
