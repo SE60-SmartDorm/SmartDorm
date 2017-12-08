@@ -3,6 +3,8 @@ package Application.SmartDorm.UI.OwnerNotification;
 import Application.SmartDorm.UI.Manage.TenantTable;
 import Application.SmartDorm.UI.OwnerMainController;
 import Application.SmartDorm.UI.TenantMainController;
+import Controller.MessageController;
+import Entity.Message;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -22,6 +24,7 @@ import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class OwnerNotificationController implements Initializable {
@@ -54,8 +57,11 @@ public class OwnerNotificationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         LoadDataFormTenantTable();
         notificationTableData.clear();
-        notificationTableData.add(new NoitificationDataTable("101","แจ้งซ่อม","แอร์พัง","อยากได้ชั่งแอร์ในตำนาน"));
-        notificationTableData.add(new NoitificationDataTable("201","แจ้งเงี่ยน","เงี่ยน","อยากได้ผัว"));
+        List<Message> m = MessageController.getAll();
+
+        for (Message mm : m) {
+            notificationTableData.add(new NoitificationDataTable(mm.getOwner_id() + "", mm.getType(), mm.getTopic(), mm.getDetail()));
+        }
 
     }
 
@@ -146,7 +152,6 @@ public class OwnerNotificationController implements Initializable {
        else
        {
            hintSelect.setVisible(true);
-           System.out.println("kuy");
        }
 
     }
