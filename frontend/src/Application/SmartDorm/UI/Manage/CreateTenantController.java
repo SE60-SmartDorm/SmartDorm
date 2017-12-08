@@ -1,38 +1,26 @@
 package Application.SmartDorm.UI.Manage;
 
-import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.OwnerMainController;
 import Controller.RoomController;
 import Controller.TenantController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
-import com.objectdb.o.LPS;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TreeItem;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class CreateTenantController {
     //Set TenantFormController
@@ -122,7 +110,6 @@ public class CreateTenantController {
         TenantController.create(Long.parseLong(roomID), name, nickname, dob, ctzn_id, phone, email, address, em_ppl, em_relation, em_tel, type, school, fac, position, grade);
 
 
-
         //Set begin
         begin = embedLeasesFormController.getStartLeasesDP().getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
@@ -134,7 +121,6 @@ public class CreateTenantController {
         RoomController.updateTenant(Long.parseLong(roomID), TenantController.getByCitizenId(ctzn_id).getId(), 0);
 
 //        note = "not think";
-
 
 
         OwnerMainController.manageController.tenantSetButtonDisable();
@@ -191,37 +177,45 @@ public class CreateTenantController {
     }
 
     private void alertSubmit() {
-        Text text = new Text("ยืนยันการบันทึกข้อมูล");
+        Text text = new Text("บันทึกข้อมูลสำเร็จ");
+        Text userText = new Text("USER");
+        Text passText = new Text("PASS");
+        TextField user = new TextField();
+        TextField pass = new TextField();
+        userText.setStyle("-fx-font-family: 'Sukhumvit Set'; -fx-font-size: 20;");
+        passText.setStyle("-fx-font-family: 'Sukhumvit Set'; -fx-font-size: 20;");
         text.setStyle("-fx-font-family: 'Sukhumvit Set'; -fx-font-size: 22;");
         submit.setStyle("-fx-text-fill:WHITE;-fx-background-color:#5264AE;-fx-font-size:18px;-fx-font-family: 'Sukhumvit Set';-fx-font-weight: bold;");
-        cancel.setStyle("-fx-text-fill:WHITE;-fx-background-color:#e34249;-fx-font-size:18px;-fx-font-family: 'Sukhumvit Set';-fx-font-weight: bold;");
+//        cancel.setStyle("-fx-text-fill:WHITE;-fx-background-color:#e34249;-fx-font-size:18px;-fx-font-family: 'Sukhumvit Set';-fx-font-weight: bold;");
         VBox header = new VBox();
-        HBox detail = new HBox();
-        detail.setSpacing(30);
+        VBox detail = new VBox();
+        detail.setSpacing(10);
+        user.setStyle("-fx-padding: 10 10 10 10;");
+        user.setEditable(false);
+        pass.setStyle("-fx-padding: 10 10 10 10;");
+        pass.setEditable(false);
 
         header.getChildren().add(text);
         header.setAlignment(Pos.TOP_CENTER);
 
-        detail.getChildren().addAll(submit, cancel);
-        detail.setAlignment(Pos.BASELINE_CENTER);
+        detail.getChildren().addAll(userText, user, passText, pass, submit);
+        detail.setAlignment(Pos.CENTER);
 
         JFXDialogLayout content = new JFXDialogLayout();
         content.setHeading(header);
         content.setBody(detail);
         JFXDialog dialog = new JFXDialog(alertError, content, JFXDialog.DialogTransition.CENTER);
-        cancel.setOnAction(event -> {
-            dialog.close();
-        });
+
+
         submit.setOnAction(event -> {
             confirmSaveDa();
             dialog.close();
-            setStage("GenerateUser.fxml");
         });
         dialog.setOverlayClose(false);
         dialog.show();
     }
 
-    private void confirmSaveDa(){
+    private void confirmSaveDa() {
         setTenantData();
 
         TenantTable n = new TenantTable(roomID, status, name, begin, end, note);
@@ -230,52 +224,5 @@ public class CreateTenantController {
         OwnerMainController.manageController.getTenantTableView().getSelectionModel().clearSelection();
         OwnerMainController.manageController.tenantSetButtonDisable();
         saveDataBT.getScene().getWindow().hide();
-    }
-
-    private void setStage(String fxml) {
-        try {
-            //dim overlay on new stage opening
-            Region veil = new Region();
-            veil.setPrefSize(1000, 768);
-            veil.setStyle("-fx-background-color:rgba(0,0,0,0.3)");
-            Stage newStage = new Stage();
-            Parent parent = FXMLLoader.load(getClass().getResource(fxml));
-
-            //--------------------- Set mouse event ----------------------------
-            parent.setOnMousePressed(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    xOffset = event.getSceneX();
-                    yOffset = event.getSceneY();
-                }
-            });
-
-            //set mouse drag
-            parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    newStage.setX(event.getScreenX() - xOffset);
-                    newStage.setY(event.getScreenY() - yOffset);
-                }
-            });
-            //------------------------------------------------------------------
-
-            Scene scene = new Scene(parent);
-            scene.setFill(Color.TRANSPARENT);
-            newStage.setScene(scene);
-            newStage.initModality(Modality.APPLICATION_MODAL);
-            newStage.initStyle(StageStyle.TRANSPARENT);
-            newStage.getScene().getRoot().setEffect(new DropShadow());
-
-            newStage.show();
-
-            //set to center on parent state
-            double centerXPosition = MainSmartDorm.getStage().getX() + MainSmartDorm.getStage().getWidth() / 2d;
-            double centerYPosition = MainSmartDorm.getStage().getY() + MainSmartDorm.getStage().getHeight() / 2d;
-            newStage.setX(centerXPosition - newStage.getWidth() / 2d);
-            newStage.setY(centerYPosition - newStage.getHeight() / 2d);
-        } catch (IOException ex) {
-            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
-        }
     }
 }

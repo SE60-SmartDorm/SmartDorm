@@ -255,7 +255,7 @@ public class TenantManageController {
         setStage("CreateTenant.fxml");
     }
 
-    private void setStage(String fxml) {
+    public void setStage(String fxml) {
         try {
             //dim overlay on new stage opening
             Region veil = new Region();
