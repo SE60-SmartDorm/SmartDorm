@@ -89,7 +89,7 @@ public class CreateTenantController {
         String em_ppl = embedTenantFormController.getContractPersonTF1().getText();
         String em_relation = embedTenantFormController.getRelationPersonTF1().getText();
         String address = embedTenantFormController.getAddressTF1().getText();
-        String em_tel = embedTenantFormController.getRelationPersonTF1().getText();
+        String em_tel = embedTenantFormController.getRelationPhoneTF1().getText();
 
         String type = embedTenantFormController.getPersonRoleCB1().getSelectionModel().getSelectedItem();
         String school = embedTenantFormController.getRoleEduTF1().getText();

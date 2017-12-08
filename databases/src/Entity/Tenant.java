@@ -95,6 +95,10 @@ public class Tenant implements Serializable {
         return emergency_relation;
     }
 
+    public String getEmergency_telephone() {
+        return emergency_telephone;
+    }
+
     public String getSchool() {
         return school;
     }
