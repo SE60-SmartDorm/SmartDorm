@@ -6,7 +6,7 @@ import Model.RentalModel;
 import java.util.List;
 
 public class RentalController {
-    public static void create(long oid, int month, int year, float room_rent, float water, float electric, float other) {
+    public static void create(long oid, int month, int year, double room_rent, double water, double electric, double other) {
         RentalModel.connect();
         RentalModel.createRentalRecord(oid, month, year, room_rent, water, electric, other);
         RentalModel.close();

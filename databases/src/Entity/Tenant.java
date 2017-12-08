@@ -47,6 +47,10 @@ public class Tenant implements Serializable {
         this.year = year;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public String getType() {
         return type;
     }
@@ -107,17 +111,4 @@ public class Tenant implements Serializable {
         return year;
     }
 
-    //    @Override
-//    public String toString() {
-//        String res = "Entity.Tenant ";
-//        res += "ID: " + this.id + " ";
-//        res += "RoomID: " + this.roomId + " ";
-//        res += "FName: " + this.firstname + " ";
-//        res += "LName: " + this.lastname + " ";
-//        res += "CID: " + this.citizenId + " ";
-//        res += "Phone: " + this.phone + " ";
-//        res += "ADD: " + this.address + " ";
-//
-//        return res;
-//    }
 }

@@ -40,7 +40,7 @@ public class RoomsModel {
     public static void createRoom(long id, int type) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        Room r = new Room(id, type, false, 0, 0);
+        Room r = new Room(id, type, true, 0, 0, "", "");
         em.persist(r);
         em.getTransaction().commit();
         em.close();
@@ -88,6 +88,22 @@ public class RoomsModel {
                         "WHERE r.id = :id");
         query.setParameter("ptn", primary_tenant);
         query.setParameter("stn", secondary_tenant);
+        query.setParameter("id", rid);
+        query.executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+    }
+
+    public static void updateContactDateByRoomId(long rid, String start_date, String end_date) {
+        EntityManager em = emf.createEntityManager();
+        em.getEntityManagerFactory().getCache().evictAll();
+        em.getTransaction().begin();
+        Query query = em.createQuery(
+                "UPDATE Room r SET start_date = :std, " +
+                        "end_date = :ed " +
+                        "WHERE r.id = :id");
+        query.setParameter("std", start_date);
+        query.setParameter("ed", end_date);
         query.setParameter("id", rid);
         query.executeUpdate();
         em.getTransaction().commit();

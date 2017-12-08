@@ -25,10 +25,18 @@ public class UserController {
     public static boolean checkPassword(String uid, String pass) {
         UserModel.connect();
         User a = UserModel.getUserByUsername(uid);
-        if (a != null && a.getPassword() == pass)
+        UserModel.close();
+        if (a != null && a.getPassword().equals(pass))
             return true;
         else
             return false;
+    }
+
+    public static Long getTenantIdByUid(String uid) {
+        UserModel.connect();
+        Long oid = UserModel.getUserByUsername(uid).getTenant_id();
+        UserModel.close();
+        return oid;
     }
 
     public static void removeUserByTenant(long tid) {

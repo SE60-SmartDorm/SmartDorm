@@ -1,7 +1,11 @@
 package Application.SmartDorm.UI.TenantPayment;
 
 import Application.SmartDorm.MainSmartDorm;
+import Application.SmartDorm.UI.LoginControllersd;
 import Application.SmartDorm.UI.TenantMainController;
+import Controller.RentalController;
+import Controller.UserController;
+import Entity.Rental;
 import com.jfoenix.controls.JFXButton;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,6 +23,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import static java.time.temporal.ChronoUnit.DAYS;
 
 
@@ -58,10 +66,15 @@ public class TenantPaymentController {
     private static String monthTemp;
     static int[] checkMonth = new int[12];
     private String paidText = "ชำระแล้ว";
-    private String payText = "กดชำระ";
+    private String payText = "ชำระ";
     private String noPay = "ไม่มียอดค้างชำระ";
     private long fine;
     private int currentDay,currentMonth,currentYear;
+    public Long pay_id;
+
+
+    public String uid;
+    private Long owner_id;
 
     public void setTotal(double total) {
         this.total = total;
@@ -87,407 +100,78 @@ public class TenantPaymentController {
     LocalDate dateAfter;
     long daysBetween;
 
+    List<Rental> rents;
+
+
+
+    Map<String, Integer> map = new HashMap<String, Integer>();
+
     @FXML
     private void chooseMonth(ActionEvent event) throws IOException{
         currentDay = Integer.parseInt(day.format(dateobj));
         currentMonth = Integer.parseInt(month.format(dateobj));
         currentYear = Integer.parseInt(year.format(dateobj));
         errorChoose.setVisible(false);
+        uid = LoginControllersd.tenantMainController.uid;
+        owner_id = UserController.getTenantIdByUid(uid);
+        System.out.println("DBG_OID: " + owner_id);
+        rents = RentalController.getByOwnerId(owner_id);
 
-        if (("January".equals(listMonth.getValue().toString()))) {
-            dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
-            dateBefore = LocalDate.of(2560,1,05);
-            daysBetween = DAYS.between(dateBefore,dateAfter);
-            if(currentMonth>=1) {
-                pay.setDisable(false);
-                pay.setText(payText);
-                this.wUnit = 3;
-                this.eUnit = 17;
-                this.oPay = 500;
-                fine = daysBetween * 20;
-                this.oPay = fine + oPay;
-                room = 3600;
-                ePay = eUnit * 7;
-                wPay = wUnit * 17;
-                total = room + wPay + ePay + oPay;
-                setTotal(total);
-                setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
-                if (checkMonth[0] == 1) {
-                    pay.setDisable(true);
-                    pay.setText(paidText);
-                    System.out.println("จ่ายแล้ว");
-                }
+        String selected_month = listMonth.getValue().toString();
+        int month_int = map.get(selected_month);
+        Rental this_rent = null;
+        for (Rental r : rents) {
+            if (r.getMonth() == month_int) {
+                this_rent = r;
+                break;
             }
-            else {
-                setBillDetail(0,0,0,0,0,0,0);
-                pay.setDisable(true);
-                pay.setText(noPay);
-                System.out.println("ยังไม่มียอดค้างชำระ");
-            }
+        }
 
-        } else if ("February".equals(listMonth.getValue().toString())) {
-            dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
-            dateBefore = LocalDate.of(2560,2,05);
-            daysBetween = DAYS.between(dateBefore,dateAfter);
-            if(currentMonth>=2) {
-                pay.setDisable(false);
-                pay.setText(payText);
-                this.wUnit = 10;
-                this.eUnit = 12;
-                this.oPay = 100;
-                fine = daysBetween * 20;
-                this.oPay = fine + oPay;
-                room = 3600;
-                ePay = eUnit * 7;
-                wPay = wUnit * 17;
-                total = room + wPay + ePay + oPay;
-                setTotal(total);
-                setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
-                if (checkMonth[1] == 1) {
-                    System.out.println("จ่ายแล้ว");
-                    pay.setText(paidText);
-                    pay.setDisable(true);
-                }
-            }
-            else {
-                setBillDetail(0,0,0,0,0,0,0);
-                pay.setDisable(true);
-                pay.setText(noPay);
-                System.out.println("ยังไม่มียอดค้างชำระ");
-            }
 
-        } else if ("March".equals(listMonth.getValue().toString())) {
-            dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
-            dateBefore = LocalDate.of(2560,3,05);
-            daysBetween = DAYS.between(dateBefore,dateAfter);
-            if(currentMonth>=3) {
-                pay.setDisable(false);
-                pay.setText(payText);
-                this.wUnit = 11;
-                this.eUnit = 13;
-                this.oPay = 200;
-                fine = daysBetween*20;
-                this.oPay = fine+oPay;
-                room = 3600;
-                ePay = eUnit * 7;
-                wPay = wUnit * 17;
-                total = room + wPay + ePay + oPay;
-                setTotal(total);
-                setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
-                if (checkMonth[2] == 1) {
-                    System.out.println("จ่ายแล้ว");
-                    pay.setText(paidText);
-                    pay.setDisable(true);
-                }
-            }
-            else {
-                setBillDetail(0,0,0,0,0,0,0);
-                pay.setDisable(true);
-                pay.setText(noPay);
-                System.out.println("ยังไม่มียอดค้างชำระ");
-            }
+        pay.setDisable(this_rent.isPaid());
+        pay.setText(this_rent.isPaid() ? paidText : payText);
+        wUnit = this_rent.getWater();
+        eUnit = this_rent.getElectric();
+        oPay = this_rent.getOther();
+        room = this_rent.getRoom_rent();
+        ePay = eUnit * 7;
+        wPay = wUnit * 17;
+        total = room + wPay + ePay + oPay;
+        setTotal(total);
+        setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
 
-        } else if ("April".equals(listMonth.getValue().toString())) {
-            dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
-            dateBefore = LocalDate.of(2560,4,05);
-            daysBetween = DAYS.between(dateBefore,dateAfter);
-            if(currentMonth>=4) {
-                pay.setDisable(false);
-                pay.setText(payText);
-                this.wUnit = 50;
-                this.eUnit = 50;
-                this.oPay = 250;
-                fine = daysBetween*20;
-                this.oPay = fine+oPay;
-                room = 3600;
-                ePay = eUnit * 7;
-                wPay = wUnit * 17;
-                total = room + wPay + ePay + oPay;
-                setTotal(total);
-                setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
-                if (checkMonth[3] == 1) {
-                    System.out.println("จ่ายแล้ว");
-                    pay.setText(paidText);
-                    pay.setDisable(true);
-                }
-            }
-            else {
-                setBillDetail(0,0,0,0,0,0,0);
-                pay.setDisable(true);
-                pay.setText(noPay);
-                System.out.println("ยังไม่มียอดค้างชำระ");
-            }
+        pay_id = this_rent.getId();
 
-        } else if ("May".equals(listMonth.getValue().toString())) {
-            dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
-            dateBefore = LocalDate.of(2560,5,05);
-            daysBetween = DAYS.between(dateBefore,dateAfter);
-            if(currentMonth>=5) {
-                pay.setDisable(false);
-                pay.setText(payText);
-                this.wUnit = 1;
-                this.eUnit = 1;
-                this.oPay = 145;
-                fine = daysBetween*20;
-                this.oPay = fine+oPay;
-                room = 3600;
-                ePay = eUnit * 7;
-                wPay = wUnit * 17;
-                total = room + wPay + ePay + oPay;
-                setTotal(total);
-                setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
-                if (checkMonth[4] == 1) {
-                    System.out.println("จ่ายแล้ว");
-                    pay.setText(paidText);
-                    pay.setDisable(true);
-                }
-            }
-            else {
-                setBillDetail(0,0,0,0,0,0,0);
-                pay.setDisable(true);
-                pay.setText(noPay);
-                System.out.println("ยังไม่มียอดค้างชำระ");
-            }
 
-        } else if ("June".equals(listMonth.getValue().toString())) {
-            dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
-            dateBefore = LocalDate.of(2560,6,05);
-            daysBetween = DAYS.between(dateBefore,dateAfter);
-            if(currentMonth>=6) {
-                pay.setDisable(false);
-                pay.setText(payText);
-                this.wUnit = 2;
-                this.eUnit = 2;
-                this.oPay = 325;
-                fine = daysBetween*20;
-                this.oPay = fine+oPay;
-                room = 3600;
-                ePay = eUnit * 7;
-                wPay = wUnit * 17;
-                total = room + wPay + ePay + oPay;
-                setTotal(total);
-                setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
-                if (checkMonth[5] == 1) {
-                    System.out.println("จ่ายแล้ว");
-                    pay.setText(paidText);
-                    pay.setDisable(true);
-                }
-            }
-            else {
-                setBillDetail(0,0,0,0,0,0,0);
-                pay.setDisable(true);
-                pay.setText(noPay);
-                System.out.println("ยังไม่มียอดค้างชำระ");
-            }
-
-        } else if ("July".equals(listMonth.getValue().toString())) {
-            dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
-            dateBefore = LocalDate.of(2560,7,05);
-            daysBetween = DAYS.between(dateBefore,dateAfter);
-            if(currentMonth>=7) {
-                pay.setDisable(false);
-                pay.setText(payText);
-                this.wUnit = 7;
-                this.eUnit = 7;
-                this.oPay = 560;
-                fine = daysBetween * 20;
-                this.oPay = fine + oPay;
-                room = 3600;
-                ePay = eUnit * 7;
-                wPay = wUnit * 17;
-                total = room + wPay + ePay + oPay;
-                setTotal(total);
-                setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
-                if (checkMonth[6] == 1) {
-                    System.out.println("จ่ายแล้ว");
-                    pay.setText(paidText);
-                    pay.setDisable(true);
-                }
-            }
-            else {
-                setBillDetail(0,0,0,0,0,0,0);
-                pay.setDisable(true);
-                pay.setText(noPay);
-                System.out.println("ยังไม่มียอดค้างชำระ");
-            }
-
-        } else if ("August".equals(listMonth.getValue().toString())) {
-            dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
-            dateBefore = LocalDate.of(2560,8,05);
-            daysBetween = DAYS.between(dateBefore,dateAfter);
-            if(currentMonth>=8) {
-                pay.setDisable(false);
-                pay.setText(payText);
-                this.wUnit = 1;
-                this.eUnit = 2;
-                this.oPay = 360;
-                fine = daysBetween*20;
-                this.oPay = fine+oPay;
-                room = 3600;
-                ePay = eUnit * 7;
-                wPay = wUnit * 17;
-                total = room + wPay + ePay + oPay;
-                setTotal(total);
-                setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
-                if (checkMonth[7] == 1) {
-                    System.out.println("จ่ายแล้ว");
-                    pay.setText(paidText);
-                    pay.setDisable(true);
-                }
-            }
-            else {
-                setBillDetail(0,0,0,0,0,0,0);
-                pay.setDisable(true);
-                pay.setText(noPay);
-                System.out.println("ยังไม่มียอดค้างชำระ");
-            }
-
-        } else if ("September".equals(listMonth.getValue().toString())) {
-            dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
-            dateBefore = LocalDate.of(2560,9,05);
-            daysBetween = DAYS.between(dateBefore,dateAfter);
-            if(currentMonth>=9) {
-                pay.setDisable(false);
-                pay.setText(payText);
-                this.wUnit = 8;
-                this.eUnit = 8;
-                this.oPay = 8;
-                fine = daysBetween * 20;
-                this.oPay = fine + oPay;
-                room = 3600;
-                ePay = eUnit * 7;
-                wPay = wUnit * 17;
-                total = room + wPay + ePay + oPay;
-                setTotal(total);
-                setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
-                if (checkMonth[8] == 1) {
-                    System.out.println("จ่ายแล้ว");
-                    pay.setText(paidText);
-                    pay.setDisable(true);
-                }
-            }
-            else {
-                setBillDetail(0,0,0,0,0,0,0);
-                pay.setDisable(true);
-                pay.setText(noPay);
-                System.out.println("ยังไม่มียอดค้างชำระ");
-            }
-
-        } else if ("October".equals(listMonth.getValue().toString())) {
-            dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
-            dateBefore = LocalDate.of(2560,10,05);
-            daysBetween = DAYS.between(dateBefore,dateAfter);
-            if(currentMonth >= 10) {
-                pay.setDisable(false);
-                pay.setText(payText);
-                this.wUnit = 9;
-                this.eUnit = 9;
-                this.oPay = 9;
-                fine = daysBetween*20;
-                this.oPay = fine+oPay;
-                room = 3600;
-                ePay = eUnit * 7;
-                wPay = wUnit * 17;
-                total = room + wPay + ePay + oPay;
-                setTotal(total);
-                setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
-                if (checkMonth[9] == 1) {
-                    System.out.println("จ่ายแล้ว");
-                    pay.setText(paidText);
-                    pay.setDisable(true);
-                }
-            }
-            else {
-                setBillDetail(0,0,0,0,0,0,0);
-                pay.setDisable(true);
-                pay.setText(noPay);
-                System.out.println("ยังไม่มียอดค้างชำระ");
-            }
-
-        } else if ("November".equals(listMonth.getValue().toString())) {
-            dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
-            dateBefore = LocalDate.of(2560,11,05);
-            daysBetween = DAYS.between(dateBefore,dateAfter);
-            if(currentMonth>=11) {
-                pay.setDisable(false);
-                pay.setText(payText);
-                this.wUnit = 10;
-                this.eUnit = 10;
-                this.oPay = 10;
-                fine = daysBetween*20;
-                this.oPay = fine+oPay;
-                room = 3600;
-                ePay = eUnit * 7;
-                wPay = wUnit * 17;
-                total = room + wPay + ePay + oPay;
-                setTotal(total);
-                setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
-                if (checkMonth[10] == 1) {
-                    System.out.println("จ่ายแล้ว");
-                    pay.setText(paidText);
-                    pay.setDisable(true);
-                }
-            }
-            else {
-                setBillDetail(0,0,0,0,0,0,0);
-                pay.setDisable(true);
-                pay.setText(noPay);
-                System.out.println("ยังไม่มียอดค้างชำระ");
-            }
-
-        } else if ("December".equals(listMonth.getValue().toString())) {
-            dateAfter = LocalDate.of(currentYear,currentMonth,currentDay);
-            dateBefore = LocalDate.of(2560,12,05);
-            daysBetween = DAYS.between(dateBefore,dateAfter);
-            if(currentMonth>=12) {
-                pay.setDisable(false);
-                pay.setText(payText);
-                wUnit = 11;
-                eUnit = 11;
-                oPay = 11;
-                fine = daysBetween*20;
-                oPay = fine+oPay;
-                room = 3600;
-                ePay = eUnit * 7;
-                wPay = wUnit * 17;
-                total = room + wPay + ePay + oPay;
-                setTotal(total);
-                setBillDetail(wUnit,eUnit,room,wPay,ePay,oPay,total);
-                if (checkMonth[11] == 1) {
-                    System.out.println("จ่ายแล้ว");
-                    pay.setText(paidText);
-                    pay.setDisable(true);
-                }
-            }
-            else {
-                setBillDetail(0,0,0,0,0,0,0);
-                pay.setDisable(true);
-                pay.setText(noPay);
-                System.out.println("ยังไม่มียอดค้างชำระ");
-            }
-            }
-        /*else if(listMonth.getSelectionModel().getSelectedItem()==null){
-            setBillDetail(0,0,0,0,0,0,0);
-            pay.setDisable(true);
-            pay.setText(noPay);
-            System.out.println("ยังไม่มียอดค้างชำระ");
-        }*/
     }
 
     @FXML
     public void initialize() {
-            listMonth.setItems(list);
-            System.out.println(Integer.parseInt(day.format(dateobj)));
-            System.out.println(month.format(dateobj));
-            System.out.println(year.format(dateobj));
-            total = room + wPay + ePay + oPay;
-            waterUnit.setText(String.valueOf(wUnit));
-            elecUnit.setText(String.valueOf(eUnit));
-            roomRental.setText(String.valueOf(room));
-            waterPay.setText(String.valueOf(wPay));
-            elecPay.setText(String.valueOf(ePay));
-            otherPay.setText(String.valueOf(oPay));
-            totalPay.setText(String.valueOf(total));
+        map.put("January", 1);
+        map.put("February", 2);
+        map.put("March", 3);
+        map.put("April", 4);
+        map.put("May", 5);
+        map.put("June", 6);
+        map.put("July", 7);
+        map.put("August", 8);
+        map.put("September", 9);
+        map.put("October", 10);
+        map.put("November", 11);
+        map.put("December", 12);
+        listMonth.setItems(list);
+        System.out.println(Integer.parseInt(day.format(dateobj)));
+        System.out.println(month.format(dateobj));
+        System.out.println(year.format(dateobj));
+        total = room + wPay + ePay + oPay;
+        waterUnit.setText(String.valueOf(wUnit));
+        elecUnit.setText(String.valueOf(eUnit));
+        roomRental.setText(String.valueOf(room));
+        waterPay.setText(String.valueOf(wPay));
+        elecPay.setText(String.valueOf(ePay));
+        otherPay.setText(String.valueOf(oPay));
+        totalPay.setText(String.valueOf(total));
+        pay.setDisable(true);
     }
 
 

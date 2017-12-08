@@ -15,10 +15,10 @@ public class Rental implements Serializable {
 
     private long owner_id;
     private int month, year;
-    private float room_rent, water, electric, other;
+    private double room_rent, water, electric, other;
     private boolean paid;
 
-    public Rental(long owner_id, int month, int year, float room_rent, float water, float electric, float other) {
+    public Rental(long owner_id, int month, int year, double room_rent, double water, double electric, double other) {
         this.owner_id = owner_id;
         this.month = month;
         this.year = year;
@@ -45,19 +45,19 @@ public class Rental implements Serializable {
         return year;
     }
 
-    public float getRoom_rent() {
+    public double getRoom_rent() {
         return room_rent;
     }
 
-    public float getWater() {
+    public double getWater() {
         return water;
     }
 
-    public float getElectric() {
+    public double getElectric() {
         return electric;
     }
 
-    public float getOther() {
+    public double getOther() {
         return other;
     }
 

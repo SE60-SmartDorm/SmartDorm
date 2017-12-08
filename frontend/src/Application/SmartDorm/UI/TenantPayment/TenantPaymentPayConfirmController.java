@@ -1,7 +1,9 @@
 package Application.SmartDorm.UI.TenantPayment;
 
 import Application.SmartDorm.MainSmartDorm;
+import Application.SmartDorm.UI.LoginControllersd;
 import Application.SmartDorm.UI.TenantMainController;
+import Controller.RentalController;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,7 +36,9 @@ public class TenantPaymentPayConfirmController {
 
     @FXML
     private void ok(ActionEvent event) throws IOException {
-        checkPaid();
+        long pay_id = TenantMainController.tenantPayVari.pay_id;
+        RentalController.setRentalPaid(pay_id);
+
         Node home_tenant_payment = FXMLLoader.load(getClass().getResource("../TenantDashboard.fxml"));
         setNode(home_tenant_payment);
     }

@@ -27,6 +27,7 @@ public class TenantMainController {
     public static StackPane mainTenantChangePane;
 
     Stage tenant_stage = MainSmartDorm.getStage();
+    public String uid;
 
     public static TenantPaymentController tenantPayVari;
 
@@ -51,6 +52,7 @@ public class TenantMainController {
     @FXML
     public void initialize() {
         mainTenantChangePane = tenantChangePane;
+//        tenantPayVari.uid = uid;
         loadOwnerMain();
         setNode(tenantDashboardView);
     }
@@ -109,6 +111,10 @@ public class TenantMainController {
         }
         tenantPayVari = loaderTenantPayment.getController();
 
+    }
+
+    public void getUserId(String uid) {
+        this.uid = uid;
     }
 
 

@@ -1,7 +1,10 @@
 package Application.SmartDorm.UI.TenantPayment;
 
 import Application.SmartDorm.MainSmartDorm;
+import Application.SmartDorm.UI.LoginControllersd;
 import Application.SmartDorm.UI.TenantMainController;
+import Controller.TenantController;
+import Controller.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +29,7 @@ public class TenantPayment3rdLoginController {
 
     private String accountDB = "";
     private String passwordDB = "";
-    private String accountName = "Anucha Raseebut";
+    private String accountName = TenantController.getById(UserController.getTenantIdByUid(LoginControllersd.tenantMainController.uid)).getName();
 
     public String getAccountName() {
         return accountName;

@@ -2,13 +2,15 @@ package Application.SmartDorm.UI;
 
 
 import Application.SmartDorm.MainSmartDorm;
+import Application.SmartDorm.UI.TenantPayment.TenantPaymentController;
+import Controller.UserController;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.event.ActionEvent;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
@@ -16,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Observable;
 
 
 public class LoginControllersd {
@@ -27,17 +30,24 @@ public class LoginControllersd {
     Label warning;
     @FXML
     Label warning2;
-    ObservableList<String> list = FXCollections.observableArrayList("Owner", "Tenant");
-    Stage tenant_stage = MainSmartDorm.getStage();
+
+
     @FXML
     private ComboBox<String> status;
+    ObservableList<String> list = FXCollections.observableArrayList("Owner","Tenant");
+
     private String ownerUser = "";
     private String ownerPass = "";
     private String tenantUser = "";
     private String tenantPass = "";
     private String type;
 
-    public void initialize() {
+    public static TenantMainController tenantMainController;
+
+    Stage tenant_stage = MainSmartDorm.getStage();
+
+
+    public void initialize(){
         status.setItems(list);
     }
 
@@ -47,7 +57,7 @@ public class LoginControllersd {
         warning.setVisible(false);
         warning2.setVisible(false);
 
-        if ("Owner".equals(type)) {
+        if("Owner".equals(type)) {
             if ((ownerUser.equals(textID.getText())) && (ownerPass.equals(textPassword.getText()))) {
                 Parent home_tenant_payment = FXMLLoader.load(getClass().getResource("OwnerMain.fxml"));
                 Scene tenant3rd_page = new Scene(home_tenant_payment);
@@ -56,17 +66,29 @@ public class LoginControllersd {
                 tenant_stage.show();
             } else
                 warning.setVisible(true);
-        } else if ("Tenant".equals(type)) {
-            if ((tenantUser.equals(textID.getText())) && (tenantPass.equals(textPassword.getText()))) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("TenantMain.fxml"));
-                Parent home_tenant_payment = loader.load();
-                Scene tenant3rd_page = new Scene(home_tenant_payment);
+        }
 
+        else if("Tenant".equals(type))
+        {
+            String username = textID.getText();
+            String password = textPassword.getText();
+
+            System.out.println(username + " " + password);
+
+            if (UserController.checkPassword(username, password)) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("TenantMain.fxml"));
+
+                Parent home_tenant_payment = loader.load();
+                TenantMainController tnt_main = loader.getController();
+                tnt_main.getUserId(username);
+                Scene tenant3rd_page = new Scene(home_tenant_payment);
+                tenantMainController = loader.getController();
                 tenant_stage.setScene(tenant3rd_page);
                 tenant_stage.show();
             } else
                 warning.setVisible(true);
-        } else
+        }
+        else
             warning2.setVisible(true);
     }
 

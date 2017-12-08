@@ -1,9 +1,12 @@
 package Application.SmartDorm.UI.Manage;
 
 import Application.SmartDorm.UI.OwnerMainController;
+import Controller.RoomController;
+import Controller.TenantController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import com.objectdb.o.LPS;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -73,13 +76,37 @@ public class CreateTenantController {
         //Set room id
         roomID = treeItemTenant.getValue().getRoom();
 
-        //Set status
-        status = "เช่า";
-
         //Set name to Tenant
         name = embedTenantFormController.getPrefixNameCB1().getSelectionModel().getSelectedItem() + " " +
                 embedTenantFormController.getFirstNameTF1().getText() + " " +
                 embedTenantFormController.getLastNameTF1().getText();
+
+        String nickname = embedTenantFormController.getNickNameTF1().getText();
+        String dob = embedTenantFormController.getBirthDayDP1().getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        String ctzn_id = embedTenantFormController.getIdCardTF1().getText();
+        String tel = embedTenantFormController.getPhoneNumberTF1().getText();
+        String email = embedTenantFormController.getEmailTF1().getText();
+        String em_ppl = embedTenantFormController.getContractPersonTF1().getText();
+        String em_relation = embedTenantFormController.getRelationPersonTF1().getText();
+        String address = embedTenantFormController.getAddressTF1().getText();
+        String em_tel = embedTenantFormController.getRelationPersonTF1().getText();
+
+        String type = embedTenantFormController.getPersonRoleCB1().getSelectionModel().getSelectedItem();
+        String school = embedTenantFormController.getRoleEduTF1().getText();
+        String fac = embedTenantFormController.getRoleFacultyTF1().getText();
+        String grade = "";
+        String position = "";
+
+        status = "ไม่ว่าง";
+
+        if (type.equals("นักเรียน"))
+            grade = embedTenantFormController.getRoleGradeTF1().getText();
+        else
+            position = embedTenantFormController.getRoleGradeTF1().getText();
+
+        TenantController.create(Long.parseLong(roomID), name, nickname, dob, ctzn_id, phone, email, address, em_ppl, em_relation, em_tel, type, school, fac, position, grade);
+
+
 
         //Set begin
         begin = embedLeasesFormController.getStartLeasesDP().getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
@@ -87,7 +114,13 @@ public class CreateTenantController {
         //Set end
         end = embedLeasesFormController.getEndLeasesDP().getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-        note = "not think";
+        RoomController.setRoomToOccupied(Long.parseLong(roomID));
+        RoomController.setContactDate(Long.parseLong(roomID), begin, end);
+        RoomController.updateTenant(Long.parseLong(roomID), TenantController.getByCitizenId(ctzn_id).getId(), 0);
+
+//        note = "not think";
+
+
 
         OwnerMainController.manageController.tenantSetButtonDisable();
     }

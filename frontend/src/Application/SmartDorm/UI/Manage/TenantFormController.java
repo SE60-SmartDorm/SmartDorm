@@ -58,6 +58,11 @@ public class TenantFormController {
     @FXML
     private TextField relationPersonTF1;
     @FXML
+    public TextField getRelationPhoneTF1() {
+        return relationPhoneTF1;
+    }
+
+    @FXML
     private TextArea addressTF1;
 
     @FXML
@@ -77,6 +82,20 @@ public class TenantFormController {
 
     @FXML
     private TextField roleGradeTF1;
+
+    public TextField getRoleEduTF1() {
+        return roleEduTF1;
+    }
+
+    public TextField getRoleFacultyTF1() {
+        return roleFacultyTF1;
+    }
+
+    public TextField getRoleGradeTF1() {
+        return roleGradeTF1;
+    }
+
+
 
     @FXML
     private TextField relationPhoneTF1;
