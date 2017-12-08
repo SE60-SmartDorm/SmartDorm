@@ -1,5 +1,6 @@
 package Application.SmartDorm.UI.Manage;
 
+import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.OwnerMainController;
 import Controller.RoomController;
 import Controller.TenantController;
@@ -9,19 +10,29 @@ import com.jfoenix.controls.JFXDialogLayout;
 import com.objectdb.o.LPS;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TreeItem;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CreateTenantController {
     //Set TenantFormController
@@ -48,6 +59,10 @@ public class CreateTenantController {
     private MaterialDesignIconView iconClose;
     @FXML
     private StackPane alertError;
+
+    //init xy offsets
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     @FXML
     public void initialize() {
@@ -200,6 +215,7 @@ public class CreateTenantController {
         submit.setOnAction(event -> {
             confirmSaveDa();
             dialog.close();
+            setStage("GenerateUser.fxml");
         });
         dialog.setOverlayClose(false);
         dialog.show();
@@ -214,5 +230,52 @@ public class CreateTenantController {
         OwnerMainController.manageController.getTenantTableView().getSelectionModel().clearSelection();
         OwnerMainController.manageController.tenantSetButtonDisable();
         saveDataBT.getScene().getWindow().hide();
+    }
+
+    private void setStage(String fxml) {
+        try {
+            //dim overlay on new stage opening
+            Region veil = new Region();
+            veil.setPrefSize(1000, 768);
+            veil.setStyle("-fx-background-color:rgba(0,0,0,0.3)");
+            Stage newStage = new Stage();
+            Parent parent = FXMLLoader.load(getClass().getResource(fxml));
+
+            //--------------------- Set mouse event ----------------------------
+            parent.setOnMousePressed(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    xOffset = event.getSceneX();
+                    yOffset = event.getSceneY();
+                }
+            });
+
+            //set mouse drag
+            parent.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    newStage.setX(event.getScreenX() - xOffset);
+                    newStage.setY(event.getScreenY() - yOffset);
+                }
+            });
+            //------------------------------------------------------------------
+
+            Scene scene = new Scene(parent);
+            scene.setFill(Color.TRANSPARENT);
+            newStage.setScene(scene);
+            newStage.initModality(Modality.APPLICATION_MODAL);
+            newStage.initStyle(StageStyle.TRANSPARENT);
+            newStage.getScene().getRoot().setEffect(new DropShadow());
+
+            newStage.show();
+
+            //set to center on parent state
+            double centerXPosition = MainSmartDorm.getStage().getX() + MainSmartDorm.getStage().getWidth() / 2d;
+            double centerYPosition = MainSmartDorm.getStage().getY() + MainSmartDorm.getStage().getHeight() / 2d;
+            newStage.setX(centerXPosition - newStage.getWidth() / 2d);
+            newStage.setY(centerYPosition - newStage.getHeight() / 2d);
+        } catch (IOException ex) {
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

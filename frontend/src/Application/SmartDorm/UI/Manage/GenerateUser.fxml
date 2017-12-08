@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="655.0" prefWidth="796.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.Manage.GenPassController">
+   <children>
+      <AnchorPane layoutX="53.0" layoutY="-31.0" prefHeight="90.0" prefWidth="200.0" style="-fx-background-color: #191970;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox layoutX="41.0" layoutY="13.0" prefHeight="65.0" prefWidth="522.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-header" text="เพิ่มผู้พักอาศัยห้อง :" wrappingWidth="324.80340576171875">
+                     <font>
+                        <Font name="TH Sarabun New Bold" size="65.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="showNoRoom" prefHeight="44.0" prefWidth="192.0" styleClass="text-header" text="ID" textFill="#ebebeb">
+                     <font>
+                        <Font name="TH Sarabun New" size="65.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <JFXButton fx:id="backMenu" layoutX="307.0" layoutY="534.0" onAction="#colse" prefHeight="80.0" prefWidth="240.0" style="-fx-background-color: #191970;" styleClass="cancel-button" text="กลับสู่หน้าหลัก" textFill="WHITE">
+         <font>
+            <Font name="TH Sarabun New Bold" size="42.0" />
+         </font>
+      </JFXButton>
+      <FontAwesomeIconView fill="#1ab915" glyphName="CHECK_SQUARE_ALT" layoutX="354.0" layoutY="300.0" size="200" />
+      <GridPane layoutX="109.0" layoutY="346.0" prefHeight="138.0" prefWidth="580.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="313.33331298828125" minWidth="10.0" prefWidth="203.33331298828125" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="445.3333435058594" minWidth="10.0" prefWidth="376.66668701171875" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="59.0" prefWidth="167.0" styleClass="text-header" text="User : ">
+               <font>
+                  <Font name="TH Sarabun New" size="65.0" />
+               </font>
+            </Label>
+            <Label prefHeight="91.0" prefWidth="224.0" styleClass="text-header" text="Password : " GridPane.rowIndex="1">
+               <font>
+                  <Font name="TH Sarabun New" size="65.0" />
+               </font>
+            </Label>
+            <TextField fx:id="showUser" editable="false" prefHeight="55.0" prefWidth="398.0" GridPane.columnIndex="1" />
+            <TextField fx:id="showPass" editable="false" prefHeight="55.0" prefWidth="398.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+   </children>
+   <stylesheets>
+      <URL value="@../baseMain.css" />
+      <URL value="@fontstyle.css" />
+   </stylesheets>
+</AnchorPane>
