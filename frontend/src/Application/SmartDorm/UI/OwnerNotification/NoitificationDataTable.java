@@ -5,13 +5,14 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class NoitificationDataTable extends RecursiveTreeObject<NoitificationDataTable> {
-    private StringProperty roomCol,statusCol,nameCol,contractSCol;
+    private StringProperty roomCol,statusCol,nameCol,contractSCol, dateCol;
 
-    public NoitificationDataTable(String roomCol, String statusCol, String nameCol, String contractSCol) {
+    public NoitificationDataTable(String roomCol, String statusCol, String nameCol, String contractSCol, String dateCol) {
         this.roomCol = new SimpleStringProperty(roomCol);
         this.statusCol = new SimpleStringProperty(statusCol);
         this.nameCol = new SimpleStringProperty(nameCol);
         this.contractSCol = new SimpleStringProperty(contractSCol);
+        this.dateCol = new SimpleStringProperty(dateCol);
     }
 
     public String getRoomCol() {
@@ -60,5 +61,17 @@ public class NoitificationDataTable extends RecursiveTreeObject<NoitificationDat
 
     public void setContractSCol(String contractSCol) {
         this.contractSCol.set(contractSCol);
+    }
+
+    public String getDateCol() {
+        return dateCol.get();
+    }
+
+    public StringProperty dateColProperty() {
+        return dateCol;
+    }
+
+    public void setDateCol(String dateCol) {
+        this.dateCol.set(dateCol);
     }
 }

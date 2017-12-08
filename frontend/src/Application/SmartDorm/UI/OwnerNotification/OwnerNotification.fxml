@@ -24,10 +24,11 @@
       </AnchorPane>
       <JFXTreeTableView fx:id="peopleTableView" layoutX="36.0" layoutY="123.0" prefHeight="512.0" prefWidth="928.0" tableMenuButtonVisible="true">
          <columns>
-            <TreeTableColumn fx:id="roomCol" minWidth="0.0" prefWidth="107.33333587646484" text="ห้อง" />
-            <TreeTableColumn fx:id="statusCol" minWidth="70.0" prefWidth="158.66665649414062" text="ประเภท" />
-            <TreeTableColumn fx:id="nameCol" minWidth="0.0" prefWidth="210.66665649414062" text="หัวข้อคำร้อง" />
-            <TreeTableColumn fx:id="contractSCol" minWidth="140.0" prefWidth="486.3333435058594" text="รายละเอียด" />
+            <TreeTableColumn fx:id="sendDateCol" minWidth="50.0" prefWidth="50.0" text="วัน/เดือน/ปี" />
+            <TreeTableColumn fx:id="roomCol" minWidth="50.0" prefWidth="50.0" text="ห้อง" />
+            <TreeTableColumn fx:id="statusCol" minWidth="100.0" prefWidth="100.0" text="ประเภท" />
+            <TreeTableColumn fx:id="nameCol" minWidth="230.0" prefWidth="230.0" text="หัวข้อคำร้อง" />
+            <TreeTableColumn fx:id="contractSCol" minWidth="150.0" prefWidth="150.0" text="รายละเอียด" />
          </columns>
          <columnResizePolicy>
             <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

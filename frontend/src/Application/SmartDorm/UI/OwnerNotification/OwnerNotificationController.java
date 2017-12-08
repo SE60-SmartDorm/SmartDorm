@@ -1,8 +1,6 @@
 package Application.SmartDorm.UI.OwnerNotification;
 
-import Application.SmartDorm.UI.Manage.TenantTable;
 import Application.SmartDorm.UI.OwnerMainController;
-import Application.SmartDorm.UI.TenantMainController;
 import Controller.MessageController;
 import Entity.Message;
 import com.jfoenix.controls.JFXButton;
@@ -28,30 +26,43 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class OwnerNotificationController implements Initializable {
+    public static String roomNumber, detail, head;
+    private static ObservableList<NoitificationDataTable> notificationTableData = FXCollections.observableArrayList();
+    @FXML
+    public Label hintSelect;
+    TreeItem<NoitificationDataTable> roomID = new TreeItem<>();
+    TreeItem<NoitificationDataTable> detailID = new TreeItem<>();
+    TreeItem<NoitificationDataTable> headlID = new TreeItem<>();
     @FXML
     private JFXTreeTableView<NoitificationDataTable> peopleTableView;
-
     @FXML
     private TreeTableColumn<NoitificationDataTable, String> roomCol;
-
     @FXML
     private TreeTableColumn<NoitificationDataTable, String> statusCol;
-
     @FXML
     private TreeTableColumn<NoitificationDataTable, String> nameCol;
-
     @FXML
     private TreeTableColumn<NoitificationDataTable, String> contractSCol;
-
+    @FXML
+    private TreeTableColumn<NoitificationDataTable, String> sendDateCol;
     @FXML
     private JFXButton buttonUpload;
 
-    @FXML
-    public Label hintSelect;
+    public static String getDetail() {
+        return detail;
+    }
 
+    public static void setDetail(String detail) {
+        OwnerNotificationController.detail = detail;
+    }
 
+    public static String getHead() {
+        return head;
+    }
 
-    private static ObservableList<NoitificationDataTable> notificationTableData = FXCollections.observableArrayList();
+    public static void setHead(String head) {
+        OwnerNotificationController.head = head;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -60,11 +71,10 @@ public class OwnerNotificationController implements Initializable {
         List<Message> m = MessageController.getAll();
 
         for (Message mm : m) {
-            notificationTableData.add(new NoitificationDataTable(mm.getOwner_id() + "", mm.getType(), mm.getTopic(), mm.getDetail()));
+            notificationTableData.add(new NoitificationDataTable(mm.getOwner_id() + "", mm.getType(), mm.getTopic(), mm.getDetail(), mm.getTimestamp()));
         }
 
     }
-
 
     private void LoadDataFormTenantTable() {
         roomCol.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<NoitificationDataTable, String>, ObservableValue<String>>() {
@@ -95,18 +105,19 @@ public class OwnerNotificationController implements Initializable {
             }
         });
 
+        sendDateCol.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<NoitificationDataTable, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<NoitificationDataTable, String> param) {
+                return param.getValue().getValue().dateColProperty();
+            }
+        });
+
         TreeItem<NoitificationDataTable> root = new RecursiveTreeItem<NoitificationDataTable>(notificationTableData, RecursiveTreeObject::getChildren);
         peopleTableView.setRoot(root);
         peopleTableView.setShowRoot(false);
     }
 
-    TreeItem<NoitificationDataTable> roomID = new TreeItem<>();
-    TreeItem<NoitificationDataTable> detailID = new TreeItem<>();
-    TreeItem<NoitificationDataTable> headlID = new TreeItem<>();
-
-    public static String roomNumber,detail,head;
-
-    public  String getRoomNumber() {
+    public String getRoomNumber() {
         return roomNumber;
     }
 
@@ -114,23 +125,7 @@ public class OwnerNotificationController implements Initializable {
         OwnerNotificationController.roomNumber = roomNumber;
     }
 
-    public static String getDetail() {
-        return detail;
-    }
-
-    public static void setDetail(String detail) {
-        OwnerNotificationController.detail = detail;
-    }
-
-    public static String getHead() {
-        return head;
-    }
-
-    public static void setHead(String head) {
-        OwnerNotificationController.head = head;
-    }
-
-    private void check(){
+    private void check() {
 
         System.out.println(getRoomNumber());
 
@@ -141,20 +136,19 @@ public class OwnerNotificationController implements Initializable {
         roomID = peopleTableView.getSelectionModel().getSelectedItem();
         detailID = peopleTableView.getSelectionModel().getSelectedItem();
         headlID = peopleTableView.getSelectionModel().getSelectedItem();
-        if(roomID != null) {
-           setRoomNumber(roomID.getValue().getRoomCol());
-           setDetail(detailID.getValue().getContractSCol());
-           setHead(headlID.getValue().getNameCol());
-           check();
-           Node home_tenant_payment = FXMLLoader.load(getClass().getResource("DetailNotification.fxml"));
-           setNode(home_tenant_payment);
-       }
-       else
-       {
-           hintSelect.setVisible(true);
-       }
+        if (roomID != null) {
+            setRoomNumber(roomID.getValue().getRoomCol());
+            setDetail(detailID.getValue().getContractSCol());
+            setHead(headlID.getValue().getNameCol());
+            check();
+            Node home_tenant_payment = FXMLLoader.load(getClass().getResource("DetailNotification.fxml"));
+            setNode(home_tenant_payment);
+        } else {
+            hintSelect.setVisible(true);
+        }
 
     }
+
     private void setNode(Node node) {
         OwnerMainController.mainOwnerChangePane.getChildren().clear();
         OwnerMainController.mainOwnerChangePane.getChildren().add(node);
