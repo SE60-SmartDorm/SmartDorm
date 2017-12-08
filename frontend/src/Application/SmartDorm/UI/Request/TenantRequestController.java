@@ -40,4 +40,9 @@ public class  TenantRequestController {
         setNode(home_tenant_payment);
     }
 
+    @FXML
+    void buttonConfirm(ActionEvent event) {
+
+    }
+
 }
