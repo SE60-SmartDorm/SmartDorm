@@ -122,6 +122,17 @@ public class TenantManageController {
         tenantSetButtonDisable();
         tenantTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             tenantSetButtonEnable();
+//            if(newValue.getValue().getRoom().equals("ว่าง")){
+//                addTenantDataBT.setDisable(false);
+//                editTenantDataBT.setDisable(true);
+//                deleteTenantDataBT.setDisable(true);
+//                detailTenantDataBT.setDisable(true);
+//            }else if(newValue.getValue().getRoom().equals("ไม่ว่าง")){
+//                addTenantDataBT.setDisable(true);
+//                editTenantDataBT.setDisable(false);
+//                deleteTenantDataBT.setDisable(false);
+//                detailTenantDataBT.setDisable(false);
+//            }
         });
     }
 
