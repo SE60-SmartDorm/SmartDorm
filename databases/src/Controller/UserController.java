@@ -10,16 +10,15 @@ import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 public class UserController {
-    public static void create(long tenant_id) throws DatabaseException {
+    public static User create(long tenant_id) {
         UserModel.connect();
         if (UserModel.getUserByTenantId(tenant_id) == null) {
             UserModel.createUser(tenant_id);
-        } else {
-            UserModel.close();
-            throw new DatabaseException("User already exist");
         }
 
+        User u = UserModel.getUserByTenantId(tenant_id);
         UserModel.close();
+        return u;
     }
 
     public static boolean checkPassword(String uid, String pass) {

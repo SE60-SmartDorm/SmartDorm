@@ -61,5 +61,12 @@ public class RoomController {
         RoomsModel.close();
     }
 
+    public static Room getByTenantId(Long tid) {
+        RoomsModel.connect();
+        Room r = RoomsModel.getRoomByTenantId(tid);
+        RoomsModel.close();
+        return r;
+    }
+
 
 }

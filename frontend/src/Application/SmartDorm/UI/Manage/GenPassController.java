@@ -2,6 +2,9 @@ package Application.SmartDorm.UI.Manage;
 
 import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.OwnerMainController;
+import Controller.RoomController;
+import Controller.UserController;
+import Entity.User;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -49,5 +52,11 @@ public class GenPassController implements Initializable{
         String room = treeItemTenant.getValue().getRoom();
         showNoRoom.setText(room);
         System.out.println("room");
+        Long rid = Long.parseLong(room);
+        Long tid = RoomController.getById(rid).getPrimary_tenant();
+        User u = UserController.create(tid);
+
+        showUser.setText(u.getUid());
+        showPass.setText(u.getPassword());
     }
 }

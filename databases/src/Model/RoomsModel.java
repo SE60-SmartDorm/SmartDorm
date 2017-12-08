@@ -37,6 +37,15 @@ public class RoomsModel {
         return result.get(0);
     }
 
+    public static Room getRoomByTenantId(long id){
+        EntityManager em = emf.createEntityManager();
+        TypedQuery<Room> query = em.createQuery("SELECT r FROM Room r WHERE r.primary_tenant = :id", Room.class);
+        query.setParameter("id", id);
+        List<Room> result = query.getResultList();
+        em.close();
+        return result.get(0);
+    }
+
     public static void createRoom(long id, int type) {
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();

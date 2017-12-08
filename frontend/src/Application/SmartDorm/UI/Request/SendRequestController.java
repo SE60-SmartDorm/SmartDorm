@@ -1,6 +1,10 @@
 package Application.SmartDorm.UI.Request;
 
+import Application.SmartDorm.UI.LoginControllersd;
 import Application.SmartDorm.UI.TenantMainController;
+import Controller.MessageController;
+import Controller.RoomController;
+import Controller.UserController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
@@ -12,6 +16,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class SendRequestController {
 
@@ -63,10 +69,21 @@ public class SendRequestController {
     @FXML
     void confirm(ActionEvent event) throws IOException {
         //TODO save data
+//selection.getSelectedToggle() != null && !(requestTopic.getText().trim().isEmpty()) && !(requestDetail.getText().trim().isEmpty())
 
-
-        if(selection.getSelectedToggle() != null && !requestTopic.getText().trim().isEmpty() && !requestDetail.getText().trim().isEmpty()){
+        if( true){
             setRequestText();
+
+            String timeStamp = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime());
+            String type = requestTypeText;
+            String topic = requestTopicText;
+            String detail = requestDetailText;
+
+            String uid = LoginControllersd.tenantMainController.uid;
+            Long tid = UserController.getTenantIdByUid(uid);
+            Long rid = RoomController.getByTenantId(tid).getId();
+
+            MessageController.create(rid, type, topic, detail, timeStamp);
 
             Node tenant_history_request = FXMLLoader.load(getClass().getResource("HistoryRequest.fxml"));
             setNode(tenant_history_request);

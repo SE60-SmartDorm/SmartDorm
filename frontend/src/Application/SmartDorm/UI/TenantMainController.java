@@ -4,6 +4,9 @@ import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.Manage.TenantManageController;
 import Application.SmartDorm.UI.Request.HistoryRequestController;
 import Application.SmartDorm.UI.TenantPayment.TenantPaymentController;
+import Controller.TenantController;
+import Controller.UserController;
+import Entity.User;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,10 +14,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
 
 public class TenantMainController {
@@ -30,6 +35,9 @@ public class TenantMainController {
     public String uid;
 
     public static TenantPaymentController tenantPayVari;
+
+    @FXML
+    Label nameLabel;
 
     @FXML
     JFXButton logoutButton;
@@ -52,9 +60,8 @@ public class TenantMainController {
     @FXML
     public void initialize() {
         mainTenantChangePane = tenantChangePane;
-//        tenantPayVari.uid = uid;
         loadOwnerMain();
-        setNode(tenantDashboardView);
+
     }
 
     @FXML
