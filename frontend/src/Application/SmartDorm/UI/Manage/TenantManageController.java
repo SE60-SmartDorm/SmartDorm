@@ -6,8 +6,6 @@ import Controller.RoomController;
 import Controller.TenantController;
 import Controller.UserController;
 import Entity.Room;
-import Model.MessageModel;
-import Model.UserModel;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -116,7 +114,7 @@ public class TenantManageController {
             tenantTableData.add(new TenantTable(rm, sts, tenant, std, ed, ""));
         }
 
-        //Load person detail to treeTable
+        //Load person to treeTable
         LoadDataFormTenantTable();
 
         //Search data in treeTable
@@ -125,18 +123,19 @@ public class TenantManageController {
         //Selection room
         tenantSetButtonDisable();
         tenantTableView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            tenantSetButtonEnable();
-//            if(newValue.getValue().getRoom().equals("ว่าง")){
-//                addTenantDataBT.setDisable(false);
-//                editTenantDataBT.setDisable(true);
-//                deleteTenantDataBT.setDisable(true);
-//                detailTenantDataBT.setDisable(true);
-//            }else if(newValue.getValue().getRoom().equals("ไม่ว่าง")){
-//                addTenantDataBT.setDisable(true);
-//                editTenantDataBT.setDisable(false);
-//                deleteTenantDataBT.setDisable(false);
-//                detailTenantDataBT.setDisable(false);
-//            }
+           if (newValue != null){
+               if (newValue.getValue().getStatus().equals("ว่าง")) {
+                   addTenantDataBT.setDisable(false);
+                   editTenantDataBT.setDisable(true);
+                   deleteTenantDataBT.setDisable(true);
+                   detailTenantDataBT.setDisable(true);
+               } else if (newValue.getValue().getStatus().equals("ไม่ว่าง")) {
+                   addTenantDataBT.setDisable(true);
+                   editTenantDataBT.setDisable(false);
+                   deleteTenantDataBT.setDisable(false);
+                   detailTenantDataBT.setDisable(false);
+               }
+           }
         });
     }
 
@@ -193,7 +192,6 @@ public class TenantManageController {
     }
 
     private void SearchTenantDataInTable() {
-
         searchData.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -209,13 +207,6 @@ public class TenantManageController {
                 });
             }
         });
-    }
-
-    public void tenantSetButtonEnable() {
-        addTenantDataBT.setDisable(false);
-        editTenantDataBT.setDisable(false);
-        deleteTenantDataBT.setDisable(false);
-        detailTenantDataBT.setDisable(false);
     }
 
     public void tenantSetButtonDisable() {
