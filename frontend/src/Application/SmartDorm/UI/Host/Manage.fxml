@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <Separator layoutX="33.0" layoutY="83.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+        <HBox alignment="CENTER_LEFT" layoutX="29.0" layoutY="7.0" prefHeight="83.0" prefWidth="1000.0" style="-fx-background-color: #EDEDED;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label prefHeight="55.0" prefWidth="191.0" text="Manage">
+                    <styleClass>
+                        <String fx:value="title-label" />
+                        <String fx:value="add-font" />
+                    </styleClass></Label>
+            </children>
+            <padding>
+                <Insets left="50.0" />
+            </padding>
+        </HBox>
+    </children>
+    <stylesheets>
+        <URL value="@../Manage/fontstyle.css" />
+        <URL value="@baseHost.css" />
+    </stylesheets>
+</fx:root>

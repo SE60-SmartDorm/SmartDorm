@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Separator layoutX="33.0" layoutY="83.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <HBox alignment="CENTER_LEFT" layoutX="29.0" layoutY="7.0" prefHeight="83.0" prefWidth="1000.0" style="-fx-background-color: #EDEDED;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="Dashboard">
+               <styleClass>
+                  <String fx:value="title-label" />
+                  <String fx:value="add-font" />
+               </styleClass></Label>
+         </children>
+         <padding>
+            <Insets left="50.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="1.0" layoutY="105.0" prefHeight="80.0" prefWidth="880.0" spacing="25.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="-1.0">
+         <children>
+            <HBox prefHeight="89.0" prefWidth="220.0" styleClass="card-view">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="66.0" style="-fx-background-color: #fe8862;">
+                     <children>
+                        <MaterialDesignIconView fill="WHITE" glyphName="HOME" size="35" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label text="ห้องทั้งหมด" textFill="#fe8862">
+                           <styleClass>
+                              <String fx:value="add-font" />
+                              <String fx:value="dash-label" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="emptyRoom1" alignment="CENTER" text="10" textFill="#3f3f3f">
+                           <styleClass>
+                              <String fx:value="add-font" />
+                              <String fx:value="dash-label" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="89.0" prefWidth="220.0" styleClass="card-view">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="66.0" style="-fx-background-color: #6dc7be;">
+                     <children>
+                        <MaterialDesignIconView fill="WHITE" glyphName="HOME_OUTLINE" size="35" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label text="ห้องว่าง" textFill="#6dc7be">
+                           <styleClass>
+                              <String fx:value="add-font" />
+                              <String fx:value="dash-label" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="emptyRoom" alignment="CENTER" text="2" textFill="#3f3f3f">
+                           <styleClass>
+                              <String fx:value="add-font" />
+                              <String fx:value="dash-label" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="89.0" prefWidth="217.0" styleClass="card-view">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="66.0" style="-fx-background-color: #56bdde;">
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="ADDRESS_BOOK" size="25" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label text="จอง" textFill="#56bdde">
+                           <styleClass>
+                              <String fx:value="add-font" />
+                              <String fx:value="dash-label" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="bookingRoom" alignment="CENTER" text="2" textFill="#3f3f3f">
+                           <styleClass>
+                              <String fx:value="add-font" />
+                              <String fx:value="dash-label" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="89.0" prefWidth="220.0" styleClass="card-view">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="66.0" style="-fx-background-color: #b198dc;">
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="USERS" size="25" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="111.0" prefWidth="150.0" style="-fx-background-color: white;">
+                     <children>
+                        <Label text="จำนวนผู้เข้าพัก" textFill="#b198dc">
+                           <styleClass>
+                              <String fx:value="add-font" />
+                              <String fx:value="dash-label" />
+                           </styleClass>
+                        </Label>
+                        <Label fx:id="touristNumber" alignment="CENTER" text="2" textFill="#3f3f3f">
+                           <styleClass>
+                              <String fx:value="add-font" />
+                              <String fx:value="dash-label" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <AnchorPane layoutX="26.0" layoutY="218.0" prefHeight="533.0" prefWidth="948.0" style="-fx-background-color: white;" styleClass="card-view" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="26.0">
+         <children>
+            <Separator layoutY="44.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="948.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Label prefHeight="28.0" prefWidth="125.0" text="รายการผู้เข้าพัก">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                     <styleClass>
+                        <String fx:value="add-font" />
+                        <String fx:value="card-title" />
+                     </styleClass>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+            </HBox>
+            <AnchorPane layoutX="38.0" layoutY="134.0" prefHeight="243.0" prefWidth="413.0" style="-fx-background-color: white;" styleClass="card-view">
+               <children>
+                  <Pane layoutX="21.0" layoutY="35.0" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: gray; -fx-background-radius: 75;">
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" layoutX="5.0" layoutY="108.0" size="120" />
+                     </children>
+                  </Pane>
+                  <Label layoutX="181.0" layoutY="25.0" text="ข้อมูลผู้พัก">
+                     <styleClass>
+                        <String fx:value="add-font" />
+                        <String fx:value="card-title" />
+                     </styleClass>
+                  </Label>
+                  <GridPane layoutX="196.0" layoutY="59.0" prefHeight="96.0" prefWidth="217.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="32.0" text="ชื่อ: ">
+                                 <styleClass>
+                                    <String fx:value="card-body" />
+                                    <String fx:value="add-font" />
+                                 </styleClass>
+                              </Label>
+                              <Label prefHeight="39.0" prefWidth="185.0" text="นาย อนุชะชะชา ราษีบัตร">
+                                 <styleClass>
+                                    <String fx:value="add-font" />
+                                    <String fx:value="card-body" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="37.0" prefWidth="217.0" GridPane.rowIndex="1">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="106.0" text="วัน Chack-in: ">
+                                 <styleClass>
+                                    <String fx:value="card-body" />
+                                    <String fx:value="add-font" />
+                                 </styleClass>
+                              </Label>
+                              <Label prefHeight="38.0" prefWidth="113.0" text="12/12/2017">
+                                 <styleClass>
+                                    <String fx:value="add-font" />
+                                    <String fx:value="card-body" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="37.0" prefWidth="217.0" GridPane.rowIndex="2">
+                           <children>
+                              <Label prefHeight="38.0" prefWidth="105.0" text="วัน Chack-out: ">
+                                 <styleClass>
+                                    <String fx:value="card-body" />
+                                    <String fx:value="add-font" />
+                                 </styleClass>
+                              </Label>
+                              <Label prefHeight="43.0" prefWidth="113.0" text="30/12/2017">
+                                 <styleClass>
+                                    <String fx:value="add-font" />
+                                    <String fx:value="card-body" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+                  <Label layoutX="181.0" layoutY="159.0" prefHeight="28.0" prefWidth="92.0" text="ประเภทห้อง: ">
+                     <styleClass>
+                        <String fx:value="add-font" />
+                        <String fx:value="card-title" />
+                     </styleClass>
+                  </Label>
+                  <Separator layoutX="167.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Label layoutX="273.0" layoutY="159.0" prefHeight="28.0" prefWidth="92.0" text="ห้องส่วนตัว">
+                     <styleClass>
+                        <String fx:value="add-font" />
+                        <String fx:value="card-title" />
+                     </styleClass>
+                  </Label>
+                  <GridPane layoutX="196.0" layoutY="187.0" prefHeight="30.0" prefWidth="217.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <HBox prefHeight="37.0" prefWidth="217.0">
+                           <children>
+                              <Label prefHeight="30.0" prefWidth="40.0" text="จอง:">
+                                 <styleClass>
+                                    <String fx:value="card-body" />
+                                    <String fx:value="add-font" />
+                                 </styleClass>
+                              </Label>
+                              <Label prefHeight="38.0" prefWidth="113.0" text="2 ห้อง">
+                                 <styleClass>
+                                    <String fx:value="add-font" />
+                                    <String fx:value="card-body" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+                  <JFXButton focusTraversable="false" layoutX="26.0" layoutY="188.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: #337AB7; -fx-text-fill: white; -fx-font-size: 13;" styleClass="add-font" text="ดูข้อมูลส่วนตัว">
+                     <graphic>
+                        <FontAwesomeIconView fill="#fffdfd" glyphName="EYE" size="14" wrappingWidth="18.0" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="500.0" layoutY="134.0" prefHeight="243.0" prefWidth="413.0" style="-fx-background-color: white;" styleClass="card-view">
+               <children>
+                  <Pane layoutX="21.0" layoutY="35.0" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: gray; -fx-background-radius: 75;">
+                     <children>
+                        <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" layoutX="5.0" layoutY="108.0" size="120" />
+                     </children>
+                  </Pane>
+                  <Label layoutX="181.0" layoutY="25.0" text="ข้อมูลผู้พัก">
+                     <styleClass>
+                        <String fx:value="add-font" />
+                        <String fx:value="card-title" />
+                     </styleClass>
+                  </Label>
+                  <GridPane layoutX="196.0" layoutY="59.0" prefHeight="96.0" prefWidth="217.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <Label prefHeight="40.0" prefWidth="32.0" text="ชื่อ: ">
+                                 <styleClass>
+                                    <String fx:value="card-body" />
+                                    <String fx:value="add-font" />
+                                 </styleClass>
+                              </Label>
+                              <Label prefHeight="39.0" prefWidth="185.0" text="นาย อนุชะชะชา ราkkkkk">
+                                 <styleClass>
+                                    <String fx:value="add-font" />
+                                    <String fx:value="card-body" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="37.0" prefWidth="217.0" GridPane.rowIndex="1">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="106.0" text="วัน Chack-in: ">
+                                 <styleClass>
+                                    <String fx:value="card-body" />
+                                    <String fx:value="add-font" />
+                                 </styleClass>
+                              </Label>
+                              <Label prefHeight="38.0" prefWidth="113.0" text="12/12/2017">
+                                 <styleClass>
+                                    <String fx:value="add-font" />
+                                    <String fx:value="card-body" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="37.0" prefWidth="217.0" GridPane.rowIndex="2">
+                           <children>
+                              <Label prefHeight="38.0" prefWidth="105.0" text="วัน Chack-out: ">
+                                 <styleClass>
+                                    <String fx:value="card-body" />
+                                    <String fx:value="add-font" />
+                                 </styleClass>
+                              </Label>
+                              <Label prefHeight="43.0" prefWidth="113.0" text="15/01/2018">
+                                 <styleClass>
+                                    <String fx:value="add-font" />
+                                    <String fx:value="card-body" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+                  <Label layoutX="181.0" layoutY="159.0" prefHeight="28.0" prefWidth="92.0" text="ประเภทห้อง: ">
+                     <styleClass>
+                        <String fx:value="add-font" />
+                        <String fx:value="card-title" />
+                     </styleClass>
+                  </Label>
+                  <Separator layoutX="167.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Label layoutX="273.0" layoutY="159.0" prefHeight="28.0" prefWidth="92.0" text="ห้องส่วนตัว">
+                     <styleClass>
+                        <String fx:value="add-font" />
+                        <String fx:value="card-title" />
+                     </styleClass>
+                  </Label>
+                  <GridPane layoutX="196.0" layoutY="187.0" prefHeight="30.0" prefWidth="217.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <HBox prefHeight="37.0" prefWidth="217.0">
+                           <children>
+                              <Label prefHeight="30.0" prefWidth="40.0" text="จอง:">
+                                 <styleClass>
+                                    <String fx:value="card-body" />
+                                    <String fx:value="add-font" />
+                                 </styleClass>
+                              </Label>
+                              <Label prefHeight="38.0" prefWidth="113.0" text="1 ห้อง">
+                                 <styleClass>
+                                    <String fx:value="add-font" />
+                                    <String fx:value="card-body" />
+                                 </styleClass>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </GridPane>
+                  <JFXButton focusTraversable="false" layoutX="26.0" layoutY="188.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: #337AB7; -fx-text-fill: white; -fx-font-size: 13;" styleClass="add-font" text="ดูข้อมูลส่วนตัว">
+                     <graphic>
+                        <FontAwesomeIconView fill="#fffdfd" glyphName="EYE" size="14" wrappingWidth="18.0" />
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER_LEFT" layoutX="371.0" layoutY="419.0" prefHeight="100.0" prefWidth="206.0" spacing="45.0">
+               <children>
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="41.0" style="-fx-background-color: #d5d5d5; -fx-text-fill: white; -fx-background-radius: 25;" text="&lt;">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+                  <Label text="1/3">
+                     <styleClass>
+                        <String fx:value="add-font" />
+                        <String fx:value="card-body" />
+                     </styleClass>
+                  </Label>
+                  <JFXButton alignment="CENTER" contentDisplay="CENTER" prefHeight="37.0" prefWidth="41.0" style="-fx-background-color: #d5d5d5; -fx-text-fill: white; -fx-background-radius: 25;" text="&gt;">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+   <stylesheets>
+      <URL value="@../Manage/fontstyle.css" />
+      <URL value="@baseHost.css" />
+   </stylesheets>
+</fx:root>
