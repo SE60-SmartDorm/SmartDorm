@@ -26,7 +26,7 @@
                 <Insets left="50.0" />
             </padding>
         </HBox>
-        <JFXTreeTableView fx:id="tourist_tableview" focusTraversable="false" layoutX="52.0" layoutY="136.0" opacity="0.85" prefHeight="577.0" prefWidth="948.0" sortMode="ONLY_FIRST_LEVEL" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="110.0">
+        <JFXTreeTableView fx:id="tourist_tableview" layoutX="52.0" layoutY="136.0" opacity="0.85" prefHeight="577.0" prefWidth="948.0" sortMode="ONLY_FIRST_LEVEL" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="110.0">
             <columns>
                 <TreeTableColumn fx:id="booking_date_col" minWidth="130.0" prefWidth="130.0" text="จองเมื่อวันที่" />
                 <TreeTableColumn fx:id="tourist_name_col" minWidth="252.0" prefWidth="252.0" text="ชื่อผู้จอง" />
