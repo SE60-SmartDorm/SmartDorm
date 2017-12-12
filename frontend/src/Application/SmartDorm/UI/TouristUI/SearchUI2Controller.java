@@ -51,6 +51,7 @@ public class SearchUI2Controller extends StackPane implements Initializable {
         searchText = searchUIControler.searchUI.getSearchText();
         check1 = select1.isSelected();
         check2 = select2.isSelected();
+
         if("เชียงใหม่".equals(searchText)||"Hahaha House".equals(searchText))
         {
             vbox2.managedProperty().bind(vbox2.visibleProperty());
@@ -60,6 +61,11 @@ public class SearchUI2Controller extends StackPane implements Initializable {
         {
             vbox1.managedProperty().bind(vbox1.visibleProperty());
             vbox1.setVisible(false);
+        }
+        else if("ไทยแลนด์".equals(searchText))
+        {
+            vbox2.setVisible(true);
+            vbox1.setVisible(true);
         }
         else
         {

@@ -4,6 +4,7 @@ import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.Manage.TenantManageController;
 import Application.SmartDorm.UI.Request.HistoryRequestController;
 import Application.SmartDorm.UI.TenantPayment.TenantPaymentController;
+import Application.SmartDorm.UI.TouristUI.ProfileController;
 import Application.SmartDorm.UI.TouristUI.SearchUI2Controller;
 import Application.SmartDorm.UI.TouristUI.SearchUIController;
 import Controller.TenantController;
@@ -39,7 +40,7 @@ public class TenantMainController {
 
     public static TenantPaymentController tenantPayVari;
     public static SearchUIController searchUI;
-
+    public static ProfileController profileUI;
 
     @FXML
     Label nameLabel;
@@ -47,7 +48,7 @@ public class TenantMainController {
     @FXML
     JFXButton logoutButton;
     // set pane
-    private Node tenantPaymentView,tenantDashboardView,tenantNotificationView,searchUiView;
+    private Node tenantPaymentView,tenantDashboardView,tenantNotificationView,searchUiView,profileUiView;
 
     //define controller
     public static TenantManageController manageController;
@@ -86,7 +87,7 @@ public class TenantMainController {
 
     @FXML
     void profileView(ActionEvent event) {
-        setNode(tenantNotificationView);
+        setNode(profileUiView);
     }
 
 
@@ -117,16 +118,19 @@ public class TenantMainController {
         FXMLLoader loaderOwnerDashboard = new FXMLLoader(getClass().getResource("TenantDashboard.fxml"));
         FXMLLoader loaderOwnerNotification = new FXMLLoader(getClass().getResource("Request/MainRequest.fxml"));
         FXMLLoader loaderSearchUI = new FXMLLoader(getClass().getResource("TouristUI/SearchUI.fxml"));
+        FXMLLoader loaderProfileUI = new FXMLLoader(getClass().getResource("TouristUI/profile.fxml"));
         try {
             tenantPaymentView = loaderTenantPayment.load();
             tenantDashboardView = loaderOwnerDashboard.load();
             tenantNotificationView = loaderOwnerNotification.load();
             searchUiView = loaderSearchUI.load();
+            profileUiView = loaderProfileUI.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
         tenantPayVari = loaderTenantPayment.getController();
         searchUI = loaderSearchUI.getController();
+        profileUI = loaderProfileUI.getController();
 
     }
 
