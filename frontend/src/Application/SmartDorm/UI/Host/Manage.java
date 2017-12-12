@@ -1,14 +1,20 @@
 package Application.SmartDorm.UI.Host;
 
+import Application.SmartDorm.UI.Manage.TenantTable;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
@@ -76,6 +82,59 @@ public class Manage extends AnchorPane implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        tourist_bookings_list.add(new TouristBooking("111","222","333","444","555","666"));
+        loadTouristToTable();
+    }
+
+    void loadTouristToTable(){
+        booking_date_col.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TouristBooking, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TouristBooking, String> param) {
+                return param.getValue().getValue().booking_dateProperty();
+            }
+        });
+
+        tourist_name_col.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TouristBooking, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TouristBooking, String> param) {
+                return param.getValue().getValue().tourist_nameProperty();
+            }
+        });
+
+        room_type_col.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TouristBooking, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TouristBooking, String> param) {
+                return param.getValue().getValue().room_typeProperty();
+            }
+        });
+
+        room_number_col.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TouristBooking, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TouristBooking, String> param) {
+                return param.getValue().getValue().room_numberProperty();
+            }
+        });
+
+        checkin_col.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TouristBooking, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TouristBooking, String> param) {
+                return param.getValue().getValue().checkinProperty();
+            }
+        });
+
+        checkout_col.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TouristBooking, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TouristBooking, String> param) {
+                return param.getValue().getValue().checkoutProperty();
+            }
+        });
+
+        // build tree
+        TreeItem<TouristBooking> root = new RecursiveTreeItem<TouristBooking>(tourist_bookings_list, RecursiveTreeObject::getChildren);
+        tourist_tableview.setRoot(root);
+        tourist_tableview.setShowRoot(false);
+    }
+
+    public void touristRequest(TouristBooking request){
+        tourist_bookings_list.add(request);
     }
 }
