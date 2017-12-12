@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="330.0" minWidth="500.0" prefHeight="330.0" prefWidth="500.0" type="StackPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="imageShow" fitHeight="334.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</fx:root>

@@ -4,6 +4,7 @@ import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.Manage.TenantManageController;
 import Application.SmartDorm.UI.Request.HistoryRequestController;
 import Application.SmartDorm.UI.TenantPayment.TenantPaymentController;
+import Application.SmartDorm.UI.TouristUI.SearchUIController;
 import Controller.TenantController;
 import Controller.UserController;
 import Entity.Tenant;
@@ -62,18 +63,18 @@ public class TenantMainController {
     public void initialize() {
         mainTenantChangePane = tenantChangePane;
         loadOwnerMain();
+        SearchUIController searchVari = SearchUIController.getInstance();
+        setNode(searchVari);
     }
 
     @FXML
-    private void tenantManageView(ActionEvent event) {
-
-        tenantPayVari.listMonth.getSelectionModel().clearSelection();
-        tenantPayVari.setBillDetail(0,0,0,0,0,0,0);
-        setNode(tenantPaymentView);
+    private void seachView(ActionEvent event) {
+        SearchUIController searchVari = SearchUIController.getInstance();
+        setNode(searchVari);
     }
 
     @FXML
-    void dashboardView(ActionEvent event) {
+    void bookingView(ActionEvent event) {
         setNode(tenantDashboardView);
         System.out.println("EEE: " + uid);
         Long tid = UserController.getTenantIdByUid(uid);
@@ -83,7 +84,7 @@ public class TenantMainController {
     }
 
     @FXML
-    void ownerNotificationView(ActionEvent event) {
+    void profileView(ActionEvent event) {
         setNode(tenantNotificationView);
     }
 

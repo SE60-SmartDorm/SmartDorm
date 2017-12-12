@@ -64,7 +64,7 @@
     -fx-padding: 3.3 9.3 3.3 9.3;
 }
 
-.text-area {
+/*.text-area {
     -fx-border-color: #afafaf;
     -fx-border-width: 2;
     -fx-background-color: #ffffff;
@@ -75,7 +75,7 @@
     -fx-font-family: 'Sukhumvit Set';
     -fx-font-weight: 500;
     -fx-font-size: 18;
-}
+}*/
 
 
 .text-area:focused {

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.TenantPayment.TenantPaymentController">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="37.0" prefHeight="66.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -37,7 +37,7 @@
                 <RowConstraints maxHeight="227.0" minHeight="10.0" prefHeight="116.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #DCDCDC;" text="ค้นหา" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <JFXButton fx:id="searchButton" defaultButton="true" onAction="#searchClick" prefHeight="48.0" prefWidth="120.0" style="-fx-background-color: #DCDCDC;" text="ค้นหา" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                   <VBox prefHeight="200.0" prefWidth="100.0" spacing="30.0" GridPane.rowIndex="1">
                      <children>
                         <Label text="จังหวัด/ชื่อที่พัก/จำนวนผู้เข้าพัก">
@@ -48,7 +48,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="437.0" promptText="ตัวอย่าง. เชียงใหม่">
+                        <TextField fx:id="searchField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="437.0" promptText="ตัวอย่าง. เชียงใหม่">
                            <VBox.margin>
                               <Insets left="17.0" />
                            </VBox.margin>
@@ -75,4 +75,4 @@
       <URL value="@../baseMain.css" />
       <URL value="@../Manage/fontstyle.css" />
    </stylesheets>
-</AnchorPane>
+</fx:root>
