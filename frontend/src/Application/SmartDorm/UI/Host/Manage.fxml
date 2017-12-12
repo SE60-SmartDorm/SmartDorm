@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import java.lang.String?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TreeTableColumn?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
@@ -13,7 +16,7 @@
         <Separator layoutX="33.0" layoutY="83.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
         <HBox alignment="CENTER_LEFT" layoutX="29.0" layoutY="7.0" prefHeight="83.0" prefWidth="1000.0" style="-fx-background-color: #EDEDED;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label prefHeight="55.0" prefWidth="191.0" text="Manage">
+                <Label prefHeight="55.0" prefWidth="260.0" text="Manage Booking">
                     <styleClass>
                         <String fx:value="title-label" />
                         <String fx:value="add-font" />
@@ -23,6 +26,26 @@
                 <Insets left="50.0" />
             </padding>
         </HBox>
+        <JFXTreeTableView fx:id="tourist_tableview" focusTraversable="false" layoutX="52.0" layoutY="136.0" opacity="0.85" prefHeight="577.0" prefWidth="948.0" sortMode="ONLY_FIRST_LEVEL" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="110.0">
+            <columns>
+                <TreeTableColumn fx:id="booking_date_col" minWidth="130.0" prefWidth="130.0" text="จองเมื่อวันที่" />
+                <TreeTableColumn fx:id="tourist_name_col" minWidth="252.0" prefWidth="252.0" text="ชื่อผู้จอง" />
+                <TreeTableColumn fx:id="type_col" minWidth="165.0" prefWidth="165.0" text="ประเภท" />
+                <TreeTableColumn fx:id="room_number_col" minWidth="100.0" prefWidth="100.0" text="จำนวนที่จอง" />
+                <TreeTableColumn fx:id="checkin_col" minWidth="150.0" prefWidth="150.0" text="วันที่ check-in" />
+                <TreeTableColumn fx:id="checkout_col" minWidth="150.0" prefWidth="150.0" text="วันที่ check-out" />
+            </columns>
+            <styleClass>
+                <String fx:value="card-view" />
+                <String fx:value="add-font" />
+            </styleClass>
+        </JFXTreeTableView>
+        <JFXButton buttonType="RAISED" layoutX="451.0" layoutY="705.0" prefHeight="46.0" prefWidth="98.0" ripplerFill="#3dff3d" text="รายละเอียด" textFill="WHITE">
+            <styleClass>
+                <String fx:value="add-font" />
+                <String fx:value="detail-button" />
+            </styleClass>
+        </JFXButton>
     </children>
     <stylesheets>
         <URL value="@../Manage/fontstyle.css" />
