@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-<StackPane prefHeight="268.0" prefWidth="693.0" style="-fx-border-color: gray;" stylesheets="@baseHost.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.Host.Info">
+<fx:root fx:id="info_pane" prefHeight="268.0" prefWidth="693.0" style="-fx-border-color: gray;" stylesheets="@baseHost.css" type="StackPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="243.0" prefWidth="524.0" style="-fx-background-color: white;">
          <children>
@@ -48,7 +48,7 @@
                                     <String fx:value="add-font" />
                                  </styleClass>
                               </Label>
-                              <Label fx:id="tourist_nameLB" prefHeight="39.0" prefWidth="185.0" text="นาย อนุชะชะชา ราษีบัตร">
+                              <Label fx:id="tourist_nameLB" prefHeight="39.0" prefWidth="185.0" text="นาย ชื่อ สกุล">
                                  <styleClass>
                                     <String fx:value="add-font" />
                                     <String fx:value="card-body" />
@@ -118,7 +118,7 @@
                                     <String fx:value="add-font" />
                                  </styleClass>
                               </Label>
-                              <Label prefHeight="30.0" prefWidth="175.0" text="2 ห้อง">
+                              <Label fx:id="room_numberLB" prefHeight="30.0" prefWidth="175.0" text="2 ห้อง">
                                  <styleClass>
                                     <String fx:value="add-font" />
                                     <String fx:value="card-body" />
@@ -139,4 +139,4 @@
          </children>
       </AnchorPane>
    </children>
-</StackPane>
+</fx:root>
