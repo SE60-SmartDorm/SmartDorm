@@ -1,6 +1,7 @@
 package Application.SmartDorm.UI.Host;
 
 import Application.SmartDorm.UI.Manage.TenantTable;
+import Application.SmartDorm.UI.OwnerMainController;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -8,9 +9,11 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
@@ -80,9 +83,16 @@ public class Manage extends AnchorPane implements Initializable{
             instance = null;
     }
 
+    String test;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadTouristToTable();
+    }
+
+    @FXML
+    void detail(ActionEvent event) {
+
     }
 
     void loadTouristToTable(){
@@ -134,7 +144,14 @@ public class Manage extends AnchorPane implements Initializable{
         tourist_tableview.setShowRoot(false);
     }
 
-    public void touristRequest(TouristBooking request){
+    public void addTouristRequest(TouristBooking request){
         tourist_bookings_list.add(request);
+    }
+
+    //Set selected node to a content holder
+    private void setNode(Node node) {
+        OwnerMainController.mainOwnerChangePane.getChildren().clear();
+        OwnerMainController.mainOwnerChangePane.getChildren().add(node);
+
     }
 }
