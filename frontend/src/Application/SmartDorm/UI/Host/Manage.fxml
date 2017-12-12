@@ -30,7 +30,7 @@
             <columns>
                 <TreeTableColumn fx:id="booking_date_col" minWidth="130.0" prefWidth="130.0" text="จองเมื่อวันที่" />
                 <TreeTableColumn fx:id="tourist_name_col" minWidth="252.0" prefWidth="252.0" text="ชื่อผู้จอง" />
-                <TreeTableColumn fx:id="type_col" minWidth="165.0" prefWidth="165.0" text="ประเภท" />
+                <TreeTableColumn fx:id="room_type_col" minWidth="165.0" prefWidth="165.0" text="ประเภท" />
                 <TreeTableColumn fx:id="room_number_col" minWidth="100.0" prefWidth="100.0" text="จำนวนที่จอง" />
                 <TreeTableColumn fx:id="checkin_col" minWidth="150.0" prefWidth="150.0" text="วันที่ check-in" />
                 <TreeTableColumn fx:id="checkout_col" minWidth="150.0" prefWidth="150.0" text="วันที่ check-out" />
@@ -40,7 +40,7 @@
                 <String fx:value="add-font" />
             </styleClass>
         </JFXTreeTableView>
-        <JFXButton buttonType="RAISED" layoutX="451.0" layoutY="705.0" prefHeight="46.0" prefWidth="98.0" ripplerFill="#3dff3d" text="รายละเอียด" textFill="WHITE">
+        <JFXButton fx:id="detailBT" buttonType="RAISED" layoutX="451.0" layoutY="705.0" prefHeight="46.0" prefWidth="98.0" ripplerFill="#3dff3d" text="รายละเอียด" textFill="WHITE">
             <styleClass>
                 <String fx:value="add-font" />
                 <String fx:value="detail-button" />

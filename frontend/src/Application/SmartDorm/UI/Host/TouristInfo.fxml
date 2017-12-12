@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.StackPane?>
 
-
 <StackPane prefHeight="268.0" prefWidth="693.0" style="-fx-border-color: gray;" stylesheets="@baseHost.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.Host.Info">
    <children>
       <AnchorPane prefHeight="243.0" prefWidth="524.0" style="-fx-background-color: white;">
@@ -49,7 +48,7 @@
                                     <String fx:value="add-font" />
                                  </styleClass>
                               </Label>
-                              <Label prefHeight="39.0" prefWidth="185.0" text="นาย อนุชะชะชา ราษีบัตร">
+                              <Label fx:id="tourist_nameLB" prefHeight="39.0" prefWidth="185.0" text="นาย อนุชะชะชา ราษีบัตร">
                                  <styleClass>
                                     <String fx:value="add-font" />
                                     <String fx:value="card-body" />
@@ -65,7 +64,7 @@
                                     <String fx:value="add-font" />
                                  </styleClass>
                               </Label>
-                              <Label prefHeight="38.0" prefWidth="113.0" text="12/12/2017">
+                              <Label fx:id="checkin_dateLB" prefHeight="38.0" prefWidth="113.0" text="12/12/2017">
                                  <styleClass>
                                     <String fx:value="add-font" />
                                     <String fx:value="card-body" />
@@ -81,7 +80,7 @@
                                     <String fx:value="add-font" />
                                  </styleClass>
                               </Label>
-                              <Label prefHeight="43.0" prefWidth="113.0" text="30/12/2017">
+                              <Label fx:id="checkout_dateLB" prefHeight="43.0" prefWidth="113.0" text="30/12/2017">
                                  <styleClass>
                                     <String fx:value="add-font" />
                                     <String fx:value="card-body" />
@@ -97,7 +96,7 @@
                         <String fx:value="card-title" />
                      </styleClass>
                   </Label>
-                  <Label layoutX="92.0" layoutY="134.0" prefHeight="28.0" prefWidth="92.0" text="ห้องส่วนตัว">
+                  <Label fx:id="room_typeLB" layoutX="92.0" layoutY="134.0" prefHeight="28.0" prefWidth="92.0" text="ห้องส่วนตัว">
                      <styleClass>
                         <String fx:value="add-font" />
                         <String fx:value="card-title" />
@@ -119,7 +118,7 @@
                                     <String fx:value="add-font" />
                                  </styleClass>
                               </Label>
-                              <Label prefHeight="38.0" prefWidth="113.0" text="2 ห้อง">
+                              <Label prefHeight="30.0" prefWidth="175.0" text="2 ห้อง">
                                  <styleClass>
                                     <String fx:value="add-font" />
                                     <String fx:value="card-body" />
@@ -132,7 +131,7 @@
                </children>
             </AnchorPane>
             <Separator layoutX="259.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <JFXButton focusTraversable="false" layoutX="75.0" layoutY="207.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: #337AB7; -fx-text-fill: white; -fx-font-size: 13;" styleClass="add-font" text="ดูข้อมูลส่วนตัว">
+            <JFXButton fx:id="profileBT" focusTraversable="false" layoutX="75.0" layoutY="207.0" prefHeight="35.0" prefWidth="118.0" style="-fx-background-color: #337AB7; -fx-text-fill: white; -fx-font-size: 13;" styleClass="add-font" text="ดูข้อมูลส่วนตัว">
                <graphic>
                   <FontAwesomeIconView fill="#fffdfd" glyphName="EYE" size="14" wrappingWidth="18.0" />
                </graphic>
