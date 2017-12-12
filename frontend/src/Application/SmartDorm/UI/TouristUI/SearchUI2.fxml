@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="popupPane" type="StackPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="popupPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.TouristUI.SearchUI2Controller">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0">
          <children>
@@ -31,9 +31,9 @@
             </AnchorPane>
             <HBox alignment="CENTER" layoutX="129.0" layoutY="143.0" prefHeight="500.0" prefWidth="740.0" spacing="100.0">
                <children>
-                  <VBox prefHeight="140.0" prefWidth="321.0" spacing="40.0">
+                  <VBox fx:id="vbox1" prefHeight="140.0" prefWidth="321.0" spacing="40.0">
                      <children>
-                        <CheckBox mnemonicParsing="false" text="ชื่อที่พัก" />
+                        <CheckBox fx:id="select1" mnemonicParsing="false" onAction="#setSelect1Click" text="Hahaha House" />
                         <HBox alignment="CENTER" prefWidth="328.0">
                            <VBox.margin>
                               <Insets />
@@ -59,9 +59,9 @@
                         </AnchorPane>
                      </children>
                   </VBox>
-                  <VBox prefHeight="140.0" prefWidth="321.0" spacing="40.0">
+                  <VBox fx:id="vbox2" prefHeight="140.0" prefWidth="321.0" spacing="40.0">
                      <children>
-                        <CheckBox mnemonicParsing="false" text="ชื่อที่พัก" />
+                        <CheckBox fx:id="select2" mnemonicParsing="false" onAction="#setSelect1Click2" text="Oh! Sleep Sleep" />
                         <HBox alignment="CENTER">
                            <VBox.margin>
                               <Insets />
@@ -96,4 +96,4 @@
          </stylesheets>
       </AnchorPane>
    </children>
-</fx:root>
+</StackPane>

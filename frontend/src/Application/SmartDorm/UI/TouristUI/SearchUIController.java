@@ -9,19 +9,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SearchUIController extends AnchorPane implements Initializable {
+public class SearchUIController implements Initializable {
 
-    // set Singleton pattern
-    private static SearchUIController instance;
 
-    private String[] province = {"กรุงเทพฯ","เชียงใหม่"};
-    private String[] name = {"Oh! Sleep Sleep","Hahaha House"};
+    private String[] province = {"กรุงเทพฯ", "เชียงใหม่"};
+    private String[] name = {"Oh! Sleep Sleep", "Hahaha House"};
     private int people_num;
     private int room_num;
 
@@ -35,43 +31,27 @@ public class SearchUIController extends AnchorPane implements Initializable {
 
     }
 
-    private SearchUIController() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SearchUI.fxml"));
+    public String searchText;
 
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
+    public String getSearchText() {
+        return searchText;
     }
 
-    public static SearchUIController getInstance(){
-        if (instance == null) {
-            instance = new SearchUIController();
-        }
-        return instance;
-    }
-
-    //Clear instance class
-    public void ClearManage() {
-        if (instance != null)
-            instance = null;
+    public void setSearchText(String searchText) {
+        this.searchText = searchText;
     }
 
     @FXML
     public void searchClick(ActionEvent event) throws IOException {
-        System.out.println(searchField.getText());
-        SearchUI2Controller searchVari = SearchUI2Controller.getInstance();
-        setNode(searchVari);
-
+        setSearchText(searchField.getText());
+        Node searchUI2 = FXMLLoader.load(getClass().getResource("SearchUI2.fxml"));
+        setNode(searchUI2);
     }
 
     private void setNode(Node node) {
         TenantMainController.mainTenantChangePane.getChildren().clear();
         TenantMainController.mainTenantChangePane.getChildren().add(node);
-
     }
+
+
 }

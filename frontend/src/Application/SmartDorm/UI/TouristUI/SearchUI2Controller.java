@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
@@ -18,14 +19,14 @@ import java.util.ResourceBundle;
 
 public class SearchUI2Controller extends StackPane implements Initializable {
 
-    // set Singleton pattern
-    private static SearchUI2Controller instance;
-
     @FXML
     private StackPane popupPane;
 
     @FXML
-    private JFXButton bookingButton;
+    private JFXButton bookingButton1;
+
+    @FXML
+    private JFXButton bookingButton2;
 
     @FXML
     private CheckBox select1;
@@ -33,35 +34,57 @@ public class SearchUI2Controller extends StackPane implements Initializable {
     @FXML
     private CheckBox select2;
 
+    @FXML
+    private VBox vbox1;
+
+    @FXML
+    private VBox vbox2;
+
+    Boolean check1,check2;
+
+    TenantMainController searchUIControler;
+
+    String searchText;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    }
-
-    private SearchUI2Controller() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("SearchUI2.fxml"));
-
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
+        searchText = searchUIControler.searchUI.getSearchText();
+        check1 = select1.isSelected();
+        check2 = select2.isSelected();
+        if("เชียงใหม่".equals(searchText)||"Hahaha House".equals(searchText))
+        {
+            vbox2.managedProperty().bind(vbox2.visibleProperty());
+            vbox2.setVisible(false);
         }
-    }
-
-    public static SearchUI2Controller getInstance(){
-        if (instance == null) {
-            instance = new SearchUI2Controller();
+        else if("พัทยา".equals(searchText)||"Oh! Sleep Sleep".equals(searchText))
+        {
+            vbox1.managedProperty().bind(vbox1.visibleProperty());
+            vbox1.setVisible(false);
         }
-        return instance;
+        else
+        {
+            vbox2.managedProperty().bind(vbox2.visibleProperty());
+            vbox2.setVisible(false);
+            vbox1.managedProperty().bind(vbox1.visibleProperty());
+            vbox1.setVisible(false);
+        }
+        if(check1!=true)
+        {
+            bookingButton1.setDisable(true);
+        }
+        if(check2!=true)
+        {
+            bookingButton2.setDisable(true);
+        }
+
     }
 
-    //Clear instance class
-    public void ClearManage() {
-        if (instance != null)
-            instance = null;
+    public String setText(String text){
+        String newtext = text;
+        System.out.println(newtext + "2");
+        return newtext;
     }
+
 
     @FXML
     public void bookingClick(ActionEvent event) throws IOException {
@@ -75,8 +98,8 @@ public class SearchUI2Controller extends StackPane implements Initializable {
 
     @FXML
     public void detailClick(ActionEvent event) throws IOException {
-        RoomDetailController searchVari = RoomDetailController.getInstance();
-        setNode(searchVari);
+        Node detailUI1 = FXMLLoader.load(getClass().getResource("RoomDetail.fxml"));
+        setNode(detailUI1);
     }
 
     @FXML
@@ -91,14 +114,40 @@ public class SearchUI2Controller extends StackPane implements Initializable {
 
     @FXML
     public void detailClick2(ActionEvent event) throws IOException {
-        RoomDetailController2 searchVari = RoomDetailController2.getInstance();
-        setNode(searchVari);
+        Node detailUI2 = FXMLLoader.load(getClass().getResource("RoomDetail2.fxml"));
+        setNode(detailUI2);
     }
+
+    @FXML
+    public void setSelect1Click(ActionEvent event) throws IOException {
+        check1 = select1.isSelected();
+        if(check1!=true)
+        {
+            bookingButton1.setDisable(true);
+        }
+        else
+        {
+            bookingButton1.setDisable(false);
+        }
+
+    }
+
+    @FXML
+    public void setSelect1Click2(ActionEvent event) throws IOException {
+        check2 = select2.isSelected();
+        if(check2!=true)
+        {
+            bookingButton2.setDisable(true);
+        }
+        else
+        {
+            bookingButton2.setDisable(false);
+        }
+    }
+
 
     private void setNode(Node node) {
         TenantMainController.mainTenantChangePane.getChildren().clear();
         TenantMainController.mainTenantChangePane.getChildren().add(node);
-
     }
-
 }

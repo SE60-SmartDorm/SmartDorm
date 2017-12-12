@@ -15,9 +15,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class RoomDetailController2 extends StackPane implements Initializable {
-    // set Singleton pattern
-    private static RoomDetailController2 instance;
+public class RoomDetailController2 implements Initializable {
+
 
     @FXML
     private JFXButton bookingButton;
@@ -28,32 +27,6 @@ public class RoomDetailController2 extends StackPane implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-    }
-
-    private RoomDetailController2() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("RoomDetail2.fxml"));
-
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
-    }
-
-    public static RoomDetailController2 getInstance(){
-        if (instance == null) {
-            instance = new RoomDetailController2();
-        }
-        return instance;
-    }
-
-    //Clear instance class
-    public void ClearManage() {
-        if (instance != null)
-            instance = null;
     }
 
     @FXML
@@ -105,9 +78,8 @@ public class RoomDetailController2 extends StackPane implements Initializable {
 
     @FXML
     public void close(ActionEvent event) throws IOException {
-        SearchUI2Controller searchVari = SearchUI2Controller.getInstance();
-        setNode(searchVari);
-
+        Node searchUI2 = FXMLLoader.load(getClass().getResource("SearchUI2.fxml"));
+        setNode(searchUI2);
     }
 
     private void setNode(Node node) {
