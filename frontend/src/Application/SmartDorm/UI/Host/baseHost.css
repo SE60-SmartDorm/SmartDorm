@@ -1,7 +1,17 @@
+/*******************************************************************************
+ *                                                                             *
+ * init font           	                                                       *
+ *                                                                             *
+ ******************************************************************************/
 .add-font {
     -fx-font-family: 'Sukhumvit Set';
 }
 
+/*******************************************************************************
+ *                                                                             *
+ * Label           	                                                           *
+ *                                                                             *
+ ******************************************************************************/
 .dash-label {
     -fx-font-size: 20;
     -fx-font-weight: bold;
@@ -11,6 +21,11 @@
     -fx-font-size: 34;
 }
 
+/*******************************************************************************
+ *                                                                             *
+ * Materials Design Card         	                                           *
+ *                                                                             *
+ ******************************************************************************/
 .card-view {
     -fx-effect: dropshadow(gaussian, rgb(0.0, 0.0, 0.0, 0.15), 6.0, 0.7, 0.0, 1.5);
     -fx-border-radius: 5;
@@ -28,5 +43,69 @@
 }
 
 .card-button{
+
+}
+
+.scroll-pane > .corner {
+    -fx-background-color: black;
+}
+
+/*******************************************************************************
+ *                                                                             *
+ * ScrollPane          	                                                       *
+ *                                                                             *
+ ******************************************************************************/
+.scroll-pane{
+    -fx-border-color:derive(gray,80%);
+}
+
+/* The main scrollbar CSS class of ListView */
+.scroll-pane .scroll-bar:horizontal ,
+.scroll-pane  .scroll-bar:vertical{
+    -fx-background-color:transparent;
+
+}
+
+/* The increment and decrement button CSS class of scrollbar */
+.scroll-pane .increment-button ,.scroll-pane .decrement-button {
+    -fx-background-color:transparent;
+    -fx-border-color:derive(gray,80%);
+    -fx-padding: 0;
+}
+
+/* The main scrollbar **track** CSS class  */
+.scroll-pane .scroll-bar:horizontal .track ,
+.scroll-pane .scroll-bar:vertical .track{
+    -fx-background-color: transparent;
+    -fx-border-color:derive(gray,80%);
+    -fx-background-radius: 0em;
+}
+
+/* The main scrollbar **thumb** CSS class which we drag every time (movable) */
+.scroll-pane .scroll-bar:horizontal .thumb,
+.scroll-pane .scroll-bar:vertical .thumb {
+    -fx-background-color:derive(black,90%);
+    -fx-background-insets: 0, 0, 0;
+    -fx-background-radius: 0em;
+
+}
+
+/* ------------------------------------------------------------------------------------- */
+/** EVENT CSS **/
+/* ------------------------------------------------------------------------------------- */
+
+/* The main scrollbar **track** CSS class on event of "hover" and "pressed" */
+
+
+
+/* The main scrollbar **thumb** CSS class on event of "hover" and "pressed" */
+.scroll-pane .scroll-bar .thumb:hover,
+.scroll-pane .scroll-bar .thumb:pressed{
+    -fx-background-color: derive(black,50%);
+}
+
+.scroll-pane .increment-button:hover ,.scroll-pane .decrement-button:hover {
+    -fx-background-color:derive(gray,100%);
+    -fx-border-color:derive(gray,80%);
 
 }
