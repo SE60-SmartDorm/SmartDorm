@@ -58,7 +58,7 @@
       </ImageView>
    </children>
    <stylesheets>
-      <URL value="@../../SE%20to%20OOAD/SmartDorm/frontend/src/Application/SmartDorm/UI/baseMain.css" />
-      <URL value="@../../SE%20to%20OOAD/SmartDorm/frontend/src/Application/SmartDorm/UI/Manage/fontstyle.css" />
+      <URL value="@baseMain.css" />
+      <URL value="@Manage/fontstyle.css" />
    </stylesheets>
 </AnchorPane>
