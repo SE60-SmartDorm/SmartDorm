@@ -10,7 +10,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.LoginControllersd">
    <children>
@@ -19,29 +18,29 @@
             <Image url="@background.jpg" />
          </image>
       </ImageView>
-      <AnchorPane layoutX="373.0" prefHeight="688.0" prefWidth="540.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 2;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="373.0" AnchorPane.rightAnchor="367.0" AnchorPane.topAnchor="40.0">
+      <AnchorPane layoutX="373.0" layoutY="40.0" prefHeight="688.0" prefWidth="540.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 2;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="373.0" AnchorPane.rightAnchor="367.0" AnchorPane.topAnchor="40.0">
          <children>
-            <JFXButton fx:id="buttonLogin" buttonType="RAISED" defaultButton="true" layoutX="195.0" layoutY="584.0" onAction="#loginPress" styleClass="login-button" text="Log in" textFill="WHITE">
+            <JFXButton fx:id="buttonLogin" buttonType="RAISED" defaultButton="true" layoutX="194.0" layoutY="593.0" onAction="#loginPress" styleClass="login-button" text="Log in" textFill="WHITE">
                <font>
                   <Font name="Arial" size="35.0" />
                </font>
             </JFXButton>
+            <AnchorPane layoutX="71.0" layoutY="225.0" opacity="0.83" prefHeight="344.0" prefWidth="395.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <JFXTextField fx:id="textID" focusColor="#468df4" layoutX="20.0" layoutY="105.0" prefHeight="60.0" prefWidth="517.0" promptText="Username" unFocusColor="#151e29" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                     <font>
+                        <Font name="Arial" size="25.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXPasswordField fx:id="textPassword" focusColor="#468df4" layoutX="20.0" layoutY="187.0" promptText="Password" unFocusColor="#151e29" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
+                     <font>
+                        <Font name="Arial" size="25.0" />
+                     </font>
+                  </JFXPasswordField>
+                  <ComboBox fx:id="status" layoutX="20.0" layoutY="39.0" prefHeight="31.0" prefWidth="356.0" promptText="Please Select Your Type Of User" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
+               </children>
+            </AnchorPane>
          </children></AnchorPane>
-      <AnchorPane layoutX="446.0" layoutY="223.0" opacity="0.4" prefHeight="368.0" prefWidth="390.0" style="-fx-background-color: #ffffff;">
-         <children>
-            <JFXTextField fx:id="textID" focusColor="#f59e47" labelFloat="true" layoutX="20.0" layoutY="128.0" prefHeight="60.0" prefWidth="517.0" promptText="Username" unFocusColor="#151e29" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </JFXTextField>
-            <JFXPasswordField fx:id="textPassword" focusColor="#f59e47" labelFloat="true" layoutX="20.0" layoutY="216.0" promptText="Password" unFocusColor="#151e29" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </JFXPasswordField>
-            <ComboBox fx:id="status" layoutX="17.0" layoutY="53.0" prefHeight="31.0" prefWidth="356.0" promptText="Please Select Your Type Of User" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" />
-         </children>
-      </AnchorPane>
       <Label fx:id="warning2" layoutX="460.0" layoutY="535.0" onDragDetected="#loginPress" text="You have not selected your type of user !" textFill="RED" visible="false">
          <font>
             <Font size="20.0" />
@@ -52,19 +51,14 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Text fill="WHITE" layoutX="439.0" layoutY="147.0" stroke="#322e2a" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="Smart Dorm" wrappingWidth="506.47003173828125">
-         <font>
-            <Font name="TH Sarabun New" size="111.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="441.0" layoutY="209.0" stroke="#f59e47" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="3.0" text="KMITL" wrappingWidth="181.13671875">
-         <font>
-            <Font name="Arial" size="61.0" />
-         </font>
-      </Text>
+      <ImageView fitHeight="222.0" fitWidth="370.0" layoutX="452.0" layoutY="51.0" opacity="0.83" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logonewnew.png" />
+         </image>
+      </ImageView>
    </children>
    <stylesheets>
-      <URL value="@baseMain.css" />
-      <URL value="@Manage/fontstyle.css" />
+      <URL value="@../../SE%20to%20OOAD/SmartDorm/frontend/src/Application/SmartDorm/UI/baseMain.css" />
+      <URL value="@../../SE%20to%20OOAD/SmartDorm/frontend/src/Application/SmartDorm/UI/Manage/fontstyle.css" />
    </stylesheets>
 </AnchorPane>
