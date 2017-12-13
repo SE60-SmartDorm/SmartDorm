@@ -10,6 +10,7 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
@@ -131,36 +132,40 @@
             </HBox>
          </children>
       </HBox>
-      <AnchorPane layoutX="26.0" layoutY="218.0" prefHeight="533.0" prefWidth="948.0" style="-fx-background-color: white;" styleClass="card-view" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="26.0">
+      <StackPane fx:id="popup_pane" layoutX="20.0" layoutY="204.0" AnchorPane.bottomAnchor="26.0" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="26.0">
          <children>
-            <Separator layoutY="47.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="948.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <AnchorPane prefHeight="533.0" prefWidth="948.0" style="-fx-background-color: white;" styleClass="card-view">
                <children>
-                  <Label prefHeight="28.0" prefWidth="125.0" text="รายการผู้เข้าพัก">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <styleClass>
-                        <String fx:value="add-font" />
-                        <String fx:value="card-title" />
-                     </styleClass>
-                  </Label>
-               </children>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </HBox>
-            <ScrollPane focusTraversable="false" hbarPolicy="NEVER" layoutX="16.0" layoutY="47.0" prefHeight="486.0" prefWidth="948.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-              <content>
-                  <VBox fx:id="listView_tourist" prefWidth="948.0" spacing="25.0">
+                  <Separator layoutY="47.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="948.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Label prefHeight="28.0" prefWidth="125.0" text="รายการผู้เข้าพัก">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <styleClass>
+                              <String fx:value="add-font" />
+                              <String fx:value="card-title" />
+                           </styleClass>
+                        </Label>
+                     </children>
                      <padding>
-                        <Insets bottom="22.0" left="22.0" right="33.0" top="23.0" />
+                        <Insets left="20.0" />
                      </padding>
-                  </VBox>
-              </content>
-            </ScrollPane>
+                  </HBox>
+                  <ScrollPane focusTraversable="false" hbarPolicy="NEVER" layoutX="16.0" layoutY="47.0" prefHeight="486.0" prefWidth="948.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <content>
+                        <VBox fx:id="listView_tourist" prefWidth="948.0" spacing="25.0">
+                           <padding>
+                              <Insets bottom="22.0" left="22.0" right="33.0" top="23.0" />
+                           </padding>
+                        </VBox>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
          </children>
-      </AnchorPane>
+      </StackPane>
    </children>
    <stylesheets>
       <URL value="@../Manage/fontstyle.css" />

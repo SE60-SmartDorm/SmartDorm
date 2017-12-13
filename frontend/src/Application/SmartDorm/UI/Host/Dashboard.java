@@ -19,6 +19,8 @@ public class Dashboard extends AnchorPane implements Initializable {
     List<TouristInfo> tourist_list_data = new ArrayList<TouristInfo>();
     int number_tourist = 2;
     int total_room = 3;
+    int empt_room = 2;
+    int booking_room = 1;
 
     @FXML
     private Label totalRoom;
@@ -64,17 +66,26 @@ public class Dashboard extends AnchorPane implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         totalRoom.setText(String.valueOf(total_room));
         touristNumber.setText(String.valueOf(number_tourist));
-        bookingRoom.setText("1");
+        emptyRoom.setText(String.valueOf(empt_room));
+        bookingRoom.setText(String.valueOf(booking_room));
         tourist_list_data.add(new TouristInfo());
         tourist_list_data.get(0);
         listView_tourist.getChildren().add(tourist_list_data.get(0));
-        tourist_list_data.get(0).setTouristInfo("Coppor","2017/12/10","2017/12/10","ห้องส่วนตัว","1 ห้อง");
-
-
+        tourist_list_data.get(0).setTouristInfo("Coppor", "2017/12/10", "2017/12/10", "ห้องส่วนตัว", "1 ห้อง");
     }
 
     public void addTourist() {
         number_tourist += 1;
+        empt_room -= 1;
+        booking_room += 1;
+        totalRoom.setText(String.valueOf(total_room));
+        touristNumber.setText(String.valueOf(number_tourist));
+        emptyRoom.setText(String.valueOf(empt_room));
+        bookingRoom.setText(String.valueOf(booking_room));
+        tourist_list_data.add(new TouristInfo());
+        tourist_list_data.get(1).setPhoto("../TouristUI/user kekie.png");
+        listView_tourist.getChildren().add(tourist_list_data.get(1));
+
     }
 
     public void setDashboard(String total_room) {
@@ -82,4 +93,3 @@ public class Dashboard extends AnchorPane implements Initializable {
     }
 
 }
- 

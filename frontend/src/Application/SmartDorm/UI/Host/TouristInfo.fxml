@@ -17,9 +17,9 @@
    <children>
       <AnchorPane prefHeight="243.0" prefWidth="524.0" style="-fx-background-color: white;">
          <children>
-            <Pane layoutX="69.0" layoutY="27.0" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: gray; -fx-background-radius: 75;">
+            <Pane fx:id="photo_pane" layoutX="69.0" layoutY="27.0" prefHeight="130.0" prefWidth="130.0" style="-fx-background-color: gray; -fx-background-radius: 75;">
                <children>
-                  <FontAwesomeIconView fill="WHITE" glyphName="USER_CIRCLE" layoutX="5.0" layoutY="108.0" size="120" />
+                  <FontAwesomeIconView fx:id="icon_photo" fill="WHITE" glyphName="USER_CIRCLE" layoutX="5.0" layoutY="108.0" size="120" />
                </children>
             </Pane>
             <AnchorPane layoutX="319.0" layoutY="27.0" prefHeight="236.0" prefWidth="335.0">

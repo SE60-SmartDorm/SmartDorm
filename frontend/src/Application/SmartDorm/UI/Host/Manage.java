@@ -1,10 +1,7 @@
 package Application.SmartDorm.UI.Host;
 
-import Application.SmartDorm.UI.Manage.TenantTable;
 import Application.SmartDorm.UI.OwnerMainController;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -13,47 +10,49 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableColumn;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Manage extends AnchorPane implements Initializable{
+public class Manage extends AnchorPane implements Initializable {
     // set Singleton pattern
     private static Manage instance;
-
+    //other Variable
+    ObservableList<TouristBooking> tourist_bookings_list = FXCollections.observableArrayList();
+    String test;
     //FXML Variable
     @FXML
     private JFXTreeTableView<TouristBooking> tourist_tableview;
-
     @FXML
     private TreeTableColumn<TouristBooking, String> booking_date_col;
-
     @FXML
-    private TreeTableColumn<TouristBooking, String>  tourist_name_col;
-
+    private TreeTableColumn<TouristBooking, String> tourist_name_col;
     @FXML
-    private TreeTableColumn<TouristBooking, String>  room_type_col;
-
+    private TreeTableColumn<TouristBooking, String> room_type_col;
     @FXML
-    private TreeTableColumn<TouristBooking, String>  room_number_col;
-
+    private TreeTableColumn<TouristBooking, String> room_number_col;
     @FXML
-    private TreeTableColumn<TouristBooking, String>  checkin_col;
-
+    private TreeTableColumn<TouristBooking, String> checkin_col;
     @FXML
-    private TreeTableColumn<TouristBooking, String>  checkout_col;
-
+    private TreeTableColumn<TouristBooking, String> checkout_col;
     @FXML
     private JFXButton detailBT;
+    @FXML
+    private StackPane popup_pane;
 
-    //other Variable
-    ObservableList<TouristBooking> tourist_bookings_list = FXCollections.observableArrayList();
+    public JFXTreeTableView<TouristBooking> getTourist_tableview() {
+        return tourist_tableview;
+    }
 
     //Constructor
     private Manage() {
@@ -70,7 +69,7 @@ public class Manage extends AnchorPane implements Initializable{
     }
 
     //get instant singleton pattern class
-    public static Manage getInstance(){
+    public static Manage getInstance() {
         if (instance == null) {
             instance = new Manage();
         }
@@ -83,19 +82,31 @@ public class Manage extends AnchorPane implements Initializable{
             instance = null;
     }
 
-    String test;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadTouristToTable();
+
+//
     }
 
     @FXML
     void detail(ActionEvent event) {
+        RequestManage requestManage = RequestManage.getInstance();
+        tourist_tableview.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null){
+                requestManage.getItem(newValue);
+            }
+        });
 
+        setNode(requestManage);
     }
 
-    void loadTouristToTable(){
+
+    public void addDataTable(String startD, String endD, String room_num) {
+        tourist_bookings_list.add(new TouristBooking("2017/12/13", "Kekie", "ห้องส่วนตัว", room_num, startD, endD));
+    }
+
+    void loadTouristToTable() {
         booking_date_col.setCellValueFactory(new Callback<TreeTableColumn.CellDataFeatures<TouristBooking, String>, ObservableValue<String>>() {
             @Override
             public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<TouristBooking, String> param) {
@@ -144,7 +155,7 @@ public class Manage extends AnchorPane implements Initializable{
         tourist_tableview.setShowRoot(false);
     }
 
-    public void addTouristRequest(TouristBooking request){
+    public void addTouristRequest(TouristBooking request) {
         tourist_bookings_list.add(request);
     }
 

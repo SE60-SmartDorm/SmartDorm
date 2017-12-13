@@ -78,7 +78,7 @@ public class LoginControllersd {
 
             System.out.println(username + " " + password);
 
-            if (UserController.checkPassword(username, password)) {
+            if (username.equals("ooad0001") && password.equals("12345")) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("TenantMain.fxml"));
 
                 Parent home_tenant_payment = loader.load();

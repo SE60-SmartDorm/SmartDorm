@@ -1,10 +1,14 @@
 package Application.SmartDorm.UI.Host;
 
 import com.jfoenix.controls.JFXButton;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 import java.io.IOException;
@@ -14,6 +18,12 @@ import java.util.ResourceBundle;
 public class TouristInfo extends StackPane implements Initializable {
     // set Singleton pattern
 //    private static TouristInfo instance;
+
+    @FXML
+    private Pane photo_pane;
+
+    @FXML
+    private FontAwesomeIconView icon_photo;
 
     @FXML
     private Label tourist_nameLB;
@@ -67,6 +77,15 @@ public class TouristInfo extends StackPane implements Initializable {
         checkout_dateLB.setText(checkout);
         room_typeLB.setText(roomType);
         room_numberLB.setText(roomNum);
+    }
+
+    public void setPhoto(String url){
+        icon_photo.setVisible(false);
+        Image image  = new Image(getClass().getResourceAsStream(url));
+        ImageView addphoto = new ImageView(image);
+        addphoto.setFitHeight(130);
+        addphoto.setFitWidth(130);
+        photo_pane.getChildren().add(addphoto);
     }
 
     public void setTourist_nameLB(String tourist_nameLB) {
