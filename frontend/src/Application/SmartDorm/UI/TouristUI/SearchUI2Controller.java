@@ -95,8 +95,10 @@ public class SearchUI2Controller extends StackPane implements Initializable {
     @FXML
     public void bookingClick(ActionEvent event) throws IOException {
         JFXDialogLayout booking = new JFXDialogLayout();
-        FillDataRoomController popup1 = FillDataRoomController.getInstance();
-        booking.setBody(popup1);
+        FXMLLoader popup1 = new FXMLLoader(getClass().getResource("FillDataPrivateRoomPopup.fxml"));
+        StackPane newPopup = null;
+        newPopup = popup1.load();
+        booking.setBody(newPopup);
         JFXDialog dialog = new JFXDialog(popupPane, booking,JFXDialog.DialogTransition.CENTER);
         dialog.show();
 
@@ -111,8 +113,10 @@ public class SearchUI2Controller extends StackPane implements Initializable {
     @FXML
     public void bookingClick2(ActionEvent event) throws IOException {
         JFXDialogLayout booking = new JFXDialogLayout();
-        FillDataRoomController2 popup1 = FillDataRoomController2.getInstance();
-        booking.setBody(popup1);
+        FXMLLoader popup2 = new FXMLLoader(getClass().getResource("FillDataShareRoomPopup.fxml"));
+        StackPane newPopup = null;
+        newPopup = popup2.load();
+        booking.setBody(newPopup);
         JFXDialog dialog = new JFXDialog(popupPane, booking,JFXDialog.DialogTransition.CENTER);
         dialog.show();
 

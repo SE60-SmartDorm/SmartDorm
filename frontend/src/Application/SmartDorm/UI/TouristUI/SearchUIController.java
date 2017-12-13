@@ -9,6 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -43,8 +45,9 @@ public class SearchUIController implements Initializable {
 
     @FXML
     public void searchClick(ActionEvent event) throws IOException {
-        setSearchText(searchField.getText());
-        Node searchUI2 = FXMLLoader.load(getClass().getResource("SearchUI2.fxml"));
+        searchText = searchField.getText();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SearchUI2.fxml"));
+        StackPane searchUI2 = loader.load();
         setNode(searchUI2);
     }
 

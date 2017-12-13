@@ -48,7 +48,7 @@ public class TenantMainController {
     @FXML
     JFXButton logoutButton;
     // set pane
-    private Node tenantPaymentView,tenantDashboardView,tenantNotificationView,searchUiView,profileUiView;
+    public Node tenantPaymentView,tenantDashboardView,tenantNotificationView,searchUiView,profileUiView;
 
     //define controller
     public static TenantManageController manageController;
@@ -72,6 +72,13 @@ public class TenantMainController {
 
     @FXML
     private void seachView(ActionEvent event) {
+        FXMLLoader loaderSearchUI = new FXMLLoader(getClass().getResource("TouristUI/SearchUI.fxml"));
+        try {
+            searchUiView = loaderSearchUI.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        searchUI = loaderSearchUI.getController();
         setNode(searchUiView);
     }
 

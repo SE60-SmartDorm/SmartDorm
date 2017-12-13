@@ -89,8 +89,8 @@ public class RoomDetailController implements Initializable{
 
     @FXML
     public void close(ActionEvent event) throws IOException {
-        Node searchUI1 = FXMLLoader.load(getClass().getResource("SearchUI.fxml"));
-        setNode(searchUI1);
+        Node searchUI2 = FXMLLoader.load(getClass().getResource("SearchUI2.fxml"));
+        setNode(searchUI2);
     }
 
     private void setNode(Node node) {
