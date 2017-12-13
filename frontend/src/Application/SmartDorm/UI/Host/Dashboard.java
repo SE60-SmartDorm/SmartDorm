@@ -17,12 +17,14 @@ public class Dashboard extends AnchorPane implements Initializable {
     // set Singleton pattern
     private static Dashboard instance;
     List<TouristInfo> tourist_list_data = new ArrayList<TouristInfo>();
-    int number_tourist = 0;
+    int number_tourist = 2;
+    int total_room = 3;
 
     @FXML
     private Label totalRoom;
     @FXML
     private Label emptyRoom;
+
     @FXML
     private Label bookingRoom;
     @FXML
@@ -60,17 +62,24 @@ public class Dashboard extends AnchorPane implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        totalRoom.setText("3");
+        totalRoom.setText(String.valueOf(total_room));
+        touristNumber.setText(String.valueOf(number_tourist));
+        bookingRoom.setText("1");
+        tourist_list_data.add(new TouristInfo());
+        tourist_list_data.get(0);
+        listView_tourist.getChildren().add(tourist_list_data.get(0));
+        tourist_list_data.get(0).setTouristInfo("Coppor","2017/12/10","2017/12/10","ห้องส่วนตัว","1 ห้อง");
 
-        for (int i = 0; i < number_tourist; i++) {
-            tourist_list_data.add(new TouristInfo());
-            tourist_list_data.get(i);
-            listView_tourist.getChildren().add(tourist_list_data.get(i));
-        }
+
     }
 
     public void addTourist() {
         number_tourist += 1;
     }
 
+    public void setDashboard(String total_room) {
+        totalRoom.setText(total_room);
+    }
+
 }
+ 
