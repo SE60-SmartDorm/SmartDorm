@@ -34,7 +34,7 @@ public class LoginControllersd {
 
     @FXML
     private ComboBox<String> status;
-    ObservableList<String> list = FXCollections.observableArrayList("Owner","Tenant");
+    ObservableList<String> list = FXCollections.observableArrayList("Host","Tourist");
 
     private String ownerUser = "";
     private String ownerPass = "";
@@ -57,7 +57,7 @@ public class LoginControllersd {
         warning.setVisible(false);
         warning2.setVisible(false);
 
-        if("Owner".equals(type)) {
+        if("Host".equals(type)) {
             String username = textID.getText();
             String password = textPassword.getText();
 
@@ -71,7 +71,7 @@ public class LoginControllersd {
                 warning.setVisible(true);
         }
 
-        else if("Tenant".equals(type))
+        else if("Tourist".equals(type))
         {
             String username = textID.getText();
             String password = textPassword.getText();

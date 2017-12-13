@@ -1,8 +1,6 @@
 package Application.SmartDorm.UI.TouristUI;
 
 import Application.SmartDorm.UI.TenantMainController;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,12 +21,6 @@ public class BookingController implements Initializable {
     public void detailClick(ActionEvent event) throws IOException {
         Node detailUI1 = FXMLLoader.load(getClass().getResource("RoomDetail.fxml"));
         setNode(detailUI1);
-    }
-
-    @FXML
-    public void detailClick2(ActionEvent event) throws IOException {
-        Node detailUI2 = FXMLLoader.load(getClass().getResource("RoomDetail2.fxml"));
-        setNode(detailUI2);
     }
 
     private void setNode(Node node) {
