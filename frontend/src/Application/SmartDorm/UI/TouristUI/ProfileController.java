@@ -52,18 +52,6 @@ public class ProfileController extends StackPane implements Initializable {
         introField.setText(getIntroField().getText());
     }
 
-    @FXML
-    public void edit(ActionEvent event) throws IOException {
-        JFXDialogLayout edit = new JFXDialogLayout();
-        FXMLLoader popup = new FXMLLoader(getClass().getResource("EditProfilePopup.fxml"));
-        StackPane newPopup = null;
-        newPopup = popup.load();
-        edit.setBody(newPopup);
-        JFXDialog dialog = new JFXDialog(popupPane, edit,JFXDialog.DialogTransition.CENTER);
-        dialog.show();
-    }
-
-
 
     private void setNode(Node node) {
         TenantMainController.mainTenantChangePane.getChildren().clear();
