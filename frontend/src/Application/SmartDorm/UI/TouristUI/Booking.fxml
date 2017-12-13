@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane fx:id="popupPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.TouristUI.BookingController">
    <children>
         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0">
@@ -49,32 +48,6 @@
                                     <children>
                                         <TextArea editable="false" focusTraversable="false" pickOnBounds="false" prefHeight="232.0" prefWidth="321.0" text="จังหวัด : เชียงใหม่&#10;ประเภทห้องพัก : ห้องส่วนตัว &#10;จำนวนคนพัก / ห้อง : 2 คน&#10;ราคา / คืน : 700 บาท&#10;" />
                                         <JFXButton fx:id="detailButton1" layoutX="199.0" layoutY="190.0" onAction="#detailClick" prefHeight="31.0" prefWidth="108.0" style="-fx-background-color: #DCDCDC;" text="ดูรายละเอียดเพิ่มเติม">
-                                            <font>
-                                                <Font size="12.0" />
-                                            </font>
-                                        </JFXButton>
-                                    </children>
-                                </AnchorPane>
-                            </children>
-                        </VBox>
-                        <VBox fx:id="vbox2" prefHeight="140.0" prefWidth="321.0" spacing="40.0">
-                            <children>
-                                <HBox alignment="CENTER">
-                                    <VBox.margin>
-                                        <Insets />
-                                    </VBox.margin>
-                                    <children>
-                                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@hostel_image/p1.jpg" />
-                                            </image>
-                                        </ImageView>
-                                    </children>
-                                </HBox>
-                                <AnchorPane prefHeight="232.0" prefWidth="321.0">
-                                    <children>
-                                        <TextArea editable="false" focusTraversable="false" pickOnBounds="false" prefHeight="232.0" prefWidth="321.0" text="จังหวัด : พัทยา&#10;ประเภทห้องพัก : ห้องส่วนรวม &#10;จำนวนคนพัก / ห้อง : 8 คน (1 คน / เตียง)&#10;ราคา / คืน : 450 บาท&#10;" />
-                                        <JFXButton fx:id="detailButton2" layoutX="198.0" layoutY="189.0" onAction="#detailClick2" prefHeight="31.0" prefWidth="108.0" style="-fx-background-color: #DCDCDC;" text="ดูรายละเอียดเพิ่มเติม">
                                             <font>
                                                 <Font size="12.0" />
                                             </font>
