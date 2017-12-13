@@ -57,35 +57,6 @@
                                 </AnchorPane>
                             </children>
                         </VBox>
-                        <VBox fx:id="vbox2" prefHeight="140.0" prefWidth="321.0" spacing="40.0">
-                            <children>
-                                <HBox alignment="CENTER">
-                                    <VBox.margin>
-                                        <Insets />
-                                    </VBox.margin>
-                                    <children>
-                                        <ImageView fitHeight="216.0" fitWidth="324.0" pickOnBounds="true" preserveRatio="true">
-                                            <image>
-                                                <Image url="@hostel_image/p1.jpg" />
-                                            </image>
-                                        </ImageView>
-                                    </children>
-                                </HBox>
-                                <AnchorPane prefHeight="232.0" prefWidth="321.0">
-                                    <children>
-                                        <TextArea editable="false" focusTraversable="false" pickOnBounds="false" prefHeight="232.0" prefWidth="321.0" text="คุณได้ทำการจอง&#10;ประเภทห้องพัก : ห้องส่วนรวม &#10;จำนวนคนพัก / ห้อง : 8 คน&#10;ราคา / คืน : 450 บาท&#10;">
-                                            <font>
-                                                <Font name="Arial" size="25.0" />
-                                            </font></TextArea>
-                                        <JFXButton fx:id="detailButton11" layoutX="137.0" layoutY="179.0" onAction="#detailClick" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #f48042;" text="ดูรายละเอียดเพิ่มเติม" textFill="WHITE">
-                                            <font>
-                                                <Font size="18.0" />
-                                            </font>
-                                        </JFXButton>
-                                    </children>
-                                </AnchorPane>
-                            </children>
-                        </VBox>
                     </children>
                 </HBox>
             </children>
