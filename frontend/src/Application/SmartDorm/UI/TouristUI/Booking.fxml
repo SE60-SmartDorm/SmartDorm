@@ -4,7 +4,6 @@
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -15,17 +14,16 @@
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="popupPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.SmartDorm.UI.TouristUI.BookingController">
-   <children>
-        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0">
+    <children>
+        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1000.0" style="-fx-background-color: #3e4d67;">
             <children>
-                <AnchorPane layoutX="37.0" prefHeight="66.0" prefWidth="1000.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <AnchorPane layoutX="-1.0" prefHeight="66.0" prefWidth="1000.0" style="-fx-background-color: #374256;" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <Label fx:id="label0" layoutX="35.0" layoutY="12.0" prefHeight="21.0" prefWidth="323.0" styleClass="text-header" text="ประวัติการจองที่พัก" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="12.0">
+                        <Label fx:id="label0" layoutX="37.0" layoutY="9.0" prefHeight="21.0" prefWidth="323.0" styleClass="text-header" text="ประวัติการจองที่พัก" textFill="WHITE" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="10.0">
                             <font>
                                 <Font name="SukhumvitSet-Light" size="30.0" />
                             </font>
                         </Label>
-                        <Separator layoutX="13.0" layoutY="84.0" prefHeight="0.0" prefWidth="93.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="0.0" />
                     </children>
                 </AnchorPane>
                 <HBox alignment="CENTER" layoutX="129.0" layoutY="143.0" prefHeight="500.0" prefWidth="740.0" spacing="100.0">
@@ -37,7 +35,7 @@
                                         <Insets />
                                     </VBox.margin>
                                     <children>
-                                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fitHeight="215.0" fitWidth="322.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@hostel_image/cmi1.jpg" />
                                             </image>
@@ -46,10 +44,42 @@
                                 </HBox>
                                 <AnchorPane prefHeight="232.0" prefWidth="321.0">
                                     <children>
-                                        <TextArea editable="false" focusTraversable="false" pickOnBounds="false" prefHeight="232.0" prefWidth="321.0" text="จังหวัด : เชียงใหม่&#10;ประเภทห้องพัก : ห้องส่วนตัว &#10;จำนวนคนพัก / ห้อง : 2 คน&#10;ราคา / คืน : 700 บาท&#10;" />
-                                        <JFXButton fx:id="detailButton1" layoutX="199.0" layoutY="190.0" onAction="#detailClick" prefHeight="31.0" prefWidth="108.0" style="-fx-background-color: #DCDCDC;" text="ดูรายละเอียดเพิ่มเติม">
+                                        <TextArea editable="false" focusTraversable="false" pickOnBounds="false" prefHeight="232.0" prefWidth="321.0" text="คุณได้ทำการจอง&#10;ประเภทห้องพัก : ห้องส่วนตัว &#10;จำนวนคนพัก / ห้อง : 2 คน&#10;ราคา / คืน : 700 บาท&#10;">
                                             <font>
-                                                <Font size="12.0" />
+                                                <Font name="Arial" size="25.0" />
+                                            </font></TextArea>
+                                        <JFXButton fx:id="detailButton1" layoutX="135.0" layoutY="178.0" onAction="#detailClick" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #f48042;" text="ดูรายละเอียดเพิ่มเติม" textFill="WHITE">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </JFXButton>
+                                    </children>
+                                </AnchorPane>
+                            </children>
+                        </VBox>
+                        <VBox fx:id="vbox2" prefHeight="140.0" prefWidth="321.0" spacing="40.0">
+                            <children>
+                                <HBox alignment="CENTER">
+                                    <VBox.margin>
+                                        <Insets />
+                                    </VBox.margin>
+                                    <children>
+                                        <ImageView fitHeight="216.0" fitWidth="324.0" pickOnBounds="true" preserveRatio="true">
+                                            <image>
+                                                <Image url="@hostel_image/p1.jpg" />
+                                            </image>
+                                        </ImageView>
+                                    </children>
+                                </HBox>
+                                <AnchorPane prefHeight="232.0" prefWidth="321.0">
+                                    <children>
+                                        <TextArea editable="false" focusTraversable="false" pickOnBounds="false" prefHeight="232.0" prefWidth="321.0" text="คุณได้ทำการจอง&#10;ประเภทห้องพัก : ห้องส่วนรวม &#10;จำนวนคนพัก / ห้อง : 8 คน&#10;ราคา / คืน : 450 บาท&#10;">
+                                            <font>
+                                                <Font name="Arial" size="25.0" />
+                                            </font></TextArea>
+                                        <JFXButton fx:id="detailButton11" layoutX="137.0" layoutY="179.0" onAction="#detailClick" prefHeight="39.0" prefWidth="169.0" style="-fx-background-color: #f48042;" text="ดูรายละเอียดเพิ่มเติม" textFill="WHITE">
+                                            <font>
+                                                <Font size="18.0" />
                                             </font>
                                         </JFXButton>
                                     </children>
@@ -64,5 +94,5 @@
                 <URL value="@../Manage/fontstyle.css" />
             </stylesheets>
         </AnchorPane>
-   </children>
+    </children>
 </StackPane>
