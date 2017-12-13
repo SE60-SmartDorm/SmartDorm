@@ -40,7 +40,7 @@
                 <String fx:value="add-font" />
             </styleClass>
         </JFXTreeTableView>
-        <JFXButton fx:id="detailBT" buttonType="RAISED" layoutX="451.0" layoutY="705.0" prefHeight="46.0" prefWidth="98.0" ripplerFill="#3dff3d" text="รายละเอียด" textFill="WHITE">
+        <JFXButton fx:id="detailBT" buttonType="RAISED" layoutX="451.0" layoutY="705.0" onAction="#detail" prefHeight="46.0" prefWidth="98.0" ripplerFill="#3dff3d" text="รายละเอียด" textFill="WHITE">
             <styleClass>
                 <String fx:value="add-font" />
                 <String fx:value="detail-button" />
