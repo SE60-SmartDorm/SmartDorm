@@ -20,7 +20,7 @@
                <children>
                   <Pane prefHeight="293.0" prefWidth="275.0">
                      <children>
-                        <Label layoutX="103.0" layoutY="151.0" styleClass="text-head" text="ADMIN" textAlignment="CENTER" textFill="WHITE" />
+                        <Label layoutX="110.0" layoutY="151.0" prefHeight="39.0" prefWidth="55.0" styleClass="text-head" text="HOST" textAlignment="CENTER" textFill="WHITE" />
                         <StackPane layoutX="80.0" layoutY="32.0" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #ffffff; -fx-background-radius: 55;">
                            <children>
                               <FontAwesomeIconView fill="#404040" glyphName="USER_CIRCLE_ALT" size="102" />
@@ -46,10 +46,6 @@
                   <JFXButton fx:id="tenantManageBT" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" onAction="#tenantManageView" prefHeight="60.0" prefWidth="260.0" styleClass="navi-button" text="MANAGEMENT" textFill="WHITE">
                      <graphic>
                         <MaterialDesignIconView fill="WHITE" glyphName="ACCOUNT_SETTINGS_VARIANT" size="24" />
-                     </graphic></JFXButton>
-                  <JFXButton fx:id="ownerNotificationBT" alignment="BASELINE_LEFT" focusTraversable="false" graphicTextGap="10.0" onAction="#ownerNotificationView" prefHeight="60.0" prefWidth="260.0" styleClass="navi-button" text="NOTIFICATION" textFill="WHITE">
-                     <graphic>
-                        <MaterialDesignIconView fill="WHITE" glyphName="EMAIL_OUTLINE" size="24" />
                      </graphic></JFXButton>
                </children>
                <VBox.margin>

@@ -1,6 +1,9 @@
 package Application.SmartDorm.UI;
 
 import Application.SmartDorm.MainSmartDorm;
+import Application.SmartDorm.UI.Host.Dashboard;
+import Application.SmartDorm.UI.Host.Manage;
+import Application.SmartDorm.UI.Host.RequestManage;
 import Application.SmartDorm.UI.Manage.TenantManageController;
 import Application.SmartDorm.UI.OwnerNotification.OwnerNotificationController;
 import com.jfoenix.controls.JFXButton;
@@ -51,25 +54,22 @@ public class OwnerMainController {
     @FXML
     public void initialize() {
         mainOwnerChangePane = ownerChangePane;
-        loadOwnerMain();
+       // loadOwnerMain();
+        Dashboard dashboardView = Dashboard.getInstance();
         setNode(dashboardView);
 
     }
 
     @FXML
     private void tenantManageView(ActionEvent event) {
-        setNode(tenantManageView);
+        Manage manageView = Manage.getInstance();
+        setNode(manageView);
     }
 
     @FXML
     void dashboardView(ActionEvent event) {
+        Dashboard dashboardView = Dashboard.getInstance();
         setNode(dashboardView);
-    }
-
-    @FXML
-    void ownerNotificationView(ActionEvent event) {
-        notiController.hintSelect.setVisible(false);
-        setNode(ownerNotificationView);
     }
 
     @FXML
