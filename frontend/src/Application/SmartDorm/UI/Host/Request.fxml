@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+   <stylesheets>
+      <URL value="@baseHost.css" />
+      <URL value="@../Manage/fontstyle.css" />
+   </stylesheets>
+   <children>
+      <Label layoutX="275.0" layoutY="39.0" text="Profile">
+         <styleClass>
+            <String fx:value="add-font" />
+            <String fx:value="card-title" />
+         </styleClass>
+      </Label>
+      <Label fx:id="nameLB" alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="91.0" prefHeight="35.0" prefWidth="306.0" text="NAME" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+   </children>
+</fx:root>
