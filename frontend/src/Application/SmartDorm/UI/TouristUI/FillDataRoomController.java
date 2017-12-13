@@ -21,9 +21,6 @@ public class FillDataRoomController implements Initializable {
     private JFXButton ok;
 
     @FXML
-    private JFXButton cancel;
-
-    @FXML
     private JFXDatePicker checkin;
 
     @FXML

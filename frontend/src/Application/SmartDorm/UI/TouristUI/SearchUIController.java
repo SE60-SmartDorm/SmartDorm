@@ -17,12 +17,6 @@ import java.util.ResourceBundle;
 
 public class SearchUIController implements Initializable {
 
-
-    private String[] province = {"กรุงเทพฯ", "เชียงใหม่"};
-    private String[] name = {"Oh! Sleep Sleep", "Hahaha House"};
-    private int people_num;
-    private int room_num;
-
     @FXML
     private TextField searchField;
     @FXML

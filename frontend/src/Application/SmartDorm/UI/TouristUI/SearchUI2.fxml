@@ -41,7 +41,7 @@
                            <children>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../resource/hostel_image/ต้นข้าว.png" />
+                                    <Image url="@hostel_image/cmi1.jpg" />
                                  </image>
                               </ImageView>
                            </children>
@@ -69,7 +69,7 @@
                            <children>
                               <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@hostel_image/ดอกไม้.png" />
+                                    <Image url="@hostel_image/p1.jpg" />
                                  </image>
                               </ImageView>
                            </children>

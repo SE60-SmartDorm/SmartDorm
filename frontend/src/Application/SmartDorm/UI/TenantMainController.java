@@ -4,6 +4,7 @@ import Application.SmartDorm.MainSmartDorm;
 import Application.SmartDorm.UI.Manage.TenantManageController;
 import Application.SmartDorm.UI.Request.HistoryRequestController;
 import Application.SmartDorm.UI.TenantPayment.TenantPaymentController;
+import Application.SmartDorm.UI.TouristUI.BookingController;
 import Application.SmartDorm.UI.TouristUI.ProfileController;
 import Application.SmartDorm.UI.TouristUI.SearchUI2Controller;
 import Application.SmartDorm.UI.TouristUI.SearchUIController;
@@ -41,6 +42,8 @@ public class TenantMainController {
     public static TenantPaymentController tenantPayVari;
     public static SearchUIController searchUI;
     public static ProfileController profileUI;
+    public static BookingController bookingUI;
+
 
     @FXML
     Label nameLabel;
@@ -48,7 +51,7 @@ public class TenantMainController {
     @FXML
     JFXButton logoutButton;
     // set pane
-    public Node tenantPaymentView,tenantDashboardView,tenantNotificationView,searchUiView,profileUiView;
+    public Node tenantPaymentView,tenantDashboardView,tenantNotificationView,searchUiView,profileUiView,bookingView;
 
     //define controller
     public static TenantManageController manageController;
@@ -84,12 +87,7 @@ public class TenantMainController {
 
     @FXML
     void bookingView(ActionEvent event) {
-        setNode(tenantDashboardView);
-        System.out.println("EEE: " + uid);
-        Long tid = UserController.getTenantIdByUid(uid);
-        Tenant t = TenantController.getById(tid);
-        String[] strip = t.getName().split(" ");
-        nameLabel.setText(strip[1]);
+        setNode(bookingView);
     }
 
     @FXML
@@ -126,19 +124,21 @@ public class TenantMainController {
         FXMLLoader loaderOwnerNotification = new FXMLLoader(getClass().getResource("Request/MainRequest.fxml"));
         FXMLLoader loaderSearchUI = new FXMLLoader(getClass().getResource("TouristUI/SearchUI.fxml"));
         FXMLLoader loaderProfileUI = new FXMLLoader(getClass().getResource("TouristUI/profile.fxml"));
+        FXMLLoader loaderBookingUI = new FXMLLoader(getClass().getResource("TouristUI/Booking.fxml"));
         try {
             tenantPaymentView = loaderTenantPayment.load();
             tenantDashboardView = loaderOwnerDashboard.load();
             tenantNotificationView = loaderOwnerNotification.load();
             searchUiView = loaderSearchUI.load();
             profileUiView = loaderProfileUI.load();
+            bookingView = loaderBookingUI.load();
         } catch (IOException e) {
             e.printStackTrace();
         }
         tenantPayVari = loaderTenantPayment.getController();
         searchUI = loaderSearchUI.getController();
         profileUI = loaderProfileUI.getController();
-
+        bookingUI = loaderBookingUI.getController();
     }
 
     public void getUserId(String uid) {
